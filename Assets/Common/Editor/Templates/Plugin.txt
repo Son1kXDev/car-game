@@ -1,0 +1,15 @@
+using UnityEngine;
+using UnityEditor;
+using Utils.Debugger;
+
+namespace Plugins
+{
+    public static class #SCRIPTNAME#
+    {
+        [MenuItem("Tools/#SCRIPTNAME#")]
+        static void #SCRIPTNAMEVOID#()
+        {
+
+        }
+    }
+}

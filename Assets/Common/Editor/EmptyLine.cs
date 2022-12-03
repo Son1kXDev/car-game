@@ -1,0 +1,61 @@
+using UnityEngine;
+using UnityEditor;
+using Utils.Debugger;
+using System.Collections;
+
+namespace Plugins
+{
+    public static class EmptyLine
+    {
+        [MenuItem("GameObject/Property Line", priority = 0)]
+        private static void EmptyLineVoid()
+        {
+            GameObject newLine = new GameObject();
+            string name = Editors.TextEntryDialog.Show("PropertyLine", "Введите название разделителя");
+            newLine.name = $"===={name}====";
+            CheckLayer("Organize");
+            newLine.layer = LayerMask.NameToLayer("Organize");
+            newLine.isStatic = true;
+        }
+
+        private static void CheckLayer(string name)
+        {
+            SerializedObject tagManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
+
+            SerializedProperty layers = tagManager.FindProperty("layers");
+            if (layers == null || !layers.isArray)
+            {
+                Console.LogWarning("Can't set up the layers. It's possible the format of the layers and tags data has changed in this version of Unity.", DColor.white);
+                Console.LogWarning("Layers is null: " + (layers == null), DColor.red);
+                return;
+            }
+
+            bool layerExist = false;
+
+            for (int i = 6; i < layers.arraySize; i++)
+            {
+                SerializedProperty layer = layers.GetArrayElementAtIndex(i);
+
+                if (layer.stringValue == name)
+                {
+                    layerExist = true;
+                    break;
+                }
+            }
+
+            if (layerExist) return;
+
+            for (int i = 6; i < layers.arraySize; i++)
+            {
+                SerializedProperty layer = layers.GetArrayElementAtIndex(i);
+
+                if (layer.stringValue == "")
+                {
+                    layer.stringValue = name;
+                    tagManager.ApplyModifiedProperties();
+                    break;
+                }
+            }
+        }
+    }
+}
