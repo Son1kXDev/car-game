@@ -1,0 +1,19 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Game/UI/GameMenuStyle.uss?fileID=7433441132597879392&amp;guid=e19ad5242373f6643b8ae91327405b78&amp;type=3#GameMenuStyle" />
+    <ui:VisualElement name="Background" style="justify-content: space-between; align-items: stretch; width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Game/Sprites/Garage/garageBack.png?fileID=21300000&amp;guid=85cbf2b2066106648b2637234699ae10&amp;type=3#garageBack&apos;);">
+        <ui:VisualElement name="TopPanel" style="background-image: url(&apos;project://database/Assets/Game/Sprites/Garage/TopGaragePanel.png.png?fileID=21300000&amp;guid=b8c53804717a1fe4a9d2d43e50a41075&amp;type=3#TopGaragePanel.png&apos;); width: 100%; height: 15%; flex-direction: row; align-items: center; justify-content: space-between; flex-grow: 0; flex-shrink: 1; min-width: auto; min-height: auto; flex-wrap: nowrap;">
+            <ui:Button display-tooltip-when-elided="true" name="MenuButton" class="menuButton" style="background-color: rgba(255, 255, 255, 0); background-image: url(&apos;project://database/Assets/Game/Sprites/Garage/menuButton.png?fileID=21300000&amp;guid=5f90288bd298cc543906549e3ca4125e&amp;type=3#menuButton&apos;); margin-left: 5%; width: 5%; height: 70%; max-width: 300px; max-height: 350px; min-width: 50px; min-height: 50px; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; -unity-background-scale-mode: scale-to-fit;" />
+            <ui:VisualElement name="Coins" style="width: 15%; height: 80%; align-items: center; background-color: rgba(0, 0, 0, 0); margin-right: 8%; flex-direction: row; justify-content: space-between;">
+                <LabelAutoFit name="CoinData" text="8790" enable-rich-text="true" class="coinText" style="width: 50%; height: 70%; padding-right: 0; padding-left: 0; -unity-text-align: middle-right;" />
+                <ui:VisualElement name="CoinIcon" style="background-image: url(&apos;project://database/Assets/Game/Sprites/Garage/coinIcon.png?fileID=21300000&amp;guid=9b7018587ad162a47b2fb5dc5a9d9fd6&amp;type=3#coinIcon&apos;); width: 50%; height: 70%; -unity-background-scale-mode: scale-to-fit;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="MainPanel" style="width: 100%; height: 65%;" />
+        <ui:VisualElement name="DownPanel" style="height: 20%; width: 100%; flex-direction: row; justify-content: space-around; align-items: stretch;">
+            <ButtonAutoFit text="Achievements" name="AchievementsButton" class="downPanelButtons" style="width: 30%;" />
+            <ButtonAutoFit text="Shop" name="ShopButton" class="downPanelButtons" style="width: 12.5%;" />
+            <ButtonAutoFit text="Upgrades" name="UpgradesButton" class="downPanelButtons" style="width: 25%;" />
+            <ButtonAutoFit text="Play" name="PlayButton" class="downPanelButtons" style="width: 12.5%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
