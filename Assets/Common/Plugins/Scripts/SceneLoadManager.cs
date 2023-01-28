@@ -8,6 +8,7 @@ public class SceneLoadManager : MonoBehaviour
     public static SceneLoadManager Instance;
 
     [SerializeField] private GameObject _loaderPanel;
+    [SerializeField] private Animator _loaderAnimator;
     [SerializeField] private UnityEngine.UI.Image _loadingIndicator;
 
     private void Awake()
@@ -20,45 +21,27 @@ public class SceneLoadManager : MonoBehaviour
         }
     }
 
-    public enum Scenes
-    {
-        MainMenu, Game
-    }
-
-    public async void LoadScene(Scenes scene, bool doNotUnloadCurrentScene = false)
+    public async void LoadScene(string sceneName, bool doNotUnloadCurrentScene = false)
     {
         LoadSceneMode mode = doNotUnloadCurrentScene ? LoadSceneMode.Additive : LoadSceneMode.Single;
 
-        int ID;
-
-        switch (scene)
-        {
-            case Scenes.MainMenu:
-                ID = 0;
-                break;
-
-            case Scenes.Game:
-                ID = 1;
-                break;
-
-            default:
-                ID = 0;
-                break;
-        }
-        AsyncOperation currentScene = SceneManager.LoadSceneAsync(ID, mode);
+        AsyncOperation currentScene = SceneManager.LoadSceneAsync(sceneName, mode);
         currentScene.allowSceneActivation = false;
 
         _loaderPanel.SetActive(true);
+        _loaderAnimator.SetBool("loading", true);
         _loadingIndicator.fillAmount = 0;
         do
         {
-            await Task.Delay(100);
+            await Task.Delay(1000);
             _loadingIndicator.fillAmount = currentScene.progress;
         } while (currentScene.progress < 0.9f);
 
-        Console.Log($"Scene {SceneManager.GetSceneAt(ID).name} is loaded", DColor.white, DType.bold);
+        Console.Log($"Scene {sceneName} is loaded", DColor.white, DType.bold);
 
         currentScene.allowSceneActivation = true;
+        _loaderAnimator.SetBool("loading", false);
+        await Task.Delay(500);
         _loaderPanel.SetActive(false);
     }
 
@@ -68,17 +51,21 @@ public class SceneLoadManager : MonoBehaviour
 
         AsyncOperation currentScene = SceneManager.LoadSceneAsync(ID, mode);
         currentScene.allowSceneActivation = false;
+
         _loaderPanel.SetActive(true);
+        _loaderAnimator.SetBool("loading", true);
         _loadingIndicator.fillAmount = 0;
         do
         {
-            await Task.Delay(100);
+            await Task.Delay(1000);
             _loadingIndicator.fillAmount = currentScene.progress;
         } while (currentScene.progress < 0.9f);
 
         Console.Log($"Scene {SceneManager.GetSceneAt(ID).name} is loaded", DColor.white, DType.bold);
 
         currentScene.allowSceneActivation = true;
+        _loaderAnimator.SetBool("loading", false);
+        await Task.Delay(500);
         _loaderPanel.SetActive(false);
     }
 }
