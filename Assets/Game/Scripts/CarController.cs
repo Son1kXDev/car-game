@@ -4,39 +4,207 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
-    public float speed = 10.0f; // скорость машинки
-    public float torque = 10.0f; // момент инерции, отвечающий за поведение машинки при повороте
-    public float gravity = 10.0f; // сила гравитации, отвечающая за скорость спуска машинки вниз по склону
+    [SerializeField] private Type type = Type.Back;
+    [SerializeField] private WheelJoint2D _wheelBack, _wheelFront;
+    [SerializeField] private float _forwardSpeed, _backSpeed;
 
-    public float suspensionDistance = 0.1f; // расстояние, на которое подвеска смещается при приземлении
-    public float suspensionSpring = 50.0f; // жесткость пружины, отвечающей за отскок подвески
-    public float suspensionDamper = 5.0f; // жесткость демпфера, отвечающего за торможение отскока подвески
-    public float power = 100.0f; // мощность двигателя
-
-    private Rigidbody2D rb; // ссылка на компонент Rigidbody
-
-    private void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
+    private JointMotor2D _jointMotorBack, _jointMotorFront;
+    private float _currentSpeed;
+    private float _startSpeed, _newSpeed;
+    private bool _changeSpeed;
 
     private void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal"); // получаем ввод с горизонтальной оси (A и D или стрелки влево и вправо)
-        float verticalInput = Input.GetAxis("Vertical"); // получаем ввод с вертикальной оси (W и S или стрелки вверх и вниз)
-
-        // обновляем параметры подвески
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, -transform.up, suspensionDistance);
-        if (hit.collider != null)
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            float force = suspensionSpring * (suspensionDistance - hit.distance) - suspensionDamper * rb.velocity.y;
-            rb.AddForceAtPosition(force * transform.up, hit.point);
+            switch (type)
+            {
+                case Type.Back:
+                    BackWheel(true, _forwardSpeed);
+                    break;
+
+                case Type.Front:
+                    FrontWheel(true, _forwardSpeed);
+                    break;
+
+                case Type.Full:
+                    BackWheel(true, _forwardSpeed);
+                    FrontWheel(true, _forwardSpeed);
+                    break;
+            }
         }
 
-        // увеличиваем силу двигателя в соответствии с введенной скоростью
-        rb.AddForce(transform.right * speed * verticalInput * power);
-        rb.AddTorque(torque * horizontalInput); // добавляем момент инерции, чтобы машинка поворачивалась
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            switch (type)
+            {
+                case Type.Back:
+                    BackWheel(false, _forwardSpeed);
+                    break;
 
-        rb.AddForce(Vector2.down * gravity); // добавляем силу гравитации, чтобы машинка спускалась вниз по склону
+                case Type.Front:
+                    FrontWheel(false, _forwardSpeed);
+                    break;
+
+                case Type.Full:
+                    BackWheel(false, _forwardSpeed);
+                    FrontWheel(false, _forwardSpeed);
+                    break;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            switch (type)
+            {
+                case Type.Back:
+                    BackWheel(true, _backSpeed);
+                    break;
+
+                case Type.Front:
+                    FrontWheel(true, _backSpeed);
+                    break;
+
+                case Type.Full:
+                    BackWheel(true, _backSpeed);
+                    FrontWheel(true, _backSpeed);
+                    break;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            switch (type)
+            {
+                case Type.Back:
+                    BackWheel(false, _backSpeed);
+                    break;
+
+                case Type.Front:
+                    FrontWheel(false, _backSpeed);
+                    break;
+
+                case Type.Full:
+                    BackWheel(false, _backSpeed);
+                    FrontWheel(false, _backSpeed);
+                    break;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            switch (type)
+            {
+                case Type.Back:
+                    BackBreak();
+                    break;
+
+                case Type.Front:
+                    FrontBreak();
+
+                    break;
+
+                case Type.Full:
+                    BackBreak();
+                    FrontBreak();
+                    break;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            switch (type)
+            {
+                case Type.Back:
+                    BackStopBreak();
+                    break;
+
+                case Type.Front:
+                    FrontStopBreak();
+
+                    break;
+
+                case Type.Full:
+                    BackStopBreak();
+                    FrontStopBreak();
+                    break;
+            }
+        }
+
+        if (_changeSpeed)
+            ChangeSpeed();
+
+        SetSpeed();
+    }
+
+    public void BackWheel(bool move, float speed)
+    {
+        _startSpeed = _currentSpeed;
+        _newSpeed = speed;
+        _changeSpeed = move;
+        _wheelBack.useMotor = move;
+    }
+
+    public void FrontWheel(bool move, float speed)
+    {
+        _startSpeed = _currentSpeed;
+        _newSpeed = speed;
+        _changeSpeed = move;
+        _wheelFront.useMotor = move;
+    }
+
+    public void BackBreak()
+    {
+        _wheelBack.useMotor = true;
+        _startSpeed = _currentSpeed;
+        _newSpeed = 0f;
+        _changeSpeed = true;
+    }
+
+    public void BackStopBreak()
+    {
+        _wheelBack.useMotor = false;
+        _changeSpeed = false;
+    }
+
+    public void FrontBreak()
+    {
+        _wheelFront.useMotor = true;
+        _startSpeed = _currentSpeed;
+        _newSpeed = 0f;
+        _changeSpeed = true;
+    }
+
+    public void FrontStopBreak()
+    {
+        _wheelFront.useMotor = false;
+        _changeSpeed = false;
+    }
+
+    private void ChangeSpeed()
+    {
+        if (Mathf.Round(_currentSpeed) != Mathf.Round(_newSpeed))
+        {
+            float delta = _newSpeed - _currentSpeed;
+            delta *= Time.deltaTime;
+            _currentSpeed += delta;
+        }
+        else _changeSpeed = false;
+    }
+
+    private void SetSpeed()
+    {
+        _jointMotorFront = _wheelFront.motor;
+        _jointMotorFront.motorSpeed = Mathf.Round(_currentSpeed);
+        _jointMotorFront.motorSpeed = Mathf.Round(_currentSpeed);
+        _wheelFront.motor = _jointMotorFront;
+
+        _jointMotorBack = _wheelBack.motor;
+        _jointMotorBack.motorSpeed = Mathf.Round(_currentSpeed);
+        _jointMotorBack.motorSpeed = Mathf.Round(_currentSpeed);
+        _wheelBack.motor = _jointMotorBack;
     }
 }
+
+public enum Type
+{ Back, Front, Full }
