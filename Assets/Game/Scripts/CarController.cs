@@ -11,12 +11,14 @@ public class CarController : MonoBehaviour
     private JointMotor2D _jointMotorBack, _jointMotorFront;
     private float _currentSpeed;
     private float _startSpeed, _newSpeed;
+    private float _speedFactor;
     private bool _changeSpeed;
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.D))
         {
+            _speedFactor = 1f;
             switch (type)
             {
                 case Type.Back:
@@ -36,25 +38,27 @@ public class CarController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.D))
         {
+            _speedFactor = 1f;
             switch (type)
             {
                 case Type.Back:
-                    BackWheel(false, _forwardSpeed);
+                    BackWheel(false, 0);
                     break;
 
                 case Type.Front:
-                    FrontWheel(false, _forwardSpeed);
+                    FrontWheel(false, 0);
                     break;
 
                 case Type.Full:
-                    BackWheel(false, _forwardSpeed);
-                    FrontWheel(false, _forwardSpeed);
+                    BackWheel(false, 0);
+                    FrontWheel(false, 0);
                     break;
             }
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
+            _speedFactor = 1f;
             switch (type)
             {
                 case Type.Back:
@@ -74,25 +78,27 @@ public class CarController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.A))
         {
+            _speedFactor = 1f;
             switch (type)
             {
                 case Type.Back:
-                    BackWheel(false, _backSpeed);
+                    BackWheel(false, 0);
                     break;
 
                 case Type.Front:
-                    FrontWheel(false, _backSpeed);
+                    FrontWheel(false, 0);
                     break;
 
                 case Type.Full:
-                    BackWheel(false, _backSpeed);
-                    FrontWheel(false, _backSpeed);
+                    BackWheel(false, 0);
+                    FrontWheel(false, 0);
                     break;
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            _speedFactor = 3f;
             switch (type)
             {
                 case Type.Back:
@@ -113,6 +119,7 @@ public class CarController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
+            _speedFactor = 1f;
             switch (type)
             {
                 case Type.Back:
@@ -121,7 +128,6 @@ public class CarController : MonoBehaviour
 
                 case Type.Front:
                     FrontStopBreak();
-
                     break;
 
                 case Type.Full:
@@ -133,15 +139,13 @@ public class CarController : MonoBehaviour
 
         if (_changeSpeed)
             ChangeSpeed();
-
-        SetSpeed();
     }
 
     public void BackWheel(bool move, float speed)
     {
         _startSpeed = _currentSpeed;
         _newSpeed = speed;
-        _changeSpeed = move;
+        _changeSpeed = true;
         _wheelBack.useMotor = move;
     }
 
@@ -149,7 +153,7 @@ public class CarController : MonoBehaviour
     {
         _startSpeed = _currentSpeed;
         _newSpeed = speed;
-        _changeSpeed = move;
+        _changeSpeed = true;
         _wheelFront.useMotor = move;
     }
 
@@ -164,7 +168,6 @@ public class CarController : MonoBehaviour
     public void BackStopBreak()
     {
         _wheelBack.useMotor = false;
-        _changeSpeed = false;
     }
 
     public void FrontBreak()
@@ -178,7 +181,6 @@ public class CarController : MonoBehaviour
     public void FrontStopBreak()
     {
         _wheelFront.useMotor = false;
-        _changeSpeed = false;
     }
 
     private void ChangeSpeed()
@@ -186,23 +188,42 @@ public class CarController : MonoBehaviour
         if (Mathf.Round(_currentSpeed) != Mathf.Round(_newSpeed))
         {
             float delta = _newSpeed - _currentSpeed;
-            delta *= Time.deltaTime;
+            delta *= Time.deltaTime * _speedFactor;
             _currentSpeed += delta;
+            SetSpeed();
         }
         else _changeSpeed = false;
     }
 
     private void SetSpeed()
     {
-        _jointMotorFront = _wheelFront.motor;
-        _jointMotorFront.motorSpeed = Mathf.Round(_currentSpeed);
-        _jointMotorFront.motorSpeed = Mathf.Round(_currentSpeed);
-        _wheelFront.motor = _jointMotorFront;
+        switch (type)
+        {
+            case Type.Back:
+                _jointMotorBack = _wheelBack.motor;
+                _jointMotorBack.motorSpeed = Mathf.Round(_currentSpeed);
+                _jointMotorBack.motorSpeed = Mathf.Round(_currentSpeed);
+                _wheelBack.motor = _jointMotorBack;
+                break;
 
-        _jointMotorBack = _wheelBack.motor;
-        _jointMotorBack.motorSpeed = Mathf.Round(_currentSpeed);
-        _jointMotorBack.motorSpeed = Mathf.Round(_currentSpeed);
-        _wheelBack.motor = _jointMotorBack;
+            case Type.Front:
+                _jointMotorFront = _wheelFront.motor;
+                _jointMotorFront.motorSpeed = Mathf.Round(_currentSpeed);
+                _jointMotorFront.motorSpeed = Mathf.Round(_currentSpeed);
+                _wheelFront.motor = _jointMotorFront;
+                break;
+
+            case Type.Full:
+                _jointMotorBack = _wheelBack.motor;
+                _jointMotorBack.motorSpeed = Mathf.Round(_currentSpeed);
+                _jointMotorBack.motorSpeed = Mathf.Round(_currentSpeed);
+                _wheelBack.motor = _jointMotorBack;
+                _jointMotorFront = _wheelFront.motor;
+                _jointMotorFront.motorSpeed = Mathf.Round(_currentSpeed);
+                _jointMotorFront.motorSpeed = Mathf.Round(_currentSpeed);
+                _wheelFront.motor = _jointMotorFront;
+                break;
+        }
     }
 }
 
