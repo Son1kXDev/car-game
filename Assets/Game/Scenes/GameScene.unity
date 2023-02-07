@@ -4021,6 +4021,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf1b7aadd9936e24991c0ce9c8944eb9, type: 3}
+--- !u!1 &1263087984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2384049364999162828, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
+  m_PrefabInstance: {fileID: 3969798729054997533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1285074563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4413,6 +4418,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6830908423820987598, guid: f52b18b574658f942be4a1cc2755c366, type: 3}
   m_PrefabInstance: {fileID: 3285144399857713447}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1522709682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1004904212472627256, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
+  m_PrefabInstance: {fileID: 3969798729054997533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1604488394
 GameObject:
   m_ObjectHideFlags: 0
@@ -4724,6 +4734,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1865379462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 259777217342862224, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
+  m_PrefabInstance: {fileID: 3969798729054997533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1911352026 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7893009310418963802, guid: 0be8474ee46a9684b9b24f89f2b080c7, type: 3}
@@ -6949,8 +6964,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2481085716631190488, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3969798728195611003, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
+      propertyPath: _breakLights
+      value: 
+      objectReference: {fileID: 1522709682}
+    - target: {fileID: 3969798728195611003, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
+      propertyPath: _backMoveLights
+      value: 
+      objectReference: {fileID: 1865379462}
+    - target: {fileID: 3969798728195611003, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
+      propertyPath: _backCasualLights
+      value: 
+      objectReference: {fileID: 1263087984}
     - target: {fileID: 3969798728195611004, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
       propertyPath: m_Name
       value: Car

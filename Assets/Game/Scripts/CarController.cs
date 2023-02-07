@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+    [Header("Visual")]
+    [SerializeField] private GameObject _backMoveLights;
+    [SerializeField] private GameObject _backCasualLights;
+    [SerializeField] private GameObject _brakeLights;
+    [SerializeField] private GameObject _dippedLights;
+    [SerializeField] private GameObject _highBeamLights;
+
+    [Header("Settings")]
     [SerializeField] private Type type = Type.Back;
     [SerializeField] private WheelJoint2D _wheelBack, _wheelFront;
     [SerializeField] private float _forwardSpeed, _backSpeed;
@@ -13,6 +21,12 @@ public class CarController : MonoBehaviour
     private float _startSpeed, _newSpeed;
     private float _speedFactor;
     private bool _changeSpeed;
+
+    private void Start()
+    {
+        _highBeamLights.SetActive(true);
+        _backCasualLights.SetActive(true);
+    }
 
     private void Update()
     {
@@ -39,6 +53,9 @@ public class CarController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.D))
         {
             _speedFactor = 1f;
+            _backCasualLights.SetActive(true);
+            _backMoveLights.SetActive(false);
+            _brakeLights.SetActive(false);
             switch (type)
             {
                 case Type.Back:
@@ -59,6 +76,8 @@ public class CarController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             _speedFactor = 1f;
+            _backMoveLights.SetActive(true);
+            _backCasualLights.SetActive(false);
             switch (type)
             {
                 case Type.Back:
@@ -79,6 +98,8 @@ public class CarController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.A))
         {
             _speedFactor = 1f;
+            _backMoveLights.SetActive(false);
+            _backCasualLights.SetActive(true);
             switch (type)
             {
                 case Type.Back:
@@ -99,6 +120,8 @@ public class CarController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _speedFactor = 3f;
+            _brakeLights.SetActive(true);
+            _backCasualLights.SetActive(false);
             switch (type)
             {
                 case Type.Back:
@@ -120,6 +143,8 @@ public class CarController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             _speedFactor = 1f;
+            _brakeLights.SetActive(false);
+            _backCasualLights.SetActive(true);
             switch (type)
             {
                 case Type.Back:
