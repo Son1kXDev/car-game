@@ -5,9 +5,9 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     [Header("Visual")]
-    [SerializeField] private GameObject _backMoveLights;
+    [SerializeField] private Animator _backMoveLights;
+    [SerializeField] private Animator _brakeLights;
     [SerializeField] private GameObject _backCasualLights;
-    [SerializeField] private GameObject _brakeLights;
     [SerializeField] private GameObject _dippedLights;
     [SerializeField] private GameObject _highBeamLights;
 
@@ -54,8 +54,8 @@ public class CarController : MonoBehaviour
         {
             _speedFactor = 1f;
             _backCasualLights.SetActive(true);
-            _backMoveLights.SetActive(false);
-            _brakeLights.SetActive(false);
+            _backMoveLights.SetBool("active", false);
+            _brakeLights.SetBool("active", false);
             switch (type)
             {
                 case Type.Back:
@@ -76,7 +76,7 @@ public class CarController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A))
         {
             _speedFactor = 1f;
-            _backMoveLights.SetActive(true);
+            _backMoveLights.SetBool("active", true);
             _backCasualLights.SetActive(false);
             switch (type)
             {
@@ -98,7 +98,7 @@ public class CarController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.A))
         {
             _speedFactor = 1f;
-            _backMoveLights.SetActive(false);
+            _backMoveLights.SetBool("active", false);
             _backCasualLights.SetActive(true);
             switch (type)
             {
@@ -120,7 +120,7 @@ public class CarController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _speedFactor = 3f;
-            _brakeLights.SetActive(true);
+            _brakeLights.SetBool("active", true);
             _backCasualLights.SetActive(false);
             switch (type)
             {
@@ -143,7 +143,7 @@ public class CarController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             _speedFactor = 1f;
-            _brakeLights.SetActive(false);
+            _brakeLights.SetBool("active", false);
             _backCasualLights.SetActive(true);
             switch (type)
             {
