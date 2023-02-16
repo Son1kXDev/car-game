@@ -18,7 +18,8 @@ public class CarController : MonoBehaviour
 
     private JointMotor2D _jointMotorBack, _jointMotorFront;
     private float _currentSpeed;
-    private float _startSpeed, _newSpeed;
+    private float _currentGear;
+    private float _newSpeed;
     private float _speedFactor;
     private bool _changeSpeed;
 
@@ -30,93 +31,6 @@ public class CarController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            _speedFactor = 1f;
-            switch (type)
-            {
-                case Type.Back:
-                    BackWheel(true, _forwardSpeed);
-                    break;
-
-                case Type.Front:
-                    FrontWheel(true, _forwardSpeed);
-                    break;
-
-                case Type.Full:
-                    BackWheel(true, _forwardSpeed);
-                    FrontWheel(true, _forwardSpeed);
-                    break;
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.D))
-        {
-            _speedFactor = 1f;
-            _backCasualLights.SetActive(true);
-            _backMoveLights.SetBool("active", false);
-            _brakeLights.SetBool("active", false);
-            switch (type)
-            {
-                case Type.Back:
-                    BackWheel(false, 0);
-                    break;
-
-                case Type.Front:
-                    FrontWheel(false, 0);
-                    break;
-
-                case Type.Full:
-                    BackWheel(false, 0);
-                    FrontWheel(false, 0);
-                    break;
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            _speedFactor = 1f;
-            _backMoveLights.SetBool("active", true);
-            _backCasualLights.SetActive(false);
-            switch (type)
-            {
-                case Type.Back:
-                    BackWheel(true, _backSpeed);
-                    break;
-
-                case Type.Front:
-                    FrontWheel(true, _backSpeed);
-                    break;
-
-                case Type.Full:
-                    BackWheel(true, _backSpeed);
-                    FrontWheel(true, _backSpeed);
-                    break;
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.A))
-        {
-            _speedFactor = 1f;
-            _backMoveLights.SetBool("active", false);
-            _backCasualLights.SetActive(true);
-            switch (type)
-            {
-                case Type.Back:
-                    BackWheel(false, 0);
-                    break;
-
-                case Type.Front:
-                    FrontWheel(false, 0);
-                    break;
-
-                case Type.Full:
-                    BackWheel(false, 0);
-                    FrontWheel(false, 0);
-                    break;
-            }
-        }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _speedFactor = 3f;
@@ -145,6 +59,7 @@ public class CarController : MonoBehaviour
             _speedFactor = 1f;
             _brakeLights.SetBool("active", false);
             _backCasualLights.SetActive(true);
+            _backMoveLights.SetBool("active", false);
             switch (type)
             {
                 case Type.Back:
@@ -162,13 +77,99 @@ public class CarController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.D) && !Input.GetKey(KeyCode.Space))
+        {
+            _speedFactor = 1f;
+            switch (type)
+            {
+                case Type.Back:
+                    BackWheel(true, _forwardSpeed);
+                    break;
+
+                case Type.Front:
+                    FrontWheel(true, _forwardSpeed);
+                    break;
+
+                case Type.Full:
+                    BackWheel(true, _forwardSpeed);
+                    FrontWheel(true, _forwardSpeed);
+                    break;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.D) && !Input.GetKey(KeyCode.Space))
+        {
+            _speedFactor = 1f;
+            _backCasualLights.SetActive(true);
+            _backMoveLights.SetBool("active", false);
+            _brakeLights.SetBool("active", false);
+            switch (type)
+            {
+                case Type.Back:
+                    BackWheel(false, 0);
+                    break;
+
+                case Type.Front:
+                    FrontWheel(false, 0);
+                    break;
+
+                case Type.Full:
+                    BackWheel(false, 0);
+                    FrontWheel(false, 0);
+                    break;
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A) && !Input.GetKey(KeyCode.Space))
+        {
+            _speedFactor = 1f;
+            _backMoveLights.SetBool("active", true);
+            _backCasualLights.SetActive(false);
+            switch (type)
+            {
+                case Type.Back:
+                    BackWheel(true, _backSpeed);
+                    break;
+
+                case Type.Front:
+                    FrontWheel(true, _backSpeed);
+                    break;
+
+                case Type.Full:
+                    BackWheel(true, _backSpeed);
+                    FrontWheel(true, _backSpeed);
+                    break;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.A) && !Input.GetKey(KeyCode.Space))
+        {
+            _speedFactor = 1f;
+            _backMoveLights.SetBool("active", false);
+            _backCasualLights.SetActive(true);
+            switch (type)
+            {
+                case Type.Back:
+                    BackWheel(false, 0);
+                    break;
+
+                case Type.Front:
+                    FrontWheel(false, 0);
+                    break;
+
+                case Type.Full:
+                    BackWheel(false, 0);
+                    FrontWheel(false, 0);
+                    break;
+            }
+        }
+
         if (_changeSpeed)
             ChangeSpeed();
     }
 
     public void BackWheel(bool move, float speed)
     {
-        _startSpeed = _currentSpeed;
         _newSpeed = speed;
         _changeSpeed = true;
         _wheelBack.useMotor = move;
@@ -176,7 +177,6 @@ public class CarController : MonoBehaviour
 
     public void FrontWheel(bool move, float speed)
     {
-        _startSpeed = _currentSpeed;
         _newSpeed = speed;
         _changeSpeed = true;
         _wheelFront.useMotor = move;
@@ -185,28 +185,20 @@ public class CarController : MonoBehaviour
     public void BackBreak()
     {
         _wheelBack.useMotor = true;
-        _startSpeed = _currentSpeed;
         _newSpeed = 0f;
         _changeSpeed = true;
     }
 
-    public void BackStopBreak()
-    {
-        _wheelBack.useMotor = false;
-    }
+    public void BackStopBreak() => _wheelBack.useMotor = false;
 
     public void FrontBreak()
     {
         _wheelFront.useMotor = true;
-        _startSpeed = _currentSpeed;
         _newSpeed = 0f;
         _changeSpeed = true;
     }
 
-    public void FrontStopBreak()
-    {
-        _wheelFront.useMotor = false;
-    }
+    public void FrontStopBreak() => _wheelFront.useMotor = false;
 
     private void ChangeSpeed()
     {
@@ -249,6 +241,10 @@ public class CarController : MonoBehaviour
                 _wheelFront.motor = _jointMotorFront;
                 break;
         }
+    }
+
+    private void Transmission()
+    {
     }
 }
 
