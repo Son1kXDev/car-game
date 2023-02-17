@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _speedometerData;
     [SerializeField] private TextMeshProUGUI _gearboxData;
+    [SerializeField] private TextMeshProUGUI _tachometerData;
 
     private void Awake()
     {
@@ -64,4 +65,6 @@ public class UIManager : MonoBehaviour
     public void DisplaySpeedometer(string value) => _speedometerData.text = value;
 
     public void DisplayGearbox(string value) => _gearboxData.text = value;
+
+    public void DisplayTachometer(string value) => _tachometerData.text = value;
 }

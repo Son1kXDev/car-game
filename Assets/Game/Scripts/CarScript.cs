@@ -28,6 +28,7 @@ namespace Assets.Game.Scripts
         [SerializeField] private float _wheelSize;
 
         [SerializeField] private List<int> _gearsMaxSpeed = new() { 400, 800, 1200, 1500, 2000, 2200 };
+        [SerializeField] private List<float> _maximumMotorForces = new() { 2.5f, 2.25f, 2f, 1.85f, 1.5f, 1.25f };
 
         private readonly float _deceleration = -400f;
         private readonly float _gravity = 9.8f;
@@ -94,6 +95,15 @@ namespace Assets.Game.Scripts
 
             Speedometer();
             Gearbox();
+            Tachometer();
+        }
+
+        private void Tachometer()
+        {
+            float idleValue = Random.Range(500, 600);
+            if (Input.GetAxis("Horizontal") != 0 || Mathf.Round(Mathf.Abs(_backWheel.motorSpeed)) > 30)
+                UIManager.Instance.DisplayTachometer($"{Mathf.Abs(Mathf.Round(_backWheel.motorSpeed)) + idleValue} RPM");
+            else UIManager.Instance.DisplayTachometer($"{idleValue} RPM");
         }
 
         private void Gearbox()
@@ -125,6 +135,7 @@ namespace Assets.Game.Scripts
                     _currentGear--;
                     _maxSpeed = _gearsMaxSpeed[_currentGear];
                 }
+                _backWheel.maxMotorTorque = _maximumMotorForces[_currentGear];
                 yield return null;
             }
         }
