@@ -1,9 +1,13 @@
 using UnityEngine;
+using TMPro;
 using Utils.Debugger;
 
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
+
+    [SerializeField] private TextMeshProUGUI _speedometerData;
+    [SerializeField] private TextMeshProUGUI _gearboxData;
 
     private void Awake()
     {
@@ -56,4 +60,8 @@ public class UIManager : MonoBehaviour
     public void ButtonInventory()
     {
     }
+
+    public void DisplaySpeedometer(string value) => _speedometerData.text = value;
+
+    public void DisplayGearbox(string value) => _gearboxData.text = value;
 }

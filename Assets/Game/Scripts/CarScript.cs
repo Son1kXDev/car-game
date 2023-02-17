@@ -13,6 +13,9 @@ namespace Assets.Game.Scripts
         [SerializeField] private GameObject _dippedLights;
         [SerializeField] private GameObject _highBeamLights;
 
+        [Header("Test")]
+        [SerializeField, Range(0, 1000)] private float RBM;
+
         [Header("Settings")]
         [SerializeField] private GearType _gearType = GearType.Full;
         [SerializeField] private LayerMask _ground;
@@ -88,6 +91,16 @@ namespace Assets.Game.Scripts
                 _backCasualLights.SetActive(true);
                 _backMoveLights.SetBool("active", false);
             }
+
+            Speedometer();
+            Gearbox();
+        }
+
+        private void Gearbox()
+        {
+            if (Input.GetAxis("Horizontal") > 0) UIManager.Instance.DisplayGearbox($"{_currentGear + 1}");
+            else if (Input.GetAxis("Horizontal") == 0) UIManager.Instance.DisplayGearbox("N");
+            else UIManager.Instance.DisplayGearbox("R");
         }
 
         private IEnumerator ChangeGear()
@@ -203,6 +216,19 @@ namespace Assets.Game.Scripts
                     break;
             }
             SetMotorActive();
+        }
+
+        private void Speedometer()
+        {
+            float circumFerence;
+            float speedOnKmh;
+            float speedOnMph;
+
+            circumFerence = 2.0f * Mathf.PI * _wheelSize;
+            speedOnKmh = (circumFerence * Mathf.Abs(_backWheel.motorSpeed)) * 60 / 1000;
+            speedOnMph = speedOnKmh * 0.62f;
+
+            UIManager.Instance.DisplaySpeedometer($"{Mathf.Round(speedOnKmh)} km/h");
         }
 
         private void OnDrawGizmos()
