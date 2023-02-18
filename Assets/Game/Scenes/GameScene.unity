@@ -17961,27 +17961,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3969798729054997546, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
       propertyPath: _gearsMaxSpeed.Array.data[0]
-      value: 1200
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 3969798729054997546, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
       propertyPath: _gearsMaxSpeed.Array.data[1]
-      value: 3000
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 3969798729054997546, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
       propertyPath: _gearsMaxSpeed.Array.data[2]
-      value: 4500
+      value: 2100
       objectReference: {fileID: 0}
     - target: {fileID: 3969798729054997546, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
       propertyPath: _gearsMaxSpeed.Array.data[3]
-      value: 6000
+      value: 3900
       objectReference: {fileID: 0}
     - target: {fileID: 3969798729054997546, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
       propertyPath: _gearsMaxSpeed.Array.data[4]
-      value: 7000
+      value: 5400
       objectReference: {fileID: 0}
     - target: {fileID: 3969798729054997546, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
       propertyPath: _gearsMaxSpeed.Array.data[5]
-      value: 7500
+      value: 6900
       objectReference: {fileID: 0}
     - target: {fileID: 3969798729054997546, guid: 5c8839b64c8530e4e8a9c11e9bf1bdd5, type: 3}
       propertyPath: _maximumMotorForces.Array.size

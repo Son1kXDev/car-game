@@ -13,9 +13,6 @@ namespace Assets.Game.Scripts
         [SerializeField] private GameObject _dippedLights;
         [SerializeField] private GameObject _highBeamLights;
 
-        [Header("Test")]
-        [SerializeField, Range(0, 1000)] private float RBM;
-
         [Header("Settings")]
         [SerializeField] private GearType _gearType = GearType.Full;
         [SerializeField] private LayerMask _ground;
@@ -98,6 +95,19 @@ namespace Assets.Game.Scripts
             Tachometer();
         }
 
+        private void Speedometer()
+        {
+            float circumFerence;
+            float speedOnKmh;
+            float speedOnMph;
+
+            circumFerence = 2.0f * Mathf.PI * _wheelSize;
+            speedOnKmh = (circumFerence * Mathf.Abs(_backWheel.motorSpeed)) * 60 / 1000;
+            speedOnMph = speedOnKmh * 0.62f;
+
+            UIManager.Instance.DisplaySpeedometer($"{Mathf.Round(speedOnKmh)} km/h");
+        }
+
         private void Tachometer()
         {
             float idleValue = Random.Range(500, 600);
@@ -120,22 +130,25 @@ namespace Assets.Game.Scripts
             _changingGear = false;
             while (true)
             {
-                if (Mathf.Abs(_backWheel.motorSpeed) == _gearsMaxSpeed[_currentGear] && Input.GetAxis("Horizontal") > 0 && _currentGear != _gearsMaxSpeed.Count - 1)
+                if (_grounded && Mathf.Abs(_backWheel.motorSpeed) == _gearsMaxSpeed[_currentGear]
+                    && Input.GetAxis("Horizontal") > 0 && _currentGear != _gearsMaxSpeed.Count - 1)
                 {
                     _currentGear++;
                     if (_currentGear >= _gearsMaxSpeed.Count)
                         _currentGear = _gearsMaxSpeed.Count - 1;
                     _maxSpeed = _gearsMaxSpeed[_currentGear];
                     _changingGear = true;
+                    _backWheel.maxMotorTorque = _maximumMotorForces[_currentGear];
                     yield return new WaitForSeconds(1);
                     _changingGear = false;
                 }
-                if (Input.GetAxis("Horizontal") <= 0 && _currentGear > 0 && (Mathf.Abs(_backWheel.motorSpeed) < _gearsMaxSpeed[_currentGear - 1]) && !_changingGear)
+                if ((Input.GetAxis("Horizontal") <= 0 || !_grounded) && _currentGear > 0 &&
+                    Mathf.Abs(_backWheel.motorSpeed) < _gearsMaxSpeed[_currentGear - 1] && !_changingGear)
                 {
                     _currentGear--;
                     _maxSpeed = _gearsMaxSpeed[_currentGear];
+                    _backWheel.maxMotorTorque = _maximumMotorForces[_currentGear];
                 }
-                _backWheel.maxMotorTorque = _maximumMotorForces[_currentGear];
                 yield return null;
             }
         }
@@ -183,7 +196,6 @@ namespace Assets.Game.Scripts
             _grounded = Physics2D.OverlapCircle(_wheel.transform.position, _wheelSize, _ground);
 
             _carAngle = transform.localEulerAngles.z;
-
             if (_carAngle > 180) _carAngle -= 360;
 
             if (Input.GetKey(KeyCode.Space))
@@ -194,20 +206,35 @@ namespace Assets.Game.Scripts
                     _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - _brakeForce * Time.fixedDeltaTime, 0, _backWheel.motorSpeed);
             }
 
-            if (_grounded && !_changingGear)
+            if (_grounded == false && !Input.GetKey(KeyCode.Space))
             {
-                if (Input.GetAxis("Horizontal") != 0 && !Input.GetKey(KeyCode.Space))
-                    _backWheel.motorSpeed = Mathf.Clamp
-                           (_backWheel.motorSpeed - (_acceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80) * Input.GetAxis("Horizontal") * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+                if (_backWheel.motorSpeed < 0)
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed + _brakeForce / 2 * Time.fixedDeltaTime, _backWheel.motorSpeed, 0);
+                if (_backWheel.motorSpeed > 0)
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - _brakeForce / 2 * Time.fixedDeltaTime, 0, _backWheel.motorSpeed);
             }
 
-            if (Input.GetAxis("Horizontal") == 0 && _backWheel.motorSpeed < 0 && !Input.GetKey(KeyCode.Space) || _changingGear)
-                _backWheel.motorSpeed = Mathf.Clamp
-                       (_backWheel.motorSpeed - (_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+            if (!_changingGear)
+            {
+                if (Input.GetAxis("Horizontal") != 0 && !Input.GetKey(KeyCode.Space))
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - (_acceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80)
+                           * Input.GetAxis("Horizontal") * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+            }
 
-            if (Input.GetAxis("Horizontal") == 0 && _backWheel.motorSpeed > 0 && !Input.GetKey(KeyCode.Space) || _changingGear)
-                _backWheel.motorSpeed = Mathf.Clamp
-                       (_backWheel.motorSpeed - (-_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+            if (_grounded)
+            {
+                if (Input.GetAxis("Horizontal") == 0 && _backWheel.motorSpeed < 0 && !Input.GetKey(KeyCode.Space) || _changingGear)
+                {
+                    _backWheel.motorSpeed = Mathf.Clamp
+                           (_backWheel.motorSpeed - (_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+                }
+
+                if (Input.GetAxis("Horizontal") == 0 && _backWheel.motorSpeed > 0 && !Input.GetKey(KeyCode.Space) || _changingGear)
+                {
+                    _backWheel.motorSpeed = Mathf.Clamp
+                           (_backWheel.motorSpeed - (-_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+                }
+            }
 
             _frontWheel = _backWheel;
 
@@ -227,19 +254,6 @@ namespace Assets.Game.Scripts
                     break;
             }
             SetMotorActive();
-        }
-
-        private void Speedometer()
-        {
-            float circumFerence;
-            float speedOnKmh;
-            float speedOnMph;
-
-            circumFerence = 2.0f * Mathf.PI * _wheelSize;
-            speedOnKmh = (circumFerence * Mathf.Abs(_backWheel.motorSpeed)) * 60 / 1000;
-            speedOnMph = speedOnKmh * 0.62f;
-
-            UIManager.Instance.DisplaySpeedometer($"{Mathf.Round(speedOnKmh)} km/h");
         }
 
         private void OnDrawGizmos()
