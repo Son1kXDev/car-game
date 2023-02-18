@@ -22,6 +22,8 @@ namespace Assets.Game.Scripts
         [SerializeField] private float _maxSpeed = 800f;
         [SerializeField] private float _maxBackSpeed = 600f;
         [SerializeField] private float _brakeForce = 1000f;
+        [SerializeField] private float _airBrakeForce = 500f;
+        [SerializeField] private float _gearBrakeForce = 80f;
         [SerializeField] private float _wheelSize;
 
         [SerializeField] private List<int> _gearsMaxSpeed = new() { 400, 800, 1200, 1500, 2000, 2200 };
@@ -99,7 +101,7 @@ namespace Assets.Game.Scripts
 
         private void Speedometer()
         {
-            float circumFerence;
+            //float circumFerence;
             float speedOnKmh;
             float speedOnMph;
 
@@ -212,9 +214,9 @@ namespace Assets.Game.Scripts
             if (_grounded == false && !Input.GetKey(KeyCode.Space))
             {
                 if (_backWheel.motorSpeed < 0)
-                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed + _brakeForce / 2 * Time.fixedDeltaTime, _backWheel.motorSpeed, 0);
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed + _airBrakeForce * Time.fixedDeltaTime, _backWheel.motorSpeed, 0);
                 if (_backWheel.motorSpeed > 0)
-                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - _brakeForce / 2 * Time.fixedDeltaTime, 0, _backWheel.motorSpeed);
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - _airBrakeForce * Time.fixedDeltaTime, 0, _backWheel.motorSpeed);
             }
 
             if (!_changingGear)
@@ -229,13 +231,13 @@ namespace Assets.Game.Scripts
                 if (Input.GetAxis("Horizontal") == 0 && _backWheel.motorSpeed < 0 && !Input.GetKey(KeyCode.Space) || _changingGear)
                 {
                     _backWheel.motorSpeed = Mathf.Clamp
-                           (_backWheel.motorSpeed - (_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+                           (_backWheel.motorSpeed - (_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * _gearBrakeForce) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
                 }
 
                 if (Input.GetAxis("Horizontal") == 0 && _backWheel.motorSpeed > 0 && !Input.GetKey(KeyCode.Space) || _changingGear)
                 {
                     _backWheel.motorSpeed = Mathf.Clamp
-                           (_backWheel.motorSpeed - (-_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+                           (_backWheel.motorSpeed - (-_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * _gearBrakeForce) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
                 }
             }
 
