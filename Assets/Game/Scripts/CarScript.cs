@@ -35,9 +35,11 @@ namespace Assets.Game.Scripts
         private bool _changingGear;
         private WheelJoint2D[] _wheelJoints;
         private JointMotor2D _frontWheel, _backWheel;
+        private Rigidbody2D _rigidbody;
 
         private void Awake()
         {
+            _rigidbody = GetComponent<Rigidbody2D>();
             _wheelJoints = GetComponents<WheelJoint2D>();
             switch (_gearType)
             {
@@ -101,8 +103,9 @@ namespace Assets.Game.Scripts
             float speedOnKmh;
             float speedOnMph;
 
-            circumFerence = 2.0f * Mathf.PI * _wheelSize;
-            speedOnKmh = (circumFerence * Mathf.Abs(_backWheel.motorSpeed)) * 60 / 1000;
+            //circumFerence = 2.0f * Mathf.PI * _wheelSize;
+            //speedOnKmh = (circumFerence * Mathf.Abs(_backWheel.motorSpeed)) * 60 / 1000;
+            speedOnKmh = _rigidbody.velocity.magnitude * 7.2f;
             speedOnMph = speedOnKmh * 0.62f;
 
             UIManager.Instance.DisplaySpeedometer($"{Mathf.Round(speedOnKmh)} km/h");
