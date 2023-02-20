@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 difference = _dragOrigin - _camera.ScreenToWorldPoint(Input.mousePosition);
-            _camera.transform.position += difference;
+            _camera.transform.position = Vector3.MoveTowards(_camera.transform.position, _camera.transform.position + difference, Time.deltaTime * 15f);
         }
 
         if (Input.GetMouseButtonUp(0)) _stopMoving = true;
@@ -100,12 +100,12 @@ public class CameraController : MonoBehaviour
     private void ZoomIn()
     {
         float newSize = _camera.orthographicSize + _zoomStep;
-        _camera.orthographicSize = Mathf.Clamp(newSize, _camSize.x, _camSize.y);
+        _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, Mathf.Clamp(newSize, _camSize.x, _camSize.y), Time.deltaTime * 15f);
     }
 
     private void ZoomOut()
     {
         float newSize = _camera.orthographicSize - _zoomStep;
-        _camera.orthographicSize = Mathf.Clamp(newSize, _camSize.x, _camSize.y);
+        _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, Mathf.Clamp(newSize, _camSize.x, _camSize.y), Time.deltaTime * 15f);
     }
 }
