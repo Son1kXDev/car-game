@@ -22,10 +22,20 @@ namespace Assets.Game.Scripts
         [SerializeField] private float _maxSpeed = 800f;
         [SerializeField] private float _maxBackSpeed = 600f;
         [SerializeField] private float _brakeForce = 1000f;
+        [SerializeField] private float _airBrakeForce = 500f;
+        [SerializeField] private float _gearBrakeForce = 80f;
         [SerializeField] private float _wheelSize;
 
         [SerializeField] private List<int> _gearsMaxSpeed = new() { 400, 800, 1200, 1500, 2000, 2200 };
         [SerializeField] private List<float> _maximumMotorForces = new() { 2.5f, 2.25f, 2f, 1.85f, 1.5f, 1.25f };
+
+        [Header("Upgrades")]
+        [SerializeField] private float _accelirationMultiplier = 1f;
+        [SerializeField] private float _maxSpeedMultiplier = 1f;
+        [SerializeField] private float _breakForceMultiplier = 1f;
+        [SerializeField] private float _gearSwitchMultiplier = 1f;
+        [SerializeField] private float _suspensionFrequencyMultiplier = 1f;
+        [SerializeField] private float _suspensionHeightMultiplier = 1f;
 
         private readonly float _deceleration = -400f;
         private readonly float _gravity = 9.8f;
@@ -59,6 +69,18 @@ namespace Assets.Game.Scripts
 
             _highBeamLights.SetActive(true);
             _backCasualLights.SetActive(true);
+
+            foreach (WheelJoint2D wheel in _wheelJoints)
+            {
+                JointSuspension2D susp = wheel.suspension;
+                susp.frequency *= _suspensionFrequencyMultiplier;
+                Vector2 anch = wheel.anchor;
+                anch.y *= (0.9f + _suspensionHeightMultiplier / 10);
+                wheel.anchor = anch;
+                wheel.suspension = susp;
+            }
+            _maxBackSpeed *= _maxSpeedMultiplier;
+
             StartCoroutine(ChangeGear());
         }
 
@@ -99,12 +121,9 @@ namespace Assets.Game.Scripts
 
         private void Speedometer()
         {
-            float circumFerence;
             float speedOnKmh;
             float speedOnMph;
 
-            //circumFerence = 2.0f * Mathf.PI * _wheelSize;
-            //speedOnKmh = (circumFerence * Mathf.Abs(_backWheel.motorSpeed)) * 60 / 1000;
             speedOnKmh = _rigidbody.velocity.magnitude * 7.2f;
             speedOnMph = speedOnKmh * 0.62f;
 
@@ -129,27 +148,27 @@ namespace Assets.Game.Scripts
         private IEnumerator ChangeGear()
         {
             _currentGear = 0;
-            _maxSpeed = _gearsMaxSpeed[_currentGear];
+            _maxSpeed = _gearsMaxSpeed[_currentGear] * _maxSpeedMultiplier;
             _changingGear = false;
             while (true)
             {
-                if (_grounded && Mathf.Abs(_backWheel.motorSpeed) == _gearsMaxSpeed[_currentGear]
+                if (_grounded && Mathf.Abs(_backWheel.motorSpeed) == _gearsMaxSpeed[_currentGear] * _maxSpeedMultiplier
                     && Input.GetAxis("Horizontal") > 0 && _currentGear != _gearsMaxSpeed.Count - 1)
                 {
                     _currentGear++;
                     if (_currentGear >= _gearsMaxSpeed.Count)
                         _currentGear = _gearsMaxSpeed.Count - 1;
-                    _maxSpeed = _gearsMaxSpeed[_currentGear];
+                    _maxSpeed = _gearsMaxSpeed[_currentGear] * _maxSpeedMultiplier;
                     _changingGear = true;
                     _backWheel.maxMotorTorque = _maximumMotorForces[_currentGear];
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(1 / _gearSwitchMultiplier);
                     _changingGear = false;
                 }
                 if ((Input.GetAxis("Horizontal") <= 0 || !_grounded) && _currentGear > 0 &&
-                    Mathf.Abs(_backWheel.motorSpeed) < _gearsMaxSpeed[_currentGear - 1] && !_changingGear)
+                    Mathf.Abs(_backWheel.motorSpeed) < _gearsMaxSpeed[_currentGear - 1] * _maxSpeedMultiplier && !_changingGear)
                 {
                     _currentGear--;
-                    _maxSpeed = _gearsMaxSpeed[_currentGear];
+                    _maxSpeed = _gearsMaxSpeed[_currentGear] * _maxSpeedMultiplier;
                     _backWheel.maxMotorTorque = _maximumMotorForces[_currentGear];
                 }
                 yield return null;
@@ -204,23 +223,23 @@ namespace Assets.Game.Scripts
             if (Input.GetKey(KeyCode.Space))
             {
                 if (_backWheel.motorSpeed < 0)
-                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed + _brakeForce * Time.fixedDeltaTime, _backWheel.motorSpeed, 0);
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed + _brakeForce * _breakForceMultiplier * Time.fixedDeltaTime, _backWheel.motorSpeed, 0);
                 if (_backWheel.motorSpeed > 0)
-                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - _brakeForce * Time.fixedDeltaTime, 0, _backWheel.motorSpeed);
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - _brakeForce * _breakForceMultiplier * Time.fixedDeltaTime, 0, _backWheel.motorSpeed);
             }
 
             if (_grounded == false && !Input.GetKey(KeyCode.Space))
             {
                 if (_backWheel.motorSpeed < 0)
-                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed + _brakeForce / 2 * Time.fixedDeltaTime, _backWheel.motorSpeed, 0);
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed + _airBrakeForce * Time.fixedDeltaTime, _backWheel.motorSpeed, 0);
                 if (_backWheel.motorSpeed > 0)
-                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - _brakeForce / 2 * Time.fixedDeltaTime, 0, _backWheel.motorSpeed);
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - _airBrakeForce * Time.fixedDeltaTime, 0, _backWheel.motorSpeed);
             }
 
             if (!_changingGear)
             {
                 if (Input.GetAxis("Horizontal") != 0 && !Input.GetKey(KeyCode.Space))
-                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - (_acceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80)
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - (_acceleration * _accelirationMultiplier - _gravity * Mathf.PI * (_carAngle / 180) * 80)
                            * Input.GetAxis("Horizontal") * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
             }
 
@@ -229,13 +248,13 @@ namespace Assets.Game.Scripts
                 if (Input.GetAxis("Horizontal") == 0 && _backWheel.motorSpeed < 0 && !Input.GetKey(KeyCode.Space) || _changingGear)
                 {
                     _backWheel.motorSpeed = Mathf.Clamp
-                           (_backWheel.motorSpeed - (_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+                           (_backWheel.motorSpeed - (_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * _gearBrakeForce) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
                 }
 
                 if (Input.GetAxis("Horizontal") == 0 && _backWheel.motorSpeed > 0 && !Input.GetKey(KeyCode.Space) || _changingGear)
                 {
                     _backWheel.motorSpeed = Mathf.Clamp
-                           (_backWheel.motorSpeed - (-_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * 80) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+                           (_backWheel.motorSpeed - (-_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * _gearBrakeForce) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
                 }
             }
 
