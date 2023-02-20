@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
     private bool _isMoving;
     private bool _stopMoving;
     private bool _stopScrolling;
+    private bool _inputLocked;
 
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && !_inputLocked)
         {
             Touch touch = Input.GetTouch(0);
             if (Input.touchCount == 1 && touch.phase == TouchPhase.Began)
@@ -87,6 +88,8 @@ public class CameraController : MonoBehaviour
         if (!_isMoving)
             transform.position = _target.position + _offset;
     }
+
+    public void LockInput(bool value) => _inputLocked = value;
 
     private IEnumerator CheckZoomState()
     {
