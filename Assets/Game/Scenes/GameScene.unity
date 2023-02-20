@@ -5316,8 +5316,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 362922091}
-  _zoomStep: 0.1
+  _zoomStep: 1
   _zoomWaitTime: 2
+  _smooth: 10
   _camSize: {x: 1, y: 4}
 --- !u!1 &922130886
 GameObject:
