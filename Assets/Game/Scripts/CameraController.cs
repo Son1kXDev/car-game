@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform _target;
     [SerializeField] private float _zoomStep;
     [SerializeField] private float _zoomWaitTime = 2f;
+    [SerializeField] private float _smooth = 15f;
     [SerializeField] private Vector2 _camSize;
 
     private Camera _camera;
@@ -38,14 +39,14 @@ public class CameraController : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             Vector3 difference = _dragOrigin - _camera.ScreenToWorldPoint(Input.mousePosition);
-            _camera.transform.position = Vector3.MoveTowards(_camera.transform.position, _camera.transform.position + difference, Time.deltaTime * 15f);
+            _camera.transform.position = Vector3.MoveTowards(_camera.transform.position, _camera.transform.position + difference, Time.deltaTime * _smooth);
         }
 
         if (Input.GetMouseButtonUp(0)) _stopMoving = true;
 
         if (_stopMoving)
         {
-            _camera.transform.position = Vector3.MoveTowards(_camera.transform.position, _target.position + _offset, Time.deltaTime * 15f);
+            _camera.transform.position = Vector3.MoveTowards(_camera.transform.position, _target.position + _offset, Time.deltaTime * _smooth);
             if (_camera.transform.position == _target.position + _offset)
             {
                 _stopMoving = false;
@@ -55,7 +56,7 @@ public class CameraController : MonoBehaviour
 
         if (_stopScrolling)
         {
-            _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, _baseZoom, Time.deltaTime * 15f);
+            _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, _baseZoom, Time.deltaTime * _smooth);
             if (_camera.orthographicSize == _baseZoom)
             {
                 _stopScrolling = false;
@@ -100,12 +101,12 @@ public class CameraController : MonoBehaviour
     private void ZoomIn()
     {
         float newSize = _camera.orthographicSize + _zoomStep;
-        _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, Mathf.Clamp(newSize, _camSize.x, _camSize.y), Time.deltaTime * 15f);
+        _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, Mathf.Clamp(newSize, _camSize.x, _camSize.y), Time.deltaTime * _smooth);
     }
 
     private void ZoomOut()
     {
         float newSize = _camera.orthographicSize - _zoomStep;
-        _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, Mathf.Clamp(newSize, _camSize.x, _camSize.y), Time.deltaTime * 15f);
+        _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, Mathf.Clamp(newSize, _camSize.x, _camSize.y), Time.deltaTime * _smooth);
     }
 }
