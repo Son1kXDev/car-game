@@ -12,6 +12,7 @@ namespace Assets.Game.Scripts
         [SerializeField] private GameObject _backCasualLights;
         [SerializeField] private GameObject _dippedLights;
         [SerializeField] private GameObject _highBeamLights;
+        [SerializeField] private Color _carColor = Color.white;
 
         [Header("Settings")]
         [SerializeField] private GearType _gearType = GearType.Full;
@@ -69,6 +70,7 @@ namespace Assets.Game.Scripts
 
             _highBeamLights.SetActive(true);
             _backCasualLights.SetActive(true);
+            transform.Find("Base").GetComponent<SpriteRenderer>().color = _carColor;
 
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
