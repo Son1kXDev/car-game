@@ -5624,11 +5624,7 @@ MonoBehaviour:
   _target: {fileID: 362922091}
   _zoomStep: 1
   _zoomWaitTime: 2
-<<<<<<< HEAD
-  _smooth: 15
-=======
   _smooth: 10
->>>>>>> f98839bead1b9a10315d3d688a9ccc37f8b1aea1
   _camSize: {x: 1, y: 4}
 --- !u!1 &872376427
 GameObject:
