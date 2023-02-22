@@ -44,6 +44,9 @@ namespace Assets.Game.Scripts
         private int _currentGear = 1;
         private bool _grounded;
         private bool _changingGear;
+        private bool _brake;
+        private bool _move;
+        private bool _backMove;
         private WheelJoint2D[] _wheelJoints;
         private JointMotor2D _frontWheel, _backWheel;
         private Rigidbody2D _rigidbody;
@@ -88,28 +91,28 @@ namespace Assets.Game.Scripts
 
         private void Update()
         {
-            if ((Input.GetAxis("Horizontal") > 0 || Input.GetAxis("Horizontal") == 0) && !Input.GetKey(KeyCode.Space))
+            if ((MoveAxis() > 0 || MoveAxis() == 0) && !_brake)
             {
                 _backCasualLights.SetActive(true);
                 _backMoveLights.SetBool("active", false);
                 _brakeLights.SetBool("active", false);
             }
 
-            if (Input.GetAxis("Horizontal") < 0 && !Input.GetKey(KeyCode.Space))
+            if (MoveAxis() < 0 && !_brake)
             {
                 _backCasualLights.SetActive(false);
                 _backMoveLights.SetBool("active", true);
                 _brakeLights.SetBool("active", false);
             }
 
-            if (Input.GetKey(KeyCode.Space))
+            if (_brake)
             {
                 _brakeLights.SetBool("active", true);
                 _backCasualLights.SetActive(false);
                 _backMoveLights.SetBool("active", false);
             }
 
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (!_brake && MoveAxis() == 0)
             {
                 _brakeLights.SetBool("active", false);
                 _backCasualLights.SetActive(true);
@@ -119,6 +122,24 @@ namespace Assets.Game.Scripts
             Speedometer();
             Gearbox();
             Tachometer();
+            PCControll();
+        }
+
+        private void PCControll()
+        {
+            if (Input.GetKey(KeyCode.D)) ButtonMove(true);
+            if (Input.GetKeyUp(KeyCode.D)) ButtonMove(false);
+            if (Input.GetKey(KeyCode.A)) ButtonBackmove(true);
+            if (Input.GetKeyUp(KeyCode.A)) ButtonBackmove(false);
+            if (Input.GetKey(KeyCode.Space)) ButtonBrake(true);
+            if (Input.GetKeyUp(KeyCode.Space)) ButtonBrake(false);
+        }
+
+        public float MoveAxis()
+        {
+            if (_move) return 1f;
+            if (_backMove) return -1f;
+            return 0;
         }
 
         private void Speedometer()
@@ -135,15 +156,15 @@ namespace Assets.Game.Scripts
         private void Tachometer()
         {
             float idleValue = Random.Range(500, 600);
-            if (Input.GetAxis("Horizontal") != 0 || Mathf.Round(Mathf.Abs(_backWheel.motorSpeed)) > 30)
+            if (MoveAxis() != 0 || Mathf.Round(Mathf.Abs(_backWheel.motorSpeed)) > 30)
                 UIManager.Instance.DisplayTachometer($"{Mathf.Abs(Mathf.Round(_backWheel.motorSpeed)) + idleValue} RPM");
             else UIManager.Instance.DisplayTachometer($"{idleValue} RPM");
         }
 
         private void Gearbox()
         {
-            if (Input.GetAxis("Horizontal") > 0) UIManager.Instance.DisplayGearbox($"{_currentGear + 1}");
-            else if (Input.GetAxis("Horizontal") == 0) UIManager.Instance.DisplayGearbox("N");
+            if (MoveAxis() > 0) UIManager.Instance.DisplayGearbox($"{_currentGear + 1}");
+            else if (MoveAxis() == 0) UIManager.Instance.DisplayGearbox("N");
             else UIManager.Instance.DisplayGearbox("R");
         }
 
@@ -155,7 +176,7 @@ namespace Assets.Game.Scripts
             while (true)
             {
                 if (_grounded && Mathf.Abs(_backWheel.motorSpeed) == _gearsMaxSpeed[_currentGear] * _maxSpeedMultiplier
-                    && Input.GetAxis("Horizontal") > 0 && _currentGear != _gearsMaxSpeed.Count - 1)
+                    && MoveAxis() > 0 && _currentGear != _gearsMaxSpeed.Count - 1)
                 {
                     _currentGear++;
                     if (_currentGear >= _gearsMaxSpeed.Count)
@@ -166,8 +187,8 @@ namespace Assets.Game.Scripts
                     yield return new WaitForSeconds(1 / _gearSwitchMultiplier);
                     _changingGear = false;
                 }
-                if ((Input.GetAxis("Horizontal") <= 0 || !_grounded) && _currentGear > 0 &&
-                    Mathf.Abs(_backWheel.motorSpeed) < _gearsMaxSpeed[_currentGear - 1] * _maxSpeedMultiplier && !_changingGear)
+                if (_currentGear > 0 && (MoveAxis() <= 0 || !_grounded) && Mathf.Abs(_backWheel.motorSpeed) < _gearsMaxSpeed[_currentGear - 1] * _maxSpeedMultiplier
+                    && !_changingGear)
                 {
                     _currentGear--;
                     _maxSpeed = _gearsMaxSpeed[_currentGear] * _maxSpeedMultiplier;
@@ -179,14 +200,14 @@ namespace Assets.Game.Scripts
 
         private void SetMotorActive()
         {
-            if (Input.GetAxis("Horizontal") == 0 && SpeedIsZero()
-                && (_wheelJoints[0].useMotor == true || _wheelJoints[1].useMotor == true) && !Input.GetKey(KeyCode.Space))
+            if (MoveAxis() == 0 && SpeedIsZero()
+                && (_wheelJoints[0].useMotor == true || _wheelJoints[1].useMotor == true) && !_brake)
             {
                 foreach (WheelJoint2D wheel in _wheelJoints)
                     wheel.useMotor = false;
             }
 
-            if (Input.GetAxis("Horizontal") != 0 || Input.GetKey(KeyCode.Space) && _wheelJoints[0].useMotor == false && _wheelJoints[1].useMotor == false)
+            if (MoveAxis() != 0 || _brake && _wheelJoints[0].useMotor == false && _wheelJoints[1].useMotor == false)
             {
                 switch (_gearType)
                 {
@@ -222,7 +243,7 @@ namespace Assets.Game.Scripts
             _carAngle = transform.localEulerAngles.z;
             if (_carAngle > 180) _carAngle -= 360;
 
-            if (Input.GetKey(KeyCode.Space))
+            if (_brake)
             {
                 if (_backWheel.motorSpeed < 0)
                     _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed + _brakeForce * _breakForceMultiplier * Time.fixedDeltaTime, _backWheel.motorSpeed, 0);
@@ -230,7 +251,7 @@ namespace Assets.Game.Scripts
                     _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - _brakeForce * _breakForceMultiplier * Time.fixedDeltaTime, 0, _backWheel.motorSpeed);
             }
 
-            if (_grounded == false && !Input.GetKey(KeyCode.Space))
+            if (_grounded == false && !_brake)
             {
                 if (_backWheel.motorSpeed < 0)
                     _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed + _airBrakeForce * Time.fixedDeltaTime, _backWheel.motorSpeed, 0);
@@ -240,20 +261,20 @@ namespace Assets.Game.Scripts
 
             if (!_changingGear)
             {
-                if (Input.GetAxis("Horizontal") != 0 && !Input.GetKey(KeyCode.Space))
+                if (MoveAxis() != 0 && !_brake)
                     _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - (_acceleration * _accelirationMultiplier - _gravity * Mathf.PI * (_carAngle / 180) * 80)
-                           * Input.GetAxis("Horizontal") * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
+                           * MoveAxis() * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
             }
 
             if (_grounded)
             {
-                if (Input.GetAxis("Horizontal") == 0 && _backWheel.motorSpeed < 0 && !Input.GetKey(KeyCode.Space) || _changingGear)
+                if (MoveAxis() == 0 && _backWheel.motorSpeed < 0 && !_brake || _changingGear)
                 {
                     _backWheel.motorSpeed = Mathf.Clamp
                            (_backWheel.motorSpeed - (_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * _gearBrakeForce) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
                 }
 
-                if (Input.GetAxis("Horizontal") == 0 && _backWheel.motorSpeed > 0 && !Input.GetKey(KeyCode.Space) || _changingGear)
+                if (MoveAxis() == 0 && _backWheel.motorSpeed > 0 && !_brake || _changingGear)
                 {
                     _backWheel.motorSpeed = Mathf.Clamp
                            (_backWheel.motorSpeed - (-_deceleration - _gravity * Mathf.PI * (_carAngle / 180) * _gearBrakeForce) * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
@@ -279,6 +300,12 @@ namespace Assets.Game.Scripts
             }
             SetMotorActive();
         }
+
+        public void ButtonBrake(bool value) => _brake = value;
+
+        public void ButtonBackmove(bool value) => _backMove = value;
+
+        public void ButtonMove(bool value) => _move = value;
 
         private void OnDrawGizmos()
         {

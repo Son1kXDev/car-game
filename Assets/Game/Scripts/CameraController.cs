@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour
     private bool _isMoving;
     private bool _stopMoving;
     private bool _stopScrolling;
+    private bool _inputLocked;
 
     private void Awake()
     {
@@ -30,19 +31,39 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.touchCount > 0 && !_inputLocked)
         {
-            _dragOrigin = _camera.ScreenToWorldPoint(Input.mousePosition);
-            _isMoving = true;
-        }
+            Touch touch = Input.GetTouch(0);
+            if (Input.touchCount == 1 && touch.phase == TouchPhase.Began)
+            {
+                _dragOrigin = _camera.ScreenToWorldPoint(touch.position);
+                _isMoving = true;
+            }
+            if (Input.touchCount == 1 && touch.phase == TouchPhase.Moved)
+            {
+                Vector3 difference = _dragOrigin - _camera.ScreenToWorldPoint(touch.position);
+                _camera.transform.position = Vector3.MoveTowards(_camera.transform.position, _camera.transform.position + difference, Time.deltaTime * _smooth);
+            }
 
-        if (Input.GetMouseButton(0))
-        {
-            Vector3 difference = _dragOrigin - _camera.ScreenToWorldPoint(Input.mousePosition);
-            _camera.transform.position = Vector3.MoveTowards(_camera.transform.position, _camera.transform.position + difference, Time.deltaTime * _smooth);
-        }
+            if (Input.touchCount == 1 && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
+                _stopMoving = true;
 
-        if (Input.GetMouseButtonUp(0)) _stopMoving = true;
+            if (Input.touchCount == 2)
+            {
+                _isScrolling = true;
+                Touch touch2 = Input.GetTouch(1);
+
+                Vector2 touchPreviousPosition = touch.position - touch.deltaPosition;
+                Vector2 touch2PreviousPosition = touch2.position - touch2.deltaPosition;
+
+                float previousMagnitude = (touchPreviousPosition - touch2PreviousPosition).magnitude;
+                float currentMagnitude = (touch.position - touch2.position).magnitude;
+
+                float difference = currentMagnitude - previousMagnitude;
+
+                Zoom(difference * 0.001f * _zoomStep);
+            }
+        }
 
         if (_stopMoving)
         {
@@ -64,12 +85,11 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        if (Input.mouseScrollDelta.y < 0) ZoomIn();
-        if (Input.mouseScrollDelta.y > 0) ZoomOut();
-
         if (!_isMoving)
             transform.position = _target.position + _offset;
     }
+
+    public void LockInput(bool value) => _inputLocked = value;
 
     private IEnumerator CheckZoomState()
     {
@@ -77,20 +97,22 @@ public class CameraController : MonoBehaviour
         {
             float t = _zoomWaitTime;
             bool timer = false;
-            if (Input.mouseScrollDelta.y != 0)
-            {
-                _isScrolling = true;
+            if (_isScrolling)
                 timer = true;
-            }
+
             while (timer)
             {
                 if (t >= 0)
                     t -= Time.deltaTime;
 
-                if (Input.mouseScrollDelta.y == 0 && t <= 0)
+                if (t < 0)
                 {
-                    timer = false;
-                    _stopScrolling = true;
+                    if (Input.touchCount == 0)
+                    {
+                        timer = false;
+                        _stopScrolling = true;
+                    }
+                    else t = _zoomWaitTime;
                 }
                 yield return null;
             }
@@ -98,15 +120,9 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    private void ZoomIn()
+    private void Zoom(float increment)
     {
-        float newSize = _camera.orthographicSize + _zoomStep;
-        _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, Mathf.Clamp(newSize, _camSize.x, _camSize.y), Time.deltaTime * _smooth);
-    }
-
-    private void ZoomOut()
-    {
-        float newSize = _camera.orthographicSize - _zoomStep;
+        float newSize = _camera.orthographicSize - increment;
         _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, Mathf.Clamp(newSize, _camSize.x, _camSize.y), Time.deltaTime * _smooth);
     }
 }
