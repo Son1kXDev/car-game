@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 184823327344025648}
   - component: {fileID: 5371312243420857361}
   m_Layer: 7
-  m_Name: LightMode1
+  m_Name: LowBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 8716186320490874880}
   - component: {fileID: 7093315484814964084}
   m_Layer: 7
-  m_Name: LightMode2
+  m_Name: HighBeam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1112,19 +1112,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3969798728195611004}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ab5dac8cd9a8fd4a9223e8177177ded, type: 3}
+  m_Script: {fileID: 11500000, guid: 8dac5f5ee30495d428998f57404fd3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lowBeam: {fileID: 851387022959714719}
+  _highBeam: {fileID: 2481085716631190488}
+  _backCasualLights: {fileID: 2384049364999162828}
   _backMoveLights: {fileID: 6475986846150041108}
   _brakeLights: {fileID: 4977546428148695181}
-  _backCasualLights: {fileID: 2384049364999162828}
-  _dippedLights: {fileID: 851387022959714719}
-  _highBeamLights: {fileID: 2481085716631190488}
-  type: 2
-  _wheelBack: {fileID: 3969798728195611000}
-  _wheelFront: {fileID: 3969798728195611001}
-  _forwardSpeed: -1500
-  _backSpeed: 700
+  _carColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &3969798729054997546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1137,11 +1133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1542b958369d8e74085ba5136c316b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _backMoveLights: {fileID: 6475986846150041108}
-  _brakeLights: {fileID: 4977546428148695181}
-  _backCasualLights: {fileID: 2384049364999162828}
-  _dippedLights: {fileID: 851387022959714719}
-  _highBeamLights: {fileID: 2481085716631190488}
   _gearType: 2
   _ground:
     serializedVersion: 2
@@ -1151,8 +1142,23 @@ MonoBehaviour:
   _maxSpeed: 1500
   _maxBackSpeed: 600
   _brakeForce: 1000
+  _airBrakeForce: 500
+  _gearBrakeForce: 80
   _wheelSize: 0.13
   _gearsMaxSpeed: 9001000020030000b0040000dc050000d007000098080000
+  _maximumMotorForces:
+  - 2.5
+  - 2.25
+  - 2
+  - 1.85
+  - 1.5
+  - 1.25
+  _accelirationMultiplier: 1
+  _maxSpeedMultiplier: 1
+  _breakForceMultiplier: 1
+  _gearSwitchMultiplier: 1
+  _suspensionFrequencyMultiplier: 1
+  _suspensionHeightMultiplier: 1
 --- !u!50 &3969798728195611006
 Rigidbody2D:
   serializedVersion: 4
@@ -2330,33 +2336,33 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_Vertices:
-  - position: {x: 0.46, y: 1.26, z: 0}
+  - position: {x: 5.236744, y: 0.012064457, z: 0}
     color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0.6796875, y: 0.9921875}
-  - position: {x: 1.28, y: -0.41, z: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 3.1196814, y: -0.84501743, z: 0}
     color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 1, y: 0.33984375}
-  - position: {x: 1.28, y: 0.24, z: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.5780697, y: 0.026618958, z: 0}
     color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 1, y: 0.59375}
-  - position: {x: 0.04, y: -1.25, z: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.5780697, y: 0.026618958, z: 0}
     color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0.515625, y: 0.01171875}
-  - position: {x: 0.02, y: -1.26, z: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 3.1196814, y: -0.84501743, z: 0}
     color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0.5078125, y: 0.0078125}
-  - position: {x: -0.06, y: -1.26, z: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 5.236744, y: 0.012064457, z: 0}
     color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0.4765625, y: 0.0078125}
-  - position: {x: -0.56, y: 1.26, z: 0}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    uv: {x: 0.28125, y: 0.9921875}
-  - position: {x: -1.28, y: 0.05, z: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.5785, y: 0.1866, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
-    uv: {x: 0, y: 0.51953125}
-  - position: {x: -1.28, y: -0.56, z: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.5241, y: 0.1772, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
-    uv: {x: 0, y: 0.28125}
+    uv: {x: 0, y: 0}
+  - position: {x: 0.4761, y: 0.1499, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    uv: {x: 0, y: 0}
   - position: {x: 0.4402, y: 0.108, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
@@ -2393,10 +2399,28 @@ MonoBehaviour:
   - position: {x: 5.3777, y: -0.0636, z: 0}
     color: {r: 0, g: 0, b: 0, a: 0}
     uv: {x: 0, y: 0}
-  m_Triangles: 080007000500060005000700000005000600040005000000030004000000010003000000020001000000
+  - position: {x: 5.395, y: -0.0112, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 5.3935, y: 0.044, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 5.3733, y: 0.0954, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 5.3368, y: 0.1368, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 5.2884, y: 0.1634, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  - position: {x: 5.2372, y: 0.172, z: 0}
+    color: {r: 0, g: 0, b: 0, a: 0}
+    uv: {x: 0, y: 0}
+  m_Triangles: 000001000200030006000600030006000700030007000800030008000900030009000a0003000a000b0003000b000c0003000c000d0003000d000e00030004000f0003000e000f0004000f001000040010001100040005001200040011001200050012001300050013001400050014001500050015001600050016001700050017001800050018001900050019001a0006000300050006001a000500
   m_LocalBounds:
-    m_Center: {x: 2.90755, y: 0, z: 0}
-    m_Extent: {x: 1.28, y: 1.26, z: 0}
+    m_Center: {x: 2.90755, y: -0.4092, z: 0}
+    m_Extent: {x: 2.48745, y: 0.5958, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.46

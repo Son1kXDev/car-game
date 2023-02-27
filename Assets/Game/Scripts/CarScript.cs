@@ -6,14 +6,6 @@ namespace Assets.Game.Scripts
 {
     public class CarScript : MonoBehaviour
     {
-        [Header("Visual")]
-        [SerializeField] private Animator _backMoveLights;
-        [SerializeField] private Animator _brakeLights;
-        [SerializeField] private GameObject _backCasualLights;
-        [SerializeField] private GameObject _dippedLights;
-        [SerializeField] private GameObject _highBeamLights;
-        [SerializeField] private Color _carColor = Color.white;
-
         [Header("Settings")]
         [SerializeField] private GearType _gearType = GearType.Full;
         [SerializeField] private LayerMask _ground;
@@ -50,9 +42,11 @@ namespace Assets.Game.Scripts
         private WheelJoint2D[] _wheelJoints;
         private JointMotor2D _frontWheel, _backWheel;
         private Rigidbody2D _rigidbody;
+        private CarVisual _carVisual;
 
         private void Awake()
         {
+            _carVisual = GetComponent<CarVisual>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _wheelJoints = GetComponents<WheelJoint2D>();
             switch (_gearType)
@@ -71,10 +65,6 @@ namespace Assets.Game.Scripts
                     break;
             }
 
-            _highBeamLights.SetActive(true);
-            _backCasualLights.SetActive(true);
-            transform.Find("Base").GetComponent<SpriteRenderer>().color = _carColor;
-
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
                 JointSuspension2D susp = wheel.suspension;
@@ -87,42 +77,6 @@ namespace Assets.Game.Scripts
             _maxBackSpeed *= _maxSpeedMultiplier;
 
             StartCoroutine(ChangeGear());
-        }
-
-        private void Update()
-        {
-            if ((MoveAxis() > 0 || MoveAxis() == 0) && !_brake)
-            {
-                _backCasualLights.SetActive(true);
-                _backMoveLights.SetBool("active", false);
-                _brakeLights.SetBool("active", false);
-            }
-
-            if (MoveAxis() < 0 && !_brake)
-            {
-                _backCasualLights.SetActive(false);
-                _backMoveLights.SetBool("active", true);
-                _brakeLights.SetBool("active", false);
-            }
-
-            if (_brake)
-            {
-                _brakeLights.SetBool("active", true);
-                _backCasualLights.SetActive(false);
-                _backMoveLights.SetBool("active", false);
-            }
-
-            if (!_brake && MoveAxis() == 0)
-            {
-                _brakeLights.SetBool("active", false);
-                _backCasualLights.SetActive(true);
-                _backMoveLights.SetBool("active", false);
-            }
-
-            Speedometer();
-            Gearbox();
-            Tachometer();
-            PCControll();
         }
 
         private void PCControll()
@@ -234,6 +188,19 @@ namespace Assets.Game.Scripts
             if (Mathf.Round(Mathf.Abs(_backWheel.motorSpeed)) > -30 && Mathf.Round(Mathf.Abs(_backWheel.motorSpeed)) < 0) return true;
 
             return false;
+        }
+
+        private void Update()
+        {
+            Speedometer();
+            Gearbox();
+            Tachometer();
+            PCControll();
+        }
+
+        private void LateUpdate()
+        {
+            _carVisual.SetLight(MoveAxis(), _brake);
         }
 
         private void FixedUpdate()

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 99ef20d8e44b7e04b9f91e70aac209be
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _disabledBeam: {fileID: 21300000, guid: 2e795dd20d9567e44abda88b32c403a0, type: 3}
+  - _lowBeam: {fileID: 21300000, guid: e603819544e85c345bf8718d2bcf11a4, type: 3}
+  - _highBeam: {fileID: 21300000, guid: 48bf6657222d53d44a379a708637d05a, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
