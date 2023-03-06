@@ -1133,26 +1133,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1542b958369d8e74085ba5136c316b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gearType: 2
   _ground:
     serializedVersion: 2
     m_Bits: 256
   _wheel: {fileID: 3969798729716605662}
-  _acceleration: 500
-  _maxSpeed: 1500
-  _maxBackSpeed: 600
-  _brakeForce: 1000
-  _airBrakeForce: 500
-  _gearBrakeForce: 80
-  _wheelSize: 0.13
-  _gearsMaxSpeed: 9001000020030000b0040000dc050000d007000098080000
-  _maximumMotorForces:
-  - 2.5
-  - 2.25
-  - 2
-  - 1.85
-  - 1.5
-  - 1.25
+  _carAsset: {fileID: 11400000, guid: c52d6c2378ac17a448c09ccc0838017a, type: 2}
   _accelirationMultiplier: 1
   _maxSpeedMultiplier: 1
   _breakForceMultiplier: 1
@@ -1744,7 +1729,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 3969798729716605663}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: f5758dced2d29a64fbde54de9f099c61, type: 2}
+  m_Material: {fileID: 6200000, guid: 1f8637ff0e01dfb40afb76b3123d45fe, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1767,7 +1752,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1f8637ff0e01dfb40afb76b3123d45fe, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1952,7 +1937,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 3969798730014013449}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: f5758dced2d29a64fbde54de9f099c61, type: 2}
+  m_Material: {fileID: 6200000, guid: 1f8637ff0e01dfb40afb76b3123d45fe, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1975,7 +1960,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1f8637ff0e01dfb40afb76b3123d45fe, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
