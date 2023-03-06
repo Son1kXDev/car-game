@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee4a6c57a6e784b9f07d48f2790123, type: 3}
   m_Name: DefaultCar
   m_EditorClassIdentifier: Assembly-CSharp:Assets.Game.Scripts:Car
-  _id: 0
+  _id: 7042cd7a-5792-4ce9-a3d4-41851cbc94c8
   _acceleration: 500
   _maxSpeed: 800
   _maxBackSpeed: 600

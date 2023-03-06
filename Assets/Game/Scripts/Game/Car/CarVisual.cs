@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Game.Scripts
+namespace Assets.Game.Scripts.Game
 {
     [RequireComponent(typeof(CarScript))]
     public class CarVisual : MonoBehaviour

@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Assets.Game.Scripts.Game;
 
-namespace Assets.Game.Scripts
+namespace Assets.Game.Scripts.UI
 {
     public class BeamSwitchButton : MonoBehaviour
     {

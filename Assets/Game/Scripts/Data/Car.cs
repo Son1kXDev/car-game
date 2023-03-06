@@ -5,7 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Car", menuName = "Game/New car")]
 public class Car : ScriptableObject
 {
-    [SerializeField] private int _id;
+    [SerializeField] private string _id;
+
+    [ContextMenu("Generate guid ID")]
+    private void GenerateGuid()
+    { _id = System.Guid.NewGuid().ToString(); }
 
     [Header("Variables")]
     [SerializeField] private float _acceleration = 500f;
@@ -21,7 +25,7 @@ public class Car : ScriptableObject
     [SerializeField] private List<int> _gearsMaxSpeed = new List<int> { 400, 800, 1200, 1500, 2000, 2200 };
     [SerializeField] private List<float> _maximumMotorForces = new List<float> { 2.5f, 2.25f, 2f, 1.85f, 1.5f, 1.25f };
 
-    public int ID => this._id;
+    public string ID => this._id;
     public float Acceleration => this._acceleration;
     public float MaxSpeed => this._maxSpeed;
     public float MaxBackSpeed => this._maxBackSpeed;
@@ -33,4 +37,35 @@ public class Car : ScriptableObject
     public GearType GearType => this._gearType;
     public List<int> GearsMaxSpeed => this._gearsMaxSpeed;
     public List<float> MaximumMotorForces => this._maximumMotorForces;
+}
+
+[System.Serializable]
+public class Upgrades
+{
+    public float AccelirationMultiplier;
+    public float MaxSpeedMultiplier;
+    public float BreakForceMultiplier;
+    public float GearSwitchMultiplier;
+    public float SuspensionFrequencyMultiplier;
+    public float SuspensionHeightMultiplier;
+
+    public Upgrades()
+    {
+        AccelirationMultiplier = 1;
+        MaxSpeedMultiplier = 1;
+        BreakForceMultiplier = 1;
+        GearSwitchMultiplier = 1;
+        SuspensionFrequencyMultiplier = 1;
+        SuspensionHeightMultiplier = 1;
+    }
+
+    public Upgrades(float acceliration, float maxSpeed, float breakForce, float gearSwitch, float suspensionFrequency, float suspensionHeight)
+    {
+        AccelirationMultiplier = acceliration;
+        MaxSpeedMultiplier = maxSpeed;
+        BreakForceMultiplier = breakForce;
+        GearSwitchMultiplier = gearSwitch;
+        SuspensionFrequencyMultiplier = suspensionFrequency;
+        SuspensionHeightMultiplier = suspensionHeight;
+    }
 }
