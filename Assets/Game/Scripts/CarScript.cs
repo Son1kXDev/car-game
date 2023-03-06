@@ -7,10 +7,10 @@ namespace Assets.Game.Scripts
     public class CarScript : MonoBehaviour
     {
         [Header("Settings")]
-        [SerializeField] private GearType _gearType = GearType.Full;
         [SerializeField] private LayerMask _ground;
         [SerializeField] private Transform _wheel;
 
+        [Header("Variables")]
         [SerializeField] private float _acceleration = 500f;
         [SerializeField] private float _maxSpeed = 800f;
         [SerializeField] private float _maxBackSpeed = 600f;
@@ -19,6 +19,8 @@ namespace Assets.Game.Scripts
         [SerializeField] private float _gearBrakeForce = 80f;
         [SerializeField] private float _wheelSize;
 
+        [Header("Gear")]
+        [SerializeField] private GearType _gearType = GearType.Full;
         [SerializeField] private List<int> _gearsMaxSpeed = new() { 400, 800, 1200, 1500, 2000, 2200 };
         [SerializeField] private List<float> _maximumMotorForces = new() { 2.5f, 2.25f, 2f, 1.85f, 1.5f, 1.25f };
 
@@ -33,12 +35,13 @@ namespace Assets.Game.Scripts
         private readonly float _deceleration = -400f;
         private readonly float _gravity = 9.8f;
         private float _carAngle = 0;
+        private float _moveDirection = 1f;
         private int _currentGear = 1;
         private bool _grounded;
         private bool _changingGear;
+        private bool _switchGear;
         private bool _brake;
         private bool _move;
-        private bool _backMove;
         private WheelJoint2D[] _wheelJoints;
         private JointMotor2D _frontWheel, _backWheel;
         private Rigidbody2D _rigidbody;
@@ -81,18 +84,25 @@ namespace Assets.Game.Scripts
 
         private void PCControll()
         {
-            if (Input.GetKey(KeyCode.D)) ButtonMove(true);
+            if (Input.GetKey(KeyCode.D))
+            {
+                ButtonMove(true);
+                _moveDirection = 1f;
+            }
             if (Input.GetKeyUp(KeyCode.D)) ButtonMove(false);
-            if (Input.GetKey(KeyCode.A)) ButtonBackmove(true);
-            if (Input.GetKeyUp(KeyCode.A)) ButtonBackmove(false);
+            if (Input.GetKey(KeyCode.A))
+            {
+                ButtonMove(true);
+                _moveDirection = -1f;
+            }
+            if (Input.GetKeyUp(KeyCode.A)) ButtonMove(true);
             if (Input.GetKey(KeyCode.Space)) ButtonBrake(true);
             if (Input.GetKeyUp(KeyCode.Space)) ButtonBrake(false);
         }
 
         public float MoveAxis()
         {
-            if (_move) return 1f;
-            if (_backMove) return -1f;
+            if (_move) return _moveDirection;
             return 0;
         }
 
@@ -117,9 +127,9 @@ namespace Assets.Game.Scripts
 
         private void Gearbox()
         {
-            if (MoveAxis() > 0) UIManager.Instance.DisplayGearbox($"{_currentGear + 1}");
-            else if (MoveAxis() == 0) UIManager.Instance.DisplayGearbox("N");
-            else UIManager.Instance.DisplayGearbox("R");
+            if (_switchGear) UIManager.Instance.DisplayGearbox("N");
+            else if (_moveDirection > 0) UIManager.Instance.DisplayGearbox($"{_currentGear + 1}");
+            else if (_moveDirection < 0) UIManager.Instance.DisplayGearbox("R");
         }
 
         private IEnumerator ChangeGear()
@@ -270,7 +280,9 @@ namespace Assets.Game.Scripts
 
         public void ButtonBrake(bool value) => _brake = value;
 
-        public void ButtonBackmove(bool value) => _backMove = value;
+        public void SwitchDirection() => _moveDirection *= -1f;
+
+        public void ButtonSwitchGear(bool value) => _switchGear = value;
 
         public void ButtonMove(bool value) => _move = value;
 
@@ -283,4 +295,7 @@ namespace Assets.Game.Scripts
 
     public enum GearType
     { Back, Front, Full }
+
+    public enum SpeedType
+    { Kmh, Mph }
 }
