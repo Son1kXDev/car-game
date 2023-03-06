@@ -12,6 +12,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private TextMeshProUGUI _gearboxData;
         [SerializeField] private TextMeshProUGUI _tachometerData;
         [SerializeField] private TextMeshProUGUI _coinData;
+        [SerializeField] private ConfirmationPopup _confirmationPopup;
 
         private void Awake()
         {
@@ -21,12 +22,24 @@ namespace Assets.Game.Scripts.UI
 
         public void ButtonMenu()
         {
+            Data.DataPersistenceManager.Instance.SaveGame();
             SceneLoadManager.Instance.LoadScene("MainMenuScene");
         }
 
         public void ButtonExit() => Application.Quit();
 
         public void ButtonNewgame()
+        {
+            if (Data.DataPersistenceManager.Instance.SaveFileExist())
+            {
+                _confirmationPopup.ActivatePopup("Are you sure you want to overwrite the current save? All progress made will be lost.",
+                    () => LoadNewGame(),
+                    () => Debug.Log("Cancel overwriting savefile"));
+            }
+            else LoadNewGame();
+        }
+
+        public void LoadNewGame()
         {
             Data.DataPersistenceManager.Instance.NewGame();
             SceneLoadManager.Instance.LoadScene("GameMenuScene");

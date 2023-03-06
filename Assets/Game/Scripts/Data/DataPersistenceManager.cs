@@ -41,24 +41,17 @@ namespace Assets.Game.Scripts.Data
         private void OnEnable()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
-            SceneManager.sceneUnloaded += OnSceneUnloaded;
         }
 
         private void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
-            SceneManager.sceneUnloaded -= OnSceneUnloaded;
         }
 
         public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             this._dataPersistenceObjects = FindAllDataPersistanceObjects();
             LoadGame();
-        }
-
-        public void OnSceneUnloaded(Scene scene)
-        {
-            SaveGame();
         }
 
         public bool SaveFileExist()
@@ -106,7 +99,7 @@ namespace Assets.Game.Scripts.Data
 
         private List<IDataPersistence> FindAllDataPersistanceObjects()
         {
-            IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataPersistence>();
+            IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>();
             return new List<IDataPersistence>(dataPersistenceObjects);
         }
     }
