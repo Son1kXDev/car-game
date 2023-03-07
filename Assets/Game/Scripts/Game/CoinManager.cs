@@ -6,7 +6,15 @@ namespace Assets.Game.Scripts.Game
 {
     public class CoinManager : MonoBehaviour, Data.IDataPersistence
     {
+        public static CoinManager Instance;
+
         private int _coins;
+
+        private void Awake()
+        {
+            if (Instance) Destroy(gameObject);
+            else Instance = this;
+        }
 
         public void LoadData(GameData data)
         {
@@ -19,12 +27,13 @@ namespace Assets.Game.Scripts.Game
             data.Coins = _coins;
         }
 
-        public void DecreaseCoins(int value)
+        public bool DecreaseCoins(int value)
         {
-            if (_coins < value) return;
+            if (_coins < value) return false;
 
             _coins -= value;
             UI.UIManager.Instance.DisplayCoins(_coins.ToString());
+            return true;
         }
 
         public void IncreaseCoins(int value)

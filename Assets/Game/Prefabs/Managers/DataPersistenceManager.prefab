@@ -44,6 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 647ff3afd72c08e4581f95a884796c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initializeDataIfNull: 0
+  _initializeDataIfNull: 1
   _fileName: data.save
   _useEncryption: 0

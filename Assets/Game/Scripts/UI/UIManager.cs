@@ -65,7 +65,8 @@ namespace Assets.Game.Scripts.UI
 
         public void ButtonPlay()
         {
-            //todo play button
+            Data.DataPersistenceManager.Instance.SaveGame();
+            SceneLoadManager.Instance.LoadScene("GameScene");
         }
 
         public void ButtonAchievements()

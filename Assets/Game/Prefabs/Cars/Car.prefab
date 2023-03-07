@@ -1072,6 +1072,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3969798728195611007}
+  - component: {fileID: 4896631422825391582}
   - component: {fileID: 3969798728195611003}
   - component: {fileID: 3969798729054997546}
   - component: {fileID: 3969798728195611006}
@@ -1103,6 +1104,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4896631422825391582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3969798728195611004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be6e849e1b01dbb4689ed66639ba94dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainCarConfig: {fileID: 0}
+  VisualCarConfig: {fileID: 0}
+  CurrentColor: {r: 0, g: 0, b: 0, a: 0}
+  _mainCarsConfigs:
+  - {fileID: 11400000, guid: c52d6c2378ac17a448c09ccc0838017a, type: 2}
+  _visualCarsConfigs:
+  - {fileID: 11400000, guid: 5a46db05327199f4688149742f739431, type: 2}
 --- !u!114 &3969798728195611003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1115,12 +1135,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dac5f5ee30495d428998f57404fd3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _carBase: {fileID: 3969798729526795289}
+  _carBack: {fileID: 3969798729758144188}
+  _carElements: {fileID: 3969798728669428058}
+  _carOptics: {fileID: 3969798730019260329}
   _lowBeam: {fileID: 851387022959714719}
   _highBeam: {fileID: 2481085716631190488}
   _backCasualLights: {fileID: 2384049364999162828}
   _backMoveLights: {fileID: 6475986846150041108}
   _brakeLights: {fileID: 4977546428148695181}
-  _carColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &3969798729054997546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1138,12 +1161,6 @@ MonoBehaviour:
     m_Bits: 256
   _wheel: {fileID: 3969798729716605662}
   _carAsset: {fileID: 11400000, guid: c52d6c2378ac17a448c09ccc0838017a, type: 2}
-  _accelirationMultiplier: 1
-  _maxSpeedMultiplier: 1
-  _breakForceMultiplier: 1
-  _gearSwitchMultiplier: 1
-  _suspensionFrequencyMultiplier: 1
-  _suspensionHeightMultiplier: 1
 --- !u!50 &3969798728195611006
 Rigidbody2D:
   serializedVersion: 4

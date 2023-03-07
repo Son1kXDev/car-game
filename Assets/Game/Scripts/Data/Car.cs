@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Car", menuName = "Game/New car")]
+[CreateAssetMenu(fileName = "Car", menuName = "Game/New car config")]
 public class Car : ScriptableObject
 {
     [SerializeField] private string _id;

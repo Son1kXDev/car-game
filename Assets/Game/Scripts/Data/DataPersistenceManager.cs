@@ -76,6 +76,7 @@ namespace Assets.Game.Scripts.Data
             Loaded = true;
         }
 
+        [ContextMenu("Save")]
         public void SaveGame()
         {
             if (_gameData == null) return;
