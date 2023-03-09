@@ -15,20 +15,15 @@ namespace Assets.Game.Scripts.Game
         private Camera _camera;
         private Vector3 _dragOrigin;
         private Vector3 _offset;
-        private float _baseZoom;
 
-        private bool _isScrolling;
         private bool _isMoving;
         private bool _stopMoving;
-        private bool _stopScrolling;
         private bool _inputLocked;
 
         private void Awake()
         {
             _camera = GetComponent<Camera>();
             _offset = transform.position - _target.position;
-            _baseZoom = _camera.orthographicSize;
-            StartCoroutine(CheckZoomState());
         }
 
         private void Update()
@@ -52,7 +47,6 @@ namespace Assets.Game.Scripts.Game
 
                 if (Input.touchCount == 2)
                 {
-                    _isScrolling = true;
                     Touch touch2 = Input.GetTouch(1);
 
                     Vector2 touchPreviousPosition = touch.position - touch.deltaPosition;
@@ -77,50 +71,11 @@ namespace Assets.Game.Scripts.Game
                 }
             }
 
-            if (_stopScrolling)
-            {
-                _camera.orthographicSize = Mathf.MoveTowards(_camera.orthographicSize, _baseZoom, Time.deltaTime * _smooth);
-                if (_camera.orthographicSize == _baseZoom)
-                {
-                    _stopScrolling = false;
-                    _isScrolling = false;
-                }
-            }
-
             if (!_isMoving)
                 transform.position = _target.position + _offset;
         }
 
         public void LockInput(bool value) => _inputLocked = value;
-
-        private IEnumerator CheckZoomState()
-        {
-            while (true)
-            {
-                float t = _zoomWaitTime;
-                bool timer = false;
-                if (_isScrolling)
-                    timer = true;
-
-                while (timer)
-                {
-                    if (t >= 0)
-                        t -= Time.deltaTime;
-
-                    if (t < 0)
-                    {
-                        if (Input.touchCount == 0)
-                        {
-                            timer = false;
-                            _stopScrolling = true;
-                        }
-                        else t = _zoomWaitTime;
-                    }
-                    yield return null;
-                }
-                yield return null;
-            }
-        }
 
         private void Zoom(float increment)
         {
