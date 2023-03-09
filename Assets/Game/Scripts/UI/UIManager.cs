@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Utils.Debugger;
+using System.Collections.Generic;
 
 namespace Assets.Game.Scripts.UI
 {
@@ -11,7 +12,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private TextMeshProUGUI _speedometerData;
         [SerializeField] private TextMeshProUGUI _gearboxData;
         [SerializeField] private TextMeshProUGUI _tachometerData;
-        [SerializeField] private TextMeshProUGUI _coinData;
+        [SerializeField] private List<TextMeshProUGUI> _coinData;
         [SerializeField] private ConfirmationPopup _confirmationPopup;
 
         private void Awake()
@@ -105,8 +106,7 @@ namespace Assets.Game.Scripts.UI
 
         public void DisplayCoins(string value)
         {
-            if (_coinData != null)
-                _coinData.text = value;
+            _coinData.ForEach(text => { text.text = $"{value} <sprite index=0>"; });
         }
     }
 }
