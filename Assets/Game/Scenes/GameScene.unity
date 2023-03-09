@@ -9420,7 +9420,8 @@ MonoBehaviour:
   _speedometerData: {fileID: 1355833869}
   _gearboxData: {fileID: 253540972}
   _tachometerData: {fileID: 1872863043}
-  _coinData: {fileID: 0}
+  _coinData:
+  - {fileID: 0}
   _confirmationPopup: {fileID: 0}
 --- !u!4 &480599260
 Transform:
@@ -17741,8 +17742,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473438155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.972, y: 2.0894, z: -4.468459}
-  m_LocalScale: {x: 0.38317856, y: 0.38317856, z: 0.38317856}
+  m_LocalPosition: {x: 26, y: 1.94, z: -4.468459}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2066108031}
