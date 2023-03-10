@@ -1,6 +1,8 @@
 using UnityEditor;
 using UnityEngine.SceneManagement;
 using UnityEditor.SceneManagement;
+using UnityEngine;
+using System.Linq;
 
 namespace Plugins.Editor
 {
@@ -19,7 +21,19 @@ namespace Plugins.Editor
         {
             if (state == PlayModeStateChange.ExitingEditMode)
             {
-                EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
+                var objects = GameObject.FindObjectsOfType<MonoBehaviour>(false).OfType<Utils.ICantExistInPlayMode>();
+                if (objects.ToList().Count > 0)
+                {
+                    EditorUtility.DisplayDialog("Load Manager", "You have active objects that can be exist in play mode", "Confirm");
+                    Selection.activeObject = objects.ToList()[0] as Object;
+                    EditorApplication.ExitPlaymode();
+                    return;
+                }
+                if (!EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo())
+                {
+                    EditorApplication.ExitPlaymode();
+                    return;
+                }
             }
 
             if (!Enabled) return;

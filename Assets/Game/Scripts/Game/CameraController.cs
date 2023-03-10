@@ -8,7 +8,6 @@ namespace Assets.Game.Scripts.Game
     {
         [SerializeField] private Transform _target;
         [SerializeField] private float _zoomStep;
-        [SerializeField] private float _zoomWaitTime = 2f;
         [SerializeField] private float _smooth = 15f;
         [SerializeField] private Vector2 _camSize;
 
