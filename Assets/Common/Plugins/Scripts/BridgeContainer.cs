@@ -62,6 +62,7 @@ namespace Utils
         public void Create()
         {
             if (_bridge != null) _bridge.Clear();
+            transform.gameObject.name = "Bridge (In Process)";
             _bridge = new();
             _bridge.Add(Instantiate(_stake, transform));
             _bridge[0].name = "Stake";
@@ -100,6 +101,7 @@ namespace Utils
             _bridge[^1].transform.rotation = ObjectQuaternion();
             SetConnectedRigidBody();
             _bridge[^1].name = "Stake";
+            transform.gameObject.name = "Bridge";
             DestroyImmediate(this);
         }
 
