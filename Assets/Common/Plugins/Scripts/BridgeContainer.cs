@@ -63,11 +63,9 @@ namespace Utils
         {
             if (_bridge != null) _bridge.Clear();
             _bridge = new();
-            _bridge.Add(Instantiate(_stake));
-            _bridge[0].transform.SetParent(transform);
+            _bridge.Add(Instantiate(_stake, transform));
             _bridge[0].name = "Stake";
-            _bridge.Add(Instantiate(_plank, new Vector2(0.325f, -0.3f), Quaternion.identity));
-            _bridge[1].transform.SetParent(transform);
+            _bridge.Add(Instantiate(_plank, new Vector2(0.325f, -0.3f), Quaternion.identity, transform));
             _bridge[1].name = "Plank";
             _bridge[1].transform.Find("HorizontalLine").GetComponent<LineRenderer>().SetPosition(0, new(-0.375f, 0, 0));
             SetConnectedRigidBody();
@@ -75,9 +73,10 @@ namespace Utils
 
         public void AddPlank()
         {
-            _bridge.Add(Instantiate(_plank, NewPosition(), Quaternion.identity));
+            _bridge.Add(Instantiate(_plank, Vector2.zero, Quaternion.identity, transform));
+            _bridge[^1].transform.localPosition = NewPosition();
+            _bridge[^1].transform.rotation = ObjectQuaternion();
             SetConnectedRigidBody();
-            _bridge[^1].transform.SetParent(transform);
             _bridge[^1].name = "Plank";
             if (IsBreakable)
             {
@@ -96,18 +95,24 @@ namespace Utils
         {
             DestroyImmediate(_bridge[^1].transform.Find("VerticalLine").gameObject);
             _bridge[^1].transform.Find("HorizontalLine").GetComponent<LineRenderer>().SetPosition(1, new(0.375f, 0, 0));
-            _bridge.Add(Instantiate(_endStake, NewPosition() + new Vector2(-0.25f, 0.33f), Quaternion.identity));
+            _bridge.Add(Instantiate(_endStake, Vector2.zero, Quaternion.identity, transform));
+            _bridge[^1].transform.localPosition = NewPosition() + new Vector2(-0.25f, 0.33f);
+            _bridge[^1].transform.rotation = ObjectQuaternion();
             SetConnectedRigidBody();
-            _bridge[^1].transform.SetParent(transform);
             _bridge[^1].name = "Stake";
             DestroyImmediate(this);
         }
 
+        private Quaternion ObjectQuaternion()
+        {
+            return _bridge[0].transform.parent.rotation;
+        }
+
         private Vector2 NewPosition()
         {
-            SpriteRenderer spriteRenderer = _bridge[^1].GetComponent<SpriteRenderer>();
+            SpriteRenderer spriteRenderer = _bridge[^2].GetComponent<SpriteRenderer>();
             float width = spriteRenderer.sprite.bounds.size.x;
-            return (Vector2)_bridge[^1].transform.position + new Vector2(width, 0);
+            return (Vector2)_bridge[^2].transform.localPosition + new Vector2(width, 0);
         }
 
         private void SetConnectedRigidBody()
