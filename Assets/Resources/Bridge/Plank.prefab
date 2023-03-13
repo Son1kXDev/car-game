@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1755193472938222435}
   - component: {fileID: 1755193472938222432}
   - component: {fileID: 8639600383256996123}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Plank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3397295859431533542}
   - component: {fileID: 5595410190076341417}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HorizontalLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4820469838923320341}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.38, z: 0}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -391,7 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6377779305739229572}
   - component: {fileID: 3828363479018627601}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: VerticalLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -406,7 +406,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6730587022325084691}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.38, z: 0}
+  m_LocalPosition: {x: 0, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -456,7 +456,7 @@ LineRenderer:
   m_SortingOrder: -1
   m_Positions:
   - {x: 0.3, y: 0, z: 0}
-  - {x: 0.3, y: -0.38, z: 0}
+  - {x: 0.3, y: -0.55, z: 0}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
