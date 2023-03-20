@@ -21,7 +21,7 @@ public class ParallaxBehaviour : MonoBehaviour
     {
         var delta = _followingTarget.position - _targetPreviousPosition;
 
-        if (_disableVerticalParallax) delta.y = 0;
+        if (_disableVerticalParallax == true) delta.y = 0;
 
         _targetPreviousPosition = _followingTarget.position;
         transform.position += delta * _parallaxStrength;

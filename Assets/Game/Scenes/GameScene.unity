@@ -1131,7 +1131,7 @@ GameObject:
   - component: {fileID: 55727864}
   - component: {fileID: 55727866}
   - component: {fileID: 55727865}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1165,9 +1165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &55727866
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1231,7 +1231,7 @@ GameObject:
   - component: {fileID: 62376797}
   - component: {fileID: 62376799}
   - component: {fileID: 62376798}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1265,9 +1265,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &62376799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1442,7 +1442,7 @@ GameObject:
   - component: {fileID: 69248345}
   - component: {fileID: 69248347}
   - component: {fileID: 69248346}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1476,9 +1476,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &69248347
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1542,7 +1542,7 @@ GameObject:
   - component: {fileID: 82628804}
   - component: {fileID: 82628806}
   - component: {fileID: 82628805}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1576,9 +1576,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &82628806
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1642,7 +1642,7 @@ GameObject:
   - component: {fileID: 86825614}
   - component: {fileID: 86825616}
   - component: {fileID: 86825615}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1676,9 +1676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &86825616
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4274,7 +4274,7 @@ GameObject:
   - component: {fileID: 131158290}
   - component: {fileID: 131158292}
   - component: {fileID: 131158291}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4308,9 +4308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &131158292
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4374,7 +4374,7 @@ GameObject:
   - component: {fileID: 137629962}
   - component: {fileID: 137629964}
   - component: {fileID: 137629963}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4408,9 +4408,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &137629964
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4724,7 +4724,7 @@ GameObject:
   - component: {fileID: 158606527}
   - component: {fileID: 158606529}
   - component: {fileID: 158606528}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4758,9 +4758,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &158606529
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4890,7 +4890,7 @@ GameObject:
   - component: {fileID: 189952484}
   - component: {fileID: 189952486}
   - component: {fileID: 189952485}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4924,9 +4924,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &189952486
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5472,7 +5472,7 @@ GameObject:
   - component: {fileID: 276628239}
   - component: {fileID: 276628240}
   - component: {fileID: 276628241}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Sun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5492,7 +5492,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 738153629}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &276628240
 SpriteRenderer:
@@ -5558,9 +5558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!1 &311321488
 GameObject:
   m_ObjectHideFlags: 0
@@ -5851,7 +5851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 332094545}
   - component: {fileID: 332094546}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SkyLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12111,6 +12111,131 @@ Transform:
   m_Father: {fileID: 1037111116}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &503009709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 503009710}
+  - component: {fileID: 503009713}
+  - component: {fileID: 503009711}
+  - component: {fileID: 503009714}
+  m_Layer: 11
+  m_Name: '[SKY] Camera'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &503009710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503009709}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -7.7184}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 738153629}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &503009711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503009709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+--- !u!20 &503009713
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503009709}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 5
+  m_Depth: -0.5
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 0}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!114 &503009714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503009709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _followingTarget: {fileID: 824957331}
+  _parallaxStrength: 1
+  _disableVerticalParallax: 0
 --- !u!1 &504291137
 GameObject:
   m_ObjectHideFlags: 0
@@ -12538,7 +12663,7 @@ GameObject:
   - component: {fileID: 568019309}
   - component: {fileID: 568019311}
   - component: {fileID: 568019310}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12572,9 +12697,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &568019311
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13534,7 +13659,7 @@ GameObject:
   - component: {fileID: 709178389}
   - component: {fileID: 709178391}
   - component: {fileID: 709178390}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13568,9 +13693,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &709178391
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13634,7 +13759,7 @@ GameObject:
   - component: {fileID: 726054608}
   - component: {fileID: 726054610}
   - component: {fileID: 726054609}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13668,9 +13793,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &726054610
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13734,7 +13859,7 @@ GameObject:
   - component: {fileID: 726552129}
   - component: {fileID: 726552131}
   - component: {fileID: 726552130}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13768,9 +13893,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &726552131
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13832,7 +13957,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 738153629}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ====Background====
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13851,6 +13976,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 503009710}
   - {fileID: 1773429962}
   - {fileID: 1499032684}
   - {fileID: 276628239}
@@ -15238,7 +15364,7 @@ Camera:
   m_GameObject: {fileID: 824957326}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -15314,7 +15440,7 @@ GameObject:
   - component: {fileID: 864224310}
   - component: {fileID: 864224312}
   - component: {fileID: 864224311}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15348,9 +15474,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &864224312
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15604,7 +15730,7 @@ GameObject:
   - component: {fileID: 889654340}
   - component: {fileID: 889654342}
   - component: {fileID: 889654341}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15638,9 +15764,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &889654342
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15704,7 +15830,7 @@ GameObject:
   - component: {fileID: 890514309}
   - component: {fileID: 890514311}
   - component: {fileID: 890514310}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15738,9 +15864,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &890514311
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16956,7 +17082,7 @@ GameObject:
   - component: {fileID: 1126312621}
   - component: {fileID: 1126312623}
   - component: {fileID: 1126312622}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16990,9 +17116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1126312623
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -17056,7 +17182,7 @@ GameObject:
   - component: {fileID: 1129578333}
   - component: {fileID: 1129578335}
   - component: {fileID: 1129578334}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17090,9 +17216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1129578335
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -18687,7 +18813,7 @@ GameObject:
   - component: {fileID: 1226162903}
   - component: {fileID: 1226162905}
   - component: {fileID: 1226162904}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18721,9 +18847,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1226162905
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24062,7 +24188,7 @@ GameObject:
   - component: {fileID: 1335222477}
   - component: {fileID: 1335222479}
   - component: {fileID: 1335222478}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24096,9 +24222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1335222479
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24498,7 +24624,7 @@ GameObject:
   - component: {fileID: 1387727292}
   - component: {fileID: 1387727294}
   - component: {fileID: 1387727293}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24532,9 +24658,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1387727294
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25791,7 +25917,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1499032684}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Clouds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25842,7 +25968,7 @@ Transform:
   - {fileID: 1226162903}
   - {fileID: 131158290}
   m_Father: {fileID: 738153629}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1502819437
 GameObject:
@@ -25855,7 +25981,7 @@ GameObject:
   - component: {fileID: 1502819438}
   - component: {fileID: 1502819440}
   - component: {fileID: 1502819439}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25889,9 +26015,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1502819440
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25955,7 +26081,7 @@ GameObject:
   - component: {fileID: 1519208493}
   - component: {fileID: 1519208495}
   - component: {fileID: 1519208494}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25989,9 +26115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1519208495
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27406,7 +27532,7 @@ GameObject:
   - component: {fileID: 1665455225}
   - component: {fileID: 1665455227}
   - component: {fileID: 1665455226}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27440,9 +27566,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1665455227
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27506,7 +27632,7 @@ GameObject:
   - component: {fileID: 1706194446}
   - component: {fileID: 1706194447}
   - component: {fileID: 1706194448}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27592,9 +27718,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!1001 &1723054898
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27803,7 +27929,7 @@ GameObject:
   - component: {fileID: 1739655829}
   - component: {fileID: 1739655831}
   - component: {fileID: 1739655830}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27837,9 +27963,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1739655831
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -27903,7 +28029,7 @@ GameObject:
   - component: {fileID: 1756052562}
   - component: {fileID: 1756052564}
   - component: {fileID: 1756052563}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27937,9 +28063,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1756052564
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -28290,7 +28416,7 @@ GameObject:
   - component: {fileID: 1773429962}
   - component: {fileID: 1773429963}
   - component: {fileID: 1773429964}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Skybox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28310,7 +28436,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 738153629}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1773429963
 SpriteRenderer:
@@ -28376,9 +28502,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 824957331}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!1 &1774108460
 GameObject:
   m_ObjectHideFlags: 0
@@ -28841,7 +28967,7 @@ GameObject:
   - component: {fileID: 1877463601}
   - component: {fileID: 1877463603}
   - component: {fileID: 1877463602}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (21)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28875,9 +29001,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1877463603
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37467,7 +37593,7 @@ GameObject:
   - component: {fileID: 1940853555}
   - component: {fileID: 1940853557}
   - component: {fileID: 1940853556}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37501,9 +37627,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1940853557
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -37948,7 +38074,7 @@ GameObject:
   - component: {fileID: 1984241478}
   - component: {fileID: 1984241480}
   - component: {fileID: 1984241479}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37982,9 +38108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &1984241480
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -39433,7 +39559,7 @@ GameObject:
   - component: {fileID: 2126998545}
   - component: {fileID: 2126998547}
   - component: {fileID: 2126998546}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Cloud (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39467,9 +39593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8157289e87536b4418a05f47eb41d1cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followingTarget: {fileID: 362922091}
+  _followingTarget: {fileID: 503009710}
   _parallaxStrength: 0.1
-  _disableVerticalParallax: 1
+  _disableVerticalParallax: 0
 --- !u!212 &2126998547
 SpriteRenderer:
   m_ObjectHideFlags: 0
