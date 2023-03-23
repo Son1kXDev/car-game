@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Assets.Game.Scripts.UI
 {
-    public class RimsMenu : MonoBehaviour, Data.IDataPersistence
+    public class RimsMenu : MonoBehaviour, IDataPersistence
     {
         [SerializeField] private Transform _propertyField;
         [SerializeField] private ScrollRect _scroll;
@@ -46,6 +46,7 @@ namespace Assets.Game.Scripts.UI
         {
             _selectedID = id;
             StartCoroutine(_scroll.FocusAtPointCoroutine(_rims[id].transform.localPosition, 1.5f));
+
             _propertyField.Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.RimsSprites[id];
             _propertyField.Find("Name").GetComponent<TextMeshProUGUI>().text = _carConfig.VisualCarConfig.RimsNames[id];
             _currentCost = _carConfig.VisualCarConfig.RimsCost[id];

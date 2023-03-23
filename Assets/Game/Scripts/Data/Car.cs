@@ -42,6 +42,7 @@ public class Car : ScriptableObject
 [System.Serializable]
 public class Upgrades
 {
+    public float EngineMultiplier;
     public float AccelirationMultiplier;
     public float MaxSpeedMultiplier;
     public float BreakForceMultiplier;
@@ -51,6 +52,7 @@ public class Upgrades
 
     public Upgrades()
     {
+        EngineMultiplier = 1;
         AccelirationMultiplier = 1;
         MaxSpeedMultiplier = 1;
         BreakForceMultiplier = 1;
@@ -59,8 +61,9 @@ public class Upgrades
         SuspensionHeightMultiplier = 1;
     }
 
-    public Upgrades(float acceliration, float maxSpeed, float breakForce, float gearSwitch, float suspensionFrequency, float suspensionHeight)
+    public Upgrades(float engine, float acceliration, float maxSpeed, float breakForce, float gearSwitch, float suspensionFrequency, float suspensionHeight)
     {
+        EngineMultiplier = engine;
         AccelirationMultiplier = acceliration;
         MaxSpeedMultiplier = maxSpeed;
         BreakForceMultiplier = breakForce;

@@ -6,11 +6,12 @@ namespace Assets.Game.Scripts
 {
     public class CarConfig : MonoBehaviour, Data.IDataPersistence
     {
-        [HideInInspector] public Car MainCarConfig;
-        [HideInInspector] public CarVisualConfig VisualCarConfig;
+        public Car MainCarConfig;
+        public CarVisualConfig VisualCarConfig;
         [HideInInspector] public Color CurrentColor;
         [HideInInspector] public int CurrentTire;
         [HideInInspector] public int CurrentRim;
+        [HideInInspector] public Upgrades CurrentCarUpgrades;
 
         [SerializeField] private List<Car> _mainCarsConfigs;
         [SerializeField] private List<CarVisualConfig> _visualCarsConfigs;
@@ -29,10 +30,12 @@ namespace Assets.Game.Scripts
         {
             string id = data.CurrentCar;
             ColorUtility.TryParseHtmlString(data.BaseColor, out CurrentColor);
-            MainCarConfig = _mainCarsConfigs.Find(car => car.ID == id);
-            VisualCarConfig = _visualCarsConfigs.Find(car => car.ID == id);
             CurrentTire = data.CurrentTires;
             CurrentRim = data.CurrentRims;
+            CurrentCarUpgrades = data.CurrentCarUpgrades;
+
+            MainCarConfig = _mainCarsConfigs.Find(car => car.ID == id);
+            VisualCarConfig = _visualCarsConfigs.Find(car => car.ID == id);
         }
 
         public void SaveData(GameData data)
@@ -40,6 +43,7 @@ namespace Assets.Game.Scripts
             data.BaseColor = "#" + ColorUtility.ToHtmlStringRGBA(CurrentColor);
             data.CurrentTires = CurrentTire;
             data.CurrentRims = CurrentRim;
+            data.CurrentCarUpgrades = CurrentCarUpgrades;
         }
 
         public CarVisualConfig FindVisualsConfigByID(string id)

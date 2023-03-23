@@ -104,9 +104,10 @@ namespace Assets.Game.Scripts.UI
                 _tachometerData.text = value;
         }
 
-        public void DisplayCoins(string value)
+        public void DisplayCoins(string value, Color color)
         {
             _coinData.ForEach(text => { text.text = $"{value} <sprite index=0>"; });
+            _coinData.ForEach(text => { text.color = color; });
         }
     }
 }

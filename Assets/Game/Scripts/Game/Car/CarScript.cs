@@ -56,12 +56,15 @@ namespace Assets.Game.Scripts.Game
 
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
+                JointMotor2D motor = wheel.motor;
+                motor.maxMotorTorque *= _upgrades.EngineMultiplier;
                 JointSuspension2D susp = wheel.suspension;
                 susp.frequency *= _upgrades.SuspensionFrequencyMultiplier;
                 Vector2 anch = wheel.anchor;
                 anch.y *= (0.9f + _upgrades.SuspensionHeightMultiplier / 10);
                 wheel.anchor = anch;
                 wheel.suspension = susp;
+                wheel.motor = motor;
             }
             _maxBackSpeed *= _upgrades.MaxSpeedMultiplier;
 

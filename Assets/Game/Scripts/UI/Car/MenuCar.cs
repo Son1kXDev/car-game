@@ -47,6 +47,18 @@ namespace Assets.Game.Scripts.UI
             _rims.ForEach(rim => rim.sprite = _config.VisualCarConfig.RimsSprites[_config.CurrentRim]);
         }
 
+        public void ChangeCarColor(Color color) => _body.color = color;
+
+        public void ApplyColor()
+        {
+            _config.CurrentColor = _body.color;
+            Data.DataPersistenceManager.Instance.SaveGame();
+        }
+
+        public void ResetColor() => _body.color = _config.CurrentColor;
+
+        public Color GetCurrentColor() => _body.color;
+
         public void SetRim(int value)
         {
             _config.CurrentRim = value;
