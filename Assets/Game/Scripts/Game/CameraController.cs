@@ -10,6 +10,7 @@ namespace Assets.Game.Scripts.Game
         [SerializeField] private float _zoomStep;
         [SerializeField] private float _smooth = 15f;
         [SerializeField] private Vector2 _camSize;
+        [SerializeField] private bool _useDrag = true;
 
         private Camera _camera;
         private Vector3 _dragOrigin;
@@ -30,18 +31,18 @@ namespace Assets.Game.Scripts.Game
             if (Input.touchCount > 0 && !_inputLocked)
             {
                 Touch touch = Input.GetTouch(0);
-                if (Input.touchCount == 1 && touch.phase == TouchPhase.Began)
+                if (_useDrag && Input.touchCount == 1 && touch.phase == TouchPhase.Began)
                 {
                     _dragOrigin = _camera.ScreenToWorldPoint(touch.position);
                     _isMoving = true;
                 }
-                if (Input.touchCount == 1 && touch.phase == TouchPhase.Moved)
+                if (_useDrag && Input.touchCount == 1 && touch.phase == TouchPhase.Moved)
                 {
                     Vector3 difference = _dragOrigin - _camera.ScreenToWorldPoint(touch.position);
                     _camera.transform.position = Vector3.MoveTowards(_camera.transform.position, _camera.transform.position + difference, Time.deltaTime * _smooth);
                 }
 
-                if (Input.touchCount == 1 && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
+                if (_useDrag && Input.touchCount == 1 && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
                     _stopMoving = true;
 
                 if (Input.touchCount == 2)
