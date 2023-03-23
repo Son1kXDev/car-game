@@ -9,6 +9,10 @@ public class GameData
     public Upgrades CurrentCarUpgrades;
     public SerializableDictionary<string, bool> carsOpened;
     public string BaseColor;
+    public int CurrentTires;
+    public int CurrentRims;
+    public List<int> OpenedTires;
+    public List<int> OpenedRims;
 
     public GameData()
     {
@@ -16,6 +20,11 @@ public class GameData
         this.CarCount = 1;
         this.Coins = 500;
         this.CurrentCarUpgrades = new();
-        carsOpened = new();
+        this.carsOpened = new();
+        this.BaseColor = "FFFFFFFF";
+        this.CurrentTires = 0;
+        this.CurrentRims = 0;
+        this.OpenedTires = new List<int> { 0 };
+        this.OpenedRims = new List<int> { 0 };
     }
 }

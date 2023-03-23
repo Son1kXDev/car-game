@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class UpgradeMenu : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> _panels;
     [SerializeField] private Vector2 _leftOffset;
     [SerializeField] private Vector2 _rightOffset;
     [SerializeField] private List<TMP_Text> _menuButtons;
@@ -19,8 +20,14 @@ public class UpgradeMenu : MonoBehaviour
         _menuButtons.ForEach(text => text.fontStyle = FontStyles.Normal);
         _menuButtons[position].fontStyle = FontStyles.Bold;
         _currentElement = position;
+        StartCoroutine(OpenPanel(position));
+    }
 
-        StartCoroutine(_scroll.FocusAtPointCoroutine(_menuButtons[position].transform.localPosition, 1.5f));
+    private IEnumerator OpenPanel(int position)
+    {
+        yield return StartCoroutine(_scroll.FocusAtPointCoroutine(_menuButtons[position].transform.localPosition, 1.5f));
+        _panels.ForEach(panel => panel.SetActive(false));
+        _panels[position].SetActive(true);
     }
 
     public void MoveLeft()

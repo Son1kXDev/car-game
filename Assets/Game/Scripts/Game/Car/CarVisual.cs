@@ -13,6 +13,8 @@ namespace Assets.Game.Scripts.Game
         [SerializeField] private SpriteRenderer _carBack;
         [SerializeField] private SpriteRenderer _carElements;
         [SerializeField] private SpriteRenderer _carOptics;
+        [SerializeField] private List<SpriteRenderer> _tires;
+        [SerializeField] private List<SpriteRenderer> _rims;
 
         [Header("Lights")]
         [SerializeField] private GameObject _lowBeam;
@@ -23,6 +25,8 @@ namespace Assets.Game.Scripts.Game
 
         private CarConfig _config;
         private Beam _currentBeam = Beam.Disabled;
+        private int _currentTire;
+        private int _currentRim;
 
         private void Awake()
         {
@@ -50,6 +54,8 @@ namespace Assets.Game.Scripts.Game
             _carElements.sprite = _config.VisualCarConfig.ElementsSprite;
             _carOptics.sprite = _config.VisualCarConfig.OpticsSprite;
             _carBase.color = _config.CurrentColor;
+            _tires.ForEach(tire => tire.sprite = _config.VisualCarConfig.TiresSprites[_config.CurrentTire]);
+            _rims.ForEach(rim => rim.sprite = _config.VisualCarConfig.RimsSprites[_config.CurrentRim]);
         }
 
         public void SetLight(float axis, bool brake)

@@ -9,10 +9,12 @@ namespace Assets.Game.Scripts.UI
     public class MenuCar : MonoBehaviour
     {
         [Header("Scene Visual")]
-        [SerializeField] private SpriteRenderer _carBase;
-        [SerializeField] private SpriteRenderer _carBack;
-        [SerializeField] private SpriteRenderer _carElements;
-        [SerializeField] private SpriteRenderer _carOptics;
+        [SerializeField] private SpriteRenderer _body;
+        [SerializeField] private SpriteRenderer _back;
+        [SerializeField] private SpriteRenderer _elements;
+        [SerializeField] private SpriteRenderer _optics;
+        [SerializeField] private List<SpriteRenderer> _tires;
+        [SerializeField] private List<SpriteRenderer> _rims;
 
         private CarConfig _config;
 
@@ -36,11 +38,25 @@ namespace Assets.Game.Scripts.UI
                 return;
             }
 
-            _carBase.sprite = _config.VisualCarConfig.BaseSprite;
-            _carBack.sprite = _config.VisualCarConfig.BackSprite;
-            _carElements.sprite = _config.VisualCarConfig.ElementsSprite;
-            _carOptics.sprite = _config.VisualCarConfig.OpticsSprite;
-            _carBase.color = _config.CurrentColor;
+            _body.sprite = _config.VisualCarConfig.BaseSprite;
+            _back.sprite = _config.VisualCarConfig.BackSprite;
+            _elements.sprite = _config.VisualCarConfig.ElementsSprite;
+            _optics.sprite = _config.VisualCarConfig.OpticsSprite;
+            _body.color = _config.CurrentColor;
+            _tires.ForEach(tire => tire.sprite = _config.VisualCarConfig.TiresSprites[_config.CurrentTire]);
+            _rims.ForEach(rim => rim.sprite = _config.VisualCarConfig.RimsSprites[_config.CurrentRim]);
+        }
+
+        public void SetRim(int value)
+        {
+            _config.CurrentRim = value;
+            ApplyData();
+        }
+
+        public void SetTire(int value)
+        {
+            _config.CurrentTire = value;
+            ApplyData();
         }
     }
 }
