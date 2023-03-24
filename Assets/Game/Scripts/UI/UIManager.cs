@@ -21,10 +21,18 @@ namespace Assets.Game.Scripts.UI
             else Instance = this;
         }
 
-        public void ButtonMenu()
+        public void ButtonMainMenu()
         {
             Data.DataPersistenceManager.Instance.SaveGame();
             SceneLoadManager.Instance.LoadScene("MainMenuScene");
+        }
+
+        public void ButtonMenu()
+        {
+            Data.DataPersistenceManager.Instance.SaveGame();
+            _confirmationPopup.ActivatePopup("Are you sure you want to exit to menu?",
+            () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
+            () => Debug.Log("Cancel exit to menu"));
         }
 
         public void ButtonExit() => Application.Quit();
@@ -68,22 +76,6 @@ namespace Assets.Game.Scripts.UI
         {
             Data.DataPersistenceManager.Instance.SaveGame();
             SceneLoadManager.Instance.LoadScene("GameScene");
-        }
-
-        public void ButtonAchievements()
-        {
-        }
-
-        public void ButtonShop()
-        {
-        }
-
-        public void ButtonUpgrades()
-        {
-        }
-
-        public void ButtonInventory()
-        {
         }
 
         public void DisplaySpeedometer(string value)
