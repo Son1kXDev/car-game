@@ -38,6 +38,19 @@ namespace Assets.Game.Scripts.Game
             _wheelJoints = GetComponents<WheelJoint2D>();
             _maxSpeed = _carAsset.MaxSpeed;
             _maxBackSpeed = _carAsset.MaxBackSpeed;
+            _maxBackSpeed *= _upgrades.MaxSpeedMultiplier;
+            foreach (WheelJoint2D wheel in _wheelJoints)
+            {
+                JointMotor2D motor = wheel.motor;
+                motor.maxMotorTorque = _upgrades.EngineMultiplier;
+                JointSuspension2D susp = wheel.suspension;
+                susp.frequency *= _upgrades.SuspensionFrequencyMultiplier;
+                Vector2 anch = wheel.anchor;
+                anch.y *= (0.9f + _upgrades.SuspensionHeightMultiplier / 10);
+                wheel.anchor = anch;
+                wheel.suspension = susp;
+                wheel.motor = motor;
+            }
             switch (_carAsset.GearType)
             {
                 case GearType.Back:
@@ -53,21 +66,6 @@ namespace Assets.Game.Scripts.Game
                     _backWheel = _wheelJoints[1].motor;
                     break;
             }
-
-            foreach (WheelJoint2D wheel in _wheelJoints)
-            {
-                JointMotor2D motor = wheel.motor;
-                motor.maxMotorTorque *= _upgrades.EngineMultiplier;
-                JointSuspension2D susp = wheel.suspension;
-                susp.frequency *= _upgrades.SuspensionFrequencyMultiplier;
-                Vector2 anch = wheel.anchor;
-                anch.y *= (0.9f + _upgrades.SuspensionHeightMultiplier / 10);
-                wheel.anchor = anch;
-                wheel.suspension = susp;
-                wheel.motor = motor;
-            }
-            _maxBackSpeed *= _upgrades.MaxSpeedMultiplier;
-
             StartCoroutine(ChangeGear());
         }
 
@@ -136,7 +134,7 @@ namespace Assets.Game.Scripts.Game
                         _currentGear = _carAsset.GearsMaxSpeed.Count - 1;
                     _maxSpeed = _carAsset.GearsMaxSpeed[_currentGear] * _upgrades.MaxSpeedMultiplier;
                     _changingGear = true;
-                    _backWheel.maxMotorTorque = _carAsset.MaximumMotorForces[_currentGear];
+                    _backWheel.maxMotorTorque = _carAsset.MaximumMotorForces[_currentGear] * _upgrades.EngineMultiplier;
                     yield return new WaitForSeconds(1 / _upgrades.GearSwitchMultiplier);
                     _changingGear = false;
                 }
@@ -145,7 +143,7 @@ namespace Assets.Game.Scripts.Game
                 {
                     _currentGear--;
                     _maxSpeed = _carAsset.GearsMaxSpeed[_currentGear] * _upgrades.MaxSpeedMultiplier;
-                    _backWheel.maxMotorTorque = _carAsset.MaximumMotorForces[_currentGear];
+                    _backWheel.maxMotorTorque = _carAsset.MaximumMotorForces[_currentGear] * _upgrades.EngineMultiplier;
                 }
                 yield return null;
             }

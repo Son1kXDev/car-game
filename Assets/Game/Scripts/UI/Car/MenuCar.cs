@@ -1,3 +1,4 @@
+using Assets.Game.Scripts.Game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,8 +52,11 @@ namespace Assets.Game.Scripts.UI
 
         public void ApplyColor()
         {
-            _config.CurrentColor = _body.color;
-            Data.DataPersistenceManager.Instance.SaveGame();
+            if (CoinManager.Instance.DecreaseCoins(100))
+            {
+                _config.CurrentColor = _body.color;
+                Data.DataPersistenceManager.Instance.SaveGame();
+            }
         }
 
         public void ResetColor() => _body.color = _config.CurrentColor;

@@ -29,7 +29,7 @@ MonoBehaviour:
   _weight: 2340
   _strength: 630
   _tiresNames:
-  - Basic
+  - Basic Tire
   _tiresCost: 00000000
   _rimsNames:
   - Three-Spoke

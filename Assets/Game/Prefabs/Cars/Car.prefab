@@ -1529,7 +1529,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 0cb101b6d881ee448b2537a1a514a3f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3197,6 +3197,14 @@ MonoBehaviour:
   CurrentColor: {r: 0, g: 0, b: 0, a: 0}
   CurrentTire: 0
   CurrentRim: 0
+  CurrentCarUpgrades:
+    EngineMultiplier: 1
+    AccelirationMultiplier: 1
+    MaxSpeedMultiplier: 1
+    BreakForceMultiplier: 1
+    GearSwitchMultiplier: 1
+    SuspensionFrequencyMultiplier: 1
+    SuspensionHeightMultiplier: 1
   _mainCarsConfigs:
   - {fileID: 11400000, guid: c52d6c2378ac17a448c09ccc0838017a, type: 2}
   _visualCarsConfigs:
@@ -3812,7 +3820,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: eab277c5b8f52bd4b89dcbe2377c7eba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4021,7 +4029,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: eab277c5b8f52bd4b89dcbe2377c7eba, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6084,7 +6092,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 0cb101b6d881ee448b2537a1a514a3f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

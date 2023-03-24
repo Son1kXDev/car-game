@@ -8,14 +8,15 @@ namespace Assets.Game.Scripts.Game
     {
         public static CoinManager Instance;
 
-        private int _coins;
-        private int newCoinsValue;
-        private bool _changeCoinValue = false;
-        private Color _coinColor = new(255, 238, 123, 255);
-
         [SerializeField] private Color _mainColor = new(255, 238, 123, 255);
         [SerializeField] private Color _increaseColor = new(255, 238, 123, 255);
         [SerializeField] private Color _decreaseColor = new(255, 238, 123, 255);
+
+        private int _coins;
+        private int newCoinsValue;
+        private float _decreaseSpeed;
+        private bool _changeCoinValue = false;
+        private Color _coinColor = new(255, 238, 123, 255);
 
         private void Awake()
         {
@@ -39,6 +40,7 @@ namespace Assets.Game.Scripts.Game
         {
             if (_coins < value) return false;
 
+            _decreaseSpeed = value * 4;
             _coinColor = _decreaseColor;
             newCoinsValue = _coins - value;
             _changeCoinValue = true;
@@ -49,7 +51,7 @@ namespace Assets.Game.Scripts.Game
         {
             if (!_changeCoinValue) return;
 
-            _coins = (int)Mathf.MoveTowards(_coins, newCoinsValue, 1550 * Time.deltaTime);
+            _coins = (int)Mathf.MoveTowards(_coins, newCoinsValue, _decreaseSpeed * Time.deltaTime);
             UI.UIManager.Instance.DisplayCoins(_coins.ToString(), _coinColor);
             if (_coins == newCoinsValue)
             {
