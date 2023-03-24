@@ -18,10 +18,12 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private List<SpriteRenderer> _rims;
 
         private CarConfig _config;
+        private CarInfo _carInfo;
 
         private void Start()
         {
             _config = GetComponent<CarConfig>();
+            _carInfo = FindObjectOfType<CarInfo>(true);
             ApplyData();
         }
 
@@ -55,6 +57,11 @@ namespace Assets.Game.Scripts.UI
             if (CoinManager.Instance.DecreaseCoins(100))
             {
                 _config.CurrentColor = _body.color;
+                if (_config.CostsDictionary.ContainsKey("Color"))
+                    _config.CostsDictionary.Remove("Color");
+                _config.CostsDictionary.Add("Color", 100);
+                _config.Costs = new(_config.CostsDictionary.Values);
+                _carInfo.UpdateDisplayData();
                 Data.DataPersistenceManager.Instance.SaveGame();
             }
         }

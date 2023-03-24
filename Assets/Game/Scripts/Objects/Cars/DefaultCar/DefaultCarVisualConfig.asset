@@ -25,7 +25,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9bd549887114e5f49a19ff893ec4229e, type: 3}
   - {fileID: 21300000, guid: 7e1df256d88312447b7a431efad185f3, type: 3}
   - {fileID: 21300000, guid: 9b4cbcc8afc33cd418aed5db5a440adc, type: 3}
-  _cost: 186900
+  _name: Poros Saloed
+  _cost: 185185
   _weight: 2340
   _strength: 630
   _tiresNames:

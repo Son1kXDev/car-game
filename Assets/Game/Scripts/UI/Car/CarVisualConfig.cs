@@ -15,6 +15,7 @@ public class CarVisualConfig : ScriptableObject
     [SerializeField] private List<Sprite> _rimsSprites;
 
     [Header("Info")]
+    [SerializeField] private string _name;
     [SerializeField] private float _cost;
     [SerializeField] private float _weight;
     [SerializeField] private float _strength;
@@ -36,6 +37,7 @@ public class CarVisualConfig : ScriptableObject
     public List<int> TiresCost => _tiresCost;
     public List<int> RimsCost => _rimsCost;
 
+    public string Name => _name;
     public float Cost => _cost;
     public float Weight => _weight;
     public float Strength => _strength;

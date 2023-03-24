@@ -13368,6 +13368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 819168020}
+  - component: {fileID: 819168021}
   m_Layer: 5
   m_Name: CarInfo
   m_TagString: Untagged
@@ -13397,6 +13398,22 @@ RectTransform:
   m_AnchoredPosition: {x: 75, y: -283}
   m_SizeDelta: {x: 432.86, y: 163.16003}
   m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &819168021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819168019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6187bdc40beee374abd3fd94c5fb9987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: {fileID: 2086776338}
+  _weight: {fileID: 1053044098}
+  _strength: {fileID: 249058501}
+  _costText: {fileID: 225200256}
 --- !u!1001 &831751443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27229,7 +27246,7 @@ MonoBehaviour:
   _upgradeText: {fileID: 490447418}
   _costText: {fileID: 1616019959}
   _upgradeButton: {fileID: 540593578}
-  _costs: ce040000ce040000ce040000ce040000ce040000ce040000ce040000ce040000ce040000ce040000
+  _costs: ce040000ce040000ce040000ce040000ce040000ce040000ce040000ce040000ce040000ce040000ce040000
 --- !u!1001 &1743839901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33152,6 +33169,10 @@ MonoBehaviour:
     GearSwitchMultiplier: 1
     SuspensionFrequencyMultiplier: 1
     SuspensionHeightMultiplier: 1
+  Costs: 
+  CostsDictionary:
+    keys: []
+    values: 
   _mainCarsConfigs:
   - {fileID: 11400000, guid: c52d6c2378ac17a448c09ccc0838017a, type: 2}
   _visualCarsConfigs:

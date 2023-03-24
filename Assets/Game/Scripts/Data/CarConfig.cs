@@ -12,6 +12,8 @@ namespace Assets.Game.Scripts
         [HideInInspector] public int CurrentTire;
         [HideInInspector] public int CurrentRim;
         [HideInInspector] public Upgrades CurrentCarUpgrades;
+        [HideInInspector] public List<int> Costs;
+        [HideInInspector] public SerializableDictionary<string, int> CostsDictionary;
 
         [SerializeField] private List<Car> _mainCarsConfigs;
         [SerializeField] private List<CarVisualConfig> _visualCarsConfigs;
@@ -36,6 +38,8 @@ namespace Assets.Game.Scripts
 
             MainCarConfig = _mainCarsConfigs.Find(car => car.ID == id);
             VisualCarConfig = _visualCarsConfigs.Find(car => car.ID == id);
+            CostsDictionary = data.Costs;
+            Costs = new List<int>(CostsDictionary.Values);
         }
 
         public void SaveData(GameData data)
@@ -44,6 +48,7 @@ namespace Assets.Game.Scripts
             data.CurrentTires = CurrentTire;
             data.CurrentRims = CurrentRim;
             data.CarUpgrades[data.CurrentCar] = CurrentCarUpgrades;
+            data.Costs = CostsDictionary;
         }
 
         public CarVisualConfig FindVisualsConfigByID(string id)

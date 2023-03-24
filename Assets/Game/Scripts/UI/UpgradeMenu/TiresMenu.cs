@@ -15,6 +15,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private List<GameObject> _tires;
 
         private CarConfig _carConfig;
+        private CarInfo _carInfo;
         private MenuCar _car;
 
         private List<int> _openedTires;
@@ -26,6 +27,7 @@ namespace Assets.Game.Scripts.UI
         {
             _carConfig = FindFirstObjectByType<CarConfig>();
             _car = FindFirstObjectByType<MenuCar>();
+            _carInfo = FindObjectOfType<CarInfo>(true);
             _openedTires = data.OpenedTires;
         }
 
@@ -82,7 +84,7 @@ namespace Assets.Game.Scripts.UI
             if (CoinManager.Instance.DecreaseCoins(_currentCost))
             {
                 _openedTires.Add(_selectedID);
-                _car.SetTire(_selectedID);
+                ApplySelectedTire();
                 Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
                 actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Apply";
                 actionButton.onClick.RemoveAllListeners();
@@ -91,6 +93,14 @@ namespace Assets.Game.Scripts.UI
             }
         }
 
-        public void ApplySelectedTire() => _car.SetTire(_selectedID);
+        public void ApplySelectedTire()
+        {
+            _car.SetTire(_selectedID);
+            if (_carConfig.CostsDictionary.ContainsKey("Tire"))
+                _carConfig.CostsDictionary.Remove("Tire");
+            _carConfig.CostsDictionary.Add("Tire", _currentCost);
+            _carConfig.Costs = new(_carConfig.CostsDictionary.Values);
+            _carInfo.UpdateDisplayData();
+        }
     }
 }

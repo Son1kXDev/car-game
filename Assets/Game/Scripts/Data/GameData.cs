@@ -9,6 +9,7 @@ public class GameData
     public SerializableDictionary<string, Upgrades> CarUpgrades;
     public SerializableDictionary<string, bool> CarsOpened;
     public SerializableDictionary<string, string> CarsColors;
+    public SerializableDictionary<string, int> Costs;
     public int CurrentTires;
     public int CurrentRims;
     public List<int> OpenedTires;
@@ -25,6 +26,9 @@ public class GameData
         this.CarsOpened.Add(this.CurrentCar, true);
         this.CarsColors = new();
         this.CarsColors.Add(this.CurrentCar, "FFFFFFFF");
+        this.Costs = new();
+        this.Costs.Add("Rim", 1715);
+        this.Costs.Add("Tire", 0);
         this.CurrentTires = 0;
         this.CurrentRims = 0;
         this.OpenedTires = new List<int> { 0 };

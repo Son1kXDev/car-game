@@ -17,6 +17,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private List<int> _costs;
 
         private CarConfig _carConfig;
+        private CarInfo _carInfo;
 
         private int _cost;
         private int _currentUpgrade;
@@ -24,6 +25,7 @@ namespace Assets.Game.Scripts.UI
         private void OnEnable()
         {
             _carConfig = FindFirstObjectByType<CarConfig>();
+            _carInfo = FindObjectOfType<CarInfo>(true);
             _currentUpgrade = _carConfig.CurrentCarUpgrades.EngineMultiplier switch
             {
                 1f => 0,
@@ -87,6 +89,10 @@ namespace Assets.Game.Scripts.UI
                         _upgradeButton.GetComponent<Image>().color = transparent;
                         _upgradeButton.GetComponentInChildren<TextMeshProUGUI>().color = transparent;
                     }
+                    string key = $"Engine {_currentUpgrade}";
+                    _carConfig.CostsDictionary.Add(key, _cost);
+                    _carConfig.Costs = new(_carConfig.CostsDictionary.Values);
+                    _carInfo.UpdateDisplayData();
                     Data.DataPersistenceManager.Instance.SaveGame();
                 }
             }

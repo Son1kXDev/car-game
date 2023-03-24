@@ -15,6 +15,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private List<GameObject> _rims;
 
         private CarConfig _carConfig;
+        private CarInfo _carInfo;
         private MenuCar _car;
 
         private List<int> _openedRims;
@@ -26,6 +27,7 @@ namespace Assets.Game.Scripts.UI
         {
             _carConfig = FindFirstObjectByType<CarConfig>();
             _car = FindFirstObjectByType<MenuCar>();
+            _carInfo = FindObjectOfType<CarInfo>(true);
             _openedRims = data.OpenedRims;
         }
 
@@ -82,7 +84,7 @@ namespace Assets.Game.Scripts.UI
             if (CoinManager.Instance.DecreaseCoins(_currentCost))
             {
                 _openedRims.Add(_selectedID);
-                _car.SetRim(_selectedID);
+                ApplySelectedRim();
                 Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
                 actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Apply";
                 actionButton.onClick.RemoveAllListeners();
@@ -91,6 +93,14 @@ namespace Assets.Game.Scripts.UI
             }
         }
 
-        public void ApplySelectedRim() => _car.SetRim(_selectedID);
+        public void ApplySelectedRim()
+        {
+            _car.SetRim(_selectedID);
+            if (_carConfig.CostsDictionary.ContainsKey("Rim"))
+                _carConfig.CostsDictionary.Remove("Rim");
+            _carConfig.CostsDictionary.Add("Rim", _currentCost);
+            _carConfig.Costs = new(_carConfig.CostsDictionary.Values);
+            _carInfo.UpdateDisplayData();
+        }
     }
 }
