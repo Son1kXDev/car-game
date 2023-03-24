@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Assets.Game.Scripts.UI
 {
-    public class EngineMenu : MonoBehaviour
+    public class GearboxMenu : MonoBehaviour
     {
         [SerializeField] private int _maxUpgrades = 10;
         [SerializeField] private TextMeshProUGUI _upgradeText;
@@ -24,7 +24,7 @@ namespace Assets.Game.Scripts.UI
         private void OnEnable()
         {
             _carConfig = FindFirstObjectByType<CarConfig>();
-            _currentUpgrade = _carConfig.CurrentCarUpgrades.EngineMultiplier switch
+            _currentUpgrade = _carConfig.CurrentCarUpgrades.GearSwitchMultiplier switch
             {
                 1f => 0,
                 1.1f => 1,
@@ -60,7 +60,7 @@ namespace Assets.Game.Scripts.UI
                 if (CoinManager.Instance.DecreaseCoins(_cost))
                 {
                     _currentUpgrade++;
-                    _carConfig.CurrentCarUpgrades.EngineMultiplier = _currentUpgrade switch
+                    _carConfig.CurrentCarUpgrades.GearSwitchMultiplier = _currentUpgrade switch
                     {
                         0 => 1f,
                         1 => 1.1f,

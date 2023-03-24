@@ -13,15 +13,15 @@ namespace Assets.Game.Scripts.UI
         {
             _config = GetComponent<CarConfig>();
 
-            data.carsOpened.TryGetValue(_id, out _isOpened);
+            data.CarsOpened.TryGetValue(_id, out _isOpened);
         }
 
         public void SaveData(GameData data)
         {
-            if (data.carsOpened.ContainsKey(_id))
-                data.carsOpened.Remove(_id);
+            if (data.CarsOpened.ContainsKey(_id))
+                data.CarsOpened.Remove(_id);
 
-            data.carsOpened.Add(_id, _isOpened);
+            data.CarsOpened.Add(_id, _isOpened);
         }
 
         public void BuyCar()

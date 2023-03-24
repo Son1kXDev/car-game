@@ -29,10 +29,10 @@ namespace Assets.Game.Scripts
         public void LoadData(GameData data)
         {
             string id = data.CurrentCar;
-            ColorUtility.TryParseHtmlString(data.BaseColor, out CurrentColor);
+            ColorUtility.TryParseHtmlString(data.CarsColors[id], out CurrentColor);
             CurrentTire = data.CurrentTires;
             CurrentRim = data.CurrentRims;
-            CurrentCarUpgrades = data.CurrentCarUpgrades;
+            CurrentCarUpgrades = data.CarUpgrades[id];
 
             MainCarConfig = _mainCarsConfigs.Find(car => car.ID == id);
             VisualCarConfig = _visualCarsConfigs.Find(car => car.ID == id);
@@ -40,10 +40,10 @@ namespace Assets.Game.Scripts
 
         public void SaveData(GameData data)
         {
-            data.BaseColor = "#" + ColorUtility.ToHtmlStringRGBA(CurrentColor);
+            data.CarsColors[data.CurrentCar] = "#" + ColorUtility.ToHtmlStringRGBA(CurrentColor);
             data.CurrentTires = CurrentTire;
             data.CurrentRims = CurrentRim;
-            data.CurrentCarUpgrades = CurrentCarUpgrades;
+            data.CarUpgrades[data.CurrentCar] = CurrentCarUpgrades;
         }
 
         public CarVisualConfig FindVisualsConfigByID(string id)

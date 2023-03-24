@@ -286,7 +286,7 @@ namespace Assets.Game.Scripts.Game
 
         public void LoadData(GameData data)
         {
-            _upgrades = data.CurrentCarUpgrades;
+            _upgrades = data.CarUpgrades[data.CurrentCar];
         }
 
         public void SaveData(GameData data)
