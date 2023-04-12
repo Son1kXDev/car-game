@@ -38,13 +38,17 @@ namespace Assets.Game.Scripts.UI
 
         private void OnEnable()
         {
-            SelectTire(0);
+            SelectTire(_carConfig.CurrentTire);
+            //MenuCameraController.Instance.SetCameraPosition(new(2.36f, -1.34f, -10));
+            // MenuCameraController.Instance.SetCameraSize(0.9f);
         }
 
         public void SelectTire(int id)
         {
             _selectedID = id;
             StartCoroutine(_scroll.FocusAtPointCoroutine(_tires[id].transform.localPosition, 1.5f));
+
+            _car.SelectTire(_selectedID);
 
             _propertyField.Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.TiresSprites[id];
             _propertyField.Find("Name").GetComponent<TextMeshProUGUI>().text = _carConfig.VisualCarConfig.TiresNames[id];

@@ -11,6 +11,8 @@ namespace Assets.Game.Scripts
         [HideInInspector] public Color CurrentColor;
         [HideInInspector] public int CurrentTire;
         [HideInInspector] public int CurrentRim;
+        [HideInInspector] public int CurrentSpoiler;
+        [HideInInspector] public int CurrentSplitter;
         [HideInInspector] public Upgrades CurrentCarUpgrades;
         [HideInInspector] public List<int> Costs;
         [HideInInspector] public SerializableDictionary<string, int> CostsDictionary;
@@ -34,6 +36,8 @@ namespace Assets.Game.Scripts
             ColorUtility.TryParseHtmlString(data.CarsColors[id], out CurrentColor);
             CurrentTire = data.CurrentTires;
             CurrentRim = data.CurrentRims;
+            CurrentSpoiler = data.CurrentSpoiler;
+            CurrentSplitter = data.CurrentSplitter;
             CurrentCarUpgrades = data.CarUpgrades[id];
 
             MainCarConfig = _mainCarsConfigs.Find(car => car.ID == id);
@@ -47,6 +51,8 @@ namespace Assets.Game.Scripts
             data.CarsColors[data.CurrentCar] = "#" + ColorUtility.ToHtmlStringRGBA(CurrentColor);
             data.CurrentTires = CurrentTire;
             data.CurrentRims = CurrentRim;
+            data.CurrentSpoiler = CurrentSpoiler;
+            data.CurrentSplitter = CurrentSplitter;
             data.CarUpgrades[data.CurrentCar] = CurrentCarUpgrades;
             data.Costs = CostsDictionary;
         }

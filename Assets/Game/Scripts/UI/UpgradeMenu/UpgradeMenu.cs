@@ -14,12 +14,17 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField] private ScrollRect _scroll;
     private int _currentElement = 0;
 
+    void OnEnable() => MoveTo(PlayerPrefs.GetInt("UpgradeMenuPosition", 0));
+
+
     public void MoveTo(int position)
     {
         StopAllCoroutines();
+        MenuCameraController.Instance.SetCamera(position);
         _menuButtons.ForEach(text => text.fontStyle = FontStyles.Normal);
         _menuButtons[position].fontStyle = FontStyles.Bold;
         _currentElement = position;
+        PlayerPrefs.SetInt("UpgradeMenuPosition", position);
         StartCoroutine(OpenPanel(position));
     }
 

@@ -13,6 +13,10 @@ public class CarVisualConfig : ScriptableObject
     [SerializeField] private Sprite _opticsSprite;
     [SerializeField] private List<Sprite> _tiresSprites;
     [SerializeField] private List<Sprite> _rimsSprites;
+    [SerializeField] private List<Sprite> _spoilersSprites;
+    [SerializeField] private List<Sprite> _splittersSprites;
+    [SerializeField] private List<Sprite> _spoilersIconsSprites;
+    [SerializeField] private List<Sprite> _splittersIconsSprites;
 
     [Header("Info")]
     [SerializeField] private string _name;
@@ -23,6 +27,10 @@ public class CarVisualConfig : ScriptableObject
     [SerializeField] private List<int> _tiresCost;
     [SerializeField] private List<string> _rimsNames;
     [SerializeField] private List<int> _rimsCost;
+    [SerializeField] private List<string> _spoilersNames;
+    [SerializeField] private List<int> _spoilersCost;
+    [SerializeField] private List<string> _splittersNames;
+    [SerializeField] private List<int> _splittersCost;
 
     public string ID => this._id;
     public Sprite BaseSprite => _baseSprite;
@@ -31,11 +39,19 @@ public class CarVisualConfig : ScriptableObject
     public Sprite OpticsSprite => _opticsSprite;
     public List<Sprite> TiresSprites => _tiresSprites;
     public List<Sprite> RimsSprites => _rimsSprites;
+    public List<Sprite> SpoilersSprites => _spoilersSprites;
+    public List<Sprite> SplittersSprites => _splittersSprites;
+    public List<Sprite> SpoilersIconsSprites => _spoilersIconsSprites;
+    public List<Sprite> SplittersIconsSprites => _splittersIconsSprites;
 
     public List<string> TiresNames => _tiresNames;
     public List<string> RimsNames => _rimsNames;
+    public List<string> SpoilersNames => _spoilersNames;
+    public List<string> SplittersNames => _splittersNames;
     public List<int> TiresCost => _tiresCost;
     public List<int> RimsCost => _rimsCost;
+    public List<int> SpoilersCost => _spoilersCost;
+    public List<int> SplittersCost => _splittersCost;
 
     public string Name => _name;
     public float Cost => _cost;

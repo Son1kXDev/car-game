@@ -26,6 +26,24 @@ namespace Assets.Game.Scripts
             saturationSlider.value = CurrentSaturation;
             valueSlider.value = CurrentValue;
             UpdateOutputImage();
+            ApplyButton(false);
+        }
+
+        void OnEnable()
+        {
+            ApplyButton(false);
+        }
+
+        public void ApplyButton(bool value)
+        {
+            UnityEngine.UI.Image applyButton = transform.Find("ButtonApply").GetComponent<UnityEngine.UI.Image>();
+            TMPro.TextMeshProUGUI applyButtonText = applyButton.transform.Find("Lable").GetComponent<TMPro.TextMeshProUGUI>();
+
+            TMPro.TextMeshProUGUI costText = transform.Find("CostText").GetComponent<TMPro.TextMeshProUGUI>();
+
+            applyButton.enabled = value;
+            applyButtonText.enabled = value;
+            costText.enabled = value;
         }
 
         private void CreateHueImage()
@@ -84,6 +102,7 @@ namespace Assets.Game.Scripts
         {
             Color currentColor = Color.HSVToRGB(CurrentHue, CurrentSaturation, CurrentValue);
 
+            ApplyButton(true);
             car.ChangeCarColor(currentColor);
         }
 

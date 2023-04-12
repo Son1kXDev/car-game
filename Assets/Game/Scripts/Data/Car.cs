@@ -20,6 +20,9 @@ public class Car : ScriptableObject
     [SerializeField] private float _gearBrakeForce = 80f;
     [SerializeField] private float _wheelSize = 0.03f;
 
+    [SerializeField] private float _defaultSuspensionFrequency = 4f;
+    [SerializeField] private float _defaultSuspensionHeight = -0.219f;
+
     [Header("Gear")]
     [SerializeField] private GearType _gearType = GearType.Full;
     [SerializeField] private List<int> _gearsMaxSpeed = new List<int> { 400, 800, 1200, 1500, 2000, 2200 };
@@ -33,6 +36,9 @@ public class Car : ScriptableObject
     public float AirBrakeForce => this._airBrakeForce;
     public float GearBrakeForce => this._gearBrakeForce;
     public float WheelSize => this._wheelSize;
+
+    public float DefaultSuspensionFrequency => this._defaultSuspensionFrequency;
+    public float DefaultSuspensionHeight => this._defaultSuspensionHeight;
 
     public GearType GearType => this._gearType;
     public List<int> GearsMaxSpeed => this._gearsMaxSpeed;

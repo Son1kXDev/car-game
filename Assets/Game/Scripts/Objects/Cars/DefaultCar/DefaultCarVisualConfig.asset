@@ -25,6 +25,25 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 9bd549887114e5f49a19ff893ec4229e, type: 3}
   - {fileID: 21300000, guid: 7e1df256d88312447b7a431efad185f3, type: 3}
   - {fileID: 21300000, guid: 9b4cbcc8afc33cd418aed5db5a440adc, type: 3}
+  _spoilersSprites:
+  - {fileID: 21300000, guid: 0424eada9bbfda0449aeca9993f1d346, type: 3}
+  - {fileID: 21300000, guid: d8e47edcb06a2e649904784a1d05c661, type: 3}
+  - {fileID: 21300000, guid: 5d6efe1c2a78afd4c8d212c314d2823c, type: 3}
+  - {fileID: 21300000, guid: adf97d9bee36cf149987b465f6564e5d, type: 3}
+  - {fileID: 21300000, guid: 44f9a793993cfc04e8ae5fc29cbbb43d, type: 3}
+  _splittersSprites:
+  - {fileID: 21300000, guid: 0424eada9bbfda0449aeca9993f1d346, type: 3}
+  - {fileID: 21300000, guid: 3f959017ce64bcd4eb59d09420661672, type: 3}
+  - {fileID: 21300000, guid: 385c62ae0b438ba43ad41d91f67e1563, type: 3}
+  _spoilersIconsSprites:
+  - {fileID: 21300000, guid: 385c62ae0b438ba43ad41d91f67e1563, type: 3}
+  - {fileID: 21300000, guid: 89c15183e311e8345966f6f16252a95f, type: 3}
+  - {fileID: 21300000, guid: f6a06cafb7996b945b3d25bc034507d3, type: 3}
+  - {fileID: 21300000, guid: 7c15c3dbe917bf348be30baee2449f79, type: 3}
+  - {fileID: 21300000, guid: c598817aba2f99e458971d002861346c, type: 3}
+  _splittersIconsSprites:
+  - {fileID: 21300000, guid: 385c62ae0b438ba43ad41d91f67e1563, type: 3}
+  - {fileID: 21300000, guid: 8a24297f6fbb3904fba75cbafbfb2e9a, type: 3}
   _name: Poros Saloed
   _cost: 185185
   _weight: 2340
@@ -39,3 +58,14 @@ MonoBehaviour:
   - Hi-Spoked Rim
   - Five-Hole
   _rimsCost: b30600003e08000012160000ec0e0000c6110000
+  _spoilersNames:
+  - No Spoiler
+  - Stock Spoiler
+  - Mini Spoiler
+  - Wing Spoiler
+  - Real Spoiler
+  _spoilersCost: 0000000000000000fa050000b20c000074130000
+  _splittersNames:
+  - Stock Splitter
+  - Race Splitter
+  _splittersCost: 0000000098080000
