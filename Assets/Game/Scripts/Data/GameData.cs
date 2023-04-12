@@ -35,7 +35,7 @@ public class GameData
         this.Costs.Add("Tire", 0);
         this.CurrentTires = 0;
         this.CurrentRims = 0;
-        this.CurrentSpoiler = 0;
+        this.CurrentSpoiler = 1;
         this.CurrentSplitter = 0;
         this.OpenedTires = new List<int> { 0 };
         this.OpenedRims = new List<int> { 0 };

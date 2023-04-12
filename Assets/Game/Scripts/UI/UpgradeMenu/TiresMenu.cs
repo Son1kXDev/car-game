@@ -39,8 +39,6 @@ namespace Assets.Game.Scripts.UI
         private void OnEnable()
         {
             SelectTire(_carConfig.CurrentTire);
-            //MenuCameraController.Instance.SetCameraPosition(new(2.36f, -1.34f, -10));
-            // MenuCameraController.Instance.SetCameraSize(0.9f);
         }
 
         public void SelectTire(int id)
@@ -50,7 +48,7 @@ namespace Assets.Game.Scripts.UI
 
             _car.SelectTire(_selectedID);
 
-            _propertyField.Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.TiresSprites[id];
+            _propertyField.Find("Name").Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.TiresSprites[id];
             _propertyField.Find("Name").GetComponent<TextMeshProUGUI>().text = _carConfig.VisualCarConfig.TiresNames[id];
             _currentCost = _carConfig.VisualCarConfig.TiresCost[id];
             _propertyField.Find("Cost").GetComponent<TextMeshProUGUI>().text = $"{_currentCost} <sprite index=1>";
@@ -88,7 +86,6 @@ namespace Assets.Game.Scripts.UI
             if (CoinManager.Instance.DecreaseCoins(_currentCost))
             {
                 _openedTires.Add(_selectedID);
-                ApplySelectedTire();
                 Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
                 actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Apply";
                 actionButton.onClick.RemoveAllListeners();
@@ -100,6 +97,10 @@ namespace Assets.Game.Scripts.UI
         public void ApplySelectedTire()
         {
             _car.SetTire(_selectedID);
+            Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
+            actionButton.interactable = false;
+            actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
+            actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Selected";
             if (_carConfig.CostsDictionary.ContainsKey("Tire"))
                 _carConfig.CostsDictionary.Remove("Tire");
             _carConfig.CostsDictionary.Add("Tire", _currentCost);

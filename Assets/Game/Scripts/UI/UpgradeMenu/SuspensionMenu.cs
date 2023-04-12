@@ -47,7 +47,7 @@ namespace Assets.Game.Scripts.UI
         public void UpdateData()
         {
             _car.UpdateSuspensionData(_stiffnessSlider.value, _heightSlider.value);
-            _currentCost = (int)Mathf.Round((1000 * Mathf.Abs(_stiffness - _stiffnessSlider.value)) + (1000 * Mathf.Abs(_height - _heightSlider.value)));
+            _currentCost = (int)Mathf.Round((1000 * Mathf.Abs(_stiffness - _stiffnessSlider.value)) * 2.5f + (1000 * Mathf.Abs(_height - _heightSlider.value)) / 1.6f) * 2;
             _costText.text = _currentCost > 0 ? $"{_currentCost}  <sprite index=1>" : string.Empty;
             ApplyButton(_currentCost > 0);
         }

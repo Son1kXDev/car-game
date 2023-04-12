@@ -39,8 +39,6 @@ namespace Assets.Game.Scripts.UI
         private void OnEnable()
         {
             SelectRim(_carConfig.CurrentRim);
-            // MenuCameraController.Instance.SetCameraPosition(new(2.36f, -1.34f, -10));
-            // MenuCameraController.Instance.SetCameraSize(0.9f);
         }
 
         public void SelectRim(int id)
@@ -50,7 +48,7 @@ namespace Assets.Game.Scripts.UI
 
             _car.SelectRim(_selectedID);
 
-            _propertyField.Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.RimsSprites[id];
+            _propertyField.Find("Name").Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.RimsSprites[id];
             _propertyField.Find("Name").GetComponent<TextMeshProUGUI>().text = _carConfig.VisualCarConfig.RimsNames[id];
             _currentCost = _carConfig.VisualCarConfig.RimsCost[id];
             _propertyField.Find("Cost").GetComponent<TextMeshProUGUI>().text = $"{_currentCost} <sprite index=1>";
@@ -88,7 +86,6 @@ namespace Assets.Game.Scripts.UI
             if (CoinManager.Instance.DecreaseCoins(_currentCost))
             {
                 _openedRims.Add(_selectedID);
-                ApplySelectedRim();
                 Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
                 actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Apply";
                 actionButton.onClick.RemoveAllListeners();
@@ -100,6 +97,10 @@ namespace Assets.Game.Scripts.UI
         public void ApplySelectedRim()
         {
             _car.SetRim(_selectedID);
+            Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
+            actionButton.interactable = false;
+            actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
+            actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Selected";
             if (_carConfig.CostsDictionary.ContainsKey("Rim"))
                 _carConfig.CostsDictionary.Remove("Rim");
             _carConfig.CostsDictionary.Add("Rim", _currentCost);
