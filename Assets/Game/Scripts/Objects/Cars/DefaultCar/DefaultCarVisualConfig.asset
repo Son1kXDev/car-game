@@ -60,12 +60,12 @@ MonoBehaviour:
   _rimsCost: b30600003e08000012160000ec0e0000c6110000
   _spoilersNames:
   - No Spoiler
-  - Stock Spoiler
+  - Stock
   - Mini Spoiler
-  - Wing Spoiler
+  - Wing? Spoiler
   - Real Spoiler
   _spoilersCost: 0000000000000000fa050000b20c000074130000
   _splittersNames:
-  - Stock Splitter
+  - Stock
   - Race Splitter
   _splittersCost: 0000000098080000
