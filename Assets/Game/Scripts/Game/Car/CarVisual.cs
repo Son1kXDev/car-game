@@ -64,7 +64,7 @@ namespace Assets.Game.Scripts.Game
 
         public void SetLight(float axis, bool brake)
         {
-            _backCasualLights.SetActive(axis >= 0 && !brake && _currentBeam != Beam.Disabled);
+            _backCasualLights.SetActive(_currentBeam != Beam.Disabled);
             _brakeLights.SetBool("active", brake);
             _backMoveLights.SetBool("active", !brake && axis < 0);
         }
