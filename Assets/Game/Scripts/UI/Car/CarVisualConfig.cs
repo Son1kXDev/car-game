@@ -15,6 +15,10 @@ public class CarVisualConfig : ScriptableObject
     [SerializeField] private List<Sprite> _rimsSprites;
     [SerializeField] private List<Sprite> _spoilersSprites;
     [SerializeField] private List<Sprite> _splittersSprites;
+
+    [Header("Icons")]
+    [SerializeField] private List<Sprite> _tiresIconsSprites;
+    [SerializeField] private List<Sprite> _rimsIconsSprites;
     [SerializeField] private List<Sprite> _spoilersIconsSprites;
     [SerializeField] private List<Sprite> _splittersIconsSprites;
 
@@ -41,6 +45,8 @@ public class CarVisualConfig : ScriptableObject
     public List<Sprite> RimsSprites => _rimsSprites;
     public List<Sprite> SpoilersSprites => _spoilersSprites;
     public List<Sprite> SplittersSprites => _splittersSprites;
+    public List<Sprite> TiresIconsSprites => _tiresIconsSprites;
+    public List<Sprite> RimsIconsSprites => _rimsIconsSprites;
     public List<Sprite> SpoilersIconsSprites => _spoilersIconsSprites;
     public List<Sprite> SplittersIconsSprites => _splittersIconsSprites;
 

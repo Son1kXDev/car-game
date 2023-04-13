@@ -48,7 +48,7 @@ namespace Assets.Game.Scripts.UI
 
             _car.SelectTire(_selectedID);
 
-            _propertyField.Find("Name").Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.TiresSprites[id];
+            _propertyField.Find("Name").Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.TiresIconsSprites[id];
             _propertyField.Find("Name").GetComponent<TextMeshProUGUI>().text = _carConfig.VisualCarConfig.TiresNames[id];
             _currentCost = _carConfig.VisualCarConfig.TiresCost[id];
             _propertyField.Find("Cost").GetComponent<TextMeshProUGUI>().text = $"{_currentCost} <sprite index=1>";
