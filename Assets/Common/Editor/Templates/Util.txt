@@ -1,16 +1,14 @@
 using UnityEngine;
 
 #if UNITY_EDITOR
-
 using UnityEditor;
-
 #endif
 
 namespace Utils
 {
     public static class #SCRIPTNAME#
     {
-        static void #SCRIPTNAMEVOID#()
+        static void Main()
         {
 
         }

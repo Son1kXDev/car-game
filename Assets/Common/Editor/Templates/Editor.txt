@@ -4,8 +4,8 @@ using Utils.Debugger;
 
 namespace Editors
 {
-    [CustomEditor(typeof(#SCRIPTNAMEWITHOUTEDITOR#))]
-    public class #SCRIPTNAME# : Editor
+    // [CustomEditor(typeof(#SCRIPTNAME#))]
+    public class #SCRIPTNAME#Editor : Editor
     {
         public override void OnInspectorGUI()
         {

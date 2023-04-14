@@ -5,7 +5,7 @@ public class #SCRIPTNAME# : MonoBehaviour
 {
     private void Awake()
     {
-    
+        
     }
 
     private void Start()
@@ -15,6 +15,6 @@ public class #SCRIPTNAME# : MonoBehaviour
 
     private void Update()
     {
-    
+
     }
 }

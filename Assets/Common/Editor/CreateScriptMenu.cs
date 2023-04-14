@@ -1,77 +1,119 @@
+using System.Net;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-public class CreateScriptMenu
+public class CreateScriptMenu : EditorWindow
 {
-    [MenuItem("Assets/Create/Script/MonoBehaviour", priority = 80)]
-    private static void CreateMonoBehaviourMenuItem()
+    private string scriptName = "NewScript";
+
+    // private ScriptCreationMode scriptCreationMode = ScriptCreationMode.Template;
+
+    private Template currentTemplate = Template.MonoBehaviour;
+
+    static CreateScriptMenu currentWindow;
+
+    [MenuItem("Assets/Create/C# Script with Template", priority = 80)]
+    private static void Init()
     {
-        string pathToNewFile = EditorUtility.SaveFilePanel("Create MonoBehviour", GetCurrentPath(), "NewMonoBehaviour.cs", "cs");
-        string pathfToTemplate = Application.dataPath + "/Common/Editor/Templates/MonoBehaviour.txt";
-        MakeScriptFromTemplate(pathToNewFile, pathfToTemplate);
+        currentWindow = GetWindow<CreateScriptMenu>();
+        currentWindow.titleContent = new GUIContent("Create Script");
+        currentWindow.minSize = new(500f, 200f);
+        currentWindow.maxSize = new(500f, 200f);
+        currentWindow.Show();
     }
 
-    [MenuItem("Assets/Create/Script/Empty", priority = 80)]
-    private static void CreateEmptyMenuItem()
+    private void OnGUI()
     {
-        string pathToNewFile = EditorUtility.SaveFilePanel("Create Empty", GetCurrentPath(), "NewEmpty.cs", "cs");
-        string pathfToTemplate = Application.dataPath + "/Common/Editor/Templates/Empty.txt";
-        MakeScriptFromTemplate(pathToNewFile, pathfToTemplate);
+        GUILayout.Label("Create a new C# script", EditorStyles.boldLabel);
+        scriptName = EditorGUILayout.TextField("Name", scriptName);
+
+        //scriptCreationMode = (ScriptCreationMode)EditorGUILayout.EnumPopup("Script Creation Mode: ", scriptCreationMode);
+
+        //if (scriptCreationMode == ScriptCreationMode.Template)
+        //{
+        currentTemplate = (Template)EditorGUILayout.EnumPopup("Template: ", currentTemplate);
+        //}
+
+        if (GUILayout.Button("Create"))
+            CreateScript();
+
     }
 
-    [MenuItem("Assets/Create/Script/Editor", priority = 80)]
-    private static void CreateEditorMenuItem()
+    private void CreateScript()
     {
-        string pathToNewFile = EditorUtility.SaveFilePanel("Create Editor", GetCurrentPath(), "NewEditor.cs", "cs");
-        string pathfToTemplate = Application.dataPath + "/Common/Editor/Templates/Editor.txt";
-        MakeScriptFromTemplate(pathToNewFile, pathfToTemplate);
-    }
 
-    [MenuItem("Assets/Create/Script/Plugin", priority = 80)]
-    private static void CreatePluginMenuItem()
-    {
-        string pathToNewFile = EditorUtility.SaveFilePanel("Create Plugin", GetCurrentPath(), "NewPlugin.cs", "cs");
-        string pathfToTemplate = Application.dataPath + "/Common/Editor/Templates/Plugin.txt";
-        MakeScriptFromTemplate(pathToNewFile, pathfToTemplate);
-    }
+        string templatePath = "";
+        string scriptContent = "";
 
-    [MenuItem("Assets/Create/Script/Util", priority = 80)]
-    private static void CreateUtilMenuItem()
-    {
-        string pathToNewFile = EditorUtility.SaveFilePanel("Create Util", GetCurrentPath(), "NewUtil.cs", "cs");
-        string pathfToTemplate = Application.dataPath + "/Common/Editor/Templates/Util.txt";
-        MakeScriptFromTemplate(pathToNewFile, pathfToTemplate);
-    }
-
-    private static string GetCurrentPath()
-    {
-        string path = AssetDatabase.GUIDToAssetPath(Selection.assetGUIDs[0]);
-        if (path.Contains("."))
+        // if (scriptCreationMode == ScriptCreationMode.Template)
+        // {
+        templatePath = currentTemplate switch
         {
-            int index = path.LastIndexOf("/");
-            path = path.Substring(0, index);
-        }
-        return path;
-    }
+            Template.MonoBehaviour => "Assets/Common/Editor/Templates/MonoBehaviour.txt",
+            Template.Editor => "Assets/Common/Editor/Templates/Editor.txt",
+            Template.Empty => "Assets/Common/Editor/Templates/Empty.txt",
+            Template.Util => "Assets/Common/Editor/Templates/Util.txt",
+            Template.Plugin => "Assets/Common/Editor/Templates/Plugin.txt",
+            _ => "Assets/Common/Editor/Templates/MonoBehaviour.txt"
 
-    private static void MakeScriptFromTemplate(string pathToNewFile, string pathToTemplate)
-    {
-        if (!string.IsNullOrWhiteSpace(pathToNewFile))
+        };
+        scriptContent = File.ReadAllText(templatePath);
+
+        // }
+        // else if (scriptCreationMode == ScriptCreationMode.OpenAI)
+        // {
+        //     string prompt = "Create a new C# script called " + scriptName;
+        //     string model = "your-openai-model-id";
+        //     int maxTokens = 256;
+        //     float temperature = 0.5f;
+        //     int topP = 1;
+
+        //     string[] promptTokens = prompt.Split(' ');
+
+        //     string[] generatedTokens = await OpenAI.GenerateTokens(model, promptTokens, maxTokens, temperature, topP);
+
+        //     scriptContent = string.Join(" ", generatedTokens);
+        // }
+
+        scriptContent = scriptContent.Replace("#SCRIPTNAME#", scriptName);
+
+        string fileName = scriptName + ".cs";
+        string filePath = AssetDatabase.GetAssetPath(Selection.activeObject);
+
+        if (string.IsNullOrEmpty(filePath))
+            filePath = "Assets";
+        else if (!File.Exists(filePath))
+            filePath = Path.GetDirectoryName(filePath);
+
+
+        string fullPath = Path.Combine(filePath, fileName);
+
+        if (File.Exists(fullPath))
         {
-            FileInfo fileInfo = new FileInfo(pathToNewFile);
-            string nameOfScript = Path.GetFileNameWithoutExtension(fileInfo.Name);
-
-            string text = File.ReadAllText(pathToTemplate);
-
-            text = text.Replace("#SCRIPTNAME#", nameOfScript);
-
-            text = text.Replace("#SCRIPTNAMEWITHOUTEDITOR#", nameOfScript.Replace("Editor", ""));
-
-            text = text.Replace("#SCRIPTNAMEVOID#", nameOfScript + "Void");
-
-            File.WriteAllText(pathToNewFile, text);
-            AssetDatabase.Refresh();
+            Debug.LogWarning($"File already exists at {fullPath}. File not created.");
+            return;
         }
+
+        File.WriteAllText(fullPath, scriptContent);
+        AssetDatabase.Refresh();
+
+        EditorUtility.FocusProjectWindow();
+        Selection.activeObject = AssetDatabase.LoadAssetAtPath<MonoScript>(fullPath);
     }
 }
+
+public enum Template
+{
+    MonoBehaviour,
+    Editor,
+    Empty,
+    Util,
+    Plugin
+}
+
+// public enum ScriptCreationMode
+// {
+//     Template,
+//     OpenAI
+// }
