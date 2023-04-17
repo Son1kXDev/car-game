@@ -2,6 +2,7 @@ using Assets.Game.Scripts.Game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 using Utils.Debugger;
 
 namespace Assets.Game.Scripts.UI
@@ -18,6 +19,9 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private List<SpriteRenderer> _rims;
         [SerializeField] private List<SpriteRenderer> _spoilers;
         [SerializeField] private List<SpriteRenderer> _splitters;
+
+        [Header("Audio")]
+        [SerializeField] private EventReference _spraySound;
 
         private WheelJoint2D[] _wheelJoints;
 
@@ -81,10 +85,12 @@ namespace Assets.Game.Scripts.UI
 
         public void ChangeCarColor(Color color) => _body.color = color;
 
-        public void ApplyColor()
+        public void ApplyColor(ColourPickerControl control)
         {
             if (CoinManager.Instance.DecreaseCoins(100))
             {
+                control.ApplyButton(false);
+                AudioManager.Instance.PlayOneShot(_spraySound, transform.position);
                 _config.CurrentColor = _body.color;
                 if (_config.CostsDictionary.ContainsKey("Color"))
                     _config.CostsDictionary.Remove("Color");

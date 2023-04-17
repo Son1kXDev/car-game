@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 namespace Assets.Game.Scripts.UI
 {
@@ -13,6 +14,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private Transform _propertyField;
         [SerializeField] private ScrollRect _scroll;
         [SerializeField] private List<GameObject> _rims;
+        [SerializeField] private EventReference _rimChangeSound;
 
         private CarConfig _carConfig;
         private CarInfo _carInfo;
@@ -97,6 +99,7 @@ namespace Assets.Game.Scripts.UI
         public void ApplySelectedRim()
         {
             _car.SetRim(_selectedID);
+            UI.UIManager.Instance.ButtonSound(true);
             Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
             actionButton.interactable = false;
             actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
@@ -106,6 +109,7 @@ namespace Assets.Game.Scripts.UI
             _carConfig.CostsDictionary.Add("Rim", _currentCost);
             _carConfig.Costs = new(_carConfig.CostsDictionary.Values);
             _carInfo.UpdateDisplayData();
+            AudioManager.Instance.PlayOneShot(_rimChangeSound, transform.position);
         }
     }
 }

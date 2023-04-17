@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using Utils.Debugger;
 using System.Collections.Generic;
+using FMODUnity;
 
 namespace Assets.Game.Scripts.UI
 {
@@ -14,6 +15,9 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private TextMeshProUGUI _tachometerData;
         [SerializeField] private List<TextMeshProUGUI> _coinData;
         [SerializeField] private ConfirmationPopup _confirmationPopup;
+
+        [SerializeField] private EventReference _buttonActionSound;
+        [SerializeField] private EventReference _buttonNoActionSound;
 
         private void Awake()
         {
@@ -99,10 +103,14 @@ namespace Assets.Game.Scripts.UI
                 _tachometerData.text = value;
         }
 
-        public void DisplayCoins(string value, Color color)
+        public void DisplayCoins(string value, Color color, int spriteIndex = 0)
         {
-            _coinData.ForEach(text => { text.text = $"{value} <sprite index=0>"; });
+            string sprite = $"<sprite index={spriteIndex}>";
+            _coinData.ForEach(text => { text.text = $"{value} {sprite}"; });
             _coinData.ForEach(text => { text.color = color; });
         }
+
+        public void ButtonSound(bool value) => AudioManager.Instance.PlayOneShot(value ? _buttonActionSound : _buttonNoActionSound, transform.position);
+
     }
 }

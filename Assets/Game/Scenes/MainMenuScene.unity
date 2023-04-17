@@ -2240,7 +2240,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 96
-  m_Sprite: {fileID: 21300000, guid: 0a168315f059c3c40953560a2f2d0ec3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 59833e1471481664ba61627f8bffefa6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3181,6 +3181,13 @@ MonoBehaviour:
   _coinData:
   - {fileID: 0}
   _confirmationPopup: {fileID: 1159180296}
+  _buttonNoActionSound:
+    Guid:
+      Data1: 262101965
+      Data2: 1271330521
+      Data3: 886021764
+      Data4: 1449368131
+    Path: event:/ButtonClickNoAction
 --- !u!4 &480599260
 Transform:
   m_ObjectHideFlags: 0
@@ -11866,6 +11873,13 @@ MonoBehaviour:
   - {fileID: 1500295399}
   _splitters:
   - {fileID: 389500289}
+  _spraySound:
+    Guid:
+      Data1: 637800254
+      Data2: 1226686265
+      Data3: -1246769017
+      Data4: 336259107
+    Path: event:/Spray
 --- !u!1 &1669739659
 GameObject:
   m_ObjectHideFlags: 0

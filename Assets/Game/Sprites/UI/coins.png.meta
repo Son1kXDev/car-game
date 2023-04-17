@@ -145,7 +145,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 324
-        y: 18
+        y: 317
         width: 258
         height: 261
       alignment: 0
@@ -165,8 +165,8 @@ TextureImporter:
       name: Yellow coin
       rect:
         serializedVersion: 2
-        x: 24
-        y: 18
+        x: 22
+        y: 317
         width: 258
         height: 260
       alignment: 0
@@ -178,6 +178,69 @@ TextureImporter:
       bones: []
       spriteID: c18150331d1214943899bcaa0cb20f1b
       internalID: -896878830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Red coin
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 317
+        width: 258
+        height: 261
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18aebb08504b6684b8b96926d5c951d8
+      internalID: 414107994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Increase Coin
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 38
+        width: 258
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55c2d7d27e4d9234ebc7ce88cdc89512
+      internalID: -1617450276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Decrease Coin
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 38
+        width: 258
+        height: 260
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c38d384612e3c42a57836c310b859c
+      internalID: -814662575
       vertices: []
       indices: 
       edges: []
@@ -200,14 +263,17 @@ TextureImporter:
       coins_2: -1412617388
       Yellow coin: -896878830
       coins_9: -212542615
+      Increase Coin: -1617450276
       coins_13: 416985463
       coins_1: -816869021
       coins_4: -1220053819
       coins_14: 15687633
+      Red coin: 414107994
       coins_6: -918208675
       coins_10: -161054697
       White coin: 950371231
       coins_5: 1867173862
+      Decrease Coin: -814662575
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
