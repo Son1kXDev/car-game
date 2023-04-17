@@ -72,6 +72,7 @@ namespace Assets.Game.Scripts.UI
             PlayerPrefs.DeleteAll();
             FindObjectOfType<ContinueButton>().Start();
             FindObjectOfType<ResetButton>().Start();
+            SceneLoadManager.Instance.LoadScene("MainMenuScene");
         }
 
         public void ButtonPlay()

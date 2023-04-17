@@ -426,8 +426,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../../FMStudio/engine/engine.fspro
-  sourceBankPath: ../../FMStudio/engine/Build
+  sourceProjectPath: FModStudio/engine/engine.fspro
+  sourceBankPath: FModStudio/engine/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1

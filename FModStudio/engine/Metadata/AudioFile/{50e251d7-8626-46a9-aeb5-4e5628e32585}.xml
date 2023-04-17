@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{50e251d7-8626-46a9-aeb5-4e5628e32585}">
+		<property name="assetPath">
+			<value>LightSwitch2.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.1126041666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cc1d6779-56b4-498a-aaf8-45e7ee3a1cab}</destination>
+		</relationship>
+	</object>
+</objects>

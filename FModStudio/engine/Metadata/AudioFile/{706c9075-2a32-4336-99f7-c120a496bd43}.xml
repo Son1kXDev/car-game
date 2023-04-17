@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{706c9075-2a32-4336-99f7-c120a496bd43}">
+		<property name="assetPath">
+			<value>GearSwitch3.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.1684583333333334</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{cc1d6779-56b4-498a-aaf8-45e7ee3a1cab}</destination>
+		</relationship>
+	</object>
+</objects>
