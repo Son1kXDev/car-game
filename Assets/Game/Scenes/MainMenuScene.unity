@@ -389,8 +389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &24232547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,8 +466,8 @@ GameObject:
   m_Component:
   - component: {fileID: 52994878}
   - component: {fileID: 52994877}
-  - component: {fileID: 52994876}
   - component: {fileID: 52994879}
+  - component: {fileID: 52994880}
   m_Layer: 5
   m_Name: '[UI] Camera'
   m_TagString: Untagged
@@ -477,14 +475,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &52994876
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52994875}
-  m_Enabled: 1
 --- !u!20 &52994877
 Camera:
   m_ObjectHideFlags: 0
@@ -576,6 +566,19 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &52994880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 52994875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!1 &59362131
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,8 +710,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &78928971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1126,8 +1127,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &197959442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,8 +1241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &214685731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1363,8 +1360,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &228397342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1479,8 +1474,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &242517760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1595,8 +1588,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &280921388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1711,8 +1702,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &295984918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2455,8 +2444,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &432534163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2862,8 +2849,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &470399079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3492,8 +3477,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &532803720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3608,8 +3591,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &537629426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4552,8 +4533,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &728244557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4920,8 +4899,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &803616335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5375,8 +5352,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &890965812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7982,8 +7957,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &959561210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9679,8 +9652,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &1292140284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10083,8 +10054,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &1449850816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10199,8 +10168,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &1458340976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10743,8 +10710,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &1514194836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11381,8 +11346,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &1640267791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13117,8 +13080,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &1913764498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13317,8 +13278,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &1922367149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13438,8 +13397,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 0.2
-  _spawnRange: 1
-  _skyCamera: {fileID: 52994877}
 --- !u!114 &1945223446
 MonoBehaviour:
   m_ObjectHideFlags: 0
