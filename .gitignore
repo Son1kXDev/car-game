@@ -10,8 +10,6 @@ UnityGenerated/
 [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
-[Bb]uild/
-[Bb]uilds/
 [Ll]ogs/
 [Uu]ser[Ss]ettings
 
@@ -20,12 +18,12 @@ UnityGenerated/
 # =============== #
 [Ff][Mm]od[Ss]tudio/*/.cache/
 [Ff][Mm]od[Ss]tudio/*/.user/
-!/[Aa]ssets/Plugins/FMOD/**/lib/*
-!/[Aa]ssets/Gizmos/FMOD/*
-!/[Aa]ssets/Editor Default Resources/FMOD/*
-/[Aa]ssets/Plugins/FMOD/Cache/*
-/[Aa]ssets/StreamingAssets/**/*.bank
-/[Aa]ssets/StreamingAssets/**/*.bank.meta
+![Aa]ssets/Plugins/FMOD/**/lib/*
+![Aa]ssets/Gizmos/FMOD/*
+![Aa]ssets/Editor Default Resources/FMOD/*
+[Aa]ssets/Plugins/FMOD/Cache/*
+[Aa]ssets/StreamingAssets/**/*.bank
+[Aa]ssets/StreamingAssets/**/*.bank.meta
 fmod_editor.log
 
 # ===================================== #
