@@ -149,7 +149,6 @@ namespace Assets.Game.Scripts.Game
                     _maxSpeed = _carAsset.GearsMaxSpeed[_currentGear] * _upgrades.MaxSpeedMultiplier;
                     _changingGear = true;
                     _backWheel.maxMotorTorque = _carAsset.MaximumMotorForces[_currentGear] * _upgrades.EngineMultiplier;
-                    AudioManager.Instance.PlayOneShot(_gearSwitchSound, transform.position);
                     yield return new WaitForSeconds(1 / _upgrades.GearSwitchMultiplier);
                     _changingGear = false;
                 }
@@ -159,7 +158,6 @@ namespace Assets.Game.Scripts.Game
                     _currentGear--;
                     _maxSpeed = _carAsset.GearsMaxSpeed[_currentGear] * _upgrades.MaxSpeedMultiplier;
                     _backWheel.maxMotorTorque = _carAsset.MaximumMotorForces[_currentGear] * _upgrades.EngineMultiplier;
-                    AudioManager.Instance.PlayOneShot(_gearSwitchSound, transform.position);
                 }
                 yield return null;
             }
