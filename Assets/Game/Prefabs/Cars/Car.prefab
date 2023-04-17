@@ -3881,6 +3881,13 @@ MonoBehaviour:
   _backCasualLights: {fileID: 2384049364999162828}
   _backMoveLights: {fileID: 6475986846150041108}
   _brakeLights: {fileID: 4977546428148695181}
+  _lightSwitchSound:
+    Guid:
+      Data1: 1713763815
+      Data2: 1139238792
+      Data3: -2034515325
+      Data4: 295495682
+    Path: event:/LightSwitch
 --- !u!114 &3969798729054997546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3898,6 +3905,20 @@ MonoBehaviour:
     m_Bits: 1280
   _wheel: {fileID: 3969798729716605662}
   _carAsset: {fileID: 11400000, guid: c52d6c2378ac17a448c09ccc0838017a, type: 2}
+  _engineSound:
+    Guid:
+      Data1: 1492043055
+      Data2: 1194405293
+      Data3: -681587026
+      Data4: 487798538
+    Path: event:/Engine Total
+  _gearSwitchSound:
+    Guid:
+      Data1: -1190490012
+      Data2: 1204852928
+      Data3: -1384112716
+      Data4: 1596907656
+    Path: event:/GearChanged
 --- !u!50 &3969798728195611006
 Rigidbody2D:
   serializedVersion: 4

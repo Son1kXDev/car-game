@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 namespace Assets.Game.Scripts.Game
 {
@@ -11,6 +13,10 @@ namespace Assets.Game.Scripts.Game
         [SerializeField] private LayerMask _ground;
         [SerializeField] private Transform _wheel;
         [SerializeField] private Car _carAsset;
+
+        [Header("Audio")]
+        [SerializeField] private EventReference _engineSound;
+        [SerializeField] private EventReference _gearSwitchSound;
 
         private readonly float _deceleration = -400f;
         private readonly float _gravity = 9.8f;
@@ -29,6 +35,7 @@ namespace Assets.Game.Scripts.Game
         private Rigidbody2D _rigidbody;
         private CarVisual _carVisual;
         private Upgrades _upgrades;
+        private EventInstance _engineSoundInstance;
 
         private IEnumerator Start()
         {
@@ -66,7 +73,14 @@ namespace Assets.Game.Scripts.Game
                     _backWheel = _wheelJoints[1].motor;
                     break;
             }
+            _engineSoundInstance = AudioManager.Instance.CreateEventInstance(_engineSound);
+            _engineSoundInstance.start();
             StartCoroutine(ChangeGear());
+        }
+
+        void OnDestroy()
+        {
+            _engineSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
 
         private void PCControll()
@@ -135,6 +149,7 @@ namespace Assets.Game.Scripts.Game
                     _maxSpeed = _carAsset.GearsMaxSpeed[_currentGear] * _upgrades.MaxSpeedMultiplier;
                     _changingGear = true;
                     _backWheel.maxMotorTorque = _carAsset.MaximumMotorForces[_currentGear] * _upgrades.EngineMultiplier;
+                    AudioManager.Instance.PlayOneShot(_gearSwitchSound, transform.position);
                     yield return new WaitForSeconds(1 / _upgrades.GearSwitchMultiplier);
                     _changingGear = false;
                 }
@@ -144,6 +159,7 @@ namespace Assets.Game.Scripts.Game
                     _currentGear--;
                     _maxSpeed = _carAsset.GearsMaxSpeed[_currentGear] * _upgrades.MaxSpeedMultiplier;
                     _backWheel.maxMotorTorque = _carAsset.MaximumMotorForces[_currentGear] * _upgrades.EngineMultiplier;
+                    AudioManager.Instance.PlayOneShot(_gearSwitchSound, transform.position);
                 }
                 yield return null;
             }
@@ -195,6 +211,7 @@ namespace Assets.Game.Scripts.Game
             Gearbox();
             Tachometer();
             PCControll();
+            _engineSoundInstance.setParameterByName("RPM", Mathf.Abs(Mathf.Round(_backWheel.motorSpeed)));
         }
 
         private void LateUpdate()
@@ -272,9 +289,14 @@ namespace Assets.Game.Scripts.Game
 
         public void ButtonBrake(bool value) => _brake = value;
 
-        public void SwitchDirection() => _moveDirection *= -1f;
+        public void SwitchDirection()
+        {
+            _moveDirection *= -1f;
+            AudioManager.Instance.PlayOneShot(_gearSwitchSound, transform.position);
+        }
 
         public void ButtonSwitchGear(bool value) => _switchGear = value;
+
 
         public void ButtonMove(bool value) => _move = value;
 

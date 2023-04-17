@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 using Utils.Debugger;
 
 namespace Assets.Game.Scripts.Game
@@ -24,6 +25,10 @@ namespace Assets.Game.Scripts.Game
         [SerializeField] private GameObject _backCasualLights;
         [SerializeField] private Animator _backMoveLights;
         [SerializeField] private Animator _brakeLights;
+
+        [Header("Audio")]
+        [SerializeField] private EventReference _lightSwitchSound;
+
 
         private CarConfig _config;
         private Beam _currentBeam = Beam.Disabled;
@@ -87,6 +92,7 @@ namespace Assets.Game.Scripts.Game
             }
             _lowBeam.SetActive(_currentBeam == Beam.Low);
             _highBeam.SetActive(_currentBeam == Beam.High);
+            AudioManager.Instance.PlayOneShot(_lightSwitchSound, transform.position);
         }
 
         public Beam GetCurrentBeam()
