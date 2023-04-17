@@ -25,6 +25,7 @@ UnityGenerated/
 [Aa]ssets/StreamingAssets/**/*.bank
 [Aa]ssets/StreamingAssets/**/*.bank.meta
 fmod_editor.log
+*.bundle text eol=lf
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -54,7 +55,6 @@ Thumbs.db
 
 # Ignore the following file extensions
 *.DS_Store
-build
 *.s
 
 *.csproj
