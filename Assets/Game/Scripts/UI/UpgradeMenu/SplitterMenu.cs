@@ -97,7 +97,6 @@ namespace Assets.Game.Scripts.UI
         public void ApplySelectedSplitter()
         {
             _car.SetSplitter(_selectedID);
-            UI.UIManager.Instance.ButtonSound(true);
             Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
             actionButton.interactable = false;
             actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);

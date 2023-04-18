@@ -7175,6 +7175,13 @@ MonoBehaviour:
   _increaseColor: {r: 0.49205506, g: 1, b: 0.48235297, a: 255}
   _decreaseColor: {r: 1, g: 0.48235297, b: 0.49787632, a: 255}
   _noMoneyColor: {r: 0.8745098, g: 0.2509804, b: 0.2509804, a: 1}
+  _purchaseSound:
+    Guid:
+      Data1: -566708917
+      Data2: 1253859836
+      Data3: -257546843
+      Data4: 1112312389
+    Path: event:/Purchase
 --- !u!1 &288999698
 GameObject:
   m_ObjectHideFlags: 0
@@ -30264,13 +30271,6 @@ MonoBehaviour:
   - {fileID: 1034961575}
   - {fileID: 1937362147}
   - {fileID: 45412668}
-  _rimChangeSound:
-    Guid:
-      Data1: 792006620
-      Data2: 1097002013
-      Data3: -985516398
-      Data4: -274545984
-    Path: event:/ChangeRim
 --- !u!1 &1449105815
 GameObject:
   m_ObjectHideFlags: 0
@@ -44664,6 +44664,13 @@ MonoBehaviour:
       Data3: -1246769017
       Data4: 336259107
     Path: event:/Spray
+  "_\u0441hangeSound":
+    Guid:
+      Data1: 792006620
+      Data2: 1097002013
+      Data3: -985516398
+      Data4: -274545984
+    Path: event:/Change
 --- !u!114 &296538438002692952
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 namespace Assets.Game.Scripts.Game
 {
@@ -11,8 +12,8 @@ namespace Assets.Game.Scripts.Game
         [SerializeField] private Color _mainColor = new(255, 238, 123, 255);
         [SerializeField] private Color _increaseColor = new(255, 238, 123, 255);
         [SerializeField] private Color _decreaseColor = new(255, 238, 123, 255);
-
         [SerializeField] private Color _noMoneyColor = Color.red;
+        [SerializeField] EventReference _purchaseSound;
 
         private int _coins;
         private int newCoinsValue;
@@ -41,20 +42,22 @@ namespace Assets.Game.Scripts.Game
 
         public bool DecreaseCoins(int value)
         {
-            bool success = false;
-            if (_coins < value) success = false;
-            else
+            bool success = _coins >= value;
+            if (success)
             {
                 _decreaseSpeed = value * 4;
                 _coinColor = _decreaseColor;
                 newCoinsValue = _coins - value;
                 _changeCoinValue = true;
                 _decrease = true;
-                success = true;
+                AudioManager.Instance.PlayOneShot(_purchaseSound, transform.position);
             }
-            UI.UIManager.Instance.ButtonSound(success);
-            UI.UIManager.Instance.DisplayCoins(_coins.ToString(), _noMoneyColor, 2);
-            StartCoroutine(ResetColorByDelay(0.2f));
+            else
+            {
+                UI.UIManager.Instance.ButtonSound(success);
+                UI.UIManager.Instance.DisplayCoins(_coins.ToString(), _noMoneyColor, 2);
+                StartCoroutine(ResetColorByDelay(0.2f));
+            }
             return success;
         }
 
