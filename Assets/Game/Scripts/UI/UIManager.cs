@@ -79,10 +79,10 @@ namespace Assets.Game.Scripts.UI
             SceneLoadManager.Instance.LoadScene("MainMenuScene");
         }
 
-        public void ButtonPlay()
+        public void Play(int ID)
         {
             Data.DataPersistenceManager.Instance.SaveGame();
-            SceneLoadManager.Instance.LoadScene("GameScene");
+            SceneLoadManager.Instance.LoadScene(ID);
         }
 
         public void DisplaySpeedometer(string value)

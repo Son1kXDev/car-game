@@ -39,8 +39,6 @@ public class SceneLoadManager : MonoBehaviour
             _loadingIndicator.fillAmount = currentScene.progress;
         } while (currentScene.progress < 0.9f);
 
-        Console.Log($"Scene {sceneName} is loaded", DColor.white, DType.bold);
-
         currentScene.allowSceneActivation = true;
         _loaderAnimator.SetBool("loading", false);
         await Task.Delay(500);
@@ -62,8 +60,6 @@ public class SceneLoadManager : MonoBehaviour
             await Task.Delay(1000);
             _loadingIndicator.fillAmount = currentScene.progress;
         } while (currentScene.progress < 0.9f);
-
-        Console.Log($"Scene {SceneManager.GetSceneAt(ID).name} is loaded", DColor.white, DType.bold);
 
         currentScene.allowSceneActivation = true;
         _loaderAnimator.SetBool("loading", false);
