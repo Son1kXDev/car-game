@@ -63,6 +63,7 @@ public class MenuCameraController : MonoBehaviour
     {
         _newPosition = _defaultPosition;
         _changePosition = _changeType = true;
+        _distance = Vector3.Distance(_camera.transform.position, _newPosition) * _speed;
     }
 
     public void SetCameraToOrthographic(bool value) => _camera.orthographic = value;

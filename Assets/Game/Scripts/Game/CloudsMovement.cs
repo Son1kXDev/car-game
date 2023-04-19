@@ -6,7 +6,7 @@ namespace Assets.Game.Scripts.Game
     {
         [SerializeField, Range(0.1f, 20f)] private float _speed = 1f;
 
-        private void Update()
+        private void LateUpdate()
         {
             transform.position += _speed * Time.deltaTime * Vector3.left;
 
