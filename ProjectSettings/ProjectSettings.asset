@@ -16,9 +16,9 @@ PlayerSettings:
   productName: Offroaded
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  m_SplashScreenBackgroundColor: {r: 0.32941177, g: 0.32941177, b: 0.32941177, a: 1}
+  m_SplashScreenBackgroundColor: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
   m_ShowUnitySplashScreen: 1
-  m_ShowUnitySplashLogo: 1
+  m_ShowUnitySplashLogo: 0
   m_SplashScreenOverlayOpacity: 1
   m_SplashScreenAnimation: 1
   m_SplashScreenLogoStyle: 1
@@ -40,13 +40,11 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
-  - logo: {fileID: 21300000, guid: 7161e4af2d0c8ab4381ac6790d91d55d, type: 3}
+  - logo: {fileID: 21300000, guid: 4dff48b5a329d164f8f5fabdba927a1e, type: 3}
+    duration: 2.5
+  - logo: {fileID: 21300000, guid: 7b167e9124da45149a7502a9c961ae3c, type: 3}
     duration: 2
-  - logo: {fileID: 21300000, guid: bb8d3ea413982d343a6f6dbbc5f06f23, type: 3}
-    duration: 2
-  - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
-    duration: 2
-  - logo: {fileID: 21300000, guid: 8fd8ccb8d7e81d943b28ea7975c7185d, type: 3}
+  - logo: {fileID: 21300000, guid: 90fc93697b90a86408c8c3f7b6a8d29f, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
@@ -142,7 +140,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.0.6 beta
+  bundleVersion: 0.0.7 beta
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
