@@ -54,8 +54,10 @@ namespace Assets.Game.Scripts.UI
 
         public void LoadNewGame()
         {
+            Data.DataPersistenceManager.Instance.ResetGame();
             Data.DataPersistenceManager.Instance.NewGame();
             PlayerPrefs.DeleteAll();
+            FindObjectOfType<ContinueButton>().Start();
             SceneLoadManager.Instance.LoadScene("GameMenuScene");
         }
 
@@ -63,20 +65,6 @@ namespace Assets.Game.Scripts.UI
         {
             Data.DataPersistenceManager.Instance.LoadGame();
             SceneLoadManager.Instance.LoadScene("GameMenuScene");
-        }
-
-        public void ButtonSettings()
-        {
-            //todo openSettingsPanel
-        }
-
-        public void ButtonReset()
-        {
-            Data.DataPersistenceManager.Instance.ResetGame();
-            PlayerPrefs.DeleteAll();
-            FindObjectOfType<ContinueButton>().Start();
-            FindObjectOfType<ResetButton>().Start();
-            SceneLoadManager.Instance.LoadScene("MainMenuScene");
         }
 
         public void Play(int ID)

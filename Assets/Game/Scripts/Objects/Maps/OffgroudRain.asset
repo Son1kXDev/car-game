@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b9b86e685dffaf42a396cc849a40923, type: 3}
-  m_Name: Offgroud
+  m_Name: OffgroudRain
   m_EditorClassIdentifier: 
-  _id: 0
-  _name: Offground
-  _image: {fileID: 0}
-  _lenghts: 
+  _id: 2
+  _name: Offground (Rain)
+  _image: {fileID: 21300000, guid: 60602e36dd563bf449e9d510cc070a77, type: 3}
+  _length: 3
   _flatness: 1
   _description: Nature + some planks. Should be funny...

@@ -18,6 +18,7 @@ namespace Assets.Game.Scripts.UI
 
         private float _stiffness, _height;
 
+        private CarInfo _carInfo;
         private CarConfig _carConfig;
         private MenuCar _car;
 
@@ -26,6 +27,7 @@ namespace Assets.Game.Scripts.UI
         {
             _carConfig = FindFirstObjectByType<CarConfig>();
             _car = FindFirstObjectByType<MenuCar>();
+            _carInfo = FindObjectOfType<CarInfo>(true);
             ResetData();
         }
 
@@ -40,6 +42,11 @@ namespace Assets.Game.Scripts.UI
             {
                 _carConfig.CurrentCarUpgrades.SuspensionFrequencyMultiplier = _stiffnessSlider.value;
                 _carConfig.CurrentCarUpgrades.SuspensionHeightMultiplier = _heightSlider.value;
+                if (_carConfig.CostsDictionary.ContainsKey("Suspension"))
+                    _carConfig.CostsDictionary.Remove("Suspension");
+                _carConfig.CostsDictionary.Add("Suspension", _currentCost);
+                _carConfig.Costs = new(_carConfig.CostsDictionary.Values);
+                _carInfo.UpdateDisplayData();
                 ResetData();
             }
         }
@@ -54,9 +61,9 @@ namespace Assets.Game.Scripts.UI
 
         void ResetData()
         {
-            _costText.text = string.Empty;
             _stiffness = _stiffnessSlider.value = _carConfig.CurrentCarUpgrades.SuspensionFrequencyMultiplier;
             _height = _heightSlider.value = _carConfig.CurrentCarUpgrades.SuspensionHeightMultiplier;
+            _costText.text = string.Empty;
             ApplyButton(false);
         }
 

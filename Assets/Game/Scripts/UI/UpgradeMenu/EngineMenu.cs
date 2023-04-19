@@ -46,9 +46,7 @@ namespace Assets.Game.Scripts.UI
                 Color transparent = new Color(0, 0, 0, 0);
 
                 _costText.color = transparent;
-                _upgradeButton.interactable = false;
-                _upgradeButton.GetComponent<Image>().color = transparent;
-                _upgradeButton.GetComponentInChildren<TextMeshProUGUI>().color = transparent;
+                _upgradeButton.gameObject.SetActive(false);
             }
             _cost = _costs[_currentUpgrade];
             _upgradeText.text = $"{_currentUpgrade}/{_maxUpgrades} upgrades";
@@ -85,9 +83,7 @@ namespace Assets.Game.Scripts.UI
                         Color transparent = new Color(0, 0, 0, 0);
 
                         _costText.color = transparent;
-                        _upgradeButton.interactable = false;
-                        _upgradeButton.GetComponent<Image>().color = transparent;
-                        _upgradeButton.GetComponentInChildren<TextMeshProUGUI>().color = transparent;
+                        _upgradeButton.gameObject.SetActive(false);
                     }
                     string key = $"Engine {_currentUpgrade}";
                     _carConfig.CostsDictionary.Add(key, _cost);

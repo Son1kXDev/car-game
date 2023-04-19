@@ -32,7 +32,7 @@ namespace Assets.Game.Scripts.Game
         {
             _coins = data.Coins;
             _coinColor = _mainColor;
-            UI.UIManager.Instance.DisplayCoins(_coins.ToString(), _coinColor);
+            UI.UIManager.Instance.DisplayCoins(_coins.ToString(@"###\.###"), _coinColor);
         }
 
         public void SaveData(GameData data)
@@ -55,7 +55,7 @@ namespace Assets.Game.Scripts.Game
             else
             {
                 UI.UIManager.Instance.ButtonSound(success);
-                UI.UIManager.Instance.DisplayCoins(_coins.ToString(), _noMoneyColor, 2);
+                UI.UIManager.Instance.DisplayCoins(_coins.ToString(@"###\.###"), _noMoneyColor, 2);
                 StartCoroutine(ResetColorByDelay(0.2f));
             }
             return success;
@@ -66,12 +66,12 @@ namespace Assets.Game.Scripts.Game
             if (!_changeCoinValue) return;
 
             _coins = (int)Mathf.MoveTowards(_coins, newCoinsValue, _decreaseSpeed * Time.deltaTime);
-            UI.UIManager.Instance.DisplayCoins(_coins.ToString(), _coinColor, _decrease ? 3 : 4);
+            UI.UIManager.Instance.DisplayCoins(_coins.ToString(@"###\.###"), _coinColor, _decrease ? 3 : 4);
             if (_coins == newCoinsValue)
             {
                 _changeCoinValue = false;
                 _coinColor = _mainColor;
-                UI.UIManager.Instance.DisplayCoins(_coins.ToString(), _coinColor);
+                UI.UIManager.Instance.DisplayCoins(_coins.ToString(@"###\.###"), _coinColor);
             }
         }
 
@@ -86,7 +86,7 @@ namespace Assets.Game.Scripts.Game
         IEnumerator ResetColorByDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-            UI.UIManager.Instance.DisplayCoins(_coins.ToString(), _coinColor);
+            UI.UIManager.Instance.DisplayCoins(_coins.ToString(@"###\.###"), _coinColor);
         }
     }
 }

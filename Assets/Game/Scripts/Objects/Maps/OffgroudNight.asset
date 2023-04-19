@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b9b86e685dffaf42a396cc849a40923, type: 3}
-  m_Name: MapConfig
+  m_Name: OffgroudNight
   m_EditorClassIdentifier: 
   _id: 2
-  _name: Foggy Bridges
-  _image: {fileID: 21300000, guid: fd28223949f81ad41a4c1e15a02fb290, type: 3}
-  _lenghts: 3.2km
+  _name: Offground (Night)
+  _image: {fileID: 21300000, guid: 60602e36dd563bf449e9d510cc070a77, type: 3}
+  _length: 3
   _flatness: 1
-  _description: Many bridges, many clouds. Always wet.
+  _description: Nature + some planks. Should be funny...

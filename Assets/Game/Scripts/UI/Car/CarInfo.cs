@@ -12,6 +12,8 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private TextMeshProUGUI _strength;
         [SerializeField] private TextMeshProUGUI _costText;
 
+        private Coroutine _updateCostData;
+
         private int _cost = 0;
 
         private CarConfig _carConfig;
@@ -33,15 +35,18 @@ namespace Assets.Game.Scripts.UI
             if (cashCost != 0) _cost = cashCost;
             _carConfig.Costs.ForEach(c => newCost += c);
             float speed = instant ? float.MaxValue : Mathf.Abs(_cost - newCost) * 4;
-            StartCoroutine(UpdateCostData(newCost, speed));
+            if (_updateCostData != null) StopCoroutine(_updateCostData);
+            _updateCostData = StartCoroutine(UpdateCostData(newCost, speed));
         }
 
         private IEnumerator UpdateCostData(int newCost, float speed)
         {
-            while (_cost != newCost)
+            int previousCost = _cost;
+            _cost = newCost;
+            while (previousCost != newCost)
             {
-                _cost = (int)Mathf.MoveTowards(_cost, newCost, speed * Time.deltaTime);
-                _costText.text = $"Cost {_cost} <sprite index=1>";
+                previousCost = (int)Mathf.MoveTowards(previousCost, newCost, speed * Time.deltaTime);
+                _costText.text = $"Cost {previousCost.ToString(@"###\.###")} <sprite index=1>";
                 yield return null;
             }
         }
