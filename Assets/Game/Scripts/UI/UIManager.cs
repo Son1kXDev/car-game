@@ -2,7 +2,6 @@ using UnityEngine;
 using TMPro;
 using Utils.Debugger;
 using System.Collections.Generic;
-using FMODUnity;
 
 namespace Assets.Game.Scripts.UI
 {
@@ -16,8 +15,6 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private List<TextMeshProUGUI> _coinData;
         [SerializeField] private ConfirmationPopup _confirmationPopup;
 
-        [SerializeField] private EventReference _buttonActionSound;
-        [SerializeField] private EventReference _buttonNoActionSound;
 
         private void Awake()
         {
@@ -56,7 +53,7 @@ namespace Assets.Game.Scripts.UI
         {
             Data.DataPersistenceManager.Instance.ResetGame();
             Data.DataPersistenceManager.Instance.NewGame();
-            PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteKey("UpgradeMenuPosition");
             FindObjectOfType<ContinueButton>().Start();
             SceneLoadManager.Instance.LoadScene("GameMenuScene");
         }
@@ -98,7 +95,8 @@ namespace Assets.Game.Scripts.UI
             _coinData.ForEach(text => { text.color = color; });
         }
 
-        public void ButtonSound(bool value) => AudioManager.Instance.PlayOneShot(value ? _buttonActionSound : _buttonNoActionSound, transform.position);
+        public void ButtonSound(bool value) =>
+        AudioManager.Instance.PlayOneShot(value ? Audio.Data.ButtonClick : Audio.Data.ButtonNoClick, transform.position);
 
     }
 }

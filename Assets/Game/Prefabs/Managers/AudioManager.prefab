@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3186685605923722391}
   - component: {fileID: 3186685605923722388}
+  - component: {fileID: 5525259086064931870}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -47,3 +48,78 @@ MonoBehaviour:
   MasterVolume: 1
   MusicVolume: 1
   SFXVolume: 1
+--- !u!114 &5525259086064931870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186685605923722390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6908f5c5232cc7d45824cf3ee4095137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rain:
+    Guid:
+      Data1: 768782058
+      Data2: 1253606058
+      Data3: 1855576241
+      Data4: 878814344
+    Path: event:/Rain
+  _change:
+    Guid:
+      Data1: 792006620
+      Data2: 1097002013
+      Data3: -985516398
+      Data4: -274545984
+    Path: event:/Change
+  _lightSwitch:
+    Guid:
+      Data1: 1713763815
+      Data2: 1139238792
+      Data3: -2034515325
+      Data4: 295495682
+    Path: event:/LightSwitch
+  _gearSwitch:
+    Guid:
+      Data1: -1190490012
+      Data2: 1204852928
+      Data3: -1384112716
+      Data4: 1596907656
+    Path: event:/GearChanged
+  _purchase:
+    Guid:
+      Data1: -566708917
+      Data2: 1253859836
+      Data3: -257546843
+      Data4: 1112312389
+    Path: event:/Purchase
+  _spray:
+    Guid:
+      Data1: 637800254
+      Data2: 1226686265
+      Data3: -1246769017
+      Data4: 336259107
+    Path: event:/Spray
+  _engine:
+    Guid:
+      Data1: 1492043055
+      Data2: 1194405293
+      Data3: -681587026
+      Data4: 487798538
+    Path: event:/Engine Total
+  _buttonClick:
+    Guid:
+      Data1: -1210155642
+      Data2: 1180753202
+      Data3: 2123110546
+      Data4: 1765360791
+    Path: event:/ButtonClick
+  _buttonNoClick:
+    Guid:
+      Data1: 262101965
+      Data2: 1271330521
+      Data3: 886021764
+      Data4: 1449368131
+    Path: event:/ButtonClickNoAction

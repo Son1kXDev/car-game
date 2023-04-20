@@ -51,7 +51,7 @@ namespace Assets.Game.Scripts.UI
             _propertyField.Find("Name").Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.SpoilersIconsSprites[id];
             _propertyField.Find("Name").GetComponent<TextMeshProUGUI>().text = _carConfig.VisualCarConfig.SpoilersNames[id];
             _currentCost = _carConfig.VisualCarConfig.SpoilersCost[id];
-            _propertyField.Find("Cost").GetComponent<TextMeshProUGUI>().text = $"{_currentCost} <sprite index=1>";
+            _propertyField.Find("Cost").GetComponent<TextMeshProUGUI>().text = _currentCost.ToString(CustomStringFormat.CoinFormat(_currentCost)) + " <sprite index=1>";
 
             bool hasSpoiler = false;
             foreach (int spoiler in _openedSpoilers)

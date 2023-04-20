@@ -3193,20 +3193,6 @@ MonoBehaviour:
   _coinData:
   - {fileID: 0}
   _confirmationPopup: {fileID: 1159180296}
-  _buttonActionSound:
-    Guid:
-      Data1: -1210155642
-      Data2: 1180753202
-      Data3: 2123110546
-      Data4: 1765360791
-    Path: event:/ButtonClick
-  _buttonNoActionSound:
-    Guid:
-      Data1: 262101965
-      Data2: 1271330521
-      Data3: 886021764
-      Data4: 1449368131
-    Path: event:/ButtonClickNoAction
 --- !u!4 &480599260
 Transform:
   m_ObjectHideFlags: 0
@@ -11992,20 +11978,6 @@ MonoBehaviour:
   - {fileID: 1500295399}
   _splitters:
   - {fileID: 389500289}
-  _spraySound:
-    Guid:
-      Data1: 637800254
-      Data2: 1226686265
-      Data3: -1246769017
-      Data4: 336259107
-    Path: event:/Spray
-  "_\u0441hangeSound":
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
 --- !u!1 &1669739659
 GameObject:
   m_ObjectHideFlags: 0

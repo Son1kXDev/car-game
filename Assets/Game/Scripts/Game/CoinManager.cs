@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
 
 namespace Assets.Game.Scripts.Game
 {
@@ -13,7 +11,6 @@ namespace Assets.Game.Scripts.Game
         [SerializeField] private Color _increaseColor = new(255, 238, 123, 255);
         [SerializeField] private Color _decreaseColor = new(255, 238, 123, 255);
         [SerializeField] private Color _noMoneyColor = Color.red;
-        [SerializeField] EventReference _purchaseSound;
 
         private int _coins;
         private int newCoinsValue;
@@ -32,7 +29,7 @@ namespace Assets.Game.Scripts.Game
         {
             _coins = data.Coins;
             _coinColor = _mainColor;
-            UI.UIManager.Instance.DisplayCoins(_coins.ToString(@"###\.###"), _coinColor);
+            UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor);
         }
 
         public void SaveData(GameData data)
@@ -50,12 +47,12 @@ namespace Assets.Game.Scripts.Game
                 newCoinsValue = _coins - value;
                 _changeCoinValue = true;
                 _decrease = true;
-                AudioManager.Instance.PlayOneShot(_purchaseSound, transform.position);
+                AudioManager.Instance.PlayOneShot(Audio.Data.Purchase, transform.position);
             }
             else
             {
                 UI.UIManager.Instance.ButtonSound(success);
-                UI.UIManager.Instance.DisplayCoins(_coins.ToString(@"###\.###"), _noMoneyColor, 2);
+                UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _noMoneyColor, 2);
                 StartCoroutine(ResetColorByDelay(0.2f));
             }
             return success;
@@ -66,12 +63,12 @@ namespace Assets.Game.Scripts.Game
             if (!_changeCoinValue) return;
 
             _coins = (int)Mathf.MoveTowards(_coins, newCoinsValue, _decreaseSpeed * Time.deltaTime);
-            UI.UIManager.Instance.DisplayCoins(_coins.ToString(@"###\.###"), _coinColor, _decrease ? 3 : 4);
+            UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor, _decrease ? 3 : 4);
             if (_coins == newCoinsValue)
             {
                 _changeCoinValue = false;
                 _coinColor = _mainColor;
-                UI.UIManager.Instance.DisplayCoins(_coins.ToString(@"###\.###"), _coinColor);
+                UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor);
             }
         }
 
@@ -86,7 +83,16 @@ namespace Assets.Game.Scripts.Game
         IEnumerator ResetColorByDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-            UI.UIManager.Instance.DisplayCoins(_coins.ToString(@"###\.###"), _coinColor);
+            UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor);
         }
+    }
+}
+
+public static class CustomStringFormat
+{
+    public static string CoinFormat(float value)
+    {
+        if (value > 999) return @"###\.###";
+        else return "##0";
     }
 }

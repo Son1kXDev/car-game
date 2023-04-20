@@ -92,7 +92,7 @@ namespace Assets.Game.Scripts.Game
             }
             _lowBeam.SetActive(_currentBeam == Beam.Low);
             _highBeam.SetActive(_currentBeam == Beam.High);
-            AudioManager.Instance.PlayOneShot(_lightSwitchSound, transform.position);
+            AudioManager.Instance.PlayOneShot(Audio.Data.LightSwitch, transform.position);
         }
 
         public Beam GetCurrentBeam()

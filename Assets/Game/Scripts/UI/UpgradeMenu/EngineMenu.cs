@@ -50,7 +50,7 @@ namespace Assets.Game.Scripts.UI
             }
             _cost = _costs[_currentUpgrade];
             _upgradeText.text = $"{_currentUpgrade}/{_maxUpgrades} upgrades";
-            _costText.text = $"{_cost} <sprite index=1>";
+            _costText.text = _cost.ToString(CustomStringFormat.CoinFormat(_cost)) + " <sprite index=1>";
         }
 
         public void Upgrade()
@@ -60,7 +60,7 @@ namespace Assets.Game.Scripts.UI
                 if (CoinManager.Instance.DecreaseCoins(_cost))
                 {
                     _currentUpgrade++;
-                    _carConfig.CurrentCarUpgrades.EngineMultiplier = _carConfig.CurrentCarUpgrades.AccelirationMultiplier = _currentUpgrade switch
+                    _carConfig.CurrentCarUpgrades.EngineMultiplier = _carConfig.CurrentCarUpgrades.AccelerationMultiplier = _currentUpgrade switch
                     {
                         0 => 1f,
                         1 => 1.1f,
@@ -77,7 +77,7 @@ namespace Assets.Game.Scripts.UI
                     };
                     _cost = _costs[_currentUpgrade];
                     _upgradeText.text = $"{_currentUpgrade}/{_maxUpgrades} upgrades";
-                    _costText.text = $"{_cost} <sprite index=1>";
+                    _costText.text = _cost.ToString(CustomStringFormat.CoinFormat(_cost)) + " <sprite index=1>";
                     if (_currentUpgrade == 10)
                     {
                         Color transparent = new Color(0, 0, 0, 0);

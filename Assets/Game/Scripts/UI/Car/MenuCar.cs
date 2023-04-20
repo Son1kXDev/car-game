@@ -1,8 +1,6 @@
 using Assets.Game.Scripts.Game;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
 using Utils.Debugger;
 
 namespace Assets.Game.Scripts.UI
@@ -19,10 +17,6 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private List<SpriteRenderer> _rims;
         [SerializeField] private List<SpriteRenderer> _spoilers;
         [SerializeField] private List<SpriteRenderer> _splitters;
-
-        [Header("Audio")]
-        [SerializeField] private EventReference _spraySound;
-        [SerializeField] private EventReference _сhangeSound;
 
         private WheelJoint2D[] _wheelJoints;
 
@@ -91,7 +85,7 @@ namespace Assets.Game.Scripts.UI
             if (CoinManager.Instance.DecreaseCoins(100))
             {
                 control.ApplyButton(false);
-                AudioManager.Instance.PlayOneShot(_spraySound, transform.position, 0.6f);
+                AudioManager.Instance.PlayOneShot(Audio.Data.Spray, transform.position, 0.6f);
                 _config.CurrentColor = _body.color;
                 if (_config.CostsDictionary.ContainsKey("Color"))
                     _config.CostsDictionary.Remove("Color");
@@ -130,28 +124,28 @@ namespace Assets.Game.Scripts.UI
         public void SetRim(int value)
         {
             _config.CurrentRim = value;
-            AudioManager.Instance.PlayOneShot(_сhangeSound, transform.position);
+            AudioManager.Instance.PlayOneShot(Audio.Data.Change, transform.position);
             ApplyData();
         }
 
         public void SetTire(int value)
         {
             _config.CurrentTire = value;
-            AudioManager.Instance.PlayOneShot(_сhangeSound, transform.position);
+            AudioManager.Instance.PlayOneShot(Audio.Data.Change, transform.position);
             ApplyData();
         }
 
         public void SetSpoiler(int value)
         {
             _config.CurrentSpoiler = value;
-            AudioManager.Instance.PlayOneShot(_сhangeSound, transform.position);
+            AudioManager.Instance.PlayOneShot(Audio.Data.Change, transform.position);
             ApplyData();
         }
 
         public void SetSplitter(int value)
         {
             _config.CurrentSplitter = value;
-            AudioManager.Instance.PlayOneShot(_сhangeSound, transform.position);
+            AudioManager.Instance.PlayOneShot(Audio.Data.Change, transform.position);
             ApplyData();
         }
     }

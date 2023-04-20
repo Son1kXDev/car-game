@@ -48,7 +48,7 @@ namespace Assets.Game.Scripts.UI
             _propertyField.Find("Name").Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.RimsIconsSprites[id];
             _propertyField.Find("Name").GetComponent<TextMeshProUGUI>().text = _carConfig.VisualCarConfig.RimsNames[id];
             _currentCost = _carConfig.VisualCarConfig.RimsCost[id];
-            _propertyField.Find("Cost").GetComponent<TextMeshProUGUI>().text = $"{_currentCost} <sprite index=1>";
+            _propertyField.Find("Cost").GetComponent<TextMeshProUGUI>().text = _currentCost.ToString(CustomStringFormat.CoinFormat(_currentCost)) + " <sprite index=1>";
 
             bool hasRim = false;
             foreach (int rims in _openedRims)

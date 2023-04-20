@@ -14,10 +14,21 @@ public class VolumeUIControll : MonoBehaviour
         _sfxVolumeSlider.value = AudioManager.Instance.SFXVolume;
     }
 
-    public void UpdateMaster() => AudioManager.Instance.MasterVolume = _masterVolumeSlider.value;
+    public void UpdateMaster()
+    {
+        AudioManager.Instance.MasterVolume = _masterVolumeSlider.value;
+        PlayerPrefs.SetFloat("MasterVolume", _masterVolumeSlider.value);
+    }
 
-    public void UpdateMusic() => AudioManager.Instance.MusicVolume = _musicVolumeSlider.value;
+    public void UpdateMusic()
+    {
+        AudioManager.Instance.MusicVolume = _musicVolumeSlider.value;
+        PlayerPrefs.SetFloat("MusicVolume", _musicVolumeSlider.value);
+    }
 
-    public void UpdateSFX() => AudioManager.Instance.SFXVolume = _sfxVolumeSlider.value;
-
+    public void UpdateSFX()
+    {
+        AudioManager.Instance.SFXVolume = _sfxVolumeSlider.value;
+        PlayerPrefs.SetFloat("SFXVolume", _sfxVolumeSlider.value);
+    }
 }

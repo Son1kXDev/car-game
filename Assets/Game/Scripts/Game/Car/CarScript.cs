@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using FMODUnity;
 using FMOD.Studio;
 
 namespace Assets.Game.Scripts.Game
@@ -13,10 +12,6 @@ namespace Assets.Game.Scripts.Game
         [SerializeField] private LayerMask _ground;
         [SerializeField] private Transform _wheel;
         [SerializeField] private Car _carAsset;
-
-        [Header("Audio")]
-        [SerializeField] private EventReference _engineSound;
-        [SerializeField] private EventReference _gearSwitchSound;
 
         private readonly float _deceleration = -400f;
         private readonly float _gravity = 9.8f;
@@ -73,7 +68,7 @@ namespace Assets.Game.Scripts.Game
                     _backWheel = _wheelJoints[1].motor;
                     break;
             }
-            _engineSoundInstance = AudioManager.Instance.CreateEventInstance(_engineSound);
+            _engineSoundInstance = AudioManager.Instance.CreateEventInstance(Audio.Data.Engine);
             _engineSoundInstance.start();
             StartCoroutine(ChangeGear());
         }
@@ -246,7 +241,7 @@ namespace Assets.Game.Scripts.Game
             if (!_changingGear)
             {
                 if (MoveAxis() != 0 && !_brake)
-                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - (_carAsset.Acceleration * _upgrades.AccelirationMultiplier - _gravity * Mathf.PI * (_carAngle / 180) * 80)
+                    _backWheel.motorSpeed = Mathf.Clamp(_backWheel.motorSpeed - (_carAsset.Acceleration * _upgrades.AccelerationMultiplier - _gravity * Mathf.PI * (_carAngle / 180) * 80)
                            * MoveAxis() * Time.fixedDeltaTime, -_maxSpeed, _maxBackSpeed);
             }
 
@@ -290,7 +285,7 @@ namespace Assets.Game.Scripts.Game
         public void SwitchDirection()
         {
             _moveDirection *= -1f;
-            AudioManager.Instance.PlayOneShot(_gearSwitchSound, transform.position);
+            AudioManager.Instance.PlayOneShot(Audio.Data.GearSwitch, transform.position);
         }
 
         public void ButtonSwitchGear(bool value) => _switchGear = value;

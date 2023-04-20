@@ -49,7 +49,7 @@ public class Car : ScriptableObject
 public class Upgrades
 {
     public float EngineMultiplier;
-    public float AccelirationMultiplier;
+    public float AccelerationMultiplier;
     public float MaxSpeedMultiplier;
     public float BreakForceMultiplier;
     public float GearSwitchMultiplier;
@@ -59,7 +59,7 @@ public class Upgrades
     public Upgrades()
     {
         EngineMultiplier = 1;
-        AccelirationMultiplier = 1;
+        AccelerationMultiplier = 1;
         MaxSpeedMultiplier = 1;
         BreakForceMultiplier = 1;
         GearSwitchMultiplier = 1;
@@ -67,10 +67,10 @@ public class Upgrades
         SuspensionHeightMultiplier = 1;
     }
 
-    public Upgrades(float engine, float acceliration, float maxSpeed, float breakForce, float gearSwitch, float suspensionFrequency, float suspensionHeight)
+    public Upgrades(float engine, float acceleration, float maxSpeed, float breakForce, float gearSwitch, float suspensionFrequency, float suspensionHeight)
     {
         EngineMultiplier = engine;
-        AccelirationMultiplier = acceliration;
+        AccelerationMultiplier = acceleration;
         MaxSpeedMultiplier = maxSpeed;
         BreakForceMultiplier = breakForce;
         GearSwitchMultiplier = gearSwitch;
