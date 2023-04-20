@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 4
   _name: Offground (Rain)
-  _image: {fileID: 21300000, guid: 60602e36dd563bf449e9d510cc070a77, type: 3}
+  _image: {fileID: 21300000, guid: fbfb2c8f12d9e5441b32a677aabf7831, type: 3}
   _length: 3
   _flatness: 1
   _description: Nature + some planks. Due to the rain, friction with the road is

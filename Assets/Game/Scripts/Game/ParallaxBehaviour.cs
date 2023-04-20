@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class ParallaxBehaviour : MonoBehaviour
             _followingTarget = Camera.main.transform;
 
         _targetPreviousPosition = _followingTarget.position;
+        Application.targetFrameRate = 60;
     }
 
     private void Update()

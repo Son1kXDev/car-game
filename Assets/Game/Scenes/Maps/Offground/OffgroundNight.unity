@@ -5591,20 +5591,6 @@ MonoBehaviour:
   _coinData:
   - {fileID: 0}
   _confirmationPopup: {fileID: 1433555488}
-  _buttonActionSound:
-    Guid:
-      Data1: -1210155642
-      Data2: 1180753202
-      Data3: 2123110546
-      Data4: 1765360791
-    Path: event:/ButtonClick
-  _buttonNoActionSound:
-    Guid:
-      Data1: 262101965
-      Data2: 1271330521
-      Data3: 886021764
-      Data4: 1449368131
-    Path: event:/ButtonClickNoAction
 --- !u!4 &480599260
 Transform:
   m_ObjectHideFlags: 0
@@ -12658,6 +12644,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 279407423952076239, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 279407423952076239, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 279407423952076239, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 279407423952076239, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: m_SortingOrder
+      value: -950
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149302881117697101, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: _followingTarget
+      value: 
+      objectReference: {fileID: 824957331}
+    - target: {fileID: 7467669282386110529, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8234129504663215900, guid: ceef78222091a9246845db105d6f223b, type: 3}
       propertyPath: m_Color.b
       value: 0.1
@@ -13299,8 +13309,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 824957331}
     - target: {fileID: 8234129504799216239, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 03d4ded14ce68b845a04d74a27f21a91, type: 3}
+    - target: {fileID: 8234129504799216239, guid: ceef78222091a9246845db105d6f223b, type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8234129504799216240, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 8234129504799216240, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 8234129504800017011, guid: ceef78222091a9246845db105d6f223b, type: 3}
       propertyPath: m_Color.b

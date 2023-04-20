@@ -5591,20 +5591,6 @@ MonoBehaviour:
   _coinData:
   - {fileID: 0}
   _confirmationPopup: {fileID: 1433555488}
-  _buttonActionSound:
-    Guid:
-      Data1: -1210155642
-      Data2: 1180753202
-      Data3: 2123110546
-      Data4: 1765360791
-    Path: event:/ButtonClick
-  _buttonNoActionSound:
-    Guid:
-      Data1: 262101965
-      Data2: 1271330521
-      Data3: 886021764
-      Data4: 1449368131
-    Path: event:/ButtonClickNoAction
 --- !u!4 &480599260
 Transform:
   m_ObjectHideFlags: 0
@@ -12634,6 +12620,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7467669282386110529, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8234129504756859085, guid: ceef78222091a9246845db105d6f223b, type: 3}
       propertyPath: _followingTarget
       value: 
