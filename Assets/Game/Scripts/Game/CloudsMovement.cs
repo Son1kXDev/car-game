@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
+using NTC.Global.Cache;
+
 
 namespace Assets.Game.Scripts.Game
 {
-    public class CloudsMovement : MonoBehaviour
+    public class CloudsMovement : MonoCache
     {
         [SerializeField, Range(0.1f, 20f)] private float _speed = 1f;
 
-        private void LateUpdate()
+        protected override void LateRun()
         {
             transform.position += _speed * Time.deltaTime * Vector3.left;
 

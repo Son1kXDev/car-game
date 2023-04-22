@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using NTC.Global.Cache;
+
 
 namespace Assets.Game.Scripts.Game
 {
-    public class MissionsManager : MonoBehaviour
+    public class MissionsManager : MonoCache
     {
         public List<Mission> _todaysMissions;
         public List<Mission> _missions;
@@ -75,7 +77,7 @@ namespace Assets.Game.Scripts.Game
             missionsLoaded = true;
         }
 
-        private void Update()
+        protected override void Run()
         {
             CheckCompletion();
         }

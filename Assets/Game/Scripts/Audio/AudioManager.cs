@@ -2,9 +2,10 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 using System.Collections.Generic;
+using NTC.Global.Cache;
 using System.Collections;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoCache
 {
     public static AudioManager Instance { get; private set; }
 
@@ -37,7 +38,7 @@ public class AudioManager : MonoBehaviour
         SFXVolume = PlayerPrefs.GetFloat("SFXVolume", 1);
     }
 
-    private void Update()
+    protected override void Run()
     {
         _masterBus.setVolume(MasterVolume);
         _musicBus.setVolume(MusicVolume);

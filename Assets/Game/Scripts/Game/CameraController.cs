@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NTC.Global.Cache;
 
 namespace Assets.Game.Scripts.Game
 {
-    public class CameraController : MonoBehaviour
+    public class CameraController : MonoCache
     {
         [SerializeField] private Transform _target;
         [SerializeField] private float _zoomStep;
@@ -22,9 +23,13 @@ namespace Assets.Game.Scripts.Game
             _offset = transform.position - _target.position;
         }
 
-        private void Update()
+        protected override void Run()
         {
-            if (Input.touchCount == 2 && !_inputLocked)
+            transform.position = _target.position + _offset;
+
+            if (_inputLocked) return;
+
+            if (Input.touchCount == 2)
             {
                 Touch touch = Input.GetTouch(0);
                 Touch touch2 = Input.GetTouch(1);
@@ -40,7 +45,6 @@ namespace Assets.Game.Scripts.Game
                 Zoom(difference * 0.001f * _zoomStep);
             }
 
-            transform.position = _target.position + _offset;
         }
 
         public void LockInput(bool value) => _inputLocked = value;

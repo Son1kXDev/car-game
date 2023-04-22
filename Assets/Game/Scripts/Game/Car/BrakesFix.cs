@@ -1,11 +1,12 @@
 using UnityEngine;
+using NTC.Global.Cache;
 
 namespace Assets.Game.Scripts.Game
 {
-    public class BrakesFix : MonoBehaviour
+    public class BrakesFix : MonoCache
     {
         [SerializeField] private Transform _transform;
 
-        private void Update() => transform.rotation = _transform.rotation;
+        protected override void Run() => transform.rotation = _transform.rotation;
     }
 }

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using NTC.Global.Cache;
 using UnityEngine;
 
-public class MenuCameraController : MonoBehaviour
+public class MenuCameraController : MonoCache
 {
 
     public static MenuCameraController Instance;
@@ -40,7 +41,7 @@ public class MenuCameraController : MonoBehaviour
     }
 
 
-    void Update()
+    protected override void Run()
     {
         if (_changePosition)
         {

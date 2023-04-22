@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using NTC.Global.Cache;
 using UnityEngine;
 
 namespace Assets.Game.Scripts.Game
 {
-    public class CameraScale : MonoBehaviour
+    public class CameraScale : MonoCache
     {
         public float zoomFactor = 0f;
 
@@ -25,7 +26,7 @@ namespace Assets.Game.Scripts.Game
             targetZoom = _camera.orthographicSize;
         }
 
-        private void Update()
+        protected override void Run()
         {
             if (Input.GetAxis("Mouse ScrollWheel") != 0)
             {

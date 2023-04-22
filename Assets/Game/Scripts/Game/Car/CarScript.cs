@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using NTC.Global.Cache;
 using FMOD.Studio;
 
 namespace Assets.Game.Scripts.Game
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(WheelJoint2D), typeof(WheelJoint2D)), RequireComponent(typeof(CarVisual))]
-    public class CarScript : MonoBehaviour, Data.IDataPersistence
+    public class CarScript : MonoCache, Data.IDataPersistence
     {
         [Header("Settings")]
         [SerializeField] private LayerMask _ground;
@@ -196,7 +197,7 @@ namespace Assets.Game.Scripts.Game
             return false;
         }
 
-        private void Update()
+        protected override void Run()
         {
             if (!Data.DataPersistenceManager.Loaded) return;
 
@@ -207,13 +208,13 @@ namespace Assets.Game.Scripts.Game
             _engineSoundInstance.setParameterByName("RPM", Mathf.Abs(Mathf.Round(_backWheel.motorSpeed)));
         }
 
-        private void LateUpdate()
+        protected override void LateRun()
         {
             if (!Data.DataPersistenceManager.Loaded) return;
             _carVisual.SetLight(MoveAxis(), _brake);
         }
 
-        private void FixedUpdate()
+        protected override void FixedRun()
         {
             if (!Data.DataPersistenceManager.Loaded) return;
 
