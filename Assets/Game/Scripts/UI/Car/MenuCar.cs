@@ -13,6 +13,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private SpriteRenderer _back;
         [SerializeField] private SpriteRenderer _elements;
         [SerializeField] private SpriteRenderer _optics;
+        [SerializeField] private SpriteRenderer _sticker;
         [SerializeField] private List<SpriteRenderer> _tires;
         [SerializeField] private List<SpriteRenderer> _rims;
         [SerializeField] private List<SpriteRenderer> _spoilers;
@@ -54,6 +55,7 @@ namespace Assets.Game.Scripts.UI
             _rims.ForEach(rim => rim.sprite = _config.VisualCarConfig.RimsSprites[_config.CurrentRim]);
             _spoilers.ForEach(spoiler => spoiler.sprite = _config.VisualCarConfig.SpoilersSprites[_config.CurrentSpoiler]);
             _splitters.ForEach(splitter => splitter.sprite = _config.VisualCarConfig.SplittersSprites[_config.CurrentSplitter]);
+            ChangeCarSticker(StickerUploader.GetSprite(_config.CurrentStickerPath));
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
                 JointSuspension2D susp = wheel.suspension;
@@ -90,6 +92,27 @@ namespace Assets.Game.Scripts.UI
                 if (_config.CostsDictionary.ContainsKey("Color"))
                     _config.CostsDictionary.Remove("Color");
                 _config.CostsDictionary.Add("Color", 100);
+                _config.Costs = new(_config.CostsDictionary.Values);
+                _carInfo.UpdateDisplayData();
+                Data.DataPersistenceManager.Instance.SaveGame();
+            }
+        }
+
+        public void ChangeCarSticker(Sprite sprite)
+        {
+            _sticker.sprite = sprite;
+        }
+
+        public void ApplySticker(StickerUploader uploader)
+        {
+            if (CoinManager.Instance.DecreaseCoins(100))
+            {
+                uploader.ApplyButton(false);
+                AudioManager.Instance.PlayOneShot(Audio.Data.Spray, transform.position, 0.6f);
+                _config.CurrentStickerPath = FileManager.Instance.LocalPath;
+                if (_config.CostsDictionary.ContainsKey("Sticker"))
+                    _config.CostsDictionary.Remove("Sticker");
+                _config.CostsDictionary.Add("Sticker", 100);
                 _config.Costs = new(_config.CostsDictionary.Values);
                 _carInfo.UpdateDisplayData();
                 Data.DataPersistenceManager.Instance.SaveGame();

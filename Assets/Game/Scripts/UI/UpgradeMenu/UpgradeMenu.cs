@@ -31,7 +31,8 @@ public class UpgradeMenu : MonoBehaviour
     private IEnumerator OpenPanel(int position)
     {
         _panels.ForEach(panel => panel.SetActive(false));
-        yield return StartCoroutine(_scroll.FocusAtPointCoroutine(_menuButtons[position].transform.localPosition, 1.5f));
+        yield return StartCoroutine(_scroll.FocusOnItemCoroutine(_menuButtons[position].GetComponent<RectTransform>(), 1.5f));
+        yield return StartCoroutine(_scroll.FocusOnItemCoroutine(_menuButtons[position].GetComponent<RectTransform>(), 5f));
         _panels[position].SetActive(true);
     }
 

@@ -14,6 +14,7 @@ public class GameData
     public int CurrentRims;
     public int CurrentSpoiler;
     public int CurrentSplitter;
+    public string CurrentStickerPath;
     public List<int> OpenedTires;
     public List<int> OpenedRims;
     public List<int> OpenedSpoilers;
@@ -30,6 +31,7 @@ public class GameData
         this.CarsOpened.Add(this.CurrentCar, true);
         this.CarsColors = new();
         this.CarsColors.Add(this.CurrentCar, "FFFFFFFF");
+        this.CurrentStickerPath = string.Empty;
         this.Costs = new();
         this.Costs.Add("Rim", 1715);
         this.Costs.Add("Tire", 0);

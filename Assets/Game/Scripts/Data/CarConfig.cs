@@ -13,6 +13,7 @@ namespace Assets.Game.Scripts
         [HideInInspector] public int CurrentRim;
         [HideInInspector] public int CurrentSpoiler;
         [HideInInspector] public int CurrentSplitter;
+        [HideInInspector] public string CurrentStickerPath;
         [HideInInspector] public Upgrades CurrentCarUpgrades;
         [HideInInspector] public List<int> Costs;
         [HideInInspector] public SerializableDictionary<string, int> CostsDictionary;
@@ -39,6 +40,7 @@ namespace Assets.Game.Scripts
             CurrentSpoiler = data.CurrentSpoiler;
             CurrentSplitter = data.CurrentSplitter;
             CurrentCarUpgrades = data.CarUpgrades[id];
+            CurrentStickerPath = data.CurrentStickerPath;
 
             MainCarConfig = _mainCarsConfigs.Find(car => car.ID == id);
             VisualCarConfig = _visualCarsConfigs.Find(car => car.ID == id);
@@ -55,6 +57,7 @@ namespace Assets.Game.Scripts
             data.CurrentSplitter = CurrentSplitter;
             data.CarUpgrades[data.CurrentCar] = CurrentCarUpgrades;
             data.Costs = CostsDictionary;
+            data.CurrentStickerPath = CurrentStickerPath;
         }
 
         public CarVisualConfig FindVisualsConfigByID(string id)

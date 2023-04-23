@@ -30,6 +30,7 @@ public class MenuCameraController : MonoCache
 
     public void SetCamera(int value)
     {
+        if (value >= _cameraDataList.Count) value = _cameraDataList.Count - 1;
         SetCameraPosition(_cameraDataList[value]);
     }
 

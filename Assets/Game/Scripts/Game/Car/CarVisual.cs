@@ -14,6 +14,7 @@ namespace Assets.Game.Scripts.Game
         [SerializeField] private SpriteRenderer _carBack;
         [SerializeField] private SpriteRenderer _carElements;
         [SerializeField] private SpriteRenderer _carOptics;
+        [SerializeField] private SpriteRenderer _carSticker;
         [SerializeField] private List<SpriteRenderer> _tires;
         [SerializeField] private List<SpriteRenderer> _rims;
         [SerializeField] private List<SpriteRenderer> _spoilers;
@@ -61,6 +62,7 @@ namespace Assets.Game.Scripts.Game
             _carElements.sprite = _config.VisualCarConfig.ElementsSprite;
             _carOptics.sprite = _config.VisualCarConfig.OpticsSprite;
             _carBase.color = _config.CurrentColor;
+            _carSticker.sprite = StickerUploader.GetSprite(_config.CurrentStickerPath);
             _tires.ForEach(tire => tire.sprite = _config.VisualCarConfig.TiresSprites[_config.CurrentTire]);
             _rims.ForEach(rim => rim.sprite = _config.VisualCarConfig.RimsSprites[_config.CurrentRim]);
             _spoilers.ForEach(spoiler => spoiler.sprite = _config.VisualCarConfig.SpoilersSprites[_config.CurrentSpoiler]);
