@@ -126,6 +126,7 @@ namespace Assets.Game.Scripts.UI
             _rims.ForEach(rim => rim.sprite = _config.VisualCarConfig.RimsSprites[_config.CurrentRim]);
             _spoilers.ForEach(spoiler => spoiler.sprite = _config.VisualCarConfig.SpoilersSprites[_config.CurrentSpoiler]);
             _splitters.ForEach(splitter => splitter.sprite = _config.VisualCarConfig.SplittersSprites[_config.CurrentSplitter]);
+            ChangeCarSticker(StickerUploader.GetSprite(_config.CurrentStickerPath));
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
                 JointSuspension2D susp = wheel.suspension;
