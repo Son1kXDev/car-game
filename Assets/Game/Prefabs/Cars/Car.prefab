@@ -3791,7 +3791,7 @@ GameObject:
   - component: {fileID: 370911088300712673}
   m_Layer: 7
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3889,7 +3889,7 @@ MonoBehaviour:
       Data2: 1139238792
       Data3: -2034515325
       Data4: 295495682
-    Path: event:/LightSwitch
+    Path: event:/Effects/Car/LightSwitch
 --- !u!114 &3969798729054997546
 MonoBehaviour:
   m_ObjectHideFlags: 0

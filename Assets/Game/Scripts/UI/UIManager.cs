@@ -13,13 +13,19 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private TextMeshProUGUI _gearboxData;
         [SerializeField] private TextMeshProUGUI _tachometerData;
         [SerializeField] private List<TextMeshProUGUI> _coinData;
+        [SerializeField] private TextMeshProUGUI _rewardData;
         [SerializeField] private ConfirmationPopup _confirmationPopup;
+        [SerializeField] private RewardPanel _rewardPanel;
+        [SerializeField] private SettingsPanel _settingsPanel;
 
+        private Game.CameraController _cameraController;
 
         private void Awake()
         {
             if (Instance) Destroy(this);
             else Instance = this;
+
+            _cameraController = FindObjectOfType<Game.CameraController>();
         }
 
         public void ButtonMainMenu()
@@ -33,7 +39,7 @@ namespace Assets.Game.Scripts.UI
             Data.DataPersistenceManager.Instance.SaveGame();
             _confirmationPopup.ActivatePopup("Are you sure you want to exit to menu?",
             () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
-            () => Debug.Log("Cancel exit to menu"));
+            () => _settingsPanel.gameObject.SetActive(true));
         }
 
         public void ButtonExit() => Application.Quit();
@@ -93,6 +99,20 @@ namespace Assets.Game.Scripts.UI
             string sprite = $"<sprite index={spriteIndex}>";
             _coinData.ForEach(text => { text.text = $"{value} {sprite}"; });
             _coinData.ForEach(text => { text.color = color; });
+        }
+
+        public void DisplayReward(string rewardLable, string rewardValue)
+        {
+            _rewardData.text = $"+{rewardValue} <sprite index=4>";
+            _rewardPanel.SetRewardData(rewardLable);
+            _rewardPanel.gameObject.SetActive(true);
+        }
+
+        public void DisplayFinish()
+        {
+            _confirmationPopup.ActivatePopup("Congratulations! You have finished this map!",
+            () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
+            () => _cameraController.LockInput(false), "Back to menu", "Continue");
         }
 
         public void ButtonSound(bool value) =>

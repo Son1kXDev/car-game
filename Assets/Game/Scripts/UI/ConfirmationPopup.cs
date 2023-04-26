@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Assets.Game.Scripts.UI
 {
@@ -13,13 +14,20 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private TextMeshProUGUI _displayText;
         [SerializeField] private Button _confirmButton;
         [SerializeField] private Button _cancelButton;
+        [SerializeField] private CanvasGroup _canvasGroup;
 
-        public void ActivatePopup(string displayText, UnityAction confirmAction, UnityAction cancelAction)
+        public void ActivatePopup(string displayText, UnityAction confirmAction, UnityAction cancelAction,
+        string confirmButtonText = "Yes", string cancelButtonText = "No")
         {
+            _canvasGroup.alpha = 0;
             gameObject.SetActive(true);
+            _canvasGroup.DOFade(1, 0.5f).SetLink(gameObject);
             _displayText.text = displayText;
             _confirmButton.onClick.RemoveAllListeners();
             _cancelButton.onClick.RemoveAllListeners();
+
+            _confirmButton.GetComponent<TextMeshProUGUI>().text = confirmButtonText;
+            _cancelButton.GetComponent<TextMeshProUGUI>().text = cancelButtonText;
 
             _confirmButton.onClick.AddListener(() =>
             {
@@ -34,6 +42,12 @@ namespace Assets.Game.Scripts.UI
             });
         }
 
-        private void DeactivatePopup() => gameObject.SetActive(false);
+        private void DeactivatePopup()
+        {
+            _canvasGroup.DOFade(0, 0.5f)
+            .SetLink(gameObject)
+            .OnKill(() => gameObject.SetActive(false));
+        }
+
     }
 }

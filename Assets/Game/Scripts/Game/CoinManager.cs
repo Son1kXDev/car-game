@@ -11,10 +11,10 @@ namespace Assets.Game.Scripts.Game
         [SerializeField] private Color _increaseColor = new(255, 238, 123, 255);
         [SerializeField] private Color _decreaseColor = new(255, 238, 123, 255);
         [SerializeField] private Color _noMoneyColor = Color.red;
-
         private int _coins;
-        private int newCoinsValue;
-        private float _decreaseSpeed;
+        private int _newCoinsValue;
+        private int _maxValue = 999999999;
+        private float _speed;
         private bool _changeCoinValue = false;
         private bool _decrease = false;
         private Color _coinColor = new(255, 238, 123, 255);
@@ -42,9 +42,9 @@ namespace Assets.Game.Scripts.Game
             bool success = _coins >= value;
             if (success)
             {
-                _decreaseSpeed = value * 4;
+                _speed = value * 4;
                 _coinColor = _decreaseColor;
-                newCoinsValue = _coins - value;
+                _newCoinsValue = _coins - value;
                 _changeCoinValue = true;
                 _decrease = true;
                 AudioManager.Instance.PlayOneShot(Audio.Data.Purchase, transform.position);
@@ -62,9 +62,9 @@ namespace Assets.Game.Scripts.Game
         {
             if (!_changeCoinValue) return;
 
-            _coins = (int)Mathf.MoveTowards(_coins, newCoinsValue, _decreaseSpeed * Time.deltaTime);
+            _coins = (int)Mathf.MoveTowards(_coins, _newCoinsValue, _speed * Time.deltaTime);
             UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor, _decrease ? 3 : 4);
-            if (_coins == newCoinsValue)
+            if (_coins == _newCoinsValue)
             {
                 _changeCoinValue = false;
                 _coinColor = _mainColor;
@@ -72,11 +72,20 @@ namespace Assets.Game.Scripts.Game
             }
         }
 
+        //TODO: Fix increase display
         public void IncreaseCoins(int value)
         {
+            AudioManager.Instance.PlayOneShot(Audio.Data.GetMoney, transform.position);
             _changeCoinValue = true;
             _decrease = false;
-            newCoinsValue = _coins + value;
+            _speed = value * 2f;
+            _newCoinsValue = _coins + value;
+            if (_newCoinsValue > _maxValue)
+            {
+                _newCoinsValue = _maxValue;
+                _changeCoinValue = false;
+                return;
+            }
             _coinColor = _increaseColor;
         }
 
@@ -92,7 +101,9 @@ public static class CustomStringFormat
 {
     public static string CoinFormat(float value)
     {
-        if (value > 999) return @"###\.###";
+        if (value > 999999999) return @"###\.###\.###\.###";
+        else if (value > 999999) return @"###\.###\.###";
+        else if (value > 999) return @"###\.###";
         else return "##0";
     }
 }
