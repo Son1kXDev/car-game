@@ -110,9 +110,17 @@ namespace Assets.Game.Scripts.UI
 
         public void DisplayFinish()
         {
+            Game.FinishTrigger finish = FindObjectOfType<Game.FinishTrigger>();
+
             _confirmationPopup.ActivatePopup("Congratulations! You have finished this map!",
             () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
-            () => _cameraController.LockInput(false), "Back to menu", "Continue");
+            () =>
+            {
+                finish.OnContinue();
+                _cameraController.LockInput(false);
+            },
+            "Back to menu",
+            "Continue");
         }
 
         public void ButtonSound(bool value) =>

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using DG.Tweening;
 
 namespace Assets.Game.Scripts.Game
@@ -10,13 +11,16 @@ namespace Assets.Game.Scripts.Game
         [SerializeField] private string _rewardLable;
         [SerializeField] private int _rewardValue = 1000;
         private SpriteRenderer _renderer;
+        private Light2D _light;
         private Material _material;
         private bool _finish = false;
+        private Tween _tween;
 
         private void OnEnable()
         {
             _renderer = GetComponent<SpriteRenderer>();
             _material = _renderer.material;
+            _light = GetComponentInChildren<Light2D>();
 
             DOTween.Sequence()
             .Append(_material.DOOffset(Vector2.down, 2f).SetEase(Ease.Linear))
@@ -34,7 +38,7 @@ namespace Assets.Game.Scripts.Game
             .AppendInterval(2f)
             .AppendCallback(() => CoinManager.Instance.IncreaseCoins(_rewardValue));
 
-            DOTween.Sequence()
+            _tween = DOTween.Sequence()
             .AppendInterval(3f)
             .AppendCallback(() => UI.UIManager.Instance.DisplayFinish())
             .SetLink(gameObject)
@@ -44,6 +48,16 @@ namespace Assets.Game.Scripts.Game
                 controller.LockInput(true);
             });
 
+        }
+
+        public void OnContinue()
+        {
+            _tween.Kill();
+            DOTween.To(() => _light.intensity, x => _light.intensity = x, 0, 1f);
+
+            DOTween.Sequence()
+            .Append(_renderer.DOFade(0, 1f))
+            .OnKill(() => gameObject.SetActive(false));
         }
 
         private void OnTriggerEnter2D(Collider2D other)

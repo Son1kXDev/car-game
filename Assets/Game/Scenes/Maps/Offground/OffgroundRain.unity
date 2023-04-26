@@ -615,8 +615,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _followingTarget: {fileID: 824957331}
-  _parallaxStrengthHorizontal: 0.1
-  _parallaxStrengthVertical: 0.1
+  _parallaxStrengthHorizontal: 1
+  _parallaxStrengthVertical: 1
 --- !u!199 &389323170
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -6399,7 +6399,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1
@@ -11110,8 +11110,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _followingTarget: {fileID: 824957331}
-  _parallaxStrengthHorizontal: 0.1
-  _parallaxStrengthVertical: 0.1
+  _parallaxStrengthHorizontal: 1
+  _parallaxStrengthVertical: 1
 --- !u!1001 &1009261310
 PrefabInstance:
   m_ObjectHideFlags: 0

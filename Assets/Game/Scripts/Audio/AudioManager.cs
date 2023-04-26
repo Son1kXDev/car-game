@@ -2,10 +2,9 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 using System.Collections.Generic;
-using NTC.Global.Cache;
 using System.Collections;
 
-public class AudioManager : MonoCache
+public class AudioManager : MonoBehaviour
 {
     public static AudioManager Instance { get; private set; }
 
@@ -46,7 +45,7 @@ public class AudioManager : MonoCache
         UIVolume = PlayerPrefs.GetFloat("UIVolume", 1);
     }
 
-    protected override void Run()
+    private void Update()
     {
         _masterBus.setVolume(MasterVolume);
         _musicBus.setVolume(MusicVolume);
