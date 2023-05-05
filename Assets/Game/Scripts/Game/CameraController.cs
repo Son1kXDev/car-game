@@ -29,21 +29,25 @@ namespace Assets.Game.Scripts.Game
 
             if (_inputLocked) return;
 
-            if (Input.touchCount == 2)
+            if (Application.platform == RuntimePlatform.Android)
             {
-                Touch touch = Input.GetTouch(0);
-                Touch touch2 = Input.GetTouch(1);
+                if (Input.touchCount == 2)
+                {
+                    Touch touch = Input.GetTouch(0);
+                    Touch touch2 = Input.GetTouch(1);
 
-                Vector2 touchPreviousPosition = touch.position - touch.deltaPosition;
-                Vector2 touch2PreviousPosition = touch2.position - touch2.deltaPosition;
+                    Vector2 touchPreviousPosition = touch.position - touch.deltaPosition;
+                    Vector2 touch2PreviousPosition = touch2.position - touch2.deltaPosition;
 
-                float previousMagnitude = (touchPreviousPosition - touch2PreviousPosition).magnitude;
-                float currentMagnitude = (touch.position - touch2.position).magnitude;
+                    float previousMagnitude = (touchPreviousPosition - touch2PreviousPosition).magnitude;
+                    float currentMagnitude = (touch.position - touch2.position).magnitude;
 
-                float difference = currentMagnitude - previousMagnitude;
+                    float difference = currentMagnitude - previousMagnitude;
 
-                Zoom(difference * 0.001f * _zoomStep);
+                    Zoom(difference * 0.001f * _zoomStep);
+                }
             }
+            else Zoom(Input.GetAxis("Mouse ScrollWheel") * _zoomStep);
 
         }
 

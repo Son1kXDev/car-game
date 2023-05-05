@@ -14565,6 +14565,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 52994880}
+        m_TargetAssemblyTypeName: Assets.Game.Scripts.Game.CameraController, Game
+        m_MethodName: LockInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &608989851
 GameObject:
   m_ObjectHideFlags: 0
@@ -30245,6 +30257,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 52994880}
+        m_TargetAssemblyTypeName: Assets.Game.Scripts.Game.CameraController, Game
+        m_MethodName: LockInput
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1372779955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36667,7 +36691,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 50
   m_Viewport: {fileID: 2123655812}
   m_HorizontalScrollbar: {fileID: 1743421767}
   m_VerticalScrollbar: {fileID: 1140104078}
@@ -37475,7 +37499,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1421408261}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -43560,6 +43584,7 @@ MonoBehaviour:
   _rewardData: {fileID: 0}
   _confirmationPopup: {fileID: 0}
   _rewardPanel: {fileID: 0}
+  _settingsPanel: {fileID: 0}
 --- !u!4 &2028634965
 Transform:
   m_ObjectHideFlags: 0

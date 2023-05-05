@@ -1,5 +1,8 @@
 using System.IO;
 using UnityEngine;
+#if !UNITY_ANDROID
+using AnotherFileBrowser.Windows;
+#endif
 using Utils.Debugger;
 
 public class FileManager : MonoBehaviour
@@ -17,11 +20,9 @@ public class FileManager : MonoBehaviour
 
     public void LoadFile(System.Action<string> callback, System.Action<bool> success)
     {
-#if UNITY_ANDROID && !UNITY_EDITOR
+#if UNITY_ANDROID
         string FileType = "image/*";
-#else
-        string FileType = NativeFilePicker.ConvertExtensionToFileType("image/*");
-#endif
+
         NativeFilePicker.Permission permission = NativeFilePicker.PickFile((path) =>
         {
             if (path == null) success.Invoke(false);
@@ -33,6 +34,19 @@ public class FileManager : MonoBehaviour
                 success.Invoke(true);
             }
         }, new string[] { FileType });
+#else
+        var bp = new BrowserProperties();
+        bp.filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+        bp.filterIndex = 0;
+
+        new FileBrowser().OpenFileBrowser(bp, path =>
+        {
+            _path = path;
+            SaveLoadedFile();
+            callback.Invoke(LocalPath);
+            success.Invoke(true);
+        });
+#endif
     }
 
     public void SaveLoadedFile()

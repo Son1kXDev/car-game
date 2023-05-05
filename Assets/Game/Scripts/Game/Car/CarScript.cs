@@ -79,24 +79,6 @@ namespace Assets.Game.Scripts.Game
             _engineSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         }
 
-        private void PCControll()
-        {
-            if (Input.GetKey(KeyCode.D))
-            {
-                ButtonMove(true);
-                _moveDirection = 1f;
-            }
-            if (Input.GetKeyUp(KeyCode.D)) ButtonMove(false);
-            if (Input.GetKey(KeyCode.A))
-            {
-                ButtonMove(true);
-                _moveDirection = -1f;
-            }
-            if (Input.GetKeyUp(KeyCode.A)) ButtonMove(true);
-            if (Input.GetKey(KeyCode.Space)) ButtonBrake(true);
-            if (Input.GetKeyUp(KeyCode.Space)) ButtonBrake(false);
-        }
-
         public float MoveAxis()
         {
             if (_move) return _moveDirection;
@@ -204,7 +186,6 @@ namespace Assets.Game.Scripts.Game
             Speedometer();
             Gearbox();
             Tachometer();
-            PCControll();
             _engineSoundInstance.setParameterByName("RPM", Mathf.Abs(Mathf.Round(_backWheel.motorSpeed)));
         }
 

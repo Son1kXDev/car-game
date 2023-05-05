@@ -112,6 +112,7 @@ namespace Assets.Game.Scripts.UI
         {
             Game.FinishTrigger finish = FindObjectOfType<Game.FinishTrigger>();
 
+            Data.DataPersistenceManager.Instance.SaveGame();
             _confirmationPopup.ActivatePopup("Congratulations! You have finished this map!",
             () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
             () =>
