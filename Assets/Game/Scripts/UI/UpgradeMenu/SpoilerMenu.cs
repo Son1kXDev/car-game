@@ -13,6 +13,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private Transform _propertyField;
         [SerializeField] private ScrollRect _scroll;
         [SerializeField] private List<GameObject> _spoilers;
+        [SerializeField] private ActionButton _actionButton;
 
         private CarConfig _carConfig;
         private CarInfo _carInfo;
@@ -63,21 +64,20 @@ namespace Assets.Game.Scripts.UI
                 }
             }
 
-            Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
             if (_carConfig.CurrentSpoiler == _selectedID)
-            {
-                actionButton.interactable = false;
-                actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Selected";
-            }
+                _actionButton.ButtonSetActive(ActionButtonType.Selected);
             else
             {
-                actionButton.interactable = true;
-                actionButton.GetComponent<Image>().color = new(255, 255, 255, 255);
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = hasSpoiler ? "Apply" : "Buy";
-                actionButton.onClick.RemoveAllListeners();
-                if (hasSpoiler) actionButton.onClick.AddListener(() => ApplySelectedSpoiler());
-                else actionButton.onClick.AddListener(() => BuySelectedSpoiler());
+                if (hasSpoiler)
+                {
+                    _actionButton.ButtonSetActive(ActionButtonType.Apply);
+                    _actionButton.UpdateAction(() => ApplySelectedSpoiler());
+                }
+                else
+                {
+                    _actionButton.ButtonSetActive(ActionButtonType.Buy);
+                    _actionButton.UpdateAction(() => BuySelectedSpoiler());
+                }
             }
         }
 
@@ -86,10 +86,8 @@ namespace Assets.Game.Scripts.UI
             if (CoinManager.Instance.DecreaseCoins(_currentCost))
             {
                 _openedSpoilers.Add(_selectedID);
-                Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Apply";
-                actionButton.onClick.RemoveAllListeners();
-                actionButton.onClick.AddListener(() => ApplySelectedSpoiler());
+                _actionButton.ButtonSetActive(ActionButtonType.Apply);
+                _actionButton.UpdateAction(() => ApplySelectedSpoiler());
                 DataPersistenceManager.Instance.SaveGame();
             }
         }
@@ -97,10 +95,7 @@ namespace Assets.Game.Scripts.UI
         public void ApplySelectedSpoiler()
         {
             _car.SetSpoiler(_selectedID);
-            Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
-            actionButton.interactable = false;
-            actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
-            actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Selected";
+            _actionButton.ButtonSetActive(ActionButtonType.Selected);
             if (_carConfig.CostsDictionary.ContainsKey("Spoiler"))
                 _carConfig.CostsDictionary.Remove("Spoiler");
             _carConfig.CostsDictionary.Add("Spoiler", _currentCost);

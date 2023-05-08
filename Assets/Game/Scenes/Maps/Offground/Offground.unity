@@ -11949,6 +11949,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _versionDataText: {fileID: 0}
+  _localString:
+    m_TableReference:
+      m_TableCollectionName: 
+    m_TableEntryReference:
+      m_KeyId: 0
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  references:
+    version: 2
+    RefIds: []
 --- !u!1001 &1723054898
 PrefabInstance:
   m_ObjectHideFlags: 0

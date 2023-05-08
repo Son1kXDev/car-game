@@ -13,6 +13,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private Transform _propertyField;
         [SerializeField] private ScrollRect _scroll;
         [SerializeField] private List<GameObject> _splitters;
+        [SerializeField] private ActionButton _actionButton;
 
         private CarConfig _carConfig;
         private CarInfo _carInfo;
@@ -63,21 +64,20 @@ namespace Assets.Game.Scripts.UI
                 }
             }
 
-            Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
             if (_carConfig.CurrentSplitter == _selectedID)
-            {
-                actionButton.interactable = false;
-                actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Selected";
-            }
+                _actionButton.ButtonSetActive(ActionButtonType.Selected);
             else
             {
-                actionButton.interactable = true;
-                actionButton.GetComponent<Image>().color = new(255, 255, 255, 255);
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = hasSplitter ? "Apply" : "Buy";
-                actionButton.onClick.RemoveAllListeners();
-                if (hasSplitter) actionButton.onClick.AddListener(() => ApplySelectedSplitter());
-                else actionButton.onClick.AddListener(() => BuySelectedSplitter());
+                if (hasSplitter)
+                {
+                    _actionButton.ButtonSetActive(ActionButtonType.Apply);
+                    _actionButton.UpdateAction(() => ApplySelectedSplitter());
+                }
+                else
+                {
+                    _actionButton.ButtonSetActive(ActionButtonType.Buy);
+                    _actionButton.UpdateAction(() => BuySelectedSplitter());
+                }
             }
         }
 
@@ -86,10 +86,8 @@ namespace Assets.Game.Scripts.UI
             if (CoinManager.Instance.DecreaseCoins(_currentCost))
             {
                 _openedSplitters.Add(_selectedID);
-                Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Apply";
-                actionButton.onClick.RemoveAllListeners();
-                actionButton.onClick.AddListener(() => ApplySelectedSplitter());
+                _actionButton.ButtonSetActive(ActionButtonType.Apply);
+                _actionButton.UpdateAction(() => ApplySelectedSplitter());
                 DataPersistenceManager.Instance.SaveGame();
             }
         }
@@ -97,10 +95,7 @@ namespace Assets.Game.Scripts.UI
         public void ApplySelectedSplitter()
         {
             _car.SetSplitter(_selectedID);
-            Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
-            actionButton.interactable = false;
-            actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
-            actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Selected";
+            _actionButton.ButtonSetActive(ActionButtonType.Selected);
             if (_carConfig.CostsDictionary.ContainsKey("Splitter"))
                 _carConfig.CostsDictionary.Remove("Splitter");
             _carConfig.CostsDictionary.Add("Splitter", _currentCost);

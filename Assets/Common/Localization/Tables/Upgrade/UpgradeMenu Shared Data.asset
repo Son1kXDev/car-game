@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UpgradeMenu Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: UpgradeMenu
+  m_TableCollectionNameGuidString: d2af380e6358c83438e574af6aeca696
+  m_Entries:
+  - m_Id: 64143777792
+    m_Key: cost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 138794000384
+    m_Key: Splitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 311490273280
+    m_Key: Spoiler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342159024128
+    m_Key: Tires
+    m_Metadata:
+      m_Items: []
+  - m_Id: 366888640512
+    m_Key: Rims
+    m_Metadata:
+      m_Items: []
+  - m_Id: 396919857152
+    m_Key: Painting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437185175552
+    m_Key: Sticker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 469896552448
+    m_Key: Engine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 500431085568
+    m_Key: Gearbox
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544420945920
+    m_Key: Suspension
+    m_Metadata:
+      m_Items: []
+  - m_Id: 630987186176
+    m_Key: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 663564345344
+    m_Key: Selected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 706480463872
+    m_Key: Apply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776173019136
+    m_Key: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812512468992
+    m_Key: Load image
+    m_Metadata:
+      m_Items: []
+  - m_Id: 962295259136
+    m_Key: suspension_stiffness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1051608768512
+    m_Key: suspension_height
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10084801601536
+    m_Key: Weight
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10180251377664
+    m_Key: Strenght
+    m_Metadata:
+      m_Items: []
+  - m_Id: 29570699124736
+    m_Key: upgrades count
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1903955212080775170
+  references:
+    version: 2
+    RefIds:
+    - rid: 1903955212080775170
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1683558921522
