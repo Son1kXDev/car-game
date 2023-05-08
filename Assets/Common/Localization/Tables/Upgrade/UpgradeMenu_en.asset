@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UpgradeMenu_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d2af380e6358c83438e574af6aeca696, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 1903955212080775175
+  m_TableData:
+  - m_Id: 64143777792
+    m_Localized: 'Cost: {0} <sprite index=1>'
+    m_Metadata:
+      m_Items:
+      - rid: 1903955212080775175
+  - m_Id: 138794000384
+    m_Localized: Splitter
+    m_Metadata:
+      m_Items: []
+  - m_Id: 311490273280
+    m_Localized: Spoiler
+    m_Metadata:
+      m_Items: []
+  - m_Id: 342159024128
+    m_Localized: Tires
+    m_Metadata:
+      m_Items: []
+  - m_Id: 366888640512
+    m_Localized: Rims
+    m_Metadata:
+      m_Items: []
+  - m_Id: 396919857152
+    m_Localized: Painting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 437185175552
+    m_Localized: Sticker
+    m_Metadata:
+      m_Items: []
+  - m_Id: 469896552448
+    m_Localized: Engine
+    m_Metadata:
+      m_Items: []
+  - m_Id: 500431085568
+    m_Localized: Gearbox
+    m_Metadata:
+      m_Items: []
+  - m_Id: 544420945920
+    m_Localized: Suspension
+    m_Metadata:
+      m_Items: []
+  - m_Id: 630987186176
+    m_Localized: Buy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 663564345344
+    m_Localized: Selected
+    m_Metadata:
+      m_Items: []
+  - m_Id: 706480463872
+    m_Localized: Apply
+    m_Metadata:
+      m_Items: []
+  - m_Id: 776173019136
+    m_Localized: Upgrade
+    m_Metadata:
+      m_Items: []
+  - m_Id: 812512468992
+    m_Localized: Load Image
+    m_Metadata:
+      m_Items: []
+  - m_Id: 962295259136
+    m_Localized: stiffness
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1051608768512
+    m_Localized: height
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10084801601536
+    m_Localized: '{0} kg'
+    m_Metadata:
+      m_Items:
+      - rid: 1903955212080775175
+  - m_Id: 10180251377664
+    m_Localized: '{0} HP'
+    m_Metadata:
+      m_Items:
+      - rid: 1903955212080775175
+  - m_Id: 29570699124736
+    m_Localized: '{0} upgrades'
+    m_Metadata:
+      m_Items:
+      - rid: 1903955212080775175
+  references:
+    version: 2
+    RefIds:
+    - rid: 1903955212080775175
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 006044ef0e0000000060040d2c0900000060444642090000006004f7e41a0000

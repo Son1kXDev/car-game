@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Shared
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Shared
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 24cd8e15235f35746a9bea784f425254
+  m_SerializeEntries:
+  - m_GUID: 909f127c89b31054b8d3f701a9333d98
+    m_Address: Assets/Common/Localization/Tables/MainMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: 7455204db6487a5488efc4b504487b17
+    m_Address: Assets/Common/Localization/Tables/Settings Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: d01d0fe81e0873248973a43bb5dababa
+    m_Address: Assets/Common/Localization/Tables/Garage/GarageMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: d2af380e6358c83438e574af6aeca696
+    m_Address: Assets/Common/Localization/Tables/Upgrade/UpgradeMenu Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  - m_GUID: b596519559a7f6f4fb70d4fd9ddda951
+    m_Address: Assets/Common/Localization/Tables/MapSelector/MapSelector Shared Data.asset
+    m_ReadOnly: 1
+    m_SerializedLabels: []
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: a1c291c147184654198d565d681f8e93, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4e962453bdc24434fa0d10badb75374d, type: 2}
+    - {fileID: 11400000, guid: 7d85e9c4f8a8d984fb0acc137c6bb66f, type: 2}

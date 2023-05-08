@@ -12,6 +12,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private Transform _propertyField;
         [SerializeField] private ScrollRect _scroll;
         [SerializeField] private List<GameObject> _rims;
+        [SerializeField] private ActionButton _actionButton;
         private CarConfig _carConfig;
         private CarInfo _carInfo;
         private MenuCar _car;
@@ -60,21 +61,20 @@ namespace Assets.Game.Scripts.UI
                 }
             }
 
-            Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
             if (_carConfig.CurrentRim == _selectedID)
-            {
-                actionButton.interactable = false;
-                actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Selected";
-            }
+                _actionButton.ButtonSetActive(ActionButtonType.Selected);
             else
             {
-                actionButton.interactable = true;
-                actionButton.GetComponent<Image>().color = new(255, 255, 255, 255);
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = hasRim ? "Apply" : "Buy";
-                actionButton.onClick.RemoveAllListeners();
-                if (hasRim) actionButton.onClick.AddListener(() => ApplySelectedRim());
-                else actionButton.onClick.AddListener(() => BuySelectedRim());
+                if (hasRim)
+                {
+                    _actionButton.ButtonSetActive(ActionButtonType.Apply);
+                    _actionButton.UpdateAction(() => ApplySelectedRim());
+                }
+                else
+                {
+                    _actionButton.ButtonSetActive(ActionButtonType.Buy);
+                    _actionButton.UpdateAction(() => BuySelectedRim());
+                }
             }
         }
 
@@ -83,10 +83,8 @@ namespace Assets.Game.Scripts.UI
             if (CoinManager.Instance.DecreaseCoins(_currentCost))
             {
                 _openedRims.Add(_selectedID);
-                Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Apply";
-                actionButton.onClick.RemoveAllListeners();
-                actionButton.onClick.AddListener(() => ApplySelectedRim());
+                _actionButton.ButtonSetActive(ActionButtonType.Apply);
+                _actionButton.UpdateAction(() => ApplySelectedRim());
                 DataPersistenceManager.Instance.SaveGame();
             }
         }
@@ -94,10 +92,7 @@ namespace Assets.Game.Scripts.UI
         public void ApplySelectedRim()
         {
             _car.SetRim(_selectedID);
-            Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
-            actionButton.interactable = false;
-            actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
-            actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Selected";
+            _actionButton.ButtonSetActive(ActionButtonType.Selected);
             if (_carConfig.CostsDictionary.ContainsKey("Rim"))
                 _carConfig.CostsDictionary.Remove("Rim");
             _carConfig.CostsDictionary.Add("Rim", _currentCost);

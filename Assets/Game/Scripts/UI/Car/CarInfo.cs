@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Localization;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Game.Scripts.UI
 {
@@ -11,24 +14,46 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private TextMeshProUGUI _weight;
         [SerializeField] private TextMeshProUGUI _strength;
         [SerializeField] private TextMeshProUGUI _costText;
+        [SerializeField] private LocalizedString _localCost;
+        [SerializeField] private LocalizedString _localWeight;
+        [SerializeField] private LocalizedString _localStrength;
 
         private Coroutine _updateCostData;
-
         private int _cost = 0;
-
         private CarConfig _carConfig;
 
-        private void Start()
+        private IEnumerator Start()
         {
-            _carConfig = FindObjectOfType<CarConfig>();
+            while (_carConfig == null)
+            {
+                _carConfig = FindObjectOfType<CarConfig>();
+                yield return null;
+            }
+            _localCost.Arguments = new object[] { _cost.ToString(@"###\.###") };
+            _localCost.StringChanged += UpdateCostData;
+            _localWeight.Arguments = new object[] { _carConfig.VisualCarConfig.Weight.ToString() };
+            _localWeight.StringChanged += UpdateWeightData;
+            _localStrength.Arguments = new object[] { _carConfig.VisualCarConfig.Strength.ToString() };
+            _localStrength.StringChanged += UpdateStrengthData;
+            SceneManager.activeSceneChanged += SceneChanged;
+            yield return new WaitForEndOfFrame();
             UpdateDisplayData(true);
+        }
+
+        private void SceneChanged(Scene oldScene, Scene newScene)
+        {
+            _localCost.StringChanged -= UpdateCostData;
+            _localWeight.StringChanged -= UpdateWeightData;
+            _localStrength.StringChanged -= UpdateStrengthData;
         }
 
         public void UpdateDisplayData(bool instant = false)
         {
             _name.text = _carConfig.VisualCarConfig.Name;
-            _weight.text = _carConfig.VisualCarConfig.Weight.ToString() + " kg";
-            _strength.text = _carConfig.VisualCarConfig.Strength.ToString() + " HP";
+            _localWeight.Arguments[0] = _carConfig.VisualCarConfig.Weight.ToString();
+            _localStrength.Arguments[0] = _carConfig.VisualCarConfig.Strength.ToString();
+            _localWeight.RefreshString();
+            _localStrength.RefreshString();
             int cashCost = _cost;
             _cost = (int)_carConfig.VisualCarConfig.Cost;
             int newCost = _cost;
@@ -39,6 +64,10 @@ namespace Assets.Game.Scripts.UI
             _updateCostData = StartCoroutine(UpdateCostData(newCost, speed));
         }
 
+        private void UpdateCostData(string value) => _costText.text = value;
+        private void UpdateWeightData(string value) => _weight.text = value;
+        private void UpdateStrengthData(string value) => _strength.text = value;
+
         private IEnumerator UpdateCostData(int newCost, float speed)
         {
             int previousCost = _cost;
@@ -46,9 +75,12 @@ namespace Assets.Game.Scripts.UI
             while (previousCost != newCost)
             {
                 previousCost = (int)Mathf.MoveTowards(previousCost, newCost, speed * Time.deltaTime);
-                _costText.text = $"Cost {previousCost.ToString(@"###\.###")} <sprite index=1>";
+                _localCost.Arguments[0] = previousCost.ToString(@"###\.###");
+                _localCost.RefreshString();
                 yield return null;
             }
+            _localCost.Arguments[0] = _cost.ToString(@"###\.###");
+            _localCost.RefreshString();
         }
     }
 }

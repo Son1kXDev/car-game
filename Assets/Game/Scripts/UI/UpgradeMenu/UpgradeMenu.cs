@@ -14,7 +14,12 @@ public class UpgradeMenu : MonoBehaviour
     [SerializeField] private ScrollRect _scroll;
     private int _currentElement = 0;
 
-    void OnEnable() => MoveTo(PlayerPrefs.GetInt("UpgradeMenuPosition", 0));
+    void OnEnable()
+    {
+        Assets.Game.Scripts.UI.CarInfo _carInfo = FindObjectOfType<Assets.Game.Scripts.UI.CarInfo>(true);
+        _carInfo.UpdateDisplayData(true);
+        MoveTo(PlayerPrefs.GetInt("UpgradeMenuPosition", 0));
+    }
 
 
     public void MoveTo(int position)

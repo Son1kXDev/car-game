@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MapSelector_ru
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: ru
+  m_SharedData: {fileID: 11400000, guid: b596519559a7f6f4fb70d4fd9ddda951, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 1903955212080775181
+  m_TableData:
+  - m_Id: 138986938368
+    m_Localized: "\u0412\u044B\u0431\u043E\u0440 \u043A\u0430\u0440\u0442\u044B"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 187393400832
+    m_Localized: "\u0418\u0433\u0440\u0430\u0442\u044C"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 228162035712
+    m_Localized: "\u0414\u043B\u0438\u043D\u0430: {0}"
+    m_Metadata:
+      m_Items:
+      - rid: 1903955212080775181
+  - m_Id: 316171116544
+    m_Localized: "\u0420\u043E\u0432\u043D\u043E\u0441\u0442\u044C: {0}"
+    m_Metadata:
+      m_Items:
+      - rid: 1903955212080775181
+  references:
+    version: 2
+    RefIds:
+    - rid: 1903955212080775181
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 0060841f350000000060449d49000000

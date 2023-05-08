@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Localization;
 using TMPro;
 using Assets.Game.Scripts;
 using Assets.Game.Scripts.Game;
@@ -12,6 +13,7 @@ namespace Assets.Game.Scripts.UI
     {
         [SerializeField] private int _maxUpgrades = 10;
         [SerializeField] private TextMeshProUGUI _upgradeText;
+        [SerializeField] private LocalizedString _upgradeString;
         [SerializeField] private TextMeshProUGUI _costText;
         [SerializeField] private Button _upgradeButton;
         [SerializeField] private List<int> _costs;
@@ -26,6 +28,8 @@ namespace Assets.Game.Scripts.UI
         {
             _carConfig = FindFirstObjectByType<CarConfig>();
             _carInfo = FindObjectOfType<CarInfo>(true);
+            _upgradeString.Arguments = new object[] { $"{_currentUpgrade}/{_maxUpgrades}" };
+            _upgradeString.StringChanged += UpdateUpgradeText;
             _currentUpgrade = _carConfig.CurrentCarUpgrades.EngineMultiplier switch
             {
                 1f => 0,
@@ -49,9 +53,12 @@ namespace Assets.Game.Scripts.UI
                 _upgradeButton.gameObject.SetActive(false);
             }
             _cost = _costs[_currentUpgrade];
-            _upgradeText.text = $"{_currentUpgrade}/{_maxUpgrades} upgrades";
+            _upgradeString.Arguments[0] = $"{_currentUpgrade}/{_maxUpgrades}";
+            _upgradeString.RefreshString();
             _costText.text = _cost.ToString(CustomStringFormat.CoinFormat(_cost)) + " <sprite index=1>";
         }
+
+        private void UpdateUpgradeText(string value) => _upgradeText.text = value;
 
         public void Upgrade()
         {
@@ -76,7 +83,8 @@ namespace Assets.Game.Scripts.UI
                         _ => 0
                     };
                     _cost = _costs[_currentUpgrade];
-                    _upgradeText.text = $"{_currentUpgrade}/{_maxUpgrades} upgrades";
+                    _upgradeString.Arguments[0] = $"{_currentUpgrade}/{_maxUpgrades}";
+                    _upgradeString.RefreshString();
                     _costText.text = _cost.ToString(CustomStringFormat.CoinFormat(_cost)) + " <sprite index=1>";
                     if (_currentUpgrade == 10)
                     {

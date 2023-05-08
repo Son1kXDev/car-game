@@ -13,6 +13,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private Transform _propertyField;
         [SerializeField] private ScrollRect _scroll;
         [SerializeField] private List<GameObject> _tires;
+        [SerializeField] private ActionButton _actionButton;
 
         private CarConfig _carConfig;
         private CarInfo _carInfo;
@@ -63,21 +64,20 @@ namespace Assets.Game.Scripts.UI
                 }
             }
 
-            Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
             if (_carConfig.CurrentTire == _selectedID)
-            {
-                actionButton.interactable = false;
-                actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Selected";
-            }
+                _actionButton.ButtonSetActive(ActionButtonType.Selected);
             else
             {
-                actionButton.interactable = true;
-                actionButton.GetComponent<Image>().color = new(255, 255, 255, 255);
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = hasTire ? "Apply" : "Buy";
-                actionButton.onClick.RemoveAllListeners();
-                if (hasTire) actionButton.onClick.AddListener(() => ApplySelectedTire());
-                else actionButton.onClick.AddListener(() => BuySelectedTire());
+                if (hasTire)
+                {
+                    _actionButton.ButtonSetActive(ActionButtonType.Apply);
+                    _actionButton.UpdateAction(() => ApplySelectedTire());
+                }
+                else
+                {
+                    _actionButton.ButtonSetActive(ActionButtonType.Buy);
+                    _actionButton.UpdateAction(() => BuySelectedTire());
+                }
             }
         }
 
@@ -86,10 +86,8 @@ namespace Assets.Game.Scripts.UI
             if (CoinManager.Instance.DecreaseCoins(_currentCost))
             {
                 _openedTires.Add(_selectedID);
-                Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
-                actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Apply";
-                actionButton.onClick.RemoveAllListeners();
-                actionButton.onClick.AddListener(() => ApplySelectedTire());
+                _actionButton.ButtonSetActive(ActionButtonType.Apply);
+                _actionButton.UpdateAction(() => ApplySelectedTire());
                 DataPersistenceManager.Instance.SaveGame();
             }
         }
@@ -97,10 +95,7 @@ namespace Assets.Game.Scripts.UI
         public void ApplySelectedTire()
         {
             _car.SetTire(_selectedID);
-            Button actionButton = _propertyField.Find("ActionButton").GetComponent<Button>();
-            actionButton.interactable = false;
-            actionButton.GetComponent<Image>().color = new(255, 255, 255, 0);
-            actionButton.transform.Find("Lable").GetComponent<TextMeshProUGUI>().text = "Selected";
+            _actionButton.ButtonSetActive(ActionButtonType.Selected);
             if (_carConfig.CostsDictionary.ContainsKey("Tire"))
                 _carConfig.CostsDictionary.Remove("Tire");
             _carConfig.CostsDictionary.Add("Tire", _currentCost);
