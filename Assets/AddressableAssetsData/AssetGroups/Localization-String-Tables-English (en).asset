@@ -23,12 +23,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en
     - Preload
-  - m_GUID: 634cc85cc1ba6ea4b80602bd7f92ba88
-    m_Address: Settings_en
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-en
-    - Preload
   - m_GUID: d948cc9c4102afa499acd90af773aa19
     m_Address: GarageMenu_en
     m_ReadOnly: 1
@@ -43,6 +37,18 @@ MonoBehaviour:
     - Preload
   - m_GUID: 982341ef2f0bb864a85f48ec93788494
     m_Address: MapSelector_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 040bbf51deffe9740a7a04887f4e78a3
+    m_Address: SettingsMenu_en
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en
+    - Preload
+  - m_GUID: 678c1e5ce93669d4687a6442d0f9f1f5
+    m_Address: Other_en
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-en

@@ -8,7 +8,7 @@ namespace Assets.Game.Scripts.Game
     [RequireComponent(typeof(SpriteRenderer), typeof(Collider2D))]
     public class FinishTrigger : MonoBehaviour
     {
-        [SerializeField] private string _rewardLable;
+        [SerializeField] private LanguageLocalizedString _rewardLabel;
         [SerializeField] private int _rewardValue = 1000;
         private SpriteRenderer _renderer;
         private Light2D _light;
@@ -32,7 +32,10 @@ namespace Assets.Game.Scripts.Game
         {
             _finish = true;
             AudioManager.Instance.PlayOneShot(Audio.Data.Finish, transform.position);
-            UI.UIManager.Instance.DisplayReward(_rewardLable, _rewardValue.ToString(CustomStringFormat.CoinFormat(_rewardValue)));
+
+            string rewardLabel = Localization.GetCurrentLanguage() == Lang.English ? _rewardLabel.EN : _rewardLabel.RU;
+
+            UI.UIManager.Instance.DisplayReward(rewardLabel, _rewardValue.ToString(CustomStringFormat.CoinFormat(_rewardValue)));
 
             DOTween.Sequence()
             .AppendInterval(2f)

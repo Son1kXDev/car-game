@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: SettingsMenu_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: d991c30af6d17244baec5e7d40f2c30b, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 268964225024
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 486837346304
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 521704595456
+    m_Localized: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 563727327232
+    m_Localized: Effects
+    m_Metadata:
+      m_Items: []
+  - m_Id: 588276588544
+    m_Localized: 'Ambient
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 609294245888
+    m_Localized: Interface
+    m_Metadata:
+      m_Items: []
+  - m_Id: 752424869888
+    m_Localized: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 783659851776
+    m_Localized: russian
+    m_Metadata:
+      m_Items: []
+  - m_Id: 916451516416
+    m_Localized: english
+    m_Metadata:
+      m_Items: []
+  - m_Id: 7611353423872
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

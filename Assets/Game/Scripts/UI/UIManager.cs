@@ -37,7 +37,9 @@ namespace Assets.Game.Scripts.UI
         public void ButtonMenu()
         {
             Data.DataPersistenceManager.Instance.SaveGame();
-            _confirmationPopup.ActivatePopup("Are you sure you want to exit to menu?",
+            string displayText = Localization.GetCurrentLanguage() == Lang.English ?
+            "Are you sure you want to exit to menu?" : "Вы уверены что хотите выйти в меню?";
+            _confirmationPopup.ActivatePopup(displayText,
             () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
             () => _settingsPanel.gameObject.SetActive(true));
         }
@@ -48,7 +50,10 @@ namespace Assets.Game.Scripts.UI
         {
             if (Data.DataPersistenceManager.Instance.SaveFileExist())
             {
-                _confirmationPopup.ActivatePopup("Are you sure you want to overwrite the current save? All progress made will be lost.",
+                string displayText = Localization.GetCurrentLanguage() == Lang.English ?
+                "Are you sure you want to overwrite the current save? All progress made will be lost." :
+                "Вы уверены что хотите перезаписать текущее сохранение? Весь прогресс будет потерян.";
+                _confirmationPopup.ActivatePopup(displayText,
                     () => LoadNewGame(),
                     () => Debug.Log("Cancel overwriting savefile"));
             }
@@ -113,15 +118,25 @@ namespace Assets.Game.Scripts.UI
             Game.FinishTrigger finish = FindObjectOfType<Game.FinishTrigger>();
 
             Data.DataPersistenceManager.Instance.SaveGame();
-            _confirmationPopup.ActivatePopup("Congratulations! You have finished this map!",
+
+            string displayText = Localization.GetCurrentLanguage() == Lang.English ?
+            "Congratulations! You have finished this map!" : "Поздравляем! Вы прошли карту!";
+
+            string yesButtonText = Localization.GetCurrentLanguage() == Lang.English ?
+            "Back to menu" : "Назад в меню";
+
+            string noButtonText = Localization.GetCurrentLanguage() == Lang.English ?
+            "Continue" : "Продолжить";
+
+            _confirmationPopup.ActivatePopup(displayText,
             () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
             () =>
             {
                 finish.OnContinue();
                 _cameraController.LockInput(false);
             },
-            "Back to menu",
-            "Continue");
+            yesButtonText,
+            noButtonText);
         }
 
         public void ButtonSound(bool value) =>

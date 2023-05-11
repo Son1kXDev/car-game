@@ -77330,6 +77330,15 @@ PrefabInstance:
       propertyPath: _rewardValue
       value: 7500
       objectReference: {fileID: 0}
+    - target: {fileID: 5224082206003260676, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
+      propertyPath: _rewardLabel.EN
+      value: Checkpoint #4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224082206003260676, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
+      propertyPath: _rewardLabel.RU
+      value: "\u041A\u043E\u043D\u0442\u0440\u043E\u043B\u044C\u043D\u0430\u044F
+        \u0442\u043E\u0447\u043A\u0430 #4"
+      objectReference: {fileID: 0}
     - target: {fileID: 5224082206003260687, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
       propertyPath: m_Name
       value: Checkpoint (3)
@@ -77396,6 +77405,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6671552852779115188, guid: 56e6d0157ee72db4188ef2b32c236432, type: 3}
+      propertyPath: _rewardLabel.EN
+      value: Finish
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671552852779115188, guid: 56e6d0157ee72db4188ef2b32c236432, type: 3}
+      propertyPath: _rewardLabel.RU
+      value: "\u0424\u0438\u043D\u0438\u0448"
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56e6d0157ee72db4188ef2b32c236432, type: 3}
 --- !u!4 &3355968623263491134 stripped
@@ -77457,6 +77474,15 @@ PrefabInstance:
     - target: {fileID: 5224082206003260672, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224082206003260676, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
+      propertyPath: _rewardLabel.EN
+      value: Checkpoint #1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224082206003260676, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
+      propertyPath: _rewardLabel.RU
+      value: "\u041A\u043E\u043D\u0442\u0440\u043E\u043B\u044C\u043D\u0430\u044F
+        \u0442\u043E\u0447\u043A\u0430 #1"
       objectReference: {fileID: 0}
     - target: {fileID: 5224082206003260687, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
       propertyPath: m_Name
@@ -77527,6 +77553,15 @@ PrefabInstance:
     - target: {fileID: 5224082206003260676, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
       propertyPath: _rewardValue
       value: 2500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224082206003260676, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
+      propertyPath: _rewardLabel.EN
+      value: Checkpoint #2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224082206003260676, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
+      propertyPath: _rewardLabel.RU
+      value: "\u041A\u043E\u043D\u0442\u0440\u043E\u043B\u044C\u043D\u0430\u044F
+        \u0442\u043E\u0447\u043A\u0430 #2"
       objectReference: {fileID: 0}
     - target: {fileID: 5224082206003260687, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
       propertyPath: m_Name
@@ -89056,23 +89091,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6830908423820987598, guid: 918894ebb6d7cfd4194d1b63b340e5b7, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.90089995
+      value: 0.6294522
       objectReference: {fileID: 0}
     - target: {fileID: 6830908423820987598, guid: 918894ebb6d7cfd4194d1b63b340e5b7, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.90089995
+      value: 0.6294522
       objectReference: {fileID: 0}
     - target: {fileID: 6830908423820987598, guid: 918894ebb6d7cfd4194d1b63b340e5b7, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.9009
+      value: 0.6294522
       objectReference: {fileID: 0}
     - target: {fileID: 6830908423820987598, guid: 918894ebb6d7cfd4194d1b63b340e5b7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 156.53775
+      value: 156.664
       objectReference: {fileID: 0}
     - target: {fileID: 6830908423820987598, guid: 918894ebb6d7cfd4194d1b63b340e5b7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.7156124
+      value: -3.796
       objectReference: {fileID: 0}
     - target: {fileID: 6830908423820987598, guid: 918894ebb6d7cfd4194d1b63b340e5b7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -89589,6 +89624,15 @@ PrefabInstance:
     - target: {fileID: 5224082206003260676, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
       propertyPath: _rewardValue
       value: 4000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224082206003260676, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
+      propertyPath: _rewardLabel.EN
+      value: Checkpoint #3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224082206003260676, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
+      propertyPath: _rewardLabel.RU
+      value: "\u041A\u043E\u043D\u0442\u0440\u043E\u043B\u044C\u043D\u0430\u044F
+        \u0442\u043E\u0447\u043A\u0430 #3"
       objectReference: {fileID: 0}
     - target: {fileID: 5224082206003260687, guid: 5c52f7889b217c54d87e7991a9e40a1b, type: 3}
       propertyPath: m_Name

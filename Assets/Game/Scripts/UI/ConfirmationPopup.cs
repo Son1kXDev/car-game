@@ -17,8 +17,15 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private CanvasGroup _canvasGroup;
 
         public void ActivatePopup(string displayText, UnityAction confirmAction, UnityAction cancelAction,
-        string confirmButtonText = "Yes", string cancelButtonText = "No")
+        string confirmButtonText = "1", string cancelButtonText = "0")
         {
+
+            if (confirmButtonText == "1")
+                confirmButtonText = Localization.GetCurrentLanguage() == Lang.English ? "Yes" : "Да";
+
+            if (cancelButtonText == "0")
+                cancelButtonText = Localization.GetCurrentLanguage() == Lang.English ? "No" : "Нет";
+
             _canvasGroup.alpha = 0;
             gameObject.SetActive(true);
             _canvasGroup.DOFade(1, 0.5f).SetLink(gameObject);

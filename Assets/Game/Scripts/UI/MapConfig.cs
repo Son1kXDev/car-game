@@ -10,22 +10,28 @@ public class MapConfig : ScriptableObject
     [SerializeField] private Sprite _image;
     [SerializeField] private MapLength _length;
     [SerializeField] private FlatnessType _flatness;
-    [SerializeField, TextArea] private string _description;
+    [SerializeField] private Description _description;
 
     public int SceneID => this._id;
     public string Name => this._name;
     public Sprite Image => this._image;
     public MapLength Length => this._length;
     public FlatnessType Flatness => this._flatness;
-    public string Description => this._description;
+    public Description Description => this._description;
+
 }
 
-public enum FlatnessType
+[System.Serializable]
+public class Description
 {
-    awful, bad, normal, good, flat
+    [TextArea] public string EN;
+    [TextArea] public string RU;
 }
 
-public enum MapLength
-{
-    tiny, small, medium, big, large, humongous
-}
+public enum FlatnessType { awful, bad, normal, good, flat }
+
+public enum FlatnessTypeRU { ужасная, плохая, нормальная, хорошая, плоская }
+
+public enum MapLength { tiny, small, medium, big, large, humongous }
+
+public enum MapLengthRU { крошечная, маленькая, средняя, большая, крупная, огромная }

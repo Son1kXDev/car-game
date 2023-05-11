@@ -264,8 +264,8 @@ MonoBehaviour:
   m_text: Are you sure you want to overwrite the current save? All progress made
     will be lost.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 75a2108790027bb428d80537463b3f34, type: 2}
+  m_sharedMaterial: {fileID: 2968067575009182976, guid: 75a2108790027bb428d80537463b3f34, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

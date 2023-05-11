@@ -72,7 +72,6 @@ namespace Assets.Game.Scripts.Game
             }
         }
 
-        //TODO: Fix increase display
         public void IncreaseCoins(int value)
         {
             AudioManager.Instance.PlayOneShot(Audio.Data.GetMoney, transform.position);

@@ -47,11 +47,19 @@ namespace Assets.Game.Scripts.UI
             StartCoroutine(_scroll.FocusOnItemCoroutine(_maps[id].GetComponent<RectTransform>(), 1.5f));
 
             _propertyField.Find("Name").GetComponent<TextMeshProUGUI>().text = _maps[id].Config.Name;
-            _length.Arguments[0] = _maps[id].Config.Length.ToString();
+            string length = Localization.GetCurrentLanguage() == Lang.English ?
+            _maps[id].Config.Length.ToString() : ((MapLengthRU)_maps[id].Config.Length).ToString();
+            _length.Arguments[0] = length;
             _length.RefreshString();
-            _flatness.Arguments[0] = _maps[id].Config.Flatness.ToString();
+
+            string flatness = Localization.GetCurrentLanguage() == Lang.English ?
+            _maps[id].Config.Length.ToString() : ((FlatnessTypeRU)_maps[id].Config.Flatness).ToString();
+            _flatness.Arguments[0] = flatness;
             _flatness.RefreshString();
-            _propertyField.Find("Stat").Find("Description").GetComponent<TextMeshProUGUI>().text = _maps[id].Config.Description;
+
+            _propertyField.Find("Stat").Find("Description").GetComponent<TextMeshProUGUI>().text =
+            Localization.GetCurrentLanguage() == Lang.English ?
+            _maps[id].Config.Description.EN : _maps[id].Config.Description.RU;
 
             int mapID = _maps[id].Config.SceneID;
 

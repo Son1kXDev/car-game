@@ -13,9 +13,14 @@ MonoBehaviour:
   m_Name: OffgroudNight
   m_EditorClassIdentifier: 
   _id: 4
-  _name: Offground (Night)
+  _name: Offground Night
   _image: {fileID: 21300000, guid: 4fde1e6cb60ee374fb07cd3a475e624e, type: 3}
   _length: 3
   _flatness: 1
-  _description: Nature + some planks. Use the headlights to see the track. Should
-    be funny...
+  _description:
+    EN: Nature + some planks. Use the headlights to see the track. Should be funny...
+    RU: "\u041F\u0440\u0438\u0440\u043E\u0434\u0430 \u0438 \u043D\u0435\u043C\u043D\u043E\u0433\u043E
+      \u0434\u043E\u0441\u043E\u043A. \u0418\u0441\u043F\u043E\u043B\u044C\u0437\u0443\u0439\u0442\u0435
+      \u0444\u0430\u0440\u044B \u0447\u0442\u043E\u0431\u044B \u0443\u0432\u0438\u0434\u0435\u0442\u044C
+      \u0434\u043E\u0440\u043E\u0433\u0443. \u0414\u043E\u043B\u0436\u043D\u043E
+      \u0431\u044B\u0442\u044C \u0432\u0435\u0441\u0435\u043B\u043E..."

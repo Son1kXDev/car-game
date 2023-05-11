@@ -23,12 +23,6 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ru
     - Preload
-  - m_GUID: 7fe733c693850cc4e9afd09ce819e074
-    m_Address: Settings_ru
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru
-    - Preload
   - m_GUID: a4ab192685160324cbc272c76dbbd26c
     m_Address: GarageMenu_ru
     m_ReadOnly: 1
@@ -43,6 +37,18 @@ MonoBehaviour:
     - Preload
   - m_GUID: 17f269669675ffc4dbcfe9841e21c7d7
     m_Address: MapSelector_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    - Preload
+  - m_GUID: aa5c49280a7df8e4397a7a6e5c053fb5
+    m_Address: SettingsMenu_ru
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ru
+    - Preload
+  - m_GUID: 9e6b87bcb1d6e6149922cc40755cf6ba
+    m_Address: Other_ru
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ru
