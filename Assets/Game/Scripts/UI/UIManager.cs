@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization.Custom;
 using TMPro;
 using Utils.Debugger;
 using System.Collections.Generic;

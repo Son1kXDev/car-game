@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Localization.Custom;
 using UnityEngine.Rendering.Universal;
 using DG.Tweening;
 
@@ -8,7 +9,7 @@ namespace Assets.Game.Scripts.Game
     [RequireComponent(typeof(SpriteRenderer), typeof(Collider2D))]
     public class FinishTrigger : MonoBehaviour
     {
-        [SerializeField] private LanguageLocalizedString _rewardLabel;
+        [SerializeField] private LocalizedString _rewardLabel;
         [SerializeField] private int _rewardValue = 1000;
         private SpriteRenderer _renderer;
         private Light2D _light;

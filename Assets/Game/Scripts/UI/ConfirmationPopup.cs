@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.Localization.Custom;
 using DG.Tweening;
 
 namespace Assets.Game.Scripts.UI

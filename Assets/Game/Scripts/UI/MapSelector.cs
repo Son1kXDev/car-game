@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Localization;
+using UnityEngine.Localization.Custom;
 using UnityEngine.UI;
 
 namespace Assets.Game.Scripts.UI
@@ -10,8 +11,8 @@ namespace Assets.Game.Scripts.UI
     public class MapSelector : MonoBehaviour
     {
         [SerializeField] private Transform _propertyField;
-        [SerializeField] private LocalizedString _length;
-        [SerializeField] private LocalizedString _flatness;
+        [SerializeField] private UnityEngine.Localization.LocalizedString _length;
+        [SerializeField] private UnityEngine.Localization.LocalizedString _flatness;
         [SerializeField] private ScrollRect _scroll;
         [SerializeField] private List<MapData> _maps;
         [SerializeField] private Button _playButton;

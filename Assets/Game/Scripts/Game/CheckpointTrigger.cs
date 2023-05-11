@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.Localization.Custom;
 using DG.Tweening;
 using FMODUnity;
 
@@ -11,7 +12,7 @@ namespace Assets.Game.Scripts.Game
     [RequireComponent(typeof(SpriteRenderer), typeof(Collider2D), typeof(StudioEventEmitter))]
     public class CheckpointTrigger : MonoBehaviour
     {
-        [SerializeField] private LanguageLocalizedString _rewardLabel;
+        [SerializeField] private LocalizedString _rewardLabel;
         [SerializeField] private int _rewardValue = 1000;
         private SpriteRenderer _renderer;
         private bool _checkpoint = false;
