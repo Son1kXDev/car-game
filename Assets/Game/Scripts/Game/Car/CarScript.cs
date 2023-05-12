@@ -111,26 +111,31 @@ namespace Assets.Game.Scripts.Game
 
             if (MoveAxis() > 0)
             {
-                _backWheelRigidbody.AddTorque(-MoveAxis() * _carAsset.ForwardMoveForce * Time.fixedDeltaTime);
-                _frontWheelRigidbody.AddTorque(-MoveAxis() * _carAsset.ForwardMoveForce * Time.fixedDeltaTime);
-                _carRigidbody.AddTorque(MoveAxis() * _carAsset.ForwardMoveForce / 2 * Time.fixedDeltaTime);
+                _backWheelRigidbody.AddTorque(-MoveAxis() * _carAsset.ForwardMoveForce * _upgrades.EngineMultiplier * Time.fixedDeltaTime);
+                _frontWheelRigidbody.AddTorque(-MoveAxis() * _carAsset.ForwardMoveForce * _upgrades.EngineMultiplier * Time.fixedDeltaTime);
+                _carRigidbody.AddTorque(MoveAxis() * _carAsset.ForwardMoveForce / 2 * _upgrades.EngineMultiplier * Time.fixedDeltaTime);
             }
             else if (MoveAxis() < 0)
             {
-                _backWheelRigidbody.AddTorque(-MoveAxis() * _carAsset.BackMoveForce * Time.fixedDeltaTime);
-                _frontWheelRigidbody.AddTorque(-MoveAxis() * _carAsset.BackMoveForce * Time.fixedDeltaTime);
-                _carRigidbody.AddTorque(MoveAxis() * _carAsset.BackMoveForce / 2 * Time.fixedDeltaTime);
+                _backWheelRigidbody.AddTorque(-MoveAxis() * _carAsset.BackMoveForce * _upgrades.EngineMultiplier * Time.fixedDeltaTime);
+                _frontWheelRigidbody.AddTorque(-MoveAxis() * _carAsset.BackMoveForce * _upgrades.EngineMultiplier * Time.fixedDeltaTime);
+                _carRigidbody.AddTorque(MoveAxis() * _carAsset.BackMoveForce / 2 * _upgrades.EngineMultiplier * Time.fixedDeltaTime);
             }
             if (_brake)
             {
-                if (Mathf.Abs(_backWheelRigidbody.angularVelocity) > 50)
+                if (Mathf.Abs(_carRigidbody.velocity.magnitude) > 10)
                 {
                     _backWheelRigidbody.angularVelocity =
-                    Mathf.Lerp(_backWheelRigidbody.angularVelocity, 0, _carAsset.BrakeForce * Time.fixedDeltaTime);
+                    Mathf.Lerp(_backWheelRigidbody.angularVelocity, 0,
+                    _carAsset.BrakeForce * _upgrades.BreakForceMultiplier * Time.fixedDeltaTime);
+
                     _frontWheelRigidbody.angularVelocity =
-                    Mathf.Lerp(_frontWheelRigidbody.angularVelocity, 0, _carAsset.BrakeForce * Time.fixedDeltaTime);
+                    Mathf.Lerp(_frontWheelRigidbody.angularVelocity, 0,
+                    _carAsset.BrakeForce * _upgrades.BreakForceMultiplier * Time.fixedDeltaTime);
+
                     _carRigidbody.angularVelocity =
-                    Mathf.Lerp(_carRigidbody.angularVelocity, 0, _carAsset.BrakeForce * Time.fixedDeltaTime);
+                    Mathf.Lerp(_carRigidbody.angularVelocity, 0,
+                    _carAsset.BrakeForce * _upgrades.BreakForceMultiplier * Time.fixedDeltaTime);
                 }
                 else if (_wheelJoints[0].useMotor == false)
                 {

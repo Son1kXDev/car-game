@@ -67,7 +67,7 @@ namespace Assets.Game.Scripts.UI
                 if (CoinManager.Instance.DecreaseCoins(_cost))
                 {
                     _currentUpgrade++;
-                    _carConfig.CurrentCarUpgrades.EngineMultiplier = _carConfig.CurrentCarUpgrades.AccelerationMultiplier = _currentUpgrade switch
+                    _carConfig.CurrentCarUpgrades.EngineMultiplier = _currentUpgrade switch
                     {
                         0 => 1f,
                         1 => 1.1f,
