@@ -94,7 +94,7 @@ namespace Assets.Game.Scripts.UI
                 _gearboxData.text = value;
         }
 
-        public void DisplayTachometer(string value)
+        public void DisplayTemperature(string value)
         {
             if (_tachometerData != null)
                 _tachometerData.text = value;

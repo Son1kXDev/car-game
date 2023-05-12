@@ -14,18 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp:Assets.Game.Scripts:Car
   _id: 7042cd7a-5792-4ce9-a3d4-41851cbc94c8
   _acceleration: 500
-  _maxSpeed: 800
-  _maxBackSpeed: 600
-  _brakeForce: 1000
-  _airBrakeForce: 500
+  _moveForce: 500
+  _brakeForce: 500
+  _airBrakeForce: 250
   _gearBrakeForce: 80
   _wheelSize: 0.13
+  _defaultSuspensionFrequency: 4
+  _defaultSuspensionHeight: -0.219
   _gearType: 2
-  _gearsMaxSpeed: 9001000020030000b0040000dc050000d007000098080000
-  _maximumMotorForces:
-  - 2.5
-  - 2.25
-  - 2
-  - 1.85
-  - 1.5
-  - 1.25
