@@ -94,10 +94,13 @@ namespace Assets.Game.Scripts.UI
                 _gearboxData.text = value;
         }
 
-        public void DisplayTemperature(string value)
+        public void DisplayTemperature(string value, Color color)
         {
             if (_tachometerData != null)
+            {
                 _tachometerData.text = value;
+                _tachometerData.color = color;
+            }
         }
 
         public void DisplayCoins(string value, Color color, int spriteIndex = 0)

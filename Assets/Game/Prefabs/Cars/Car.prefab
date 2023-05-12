@@ -3811,7 +3811,6 @@ Transform:
   - {fileID: 3969798729716605662}
   - {fileID: 3969798730014013448}
   - {fileID: 3969798729526795294}
-  - {fileID: 4146273307258433593}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3837,10 +3836,8 @@ MonoBehaviour:
   CurrentStickerPath: 
   CurrentCarUpgrades:
     EngineMultiplier: 1
-    AccelerationMultiplier: 1
-    MaxSpeedMultiplier: 1
+    MoveForceMultiplier: 1
     BreakForceMultiplier: 1
-    GearSwitchMultiplier: 1
     SuspensionFrequencyMultiplier: 1
     SuspensionHeightMultiplier: 1
   Costs: 
@@ -3907,6 +3904,8 @@ MonoBehaviour:
     m_Bits: 1280
   _wheel: {fileID: 3969798729716605662}
   _carAsset: {fileID: 11400000, guid: c52d6c2378ac17a448c09ccc0838017a, type: 2}
+  _backWheelRigidbody: {fileID: 3969798729716605659}
+  _frontWheelRigidbody: {fileID: 3969798730014013445}
 --- !u!50 &3969798728195611006
 Rigidbody2D:
   serializedVersion: 4
@@ -3923,7 +3922,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: f5758dced2d29a64fbde54de9f099c61, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -3937,7 +3936,7 @@ WheelJoint2D:
   m_GameObject: {fileID: 3969798728195611004}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 3969798729716605659}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -3961,7 +3960,7 @@ WheelJoint2D:
   m_GameObject: {fileID: 3969798728195611004}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 3969798730014013445}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -3985,7 +3984,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 3969798728195611004}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f5758dced2d29a64fbde54de9f099c61, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -4521,7 +4520,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 1f8637ff0e01dfb40afb76b3123d45fe, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -4730,7 +4729,7 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 1f8637ff0e01dfb40afb76b3123d45fe, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -9349,88 +9348,3 @@ MonoBehaviour:
   - {x: 0.4157348, y: -0.27778515, z: 0}
   - {x: 0.46193978, y: -0.19134171, z: 0}
   - {x: 0.49039266, y: -0.09754512, z: 0}
---- !u!1 &8939272350994952385
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4146273307258433593}
-  - component: {fileID: 7868862085105952127}
-  m_Layer: 12
-  m_Name: Wheel Frame
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4146273307258433593
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8939272350994952385}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3969798728195611007}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &7868862085105952127
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8939272350994952385}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6ceccd0f863efcf4c8cf36d8f14a7b5a, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.54823494, y: -0.005236864}
-      - {x: 0.33863306, y: -0.012205601}
-      - {x: -0.25525928, y: -0.010983229}
-      - {x: -0.59537244, y: -0.009726524}
-      - {x: -0.6483731, y: -0.23646879}
-      - {x: -0.6091504, y: -0.24149346}
-      - {x: -0.5994468, y: -0.16043234}
-      - {x: -0.5656471, y: -0.09457803}
-      - {x: -0.52519894, y: -0.053457737}
-      - {x: -0.4814961, y: -0.035241365}
-      - {x: -0.42566013, y: -0.030662298}
-      - {x: -0.3622396, y: -0.043565273}
-      - {x: -0.31556368, y: -0.07208848}
-      - {x: -0.28681207, y: -0.10622835}
-      - {x: -0.25969696, y: -0.1690898}
-      - {x: -0.251117, y: -0.24522471}
-      - {x: 0.28899026, y: -0.24735975}
-      - {x: 0.30182576, y: -0.16301894}
-      - {x: 0.32381272, y: -0.10701609}
-      - {x: 0.36062717, y: -0.06581855}
-      - {x: 0.4051926, y: -0.03854394}
-      - {x: 0.47958678, y: -0.027631015}
-      - {x: 0.53123, y: -0.040110826}
-      - {x: 0.5647798, y: -0.05789721}
-      - {x: 0.61822367, y: -0.10994506}
-      - {x: 0.64282465, y: -0.24573898}
-      - {x: 0.6828383, y: -0.23661447}
-      - {x: 0.6646712, y: -0.07960898}

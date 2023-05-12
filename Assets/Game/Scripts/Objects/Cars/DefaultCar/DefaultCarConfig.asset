@@ -13,11 +13,9 @@ MonoBehaviour:
   m_Name: DefaultCarConfig
   m_EditorClassIdentifier: Assembly-CSharp:Assets.Game.Scripts:Car
   _id: 7042cd7a-5792-4ce9-a3d4-41851cbc94c8
-  _acceleration: 500
-  _moveForce: 500
-  _brakeForce: 500
-  _airBrakeForce: 250
-  _gearBrakeForce: 80
+  _forwardMoveForce: 50
+  _backMoveForce: 10
+  _brakeForce: 5
   _wheelSize: 0.13
   _defaultSuspensionFrequency: 4
   _defaultSuspensionHeight: -0.219

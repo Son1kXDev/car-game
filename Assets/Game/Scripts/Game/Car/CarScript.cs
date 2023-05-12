@@ -17,12 +17,11 @@ namespace Assets.Game.Scripts.Game
 
         private float _moveDirection = 1f;
         private float _motorTemperature = 80f;
+        private float _speedOnKmh;
         private bool _grounded;
-        private bool _changingGear;
         private bool _brake;
         private bool _move;
         private WheelJoint2D[] _wheelJoints;
-        private JointMotor2D _frontWheel, _backWheel;
         private Rigidbody2D _carRigidbody;
         private CarVisual _carVisual;
         private Upgrades _upgrades;
@@ -64,13 +63,15 @@ namespace Assets.Game.Scripts.Game
 
         private void Speedometer()
         {
-            float speedOnKmh;
             float speedOnMph;
 
-            speedOnKmh = _carRigidbody.velocity.magnitude * 7.2f;
-            speedOnMph = speedOnKmh * 0.62f;
+            _speedOnKmh = _carRigidbody.velocity.magnitude * 7.2f;
+            speedOnMph = _speedOnKmh * 0.62f;
 
-            UI.UIManager.Instance.DisplaySpeedometer($"{Mathf.Round(speedOnKmh)} km/h");
+            //TODO: Add settings to speedometer format
+            bool useMph = false;
+            float speed = useMph ? speedOnMph : _speedOnKmh;
+            UI.UIManager.Instance.DisplaySpeedometer($"{Mathf.Round(speed)} km/h");
         }
         private void Temperature()
         {
@@ -78,7 +79,15 @@ namespace Assets.Game.Scripts.Game
                 _motorTemperature = Mathf.Clamp(_motorTemperature + Time.deltaTime / 2, 80, 110);
             else _motorTemperature = Mathf.Clamp(_motorTemperature - Time.deltaTime / 4, 80, 110);
 
-            UI.UIManager.Instance.DisplayTemperature($"{Mathf.Round(_motorTemperature)} C\u00B0");
+            Color textColor = Color.white;
+            if (_motorTemperature > 90) textColor = Color.yellow;
+            if (_motorTemperature > 100) textColor = Color.red;
+
+            //TODO: Add settings to degrees display format
+            bool useFahrenheit = false;
+            float value = useFahrenheit ? _motorTemperature * 9 / 5 + 32 : _motorTemperature;
+            string degrees = useFahrenheit ? " F\u00B0" : " C\u00B0";
+            UI.UIManager.Instance.DisplayTemperature(Mathf.Round(value) + degrees, textColor);
         }
         private void Gearbox() { UI.UIManager.Instance.DisplayGearbox(_moveDirection > 0 ? "D" : "R"); }
 
@@ -93,7 +102,8 @@ namespace Assets.Game.Scripts.Game
             Speedometer();
             Gearbox();
             Temperature();
-            _engineSoundInstance.setParameterByName("RPM", Mathf.Abs(Mathf.Round(_backWheel.motorSpeed)));
+
+            _engineSoundInstance.setParameterByName("RPM", Mathf.Round(_speedOnKmh));
         }
 
         protected override void LateRun()
@@ -107,7 +117,6 @@ namespace Assets.Game.Scripts.Game
             if (!Data.DataPersistenceManager.Loaded) return;
 
             _grounded = Physics2D.OverlapCircle(_wheel.transform.position, _carAsset.WheelSize, _ground);
-            if (!_grounded) return;
 
             if (MoveAxis() > 0)
             {
@@ -121,37 +130,25 @@ namespace Assets.Game.Scripts.Game
                 _frontWheelRigidbody.AddTorque(-MoveAxis() * _carAsset.BackMoveForce * _upgrades.EngineMultiplier * Time.fixedDeltaTime);
                 _carRigidbody.AddTorque(MoveAxis() * _carAsset.BackMoveForce / 2 * _upgrades.EngineMultiplier * Time.fixedDeltaTime);
             }
+
             if (_brake)
             {
-                if (Mathf.Abs(_carRigidbody.velocity.magnitude) > 10)
+                if (_speedOnKmh > 5)
                 {
                     _backWheelRigidbody.angularVelocity =
-                    Mathf.Lerp(_backWheelRigidbody.angularVelocity, 0,
+                    Mathf.LerpAngle(_backWheelRigidbody.angularVelocity, 0,
                     _carAsset.BrakeForce * _upgrades.BreakForceMultiplier * Time.fixedDeltaTime);
 
                     _frontWheelRigidbody.angularVelocity =
-                    Mathf.Lerp(_frontWheelRigidbody.angularVelocity, 0,
-                    _carAsset.BrakeForce * _upgrades.BreakForceMultiplier * Time.fixedDeltaTime);
-
-                    _carRigidbody.angularVelocity =
-                    Mathf.Lerp(_carRigidbody.angularVelocity, 0,
+                    Mathf.LerpAngle(_frontWheelRigidbody.angularVelocity, 0,
                     _carAsset.BrakeForce * _upgrades.BreakForceMultiplier * Time.fixedDeltaTime);
                 }
-                else if (_wheelJoints[0].useMotor == false)
+                else if (_grounded)
                 {
                     _backWheelRigidbody.angularVelocity = 0;
                     _frontWheelRigidbody.angularVelocity = 0;
                     _carRigidbody.angularVelocity = 0;
-                    _backWheel.motorSpeed = 0;
-                    _frontWheel.motorSpeed = 0;
-                    _wheelJoints[0].useMotor = true;
-                    _wheelJoints[1].useMotor = true;
                 }
-            }
-            else if (_wheelJoints[0].useMotor == true)
-            {
-                _wheelJoints[0].useMotor = false;
-                _wheelJoints[1].useMotor = false;
             }
         }
 
