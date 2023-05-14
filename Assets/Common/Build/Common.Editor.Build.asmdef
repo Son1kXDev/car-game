@@ -1,0 +1,16 @@
+{
+    "name": "Common.Build",
+    "rootNamespace": "",
+    "references": [
+        "GUID:39c0d61f6d23e4f4b9e8e6a7ad72d2bc"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,3 +1,5 @@
+#if UNITY_EDITOR
+
 using UnityEditor;
 using UnityEditor.Build;
 using UnityEditor.Build.Reporting;
@@ -51,8 +53,13 @@ public class BuildProcessing : IPreprocessBuildWithReport, IPostprocessBuildWith
     private void ExportVersionFile(string outputPath)
     {
         string buildPath = new FileInfo(outputPath).Directory.FullName;
-        string versionPath = Path.Combine(buildPath, "Version.txt");
+        string versionPath = Path.Combine(buildPath, "version.json");
 
-        File.WriteAllText(versionPath, PlayerSettings.bundleVersion);
+        UpdateData data = new UpdateData(PlayerSettings.bundleVersion, "https://enjine.online/offroaded#download");
+        string json = JsonUtility.ToJson(data);
+
+        File.WriteAllText(versionPath, json);
     }
 }
+#endif
+

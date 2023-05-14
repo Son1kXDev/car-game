@@ -1,0 +1,16 @@
+{
+    "name": "Data.Update",
+    "rootNamespace": "",
+    "references": [
+        "GUID:f7d3f4bfdbd35a049b89f0c16583a111"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

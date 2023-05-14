@@ -1,3 +1,4 @@
+using System.Net;
 using UnityEngine;
 using UnityEngine.Localization.Custom;
 using TMPro;
@@ -136,8 +137,29 @@ namespace Assets.Game.Scripts.UI
                 finish.OnContinue();
                 _cameraController.LockInput(false);
             },
-            yesButtonText,
-            noButtonText);
+            yesButtonText, noButtonText);
+        }
+
+        public void DisplayUpdatePopup(string downloadURL)
+        {
+            string displayText = Localization.GetCurrentLanguage() == Lang.English ?
+            "New update available! Click \"Download\" to install it now!" :
+            "Новое обновление доступно! Нажмите \"Скачать\" чтобы установить его сейчас!";
+
+            string yesButtonText = Localization.GetCurrentLanguage() == Lang.English ?
+            "Download" : "Скачать";
+
+            string noButtonText = Localization.GetCurrentLanguage() == Lang.English ?
+            "Remind me later" : "Напомнить позже";
+
+            _confirmationPopup.ActivatePopup(displayText,
+            () =>
+            {
+                Application.OpenURL(downloadURL);
+                Application.Quit();
+            },
+            () => Debug.Log("Update canceled"),
+            yesButtonText, noButtonText);
         }
 
         public void ButtonSound(bool value) =>

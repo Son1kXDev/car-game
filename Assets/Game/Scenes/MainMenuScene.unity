@@ -11213,6 +11213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1445451611}
   - component: {fileID: 1445451612}
+  - component: {fileID: 1445451613}
   m_Layer: 0
   m_Name: Version
   m_TagString: Untagged
@@ -11260,6 +11261,19 @@ MonoBehaviour:
   references:
     version: 2
     RefIds: []
+--- !u!114 &1445451613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445451610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edd9cc92ed54cab41b1789ea3c9726fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jsonURL: https://enjine.online/games/offroaded/version.json
 --- !u!1 &1449850813
 GameObject:
   m_ObjectHideFlags: 0
