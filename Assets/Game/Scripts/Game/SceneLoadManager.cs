@@ -1,3 +1,4 @@
+using System.Net.Mime;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,9 @@ public class SceneLoadManager : MonoBehaviour
             Instance = this;
             if (transform.parent != null)
                 transform.parent = null;
+            Application.targetFrameRate = 120; // -1
+            QualitySettings.vSyncCount = 0; // 1
+            //QualitySettings.antiAliasing 0 2 4 8
             DontDestroyOnLoad(gameObject);
         }
     }
