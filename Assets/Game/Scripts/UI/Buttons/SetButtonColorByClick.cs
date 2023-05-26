@@ -28,12 +28,8 @@ public class SetButtonColorByClick : MonoBehaviour
     }
 
     public void OnPointUp()
-    {
-        _image.color = _normalColor;
-    }
+    { _image.color = _normalColor; }
 
     public void OnPointDown()
-    {
-        _image.color = _clickedColor;
-    }
+    { _image.color = _clickedColor; }
 }

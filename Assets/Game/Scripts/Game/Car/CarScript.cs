@@ -71,12 +71,21 @@ namespace Assets.Game.Scripts.Game
             }
             _engineSoundInstance = AudioManager.Instance.CreateEventInstance(Audio.Data.Engine);
             _engineSoundInstance.start();
+
+            GlobalEventManager.Instance.OnGearButtonPressed += SwitchGear;
+            GlobalEventManager.Instance.OnBrakeButtonPressed += ButtonBrake;
+            GlobalEventManager.Instance.OnGasButtonPressed += Move;
+
             StartCoroutine(ChangeGear());
         }
 
-        void OnDestroy()
+        private void OnDestroy()
         {
             _engineSoundInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+
+            GlobalEventManager.Instance.OnGearButtonPressed -= SwitchGear;
+            GlobalEventManager.Instance.OnBrakeButtonPressed -= ButtonBrake;
+            GlobalEventManager.Instance.OnGasButtonPressed -= Move;
         }
 
         public float MoveAxis()
@@ -264,31 +273,28 @@ namespace Assets.Game.Scripts.Game
 
         public void ButtonBrake(bool value) => _brake = value;
 
-        public void SwitchDirection()
+        private void SwitchGear(bool value)
         {
-            _moveDirection *= -1f;
-            AudioManager.Instance.PlayOneShot(Audio.Data.GearSwitch, transform.position);
+            _switchGear = value;
+            if (_switchGear)
+            {
+                _moveDirection *= -1f;
+                AudioManager.Instance.PlayOneShot(Audio.Data.GearSwitch, transform.position);
+            }
         }
 
-        public void ButtonSwitchGear(bool value) => _switchGear = value;
-
-
-        public void ButtonMove(bool value) => _move = value;
+        public void Move(bool value) => _move = value;
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            if (_carAsset != null) Gizmos.DrawWireSphere(_wheel.transform.position, _carAsset.WheelSize);
+            Gizmos.DrawWireSphere(_wheel.transform.position, _carAsset != null ? _carAsset.WheelSize : 0);
         }
 
         public void LoadData(GameData data)
-        {
-            _upgrades = data.CarUpgrades[data.CurrentCar];
-        }
+        { _upgrades = data.CarUpgrades[data.CurrentCar]; }
 
-        public void SaveData(GameData data)
-        {
-        }
+        public void SaveData(GameData data) { }
     }
 }
 

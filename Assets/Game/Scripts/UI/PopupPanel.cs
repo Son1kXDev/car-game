@@ -8,7 +8,7 @@ using DG.Tweening;
 namespace Assets.Game.Scripts.UI
 {
     [RequireComponent(typeof(CanvasGroup))]
-    public class SettingsPanel : MonoBehaviour
+    public class PopupPanel : MonoBehaviour
     {
         private CanvasGroup _canvasGroup;
 

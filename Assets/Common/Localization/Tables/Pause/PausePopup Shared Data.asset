@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: PausePopup Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: PausePopup
+  m_TableCollectionNameGuidString: 9a2df016f800a944ba148c2300c0c2cc
+  m_Entries:
+  - m_Id: 42450837504
+    m_Key: Label
+    m_Metadata:
+      m_Items: []
+  - m_Id: 279319961600
+    m_Key: Continue Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 322525487104
+    m_Key: Settings Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 368922877952
+    m_Key: Quit Button
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1105123893248
+    m_Key: Offground/====UI====/[UI] Interface/PausePopup/Popup/Lable
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 1903955622889259010
+  references:
+    version: 2
+    RefIds:
+    - rid: 1903955622889259010
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1685126049047

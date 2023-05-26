@@ -18,9 +18,10 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private TextMeshProUGUI _rewardData;
         [SerializeField] private ConfirmationPopup _confirmationPopup;
         [SerializeField] private RewardPanel _rewardPanel;
-        [SerializeField] private SettingsPanel _settingsPanel;
-
+        [SerializeField] private PopupPanel _settingsPanel, _pausePanel;
+        private PopupBackground _popupBackground;
         private Game.CameraController _cameraController;
+        private bool _wasPaused;
 
         private void Awake()
         {
@@ -30,20 +31,24 @@ namespace Assets.Game.Scripts.UI
             _cameraController = FindObjectOfType<Game.CameraController>();
         }
 
+        private void Start()
+        {
+            GlobalEventManager.Instance.OnPauseButtonPressed += DisplayPausePopup;
+            GlobalEventManager.Instance.OnSettingsButtonPressed += DisplaySettingsPopup;
+            GlobalEventManager.Instance.OnGarageMenuButtonPressed += DisplayGarageMenuExitConfirmation;
+        }
+
+        private void OnDestroy()
+        {
+            GlobalEventManager.Instance.OnPauseButtonPressed -= DisplayPausePopup;
+            GlobalEventManager.Instance.OnSettingsButtonPressed -= DisplaySettingsPopup;
+            GlobalEventManager.Instance.OnGarageMenuButtonPressed -= DisplayGarageMenuExitConfirmation;
+        }
+
         public void ButtonMainMenu()
         {
             Data.DataPersistenceManager.Instance.SaveGame();
             SceneLoadManager.Instance.LoadScene("MainMenuScene");
-        }
-
-        public void ButtonMenu()
-        {
-            Data.DataPersistenceManager.Instance.SaveGame();
-            string displayText = Localization.GetCurrentLanguage() == Lang.English ?
-            "Are you sure you want to exit to menu?" : "Вы уверены что хотите выйти в меню?";
-            _confirmationPopup.ActivatePopup(displayText,
-            () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
-            () => _settingsPanel.gameObject.SetActive(true));
         }
 
         public void ButtonExit() => Application.Quit();
@@ -142,6 +147,7 @@ namespace Assets.Game.Scripts.UI
 
         public void DisplayUpdatePopup(string downloadURL)
         {
+            _popupBackground.gameObject.SetActive(true);
             string displayText = Localization.GetCurrentLanguage() == Lang.English ?
             "New update available! Click \"Download\" to install it now!" :
             "Новое обновление доступно! Нажмите \"Скачать\" чтобы установить его сейчас!";
@@ -160,6 +166,47 @@ namespace Assets.Game.Scripts.UI
             },
             () => Debug.Log("Update canceled"),
             yesButtonText, noButtonText);
+        }
+
+        public void DisplayPausePopup(bool enabled)
+        {
+            if (enabled) _pausePanel.gameObject.SetActive(true);
+            else _pausePanel.Disable();
+
+            ButtonSound(true);
+        }
+
+        public void DisplaySettingsPopup(bool enabled)
+        {
+            if (enabled)
+            {
+                if (_pausePanel != null && _pausePanel.gameObject.activeSelf == true)
+                {
+                    _wasPaused = true;
+                    _pausePanel.Disable();
+                }
+                _settingsPanel.gameObject.SetActive(true);
+            }
+            else if (_wasPaused)
+            {
+                _settingsPanel.Disable();
+                _pausePanel.gameObject.SetActive(true);
+                _wasPaused = false;
+            }
+            else _settingsPanel.Disable();
+            ButtonSound(true);
+        }
+
+        public void DisplayGarageMenuExitConfirmation(bool enabled)
+        {
+            _pausePanel.Disable();
+            ButtonSound(true);
+            Data.DataPersistenceManager.Instance.SaveGame();
+            string displayText = Localization.GetCurrentLanguage() == Lang.English ?
+            "Are you sure you want to exit to menu?" : "Вы уверены что хотите выйти в меню?";
+            _confirmationPopup.ActivatePopup(displayText,
+            () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
+            () => _pausePanel.gameObject.SetActive(true));
         }
 
         public void ButtonSound(bool value) =>

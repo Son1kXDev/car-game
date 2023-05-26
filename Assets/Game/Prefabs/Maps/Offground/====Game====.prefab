@@ -62314,7 +62314,7 @@ GameObject:
   - component: {fileID: 4634636261530132866}
   - component: {fileID: 4634636261530132867}
   - component: {fileID: 4634636261530132871}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: '[GAME] Camera'
   m_TagString: Untagged
   m_Icon: {fileID: 0}

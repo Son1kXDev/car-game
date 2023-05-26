@@ -76,7 +76,7 @@ namespace Assets.Game.Scripts.Game
             _backMoveLights.SetBool("active", !brake && axis < 0);
         }
 
-        public void SwitchBeam()
+        public void SwitchBeam(bool value)
         {
             switch (_currentBeam)
             {
@@ -98,9 +98,7 @@ namespace Assets.Game.Scripts.Game
         }
 
         public Beam GetCurrentBeam()
-        {
-            return _currentBeam;
-        }
+        { return _currentBeam; }
     }
 
     public enum Beam

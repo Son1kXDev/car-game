@@ -43,6 +43,14 @@ MonoBehaviour:
     m_Key: Offground/====UI====/[UI] Interface/RewardData/Lable 1
     m_Metadata:
       m_Items: []
+  - m_Id: 5661311233187840
+    m_Key: Offground/====UI====/[UI] Interface/PausePopup/Popup/Lable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5661311333851136
+    m_Key: Offground/====UI====/[UI] Interface/PausePopup/Popup/Lable 1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 1903955268324557027
@@ -76,6 +84,10 @@ MonoBehaviour:
           m_TableCodes:
           - en
           - ru
+        - m_KeyId: 5661311233187840
+          m_TableCodes:
+          - en
+          - ru
         m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
     - rid: 1903955268324557059
@@ -91,6 +103,10 @@ MonoBehaviour:
           - en
           - ru
         - m_KeyId: 11945269026816
+          m_TableCodes:
+          - en
+          - ru
+        - m_KeyId: 5661311333851136
           m_TableCodes:
           - en
           - ru

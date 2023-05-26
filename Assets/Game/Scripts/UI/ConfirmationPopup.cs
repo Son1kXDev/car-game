@@ -17,15 +17,15 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private Button _cancelButton;
         [SerializeField] private CanvasGroup _canvasGroup;
 
+        private UnityAction _currentAction;
+
         public void ActivatePopup(string displayText, UnityAction confirmAction, UnityAction cancelAction,
-        string confirmButtonText = "1", string cancelButtonText = "0")
+        string confirmButtonText = "Yes", string cancelButtonText = "No")
         {
-
-            if (confirmButtonText == "1")
-                confirmButtonText = Localization.GetCurrentLanguage() == Lang.English ? "Yes" : "Да";
-
-            if (cancelButtonText == "0")
-                cancelButtonText = Localization.GetCurrentLanguage() == Lang.English ? "No" : "Нет";
+            confirmButtonText = confirmButtonText == "Yes" ? Localization.GetCurrentLanguage() == Lang.English ? "Yes" : "Да"
+            : confirmButtonText;
+            cancelButtonText = cancelButtonText == "No" ? Localization.GetCurrentLanguage() == Lang.English ? "No" : "Нет"
+            : cancelButtonText;
 
             _canvasGroup.alpha = 0;
             gameObject.SetActive(true);
@@ -39,19 +39,22 @@ namespace Assets.Game.Scripts.UI
 
             _confirmButton.onClick.AddListener(() =>
             {
+                _currentAction = confirmAction;
+                UIManager.Instance.ButtonSound(true);
                 DeactivatePopup();
-                confirmAction();
             });
 
             _cancelButton.onClick.AddListener(() =>
             {
+                _currentAction = cancelAction;
+                UIManager.Instance.ButtonSound(true);
                 DeactivatePopup();
-                cancelAction();
             });
         }
 
         private void DeactivatePopup()
         {
+            _currentAction?.Invoke();
             _canvasGroup.DOFade(0, 0.5f)
             .SetLink(gameObject)
             .OnKill(() => gameObject.SetActive(false));

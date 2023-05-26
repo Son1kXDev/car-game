@@ -57,7 +57,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 7611353423872
-    m_Localized: Quit
+    m_Localized: Exit to menu
     m_Metadata:
       m_Items: []
   references:

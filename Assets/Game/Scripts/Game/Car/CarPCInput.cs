@@ -9,53 +9,43 @@ namespace Assets.Game.Scripts.Game
     public class CarPCInput : MonoBehaviour
     {
         [SerializeField] private bool _isEnabled;
-        [SerializeField] private Button _menuButton;
-        [SerializeField] private GameObject _gasButton;
-        [SerializeField] private GameObject _brakeButton;
-        [SerializeField] private GameObject _lightButton;
-        [SerializeField] private GameObject _switchGearButton;
+
+        private bool _isPause = false;
 
         private void Awake()
         {
             if (_isEnabled == false) Destroy(this);
+
+            _isPause = false;
         }
 
         private void Update()
         {
-            //menu button
-            if (Input.GetKeyDown(KeyCode.Escape)) _menuButton.onClick?.Invoke();
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                _isPause = !_isPause;
+                GlobalEventManager.Instance.PauseButton(_isPause);
+            }
 
-            //gas button
             if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-                ExecuteEvents.Execute<IPointerDownHandler>(_gasButton,
-                new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
+                GlobalEventManager.Instance.GasButton(true);
             if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
-                ExecuteEvents.Execute<IPointerUpHandler>(_gasButton,
-                new PointerEventData(EventSystem.current), ExecuteEvents.pointerUpHandler);
+                GlobalEventManager.Instance.GasButton(false);
 
-            //brake button
             if (Input.GetKeyDown(KeyCode.Space))
-                ExecuteEvents.Execute<IPointerDownHandler>(_brakeButton,
-                new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
+                GlobalEventManager.Instance.BrakeButton(true);
             if (Input.GetKeyUp(KeyCode.Space))
-                ExecuteEvents.Execute<IPointerUpHandler>(_brakeButton,
-                new PointerEventData(EventSystem.current), ExecuteEvents.pointerUpHandler);
+                GlobalEventManager.Instance.GearButton(false);
 
-            //gear switch button
             if (Input.GetKeyDown(KeyCode.R))
-                ExecuteEvents.Execute<IPointerDownHandler>(_switchGearButton,
-                new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
+                GlobalEventManager.Instance.GearButton(true);
             if (Input.GetKeyUp(KeyCode.R))
-                ExecuteEvents.Execute<IPointerUpHandler>(_switchGearButton,
-                new PointerEventData(EventSystem.current), ExecuteEvents.pointerUpHandler);
+                GlobalEventManager.Instance.GearButton(false);
 
-            //light switch button
             if (Input.GetKeyDown(KeyCode.L))
-                ExecuteEvents.Execute<IPointerDownHandler>(_lightButton,
-                new PointerEventData(EventSystem.current), ExecuteEvents.pointerDownHandler);
+                GlobalEventManager.Instance.LightButton(true);
             if (Input.GetKeyUp(KeyCode.L))
-                ExecuteEvents.Execute<IPointerUpHandler>(_lightButton,
-                new PointerEventData(EventSystem.current), ExecuteEvents.pointerUpHandler);
+                GlobalEventManager.Instance.LightButton(false);
         }
 
     }

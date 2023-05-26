@@ -17,10 +17,25 @@ namespace Assets.Game.Scripts.Game
 
         private bool _inputLocked;
 
-        private void Awake()
+        private void Start()
         {
             _camera = GetComponent<Camera>();
             _offset = transform.position - _target.position;
+
+            GlobalEventManager.Instance.OnBrakeButtonPressed += LockInput;
+            GlobalEventManager.Instance.OnGasButtonPressed += LockInput;
+            GlobalEventManager.Instance.OnGearButtonPressed += LockInput;
+            GlobalEventManager.Instance.OnLightButtonPressed += LockInput;
+            GlobalEventManager.Instance.OnPauseButtonPressed += LockInput;
+        }
+
+        private void OnDestroy()
+        {
+            GlobalEventManager.Instance.OnBrakeButtonPressed -= LockInput;
+            GlobalEventManager.Instance.OnGasButtonPressed -= LockInput;
+            GlobalEventManager.Instance.OnGearButtonPressed -= LockInput;
+            GlobalEventManager.Instance.OnLightButtonPressed -= LockInput;
+            GlobalEventManager.Instance.OnPauseButtonPressed -= LockInput;
         }
 
         protected override void Run()
