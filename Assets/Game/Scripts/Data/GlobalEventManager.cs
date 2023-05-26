@@ -16,7 +16,11 @@ public class GlobalEventManager : MonoBehaviour
     public event BoolEvent OnSettingsButtonPressed;
     public event BoolEvent OnGarageMenuButtonPressed;
 
+    public event IntStringEvent OnGetReward;
+    public event EmptyEvent OnFinishTheLevel;
+
     public delegate void BoolEvent(bool value);
+    public delegate void IntStringEvent(int value, string label);
     public delegate void EmptyEvent();
 
     private void Awake()
@@ -36,5 +40,9 @@ public class GlobalEventManager : MonoBehaviour
     public void PauseButton(bool value) => OnPauseButtonPressed?.Invoke(value);
     public void SettingsButton(bool value) => OnSettingsButtonPressed?.Invoke(value);
     public void GarageMenuButton(bool value) => OnGarageMenuButtonPressed?.Invoke(value);
+
+    public void GetReward(int reward, string label) => OnGetReward(reward, label);
+
+    public void FinishLevel() => OnFinishTheLevel?.Invoke();
 
 }

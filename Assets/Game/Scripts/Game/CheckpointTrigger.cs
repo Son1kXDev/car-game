@@ -47,21 +47,19 @@ namespace Assets.Game.Scripts.Game
             AudioManager.Instance.PlayOneShot(Audio.Data.Checkpoint, transform.position);
 
             string rewardLabel = Localization.GetCurrentLanguage() == Lang.English ? _rewardLabel.EN : _rewardLabel.RU;
-
-            UI.UIManager.Instance.DisplayReward(rewardLabel, _rewardValue.ToString(CustomStringFormat.CoinFormat(_rewardValue)));
+            GlobalEventManager.Instance.GetReward(_rewardValue, rewardLabel);
 
             _tween.Kill();
 
             DOTween.To(() => _lights[0].intensity, x => _lights[0].intensity = x, 0, 0.5f).SetLink(gameObject);
             DOTween.To(() => _lights[1].intensity, x => _lights[1].intensity = x, 0, 0.5f).SetLink(gameObject);
             _renderer.DOFade(0, 0.5f)
+            .SetLink(gameObject)
             .OnComplete(() =>
             {
                 _eventEmitter.Stop();
-                CoinManager.Instance.IncreaseCoins(_rewardValue);
                 gameObject.SetActive(false);
-            })
-            .SetLink(gameObject);
+            });
 
         }
 

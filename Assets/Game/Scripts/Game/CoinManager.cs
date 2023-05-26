@@ -25,6 +25,12 @@ namespace Assets.Game.Scripts.Game
             else Instance = this;
         }
 
+        private void Start()
+        { GlobalEventManager.Instance.OnGetReward += IncreaseCoins; }
+
+        private void OnDestroy()
+        { GlobalEventManager.Instance.OnGetReward -= IncreaseCoins; }
+
         public void LoadData(GameData data)
         {
             _coins = data.Coins;
@@ -33,9 +39,7 @@ namespace Assets.Game.Scripts.Game
         }
 
         public void SaveData(GameData data)
-        {
-            data.Coins = _coins;
-        }
+        { data.Coins = _coins; }
 
         public bool DecreaseCoins(int value)
         {
@@ -72,7 +76,7 @@ namespace Assets.Game.Scripts.Game
             }
         }
 
-        public void IncreaseCoins(int value)
+        public void IncreaseCoins(int value, string label = null)
         {
             AudioManager.Instance.PlayOneShot(Audio.Data.GetMoney, transform.position);
             _changeCoinValue = true;

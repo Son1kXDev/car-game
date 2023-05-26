@@ -36,6 +36,8 @@ namespace Assets.Game.Scripts.UI
             GlobalEventManager.Instance.OnPauseButtonPressed += DisplayPausePopup;
             GlobalEventManager.Instance.OnSettingsButtonPressed += DisplaySettingsPopup;
             GlobalEventManager.Instance.OnGarageMenuButtonPressed += DisplayGarageMenuExitConfirmation;
+            GlobalEventManager.Instance.OnGetReward += DisplayReward;
+            GlobalEventManager.Instance.OnFinishTheLevel += DisplayFinish;
         }
 
         private void OnDestroy()
@@ -43,6 +45,8 @@ namespace Assets.Game.Scripts.UI
             GlobalEventManager.Instance.OnPauseButtonPressed -= DisplayPausePopup;
             GlobalEventManager.Instance.OnSettingsButtonPressed -= DisplaySettingsPopup;
             GlobalEventManager.Instance.OnGarageMenuButtonPressed -= DisplayGarageMenuExitConfirmation;
+            GlobalEventManager.Instance.OnGetReward -= DisplayReward;
+            GlobalEventManager.Instance.OnFinishTheLevel -= DisplayFinish;
         }
 
         public void ButtonMainMenu()
@@ -113,9 +117,10 @@ namespace Assets.Game.Scripts.UI
             _coinData.ForEach(text => { text.color = color; });
         }
 
-        public void DisplayReward(string rewardLable, string rewardValue)
+        public void DisplayReward(int rewardValue, string rewardLable)
         {
-            _rewardData.text = $"+{rewardValue} <sprite index=4>";
+            string rewardValueText = rewardValue.ToString(CustomStringFormat.CoinFormat(rewardValue));
+            _rewardData.text = $"+{rewardValueText} <sprite index=4>";
             _rewardPanel.SetRewardData(rewardLable);
             _rewardPanel.gameObject.SetActive(true);
         }

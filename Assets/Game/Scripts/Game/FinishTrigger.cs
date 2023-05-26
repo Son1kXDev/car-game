@@ -35,22 +35,12 @@ namespace Assets.Game.Scripts.Game
             AudioManager.Instance.PlayOneShot(Audio.Data.Finish, transform.position);
 
             string rewardLabel = Localization.GetCurrentLanguage() == Lang.English ? _rewardLabel.EN : _rewardLabel.RU;
-
-            UI.UIManager.Instance.DisplayReward(rewardLabel, _rewardValue.ToString(CustomStringFormat.CoinFormat(_rewardValue)));
-
-            DOTween.Sequence()
-            .AppendInterval(2f)
-            .AppendCallback(() => CoinManager.Instance.IncreaseCoins(_rewardValue));
+            GlobalEventManager.Instance.GetReward(_rewardValue, rewardLabel);
 
             _tween = DOTween.Sequence()
             .AppendInterval(3f)
-            .AppendCallback(() => UI.UIManager.Instance.DisplayFinish())
-            .SetLink(gameObject)
-            .OnKill(() =>
-            {
-                CameraController controller = FindObjectOfType<CameraController>(true);
-                controller.LockInput(true);
-            });
+            .AppendCallback(() => GlobalEventManager.Instance.FinishLevel())
+            .SetLink(gameObject);
 
         }
 
