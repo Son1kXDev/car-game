@@ -18,11 +18,20 @@ namespace Assets.Game.Scripts.UI
             _canvasGroup.alpha = 0;
         }
 
-        private void Start() => GlobalEventManager.Instance.OnPauseButtonPressed += SetActive;
-        private void OnDestroy() => GlobalEventManager.Instance.OnPauseButtonPressed -= SetActive;
+        private void Start()
+        {
+            GlobalEventManager.Instance.OnPauseButtonPressed += SetActive;
+            GlobalEventManager.Instance.OnFinishTheLevel += SetActive;
+        }
+        private void OnDestroy()
+        {
+            GlobalEventManager.Instance.OnPauseButtonPressed -= SetActive;
+            GlobalEventManager.Instance.OnFinishTheLevel -= SetActive;
+        }
 
+        private void SetActive() => SetActive(true);
 
-        private void SetActive(bool active)
+        public void SetActive(bool active)
         {
             _canvasGroup.DOFade(active && _canvasGroup.alpha == 0 ? 1 : 0, 0.5f).SetLink(gameObject);
         }

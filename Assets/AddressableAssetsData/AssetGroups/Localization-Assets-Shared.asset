@@ -45,12 +45,6 @@ MonoBehaviour:
     m_Address: Assets/Common/Localization/Tables/Main/Main Shared Data.asset
     m_ReadOnly: 1
     m_SerializedLabels: []
-  - m_GUID: 8f586378b4e144a9851e7b34d9b748ee
-    m_Address: LiberationSans SDF
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru
-    - Locale-en
   - m_GUID: fea8b89a00e60ba43b7c3cb50cc5b73e
     m_Address: Assets/Common/Localization/Tables/Other/Other Shared Data.asset
     m_ReadOnly: 1

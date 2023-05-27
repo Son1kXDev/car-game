@@ -16,7 +16,6 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private TextMeshProUGUI _tachometerData;
         [SerializeField] private List<TextMeshProUGUI> _coinData;
         [SerializeField] private TextMeshProUGUI _rewardData;
-        [SerializeField] private ConfirmationPopup _confirmationPopup;
         [SerializeField] private RewardPanel _rewardPanel;
         [SerializeField] private PopupPanel _settingsPanel, _pausePanel;
         private PopupBackground _popupBackground;
@@ -64,7 +63,8 @@ namespace Assets.Game.Scripts.UI
                 string displayText = Localization.GetCurrentLanguage() == Lang.English ?
                 "Are you sure you want to overwrite the current save? All progress made will be lost." :
                 "Вы уверены что хотите перезаписать текущее сохранение? Весь прогресс будет потерян.";
-                _confirmationPopup.ActivatePopup(displayText,
+
+                GlobalEventManager.Instance.ActivateConfirmationPopup(displayText,
                     () => LoadNewGame(),
                     () => Debug.Log("Cancel overwriting savefile"));
             }
@@ -132,45 +132,31 @@ namespace Assets.Game.Scripts.UI
             Data.DataPersistenceManager.Instance.SaveGame();
 
             string displayText = Localization.GetCurrentLanguage() == Lang.English ?
-            "Congratulations! You have finished this map!" : "Поздравляем! Вы прошли карту!";
+            "Congratulations! You have finished this map! \n Do you want to exit back to menu?"
+            : "Поздравляем! Вы прошли карту! Хотите выйти назад в меню?";
 
-            string yesButtonText = Localization.GetCurrentLanguage() == Lang.English ?
-            "Back to menu" : "Назад в меню";
-
-            string noButtonText = Localization.GetCurrentLanguage() == Lang.English ?
-            "Continue" : "Продолжить";
-
-            _confirmationPopup.ActivatePopup(displayText,
+            GlobalEventManager.Instance.ActivateConfirmationPopup(displayText,
             () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
             () =>
             {
                 finish.OnContinue();
                 _cameraController.LockInput(false);
-            },
-            yesButtonText, noButtonText);
+            });
         }
 
         public void DisplayUpdatePopup(string downloadURL)
         {
-            _popupBackground.gameObject.SetActive(true);
             string displayText = Localization.GetCurrentLanguage() == Lang.English ?
-            "New update available! Click \"Download\" to install it now!" :
-            "Новое обновление доступно! Нажмите \"Скачать\" чтобы установить его сейчас!";
+            "New update available! Download it now?" :
+            "Новое обновление доступно! Скачать его сейчас?";
 
-            string yesButtonText = Localization.GetCurrentLanguage() == Lang.English ?
-            "Download" : "Скачать";
-
-            string noButtonText = Localization.GetCurrentLanguage() == Lang.English ?
-            "Remind me later" : "Напомнить позже";
-
-            _confirmationPopup.ActivatePopup(displayText,
+            GlobalEventManager.Instance.ActivateConfirmationPopup(displayText,
             () =>
             {
                 Application.OpenURL(downloadURL);
                 Application.Quit();
             },
-            () => Debug.Log("Update canceled"),
-            yesButtonText, noButtonText);
+            () => Debug.Log("Update canceled"));
         }
 
         public void DisplayPausePopup(bool enabled)
@@ -199,22 +185,22 @@ namespace Assets.Game.Scripts.UI
                 _wasPaused = false;
             }
             else _settingsPanel.Disable();
-            ButtonSound(true);
+            ButtonSound();
         }
 
         public void DisplayGarageMenuExitConfirmation(bool enabled)
         {
             _pausePanel.Disable();
-            ButtonSound(true);
+            ButtonSound();
             Data.DataPersistenceManager.Instance.SaveGame();
             string displayText = Localization.GetCurrentLanguage() == Lang.English ?
             "Are you sure you want to exit to menu?" : "Вы уверены что хотите выйти в меню?";
-            _confirmationPopup.ActivatePopup(displayText,
+            GlobalEventManager.Instance.ActivateConfirmationPopup(displayText,
             () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
             () => _pausePanel.gameObject.SetActive(true));
         }
 
-        public void ButtonSound(bool value) =>
+        public void ButtonSound(bool value = true) =>
         AudioManager.Instance.PlayOneShot(value ? Audio.Data.ButtonClick : Audio.Data.ButtonNoClick, transform.position);
 
     }

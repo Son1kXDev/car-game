@@ -17,13 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 5ea9d6bca19647248986acbc1f817cbc
   m_SerializeEntries:
-  - m_GUID: 75a2108790027bb428d80537463b3f34
-    m_Address: DolomanPavljenko SDF
-    m_ReadOnly: 1
-    m_SerializedLabels:
-    - Locale-ru
-  - m_GUID: f9e4daa49b8c6e04bbd73e324c6497ce
-    m_Address: droid-sans-mono
+  - m_GUID: 8f586378b4e144a9851e7b34d9b748ee
+    m_Address: LiberationSans SDF
     m_ReadOnly: 1
     m_SerializedLabels:
     - Locale-ru

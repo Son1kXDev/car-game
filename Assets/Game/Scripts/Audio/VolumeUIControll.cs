@@ -9,7 +9,7 @@ public class VolumeUIControll : MonoBehaviour
     [SerializeField] private Slider _ambientVolumeSlider;
     [SerializeField] private Slider _uiVolumeSlider;
 
-    void Awake()
+    private void Start()
     {
         _masterVolumeSlider.value = AudioManager.Instance.MasterVolume;
         _musicVolumeSlider.value = AudioManager.Instance.MusicVolume;

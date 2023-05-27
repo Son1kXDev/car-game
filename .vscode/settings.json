@@ -52,7 +52,11 @@
         "Temp/": true
     },
     "cSpell.words": [
+        "Высокая",
+        "Низкая",
         "interactable",
-        "Lable"
+        "Lable",
+        "vsync",
+        "Vsync"
     ]
 }

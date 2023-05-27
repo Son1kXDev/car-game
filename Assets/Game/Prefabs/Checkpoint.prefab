@@ -5023,7 +5023,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9291c8eeb5e4f242b8918f8359d0aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rewardLable: Checkpoint #1
+  _rewardLabel:
+    EN: 
+    RU: 
   _rewardValue: 1000
 --- !u!114 &2992871222186849973
 MonoBehaviour:

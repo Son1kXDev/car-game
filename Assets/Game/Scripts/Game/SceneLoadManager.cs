@@ -21,7 +21,6 @@ public class SceneLoadManager : MonoBehaviour
             if (transform.parent != null)
                 transform.parent = null;
             Application.targetFrameRate = 120; // -1
-            QualitySettings.vSyncCount = 0; // 1
             //QualitySettings.antiAliasing 0 2 4 8
             DontDestroyOnLoad(gameObject);
         }

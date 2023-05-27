@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 486837346304
-    m_Localized: Audio
+    m_Localized: Master
     m_Metadata:
       m_Items: []
   - m_Id: 521704595456
@@ -58,6 +58,38 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 7611353423872
     m_Localized: Exit to menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5993025105059840
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5993130843463680
+    m_Localized: Graphics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5993228663021568
+    m_Localized: Interface
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6004401466793984
+    m_Localized: 'Language:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6004587589033984
+    m_Localized: 'Quiality:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6004660465065984
+    m_Localized: 'Particles:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6007005521403904
+    m_Localized: 'Speed:'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6007081689964544
+    m_Localized: 'Temperature:'
     m_Metadata:
       m_Items: []
   references:

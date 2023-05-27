@@ -102,7 +102,10 @@ namespace Assets.Game.Scripts.Game
             speedOnKmh = _rigidbody.velocity.magnitude * 7.2f;
             speedOnMph = speedOnKmh * 0.62f;
 
-            UI.UIManager.Instance.DisplaySpeedometer($"{Mathf.Round(speedOnKmh)} km/h");
+            float displaySpeed = PlayerPrefs.GetString("speedValue", "KMH") == "KMH" ? speedOnKmh : speedOnMph;
+            string displaySpeedString = PlayerPrefs.GetString("speedValue", "KMH") == "KMH" ? "km/h" : "mph";
+
+            UI.UIManager.Instance.DisplaySpeedometer($"{Mathf.Round(displaySpeed)} {displaySpeedString}");
         }
 
         private void Tachometer()

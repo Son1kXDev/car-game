@@ -49,18 +49,8 @@ MonoBehaviour:
   _tachometerData: {fileID: 0}
   _coinData:
   - {fileID: 0}
+  _rewardData: {fileID: 0}
   _confirmationPopup: {fileID: 0}
-  _buttonActionSound:
-    Guid:
-      Data1: -1210155642
-      Data2: 1180753202
-      Data3: 2123110546
-      Data4: 1765360791
-    Path: event:/ButtonClick
-  _buttonNoActionSound:
-    Guid:
-      Data1: 262101965
-      Data2: 1271330521
-      Data3: 886021764
-      Data4: 1449368131
-    Path: event:/ButtonClickNoAction
+  _rewardPanel: {fileID: 0}
+  _settingsPanel: {fileID: 0}
+  _pausePanel: {fileID: 0}

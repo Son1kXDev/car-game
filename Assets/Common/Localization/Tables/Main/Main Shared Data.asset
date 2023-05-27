@@ -15,46 +15,12 @@ MonoBehaviour:
   m_TableCollectionName: Main
   m_TableCollectionNameGuidString: af92594444a41254ba6ddd9d2d8f5f39
   m_Entries:
-  - m_Id: 82716155904
-    m_Key: MainMenuScene/====UI====/[UI] Interface/ConfirmationPopup/Popup/DisplayText
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11751089528832
-    m_Key: Offground/====UI====/[UI] Interface/RewardData/RewardValueLable
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11751198580736
-    m_Key: Offground/====UI====/[UI] Interface/RewardData/RewardValueLable 1
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11868882362368
-    m_Key: Offground/====UI====/[UI] Interface/RewardData/CoinValueLable
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11868903333888
-    m_Key: Offground/====UI====/[UI] Interface/RewardData/CoinValueLable 1
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11945248055296
-    m_Key: Offground/====UI====/[UI] Interface/RewardData/Lable
-    m_Metadata:
-      m_Items: []
-  - m_Id: 11945269026816
-    m_Key: Offground/====UI====/[UI] Interface/RewardData/Lable 1
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5661311233187840
-    m_Key: Offground/====UI====/[UI] Interface/PausePopup/Popup/Lable
-    m_Metadata:
-      m_Items: []
-  - m_Id: 5661311333851136
-    m_Key: Offground/====UI====/[UI] Interface/PausePopup/Popup/Lable 1
+  - m_Id: 6036918563528704
+    m_Key: New Entry
     m_Metadata:
       m_Items: []
   m_Metadata:
-    m_Items:
-    - rid: 1903955268324557027
-    - rid: 1903955268324557059
+    m_Items: []
   m_KeyGenerator:
     rid: 1903955268324557023
   references:
@@ -64,51 +30,3 @@ MonoBehaviour:
       type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
       data:
         m_CustomEpoch: 1683776555805
-    - rid: 1903955268324557027
-      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries:
-        - m_KeyId: 82716155904
-          m_TableCodes:
-          - en
-          - ru
-        - m_KeyId: 11751089528832
-          m_TableCodes:
-          - en
-          - ru
-        - m_KeyId: 11868882362368
-          m_TableCodes:
-          - en
-          - ru
-        - m_KeyId: 11945248055296
-          m_TableCodes:
-          - en
-          - ru
-        - m_KeyId: 5661311233187840
-          m_TableCodes:
-          - en
-          - ru
-        m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-    - rid: 1903955268324557059
-      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
-      data:
-        m_Entries:
-        - m_KeyId: 11751198580736
-          m_TableCodes:
-          - en
-          - ru
-        - m_KeyId: 11868903333888
-          m_TableCodes:
-          - en
-          - ru
-        - m_KeyId: 11945269026816
-          m_TableCodes:
-          - en
-          - ru
-        - m_KeyId: 5661311333851136
-          m_TableCodes:
-          - en
-          - ru
-        m_TypeString: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null

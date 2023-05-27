@@ -125,7 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc697658412c2143a9a76be4998b147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rewardLable: Finish
+  _rewardLabel:
+    EN: 
+    RU: 
   _rewardValue: 10000
 --- !u!1 &2308942793403118226
 GameObject:

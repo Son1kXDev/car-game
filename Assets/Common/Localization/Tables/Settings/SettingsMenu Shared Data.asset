@@ -55,6 +55,38 @@ MonoBehaviour:
     m_Key: MenuButton
     m_Metadata:
       m_Items: []
+  - m_Id: 5993025105059840
+    m_Key: SettingsPopup/Canvas (Environment)/SettingsPopup/Popup/AudioButton/Lable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5993130843463680
+    m_Key: SettingsPopup/Canvas (Environment)/SettingsPopup/Popup/GraphicsButton/Lable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 5993228663021568
+    m_Key: SettingsPopup/Canvas (Environment)/SettingsPopup/Popup/InterfaceButton/Lable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6004401466793984
+    m_Key: SettingsPopup/Canvas (Environment)/SettingsPopup/Popup/Interface/Language/Lable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6004587589033984
+    m_Key: SettingsPopup/Canvas (Environment)/SettingsPopup/Popup/Graphics/Quiality/Lable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6004660465065984
+    m_Key: SettingsPopup/Canvas (Environment)/SettingsPopup/Popup/Graphics/Particles/Lable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6007005521403904
+    m_Key: SettingsPopup/Canvas (Environment)/SettingsPopup/Popup/Interface/Speed/Lable
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6007081689964544
+    m_Key: SettingsPopup/Canvas (Environment)/SettingsPopup/Popup/Interface/Temperature/Lable
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

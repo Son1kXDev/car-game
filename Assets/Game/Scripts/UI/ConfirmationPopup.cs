@@ -15,39 +15,49 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private TextMeshProUGUI _displayText;
         [SerializeField] private Button _confirmButton;
         [SerializeField] private Button _cancelButton;
-        [SerializeField] private CanvasGroup _canvasGroup;
 
+        private CanvasGroup _mainCanvasGroup;
+        private Image _mainImage;
         private UnityAction _currentAction;
 
-        public void ActivatePopup(string displayText, UnityAction confirmAction, UnityAction cancelAction,
-        string confirmButtonText = "Yes", string cancelButtonText = "No")
+        private void Start()
         {
-            confirmButtonText = confirmButtonText == "Yes" ? Localization.GetCurrentLanguage() == Lang.English ? "Yes" : "Да"
-            : confirmButtonText;
-            cancelButtonText = cancelButtonText == "No" ? Localization.GetCurrentLanguage() == Lang.English ? "No" : "Нет"
-            : cancelButtonText;
+            GlobalEventManager.Instance.OnConfirmationPopupCalled += ActivatePopup;
+            _mainImage = GetComponent<Image>();
+            _mainCanvasGroup = GetComponent<CanvasGroup>();
+            _mainImage.raycastTarget = false;
+            _mainCanvasGroup.alpha = 0;
+            _mainCanvasGroup.interactable = false;
+        }
+        private void OnDestroy() => GlobalEventManager.Instance.OnConfirmationPopupCalled -= ActivatePopup;
 
-            _canvasGroup.alpha = 0;
+        public void ActivatePopup(string displayText, UnityAction confirmAction, UnityAction cancelAction)
+        {
+            string confirmButtonText = Localization.GetCurrentLanguage() == Lang.English ? "Yes" : "Да";
+            string cancelButtonText = Localization.GetCurrentLanguage() == Lang.English ? "No" : "Нет";
+
+            _mainCanvasGroup.interactable = true;
+            _mainImage.raycastTarget = true;
             gameObject.SetActive(true);
-            _canvasGroup.DOFade(1, 0.5f).SetLink(gameObject);
+            _mainCanvasGroup.DOFade(1, 0.5f).SetLink(gameObject);
             _displayText.text = displayText;
             _confirmButton.onClick.RemoveAllListeners();
             _cancelButton.onClick.RemoveAllListeners();
 
-            _confirmButton.GetComponent<TextMeshProUGUI>().text = confirmButtonText;
-            _cancelButton.GetComponent<TextMeshProUGUI>().text = cancelButtonText;
+            _confirmButton.GetComponentInChildren<TextMeshProUGUI>().text = confirmButtonText;
+            _cancelButton.GetComponentInChildren<TextMeshProUGUI>().text = cancelButtonText;
 
             _confirmButton.onClick.AddListener(() =>
             {
                 _currentAction = confirmAction;
-                UIManager.Instance.ButtonSound(true);
+                UIManager.Instance.ButtonSound();
                 DeactivatePopup();
             });
 
             _cancelButton.onClick.AddListener(() =>
             {
                 _currentAction = cancelAction;
-                UIManager.Instance.ButtonSound(true);
+                UIManager.Instance.ButtonSound();
                 DeactivatePopup();
             });
         }
@@ -55,7 +65,9 @@ namespace Assets.Game.Scripts.UI
         private void DeactivatePopup()
         {
             _currentAction?.Invoke();
-            _canvasGroup.DOFade(0, 0.5f)
+            _mainCanvasGroup.interactable = false;
+            _mainImage.raycastTarget = false;
+            _mainCanvasGroup.DOFade(0, 0.5f)
             .SetLink(gameObject)
             .OnKill(() => gameObject.SetActive(false));
         }

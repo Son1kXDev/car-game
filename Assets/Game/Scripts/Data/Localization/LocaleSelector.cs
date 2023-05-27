@@ -10,7 +10,10 @@ public class LocaleSelector : MonoBehaviour
     public void ChangeLocale(int localeID)
     {
         if (!active)
+        {
             StartCoroutine(SetLocale(localeID));
+            GlobalEventManager.Instance.LanguageChanged();
+        }
     }
 
     private IEnumerator SetLocale(int _localeID)
