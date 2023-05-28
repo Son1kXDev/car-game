@@ -35,7 +35,7 @@ namespace Assets.Game.Scripts.Game
             if (Input.GetKeyDown(KeyCode.Space))
                 GlobalEventManager.Instance.BrakeButton(true);
             if (Input.GetKeyUp(KeyCode.Space))
-                GlobalEventManager.Instance.GearButton(false);
+                GlobalEventManager.Instance.BrakeButton(false);
 
             if (Input.GetKeyDown(KeyCode.R))
                 GlobalEventManager.Instance.GearButton(true);

@@ -3,23 +3,26 @@ using Assets.Game.Scripts.Data;
 
 public class ParticleController : MonoBehaviour, ISettingsDataPersistence
 {
-    private void Awake() => UpdateParticles();
+    public static bool Particles { get; private set; }
 
-    private void Start() => GlobalEventManager.Instance.OnParticleToggleChanged += UpdateParticles;
+    private void Start()
+    {
+        GlobalEventManager.Instance.OnParticleToggleChanged += UpdateParticles;
+        UpdateParticles();
+    }
 
     private void OnDestroy() => GlobalEventManager.Instance.OnParticleToggleChanged -= UpdateParticles;
 
-    private bool _particles;
-
     public void UpdateParticles()
     {
-        var particles = FindObjectsOfType<ParticleSystem>();
+        DataPersistenceManager.Instance.LoadSettings();
+        var particles = FindObjectsOfType<ParticleSystem>(true);
         foreach (var particle in particles)
-            particle.enableEmission = _particles;
+            particle.enableEmission = Particles;
     }
 
     public void LoadData(SettingsData data)
-    { _particles = data.Particles; }
+    { Particles = data.Particles; }
 
     public void SaveData(SettingsData data) { }
 }

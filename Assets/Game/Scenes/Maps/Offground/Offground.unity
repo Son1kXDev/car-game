@@ -5680,7 +5680,6 @@ MonoBehaviour:
   _coinData:
   - {fileID: 2534272055290300827}
   _rewardData: {fileID: 2534272055290300828}
-  _confirmationPopup: {fileID: 1433555488}
   _rewardPanel: {fileID: 2534272055290300829}
   _settingsPanel: {fileID: 2534272055290300830}
   _pausePanel: {fileID: 6121344743994296826}
@@ -11949,17 +11948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1433555488 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2534272053997296570, guid: d424725e42abcf54dbd76bfb985794c7, type: 3}
-  m_PrefabInstance: {fileID: 2534272055290300826}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2adf34358fbbae4ea52c0a6612c53b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1445451610
 GameObject:
   m_ObjectHideFlags: 0
@@ -12823,6 +12811,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 43806596, guid: d424725e42abcf54dbd76bfb985794c7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 818963361, guid: d424725e42abcf54dbd76bfb985794c7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636758104, guid: d424725e42abcf54dbd76bfb985794c7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2534272055895348358, guid: d424725e42abcf54dbd76bfb985794c7, type: 3}
       propertyPath: m_Name
       value: ====UI====
