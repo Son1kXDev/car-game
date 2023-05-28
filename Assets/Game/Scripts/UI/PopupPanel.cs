@@ -22,6 +22,7 @@ namespace Assets.Game.Scripts.UI
 
         public void Disable()
         {
+            Data.DataPersistenceManager.Instance.LoadSettings();
             _canvasGroup.DOFade(0, 0.5f)
             .SetLink(gameObject)
             .OnKill(() => gameObject.SetActive(false));

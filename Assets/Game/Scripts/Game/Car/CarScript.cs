@@ -7,7 +7,7 @@ using FMOD.Studio;
 namespace Assets.Game.Scripts.Game
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(WheelJoint2D), typeof(WheelJoint2D)), RequireComponent(typeof(CarVisual))]
-    public class CarScript : MonoCache, Data.IDataPersistence
+    public class CarScript : MonoCache, Data.IDataPersistence, Data.ISettingsDataPersistence
     {
         [Header("Settings")]
         [SerializeField] private LayerMask _ground;
@@ -26,6 +26,7 @@ namespace Assets.Game.Scripts.Game
         private bool _switchGear;
         private bool _brake;
         private bool _move;
+        private Speed _speedType;
         private WheelJoint2D[] _wheelJoints;
         private JointMotor2D _frontWheel, _backWheel;
         private Rigidbody2D _rigidbody;
@@ -102,8 +103,8 @@ namespace Assets.Game.Scripts.Game
             speedOnKmh = _rigidbody.velocity.magnitude * 7.2f;
             speedOnMph = speedOnKmh * 0.62f;
 
-            float displaySpeed = PlayerPrefs.GetString("speedValue", "KMH") == "KMH" ? speedOnKmh : speedOnMph;
-            string displaySpeedString = PlayerPrefs.GetString("speedValue", "KMH") == "KMH" ? "km/h" : "mph";
+            float displaySpeed = _speedType == Speed.KMH ? speedOnKmh : speedOnMph;
+            string displaySpeedString = _speedType == Speed.KMH ? "km/h" : "mph";
 
             UI.UIManager.Instance.DisplaySpeedometer($"{Mathf.Round(displaySpeed)} {displaySpeedString}");
         }
@@ -298,11 +299,12 @@ namespace Assets.Game.Scripts.Game
         { _upgrades = data.CarUpgrades[data.CurrentCar]; }
 
         public void SaveData(GameData data) { }
+
+        public void LoadData(SettingsData data)
+        { _speedType = data.SpeedValue; }
+        public void SaveData(SettingsData data) { }
     }
 }
 
 public enum GearType
 { Back, Front, Full }
-
-public enum SpeedType
-{ Kmh, Mph }

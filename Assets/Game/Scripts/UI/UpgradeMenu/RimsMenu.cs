@@ -34,6 +34,7 @@ namespace Assets.Game.Scripts.UI
             data.OpenedRims = _openedRims;
         }
 
+
         private void OnEnable()
         {
             SelectRim(_carConfig.CurrentRim);

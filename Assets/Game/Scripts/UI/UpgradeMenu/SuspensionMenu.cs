@@ -31,10 +31,9 @@ namespace Assets.Game.Scripts.UI
             ResetData();
         }
 
-        public void SaveData(GameData data)
-        { }
+        public void SaveData(GameData data) { }
 
-        void OnEnable() => ResetData();
+        private void OnEnable() => ResetData();
 
         public void ApplyData()
         {

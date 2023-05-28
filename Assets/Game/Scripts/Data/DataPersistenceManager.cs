@@ -17,12 +17,15 @@ namespace Assets.Game.Scripts.Data
         [SerializeField] private bool _initializeDataIfNull = false;
 
         [Header("Storage Config")]
-        [SerializeField] private string _fileName;
+        [SerializeField] private string _settingsFileName;
+        [SerializeField] private string _gameFileName;
         [SerializeField] private bool _useEncryption = false;
 
         private GameData _gameData;
+        private SettingsData _settingsData;
         private FileDataHandler _dataHandler;
         private List<IDataPersistence> _dataPersistenceObjects;
+        private List<ISettingsDataPersistence> _settingsDataPersistenceObjects;
 
         private void Awake()
         {
@@ -35,7 +38,7 @@ namespace Assets.Game.Scripts.Data
             Loaded = false;
             if (transform.parent != null) transform.parent = null;
             DontDestroyOnLoad(this.gameObject);
-            this._dataHandler = new FileDataHandler(Application.persistentDataPath, _fileName, _useEncryption);
+            this._dataHandler = new FileDataHandler(Application.persistentDataPath, _gameFileName, _settingsFileName, _useEncryption);
         }
 
         private void OnEnable()
@@ -51,32 +54,29 @@ namespace Assets.Game.Scripts.Data
         public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             this._dataPersistenceObjects = FindAllDataPersistanceObjects();
+            this._settingsDataPersistenceObjects = FindAllSettingsDataPersistanceObjects();
             LoadGame();
+            LoadSettings();
         }
 
         public bool SaveFileExist()
         {
-            _gameData = _dataHandler.Load();
+            _gameData = _dataHandler.LoadGame();
             return _gameData != null;
         }
 
         public void NewGame()
-        {
-            _gameData = new GameData();
-        }
+        { _gameData = new GameData(); }
 
         public void LoadGame()
         {
-            _gameData = _dataHandler.Load();
+            _gameData = _dataHandler.LoadGame();
             if (_gameData == null && _initializeDataIfNull) NewGame();
             if (_gameData == null) return;
             foreach (IDataPersistence dataPersistence in _dataPersistenceObjects)
                 dataPersistence.LoadData(_gameData);
-
-            Loaded = true;
         }
 
-        [ContextMenu("Save")]
         public void SaveGame()
         {
             if (_gameData == null) return;
@@ -93,15 +93,47 @@ namespace Assets.Game.Scripts.Data
             _gameData = null;
         }
 
+        public void NewSettings()
+        { _settingsData = new SettingsData(); }
+
+        public void LoadSettings()
+        {
+            _settingsData = _dataHandler.LoadSettings();
+            if (_settingsData == null && _initializeDataIfNull) NewSettings();
+
+            if (_settingsData == null) return;
+            foreach (ISettingsDataPersistence dataPersistence in _settingsDataPersistenceObjects)
+                dataPersistence.LoadData(_settingsData);
+
+            Loaded = true;
+        }
+
+        public void SaveSettings()
+        {
+            if (_settingsData == null) return;
+
+            foreach (ISettingsDataPersistence dataPersistence in _settingsDataPersistenceObjects)
+                dataPersistence.SaveData(_settingsData);
+
+            _dataHandler.Save(_settingsData);
+        }
+
         private void OnApplicationQuit()
         {
             SaveGame();
+            SaveSettings();
         }
 
         private List<IDataPersistence> FindAllDataPersistanceObjects()
         {
             IEnumerable<IDataPersistence> dataPersistenceObjects = FindObjectsOfType<MonoBehaviour>(true).OfType<IDataPersistence>();
             return new List<IDataPersistence>(dataPersistenceObjects);
+        }
+
+        private List<ISettingsDataPersistence> FindAllSettingsDataPersistanceObjects()
+        {
+            IEnumerable<ISettingsDataPersistence> settingsDataPersistenceObjects = FindObjectsOfType<MonoBehaviour>(true).OfType<ISettingsDataPersistence>();
+            return new List<ISettingsDataPersistence>(settingsDataPersistenceObjects);
         }
     }
 }

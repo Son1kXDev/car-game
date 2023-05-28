@@ -37,6 +37,7 @@ namespace Assets.Game.Scripts.UI
             data.OpenedSplitters = _openedSplitters;
         }
 
+
         private void OnEnable()
         {
             SelectSplitter(_carConfig.CurrentSplitter);

@@ -2,26 +2,46 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Localization.Custom;
 using TMPro;
+using Assets.Game.Scripts.Data;
 
 namespace Assets.Game.Scripts.UI
 {
-    public class GraphicsSettings : MonoBehaviour
+    public class GraphicsSettings : MonoBehaviour, ISettingsDataPersistence
     {
         [SerializeField] private TMP_Dropdown _qualityDropdown;
         [SerializeField] private TextToggle _vsyncToggle;
         [SerializeField] private TextToggle _particlesToggle;
 
+        private int _quality;
+        private bool _vsync;
+        private bool _particles;
 
-        private void Awake()
+        private void ApplySettings()
         {
             UpdateQualityDropdown();
 
             _vsyncToggle.onValueChanged.AddListener(SetVsync);
-            _vsyncToggle.isOn = bool.Parse(PlayerPrefs.GetString("VSync", "true"));
+            _vsyncToggle.isOn = _vsync;
 
             _particlesToggle.onValueChanged.AddListener(SetParticles);
-            _particlesToggle.isOn = bool.Parse(PlayerPrefs.GetString("particlesToggle", "true"));
+            _particlesToggle.isOn = _particles;
         }
+
+        public void LoadData(SettingsData data)
+        {
+            _quality = data.Quality;
+            _vsync = data.VSync;
+            _particles = data.Particles;
+            ApplySettings();
+        }
+
+        public void SaveData(SettingsData data)
+        {
+            data.Quality = _quality;
+            data.VSync = _vsync;
+            data.Particles = _particles;
+        }
+
 
         private void Start() => GlobalEventManager.Instance.OnLanguageChanged += UpdateQualityDropdown;
 
@@ -40,7 +60,7 @@ namespace Assets.Game.Scripts.UI
             _qualityDropdown.ClearOptions();
             _qualityDropdown.AddOptions(options);
 
-            _qualityDropdown.value = PlayerPrefs.GetInt("Quality", 2);
+            _qualityDropdown.value = _quality;
             _qualityDropdown.RefreshShownValue();
             _qualityDropdown.onValueChanged.AddListener(SetQuality);
             _qualityDropdown.onValueChanged.AddListener((value) => UIManager.Instance.ButtonSound());
@@ -50,20 +70,22 @@ namespace Assets.Game.Scripts.UI
         public void SetQuality(int quality)
         {
             QualitySettings.SetQualityLevel(quality);
-            PlayerPrefs.SetInt("Quality", quality);
+            _quality = quality;
+            DataPersistenceManager.Instance.SaveSettings();
         }
 
         public void SetVsync(bool vsync)
         {
             QualitySettings.vSyncCount = vsync ? 1 : 0;
-            PlayerPrefs.SetString("VSync", vsync.ToString());
+            _vsync = vsync;
+            DataPersistenceManager.Instance.SaveSettings();
         }
 
         public void SetParticles(bool enabled)
         {
-            PlayerPrefs.SetString("particlesToggle", enabled.ToString());
+            _particles = enabled;
+            DataPersistenceManager.Instance.SaveSettings();
             GlobalEventManager.Instance.ParticleToggleChanged();
         }
-
     }
 }

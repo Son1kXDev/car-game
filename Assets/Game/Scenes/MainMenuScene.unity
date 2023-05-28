@@ -14625,6 +14625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsPopup
       objectReference: {fileID: 0}
+    - target: {fileID: 8916017917979343614, guid: e58d8e504e763784c9858afbd1d86794, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.5400391
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e58d8e504e763784c9858afbd1d86794, type: 3}
 --- !u!114 &5217814860977525727 stripped

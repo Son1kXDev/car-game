@@ -2,32 +2,44 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Localization.Custom;
 using System.Collections.Generic;
+using Assets.Game.Scripts.Data;
 
 namespace Assets.Game.Scripts.UI
 {
-    public class InterfaceSettings : MonoBehaviour
+    public class InterfaceSettings : MonoBehaviour, ISettingsDataPersistence
     {
         [SerializeField] private TMP_Dropdown _languageDropdown;
         [SerializeField] private TMP_Dropdown _speedDropdown;
         [SerializeField] private TMP_Dropdown _temperatureDropdown;
 
-
         private void Awake()
         {
             _languageDropdown.value = (int)Localization.GetCurrentLanguage();
+            DataPersistenceManager.Instance.LoadSettings();
+        }
 
-            _speedDropdown.onValueChanged.AddListener(OnSpeedValueChanged);
-            _speedDropdown.value = PlayerPrefs.GetString("speedValue", "KMH") == "KMH" ? 0 : 1;
+        public void LoadData(SettingsData data)
+        {
+            _speedDropdown.onValueChanged.RemoveAllListeners();
+            _speedDropdown.value = (int)data.SpeedValue;
+            _speedDropdown.RefreshShownValue();
+            _speedDropdown.onValueChanged.AddListener(OnValueChanged);
             _speedDropdown.onValueChanged.AddListener((value) => UIManager.Instance.ButtonSound());
 
-            _temperatureDropdown.onValueChanged.AddListener(OnTemperatureValueChanged);
-            _temperatureDropdown.value = PlayerPrefs.GetString("temperatureValue", "C") == "C" ? 0 : 1;
+            _temperatureDropdown.onValueChanged.RemoveAllListeners();
+            _temperatureDropdown.value = (int)data.Temperature;
+            _temperatureDropdown.RefreshShownValue();
+            _temperatureDropdown.onValueChanged.AddListener(OnValueChanged);
             _temperatureDropdown.onValueChanged.AddListener((value) => UIManager.Instance.ButtonSound());
         }
 
-        public void OnSpeedValueChanged(int value) => PlayerPrefs.SetString("speedValue", value == 0 ? "KMH" : "MPH");
+        public void SaveData(SettingsData data)
+        {
+            data.SpeedValue = (Speed)_speedDropdown.value;
+            data.Temperature = (Temp)_temperatureDropdown.value;
+        }
 
-        public void OnTemperatureValueChanged(int value) => PlayerPrefs.SetString("temperatureValue", value == 0 ? "C" : "F");
+        public void OnValueChanged(int value) => DataPersistenceManager.Instance.SaveSettings();
 
     }
 }

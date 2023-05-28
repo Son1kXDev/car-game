@@ -45,5 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _initializeDataIfNull: 1
-  _fileName: data.save
+  _settingsFileName: settings.save
+  _gameFileName: data.save
   _useEncryption: 0
