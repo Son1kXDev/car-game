@@ -39,29 +39,23 @@ namespace Assets.Game.Scripts.UI
                 Console.LogError("Config files were not found. Please check if the files are set correctly or define them manually");
                 return;
             }
-            if (!_config.RightID())
-            {
-                Console.LogError("The configs' ID don't match. Please check the entered data and correct inconsistencies." +
-                    "\n" + _config.MainCarConfig.ID + " != " + _config.VisualCarConfig.ID);
-                return;
-            }
 
-            _body.sprite = _config.VisualCarConfig.BaseSprite;
-            _back.sprite = _config.VisualCarConfig.BackSprite;
-            _elements.sprite = _config.VisualCarConfig.ElementsSprite;
-            _optics.sprite = _config.VisualCarConfig.OpticsSprite;
+            _body.sprite = _config.CurrentCar.BaseSprite;
+            _back.sprite = _config.CurrentCar.BackSprite;
+            _elements.sprite = _config.CurrentCar.ElementsSprite;
+            _optics.sprite = _config.CurrentCar.OpticsSprite;
             _body.color = _config.CurrentColor;
-            _tires.ForEach(tire => tire.sprite = _config.VisualCarConfig.TiresSprites[_config.CurrentTire]);
-            _rims.ForEach(rim => rim.sprite = _config.VisualCarConfig.RimsSprites[_config.CurrentRim]);
-            _spoilers.ForEach(spoiler => spoiler.sprite = _config.VisualCarConfig.SpoilersSprites[_config.CurrentSpoiler]);
-            _splitters.ForEach(splitter => splitter.sprite = _config.VisualCarConfig.SplittersSprites[_config.CurrentSplitter]);
+            _tires.ForEach(tire => tire.sprite = _config.CurrentCar.TiresSprites[_config.CurrentTire]);
+            _rims.ForEach(rim => rim.sprite = _config.CurrentCar.RimsSprites[_config.CurrentRim]);
+            _spoilers.ForEach(spoiler => spoiler.sprite = _config.CurrentCar.SpoilersSprites[_config.CurrentSpoiler]);
+            _splitters.ForEach(splitter => splitter.sprite = _config.CurrentCar.SplittersSprites[_config.CurrentSplitter]);
             ChangeCarSticker(StickerUploader.GetSprite(_config.CurrentStickerPath));
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
                 JointSuspension2D susp = wheel.suspension;
-                susp.frequency = _config.MainCarConfig.DefaultSuspensionFrequency * _config.CurrentCarUpgrades.SuspensionFrequencyMultiplier;
+                susp.frequency = _config.CurrentCar.DefaultSuspensionFrequency * _config.CurrentCarUpgrades.SuspensionFrequencyMultiplier;
                 Vector2 anch = wheel.anchor;
-                anch.y = _config.MainCarConfig.DefaultSuspensionHeight * (0.9f + _config.CurrentCarUpgrades.SuspensionHeightMultiplier / 10);
+                anch.y = _config.CurrentCar.DefaultSuspensionHeight * (0.9f + _config.CurrentCarUpgrades.SuspensionHeightMultiplier / 10);
                 wheel.anchor = anch;
                 wheel.suspension = susp;
             }
@@ -72,9 +66,9 @@ namespace Assets.Game.Scripts.UI
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
                 JointSuspension2D susp = wheel.suspension;
-                susp.frequency = _config.MainCarConfig.DefaultSuspensionFrequency * frequency;
+                susp.frequency = _config.CurrentCar.DefaultSuspensionFrequency * frequency;
                 Vector2 anch = wheel.anchor;
-                anch.y = _config.MainCarConfig.DefaultSuspensionHeight * (0.9f + height / 10);
+                anch.y = _config.CurrentCar.DefaultSuspensionHeight * (0.9f + height / 10);
                 wheel.anchor = anch;
                 wheel.suspension = susp;
             }
@@ -122,17 +116,17 @@ namespace Assets.Game.Scripts.UI
         public void ResetCar()
         {
             _body.color = _config.CurrentColor;
-            _tires.ForEach(tire => tire.sprite = _config.VisualCarConfig.TiresSprites[_config.CurrentTire]);
-            _rims.ForEach(rim => rim.sprite = _config.VisualCarConfig.RimsSprites[_config.CurrentRim]);
-            _spoilers.ForEach(spoiler => spoiler.sprite = _config.VisualCarConfig.SpoilersSprites[_config.CurrentSpoiler]);
-            _splitters.ForEach(splitter => splitter.sprite = _config.VisualCarConfig.SplittersSprites[_config.CurrentSplitter]);
+            _tires.ForEach(tire => tire.sprite = _config.CurrentCar.TiresSprites[_config.CurrentTire]);
+            _rims.ForEach(rim => rim.sprite = _config.CurrentCar.RimsSprites[_config.CurrentRim]);
+            _spoilers.ForEach(spoiler => spoiler.sprite = _config.CurrentCar.SpoilersSprites[_config.CurrentSpoiler]);
+            _splitters.ForEach(splitter => splitter.sprite = _config.CurrentCar.SplittersSprites[_config.CurrentSplitter]);
             ChangeCarSticker(StickerUploader.GetSprite(_config.CurrentStickerPath));
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
                 JointSuspension2D susp = wheel.suspension;
-                susp.frequency = _config.MainCarConfig.DefaultSuspensionFrequency * _config.CurrentCarUpgrades.SuspensionFrequencyMultiplier;
+                susp.frequency = _config.CurrentCar.DefaultSuspensionFrequency * _config.CurrentCarUpgrades.SuspensionFrequencyMultiplier;
                 Vector2 anch = wheel.anchor;
-                anch.y = _config.MainCarConfig.DefaultSuspensionHeight * (0.9f + _config.CurrentCarUpgrades.SuspensionHeightMultiplier / 10);
+                anch.y = _config.CurrentCar.DefaultSuspensionHeight * (0.9f + _config.CurrentCarUpgrades.SuspensionHeightMultiplier / 10);
                 wheel.anchor = anch;
                 wheel.suspension = susp;
             }
@@ -140,10 +134,10 @@ namespace Assets.Game.Scripts.UI
 
         public Color GetCurrentColor() => _body.color;
 
-        public void SelectRim(int value) => _rims.ForEach(rim => rim.sprite = _config.VisualCarConfig.RimsSprites[value]);
-        public void SelectTire(int value) => _tires.ForEach(tire => tire.sprite = _config.VisualCarConfig.TiresSprites[value]);
-        public void SelectSpoiler(int value) => _spoilers.ForEach(spoiler => spoiler.sprite = _config.VisualCarConfig.SpoilersSprites[value]);
-        public void SelectSplitter(int value) => _splitters.ForEach(splitter => splitter.sprite = _config.VisualCarConfig.SplittersSprites[value]);
+        public void SelectRim(int value) => _rims.ForEach(rim => rim.sprite = _config.CurrentCar.RimsSprites[value]);
+        public void SelectTire(int value) => _tires.ForEach(tire => tire.sprite = _config.CurrentCar.TiresSprites[value]);
+        public void SelectSpoiler(int value) => _spoilers.ForEach(spoiler => spoiler.sprite = _config.CurrentCar.SpoilersSprites[value]);
+        public void SelectSplitter(int value) => _splitters.ForEach(splitter => splitter.sprite = _config.CurrentCar.SplittersSprites[value]);
 
         public void SetRim(int value)
         {

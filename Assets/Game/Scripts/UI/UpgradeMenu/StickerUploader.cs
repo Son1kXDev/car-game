@@ -25,7 +25,7 @@ public class StickerUploader : MonoBehaviour
         Texture2D texture = new Texture2D(2, 2);
 
         if (path == null || path == string.Empty)
-            texture = Resources.Load<Texture2D>("Empty");
+            texture = Resources.Load<Texture2D>("Other/Empty");
         else
         {
             var bytes = File.ReadAllBytes(path);

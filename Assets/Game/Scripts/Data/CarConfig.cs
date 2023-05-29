@@ -6,8 +6,7 @@ namespace Assets.Game.Scripts
 {
     public class CarConfig : MonoBehaviour, Data.IDataPersistence
     {
-        public Car MainCarConfig;
-        public CarVisualConfig VisualCarConfig;
+        public Car CurrentCar;
         [HideInInspector] public Color CurrentColor;
         [HideInInspector] public int CurrentTire;
         [HideInInspector] public int CurrentRim;
@@ -18,18 +17,11 @@ namespace Assets.Game.Scripts
         [HideInInspector] public List<int> Costs;
         [HideInInspector] public SerializableDictionary<string, int> CostsDictionary;
 
-        [SerializeField] private List<Car> _mainCarsConfigs;
-        [SerializeField] private List<CarVisualConfig> _visualCarsConfigs;
+        [SerializeField] private List<Car> _carsConfigs;
 
         public bool HasConfig()
-        {
-            return MainCarConfig != null && VisualCarConfig != null;
-        }
+        { return CurrentCar != null; }
 
-        public bool RightID()
-        {
-            return MainCarConfig.ID == VisualCarConfig.ID;
-        }
 
         public void LoadData(GameData data)
         {
@@ -42,8 +34,7 @@ namespace Assets.Game.Scripts
             CurrentCarUpgrades = data.CarUpgrades[id];
             CurrentStickerPath = data.CurrentStickerPath;
 
-            MainCarConfig = _mainCarsConfigs.Find(car => car.ID == id);
-            VisualCarConfig = _visualCarsConfigs.Find(car => car.ID == id);
+            CurrentCar = _carsConfigs.Find(car => car.ID == id);
             CostsDictionary = data.Costs;
             Costs = new List<int>(CostsDictionary.Values);
         }
@@ -60,14 +51,7 @@ namespace Assets.Game.Scripts
             data.CurrentStickerPath = CurrentStickerPath;
         }
 
-        public CarVisualConfig FindVisualsConfigByID(string id)
-        {
-            return _visualCarsConfigs.Find(car => car.ID == id);
-        }
-
-        public Car FindMainCarConfigByID(string id)
-        {
-            return _mainCarsConfigs.Find(car => car.ID == id);
-        }
+        public Car FindCarConfigByID(string id)
+        { return _carsConfigs.Find(car => car.ID == id); }
     }
 }

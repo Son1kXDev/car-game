@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98ee4a6c57a6e784b9f07d48f2790123, type: 3}
+  m_Name: DefaultCarConfig
+  m_EditorClassIdentifier: Assembly-CSharp:Assets.Game.Scripts:Car
+  _id: 7042cd7a-5792-4ce9-a3d4-41851cbc94c8
+  _property: 0
+  _acceleration: 500
+  _maxSpeed: 800
+  _maxBackSpeed: 600
+  _brakeForce: 1000
+  _airBrakeForce: 500
+  _gearBrakeForce: 80
+  _wheelSize: 0.03
+  _defaultSuspensionFrequency: 4
+  _defaultSuspensionHeight: -0.219
+  _gearType: 2
+  _gearsMaxSpeed: 9001000020030000b0040000dc050000d007000098080000
+  _maximumMotorForces:
+  - 2.5
+  - 2.25
+  - 2
+  - 1.85
+  - 1.5
+  - 1.25
+  _baseSprite: {fileID: 21300000, guid: 997d3a5d2d2c82046b2e1c616f392faa, type: 3}
+  _backSprite: {fileID: 21300000, guid: 1e14a76302f69e04d9c75459dfb77850, type: 3}
+  _elementsSprite: {fileID: 21300000, guid: bc368c5ffac0eb6438ab41ce7d405f4e, type: 3}
+  _opticsSprite: {fileID: 21300000, guid: ce73fa772abd46946aba37ee3bbe305e, type: 3}
+  _tiresSprites:
+  - {fileID: 21300000, guid: eab277c5b8f52bd4b89dcbe2377c7eba, type: 3}
+  _rimsSprites:
+  - {fileID: 21300000, guid: 0cb101b6d881ee448b2537a1a514a3f0, type: 3}
+  - {fileID: 21300000, guid: 22304ce46e45e2642ae3230a65d4c7d3, type: 3}
+  - {fileID: 21300000, guid: 9bd549887114e5f49a19ff893ec4229e, type: 3}
+  - {fileID: 21300000, guid: 7e1df256d88312447b7a431efad185f3, type: 3}
+  - {fileID: 21300000, guid: 9b4cbcc8afc33cd418aed5db5a440adc, type: 3}
+  _spoilersSprites:
+  - {fileID: 21300000, guid: 0424eada9bbfda0449aeca9993f1d346, type: 3}
+  - {fileID: 21300000, guid: d8e47edcb06a2e649904784a1d05c661, type: 3}
+  - {fileID: 21300000, guid: 5d6efe1c2a78afd4c8d212c314d2823c, type: 3}
+  - {fileID: 21300000, guid: adf97d9bee36cf149987b465f6564e5d, type: 3}
+  - {fileID: 21300000, guid: 44f9a793993cfc04e8ae5fc29cbbb43d, type: 3}
+  _splittersSprites:
+  - {fileID: 21300000, guid: 0424eada9bbfda0449aeca9993f1d346, type: 3}
+  - {fileID: 21300000, guid: 3f959017ce64bcd4eb59d09420661672, type: 3}
+  - {fileID: 21300000, guid: 385c62ae0b438ba43ad41d91f67e1563, type: 3}
+  _tiresIconsSprites:
+  - {fileID: 21300000, guid: 37522309acf2cc041bf91e5d7d663b31, type: 3}
+  _rimsIconsSprites:
+  - {fileID: 21300000, guid: b9e6ee39c20db464f81a8a0d5c01396b, type: 3}
+  - {fileID: 21300000, guid: bb30a78140ca78d4f9fcb931ec9dd157, type: 3}
+  - {fileID: 21300000, guid: f8cfc99ccb7cef14e80da989efa7ffb6, type: 3}
+  - {fileID: 21300000, guid: 315d7609685cae345acde2e55e7cf3bb, type: 3}
+  - {fileID: 21300000, guid: cb0f94098b726e440a8a1ce2d5d8e9cd, type: 3}
+  _spoilersIconsSprites:
+  - {fileID: 21300000, guid: 385c62ae0b438ba43ad41d91f67e1563, type: 3}
+  - {fileID: 21300000, guid: 89c15183e311e8345966f6f16252a95f, type: 3}
+  - {fileID: 21300000, guid: f6a06cafb7996b945b3d25bc034507d3, type: 3}
+  - {fileID: 21300000, guid: 7c15c3dbe917bf348be30baee2449f79, type: 3}
+  - {fileID: 21300000, guid: c598817aba2f99e458971d002861346c, type: 3}
+  _splittersIconsSprites:
+  - {fileID: 21300000, guid: 385c62ae0b438ba43ad41d91f67e1563, type: 3}
+  - {fileID: 21300000, guid: 8a24297f6fbb3904fba75cbafbfb2e9a, type: 3}
+  _name: Poros Saloed
+  _cost: 185185
+  _weight: 2340
+  _strength: 630
+  _tiresNames:
+  - Basic Tire
+  _tiresCost: 00000000
+  _rimsNames:
+  - Three-Spoke
+  - Collider Rim
+  - Retron-1
+  - Hi-Spoked Rim
+  - Five-Hole
+  _rimsCost: b30600003e08000012160000ec0e0000c6110000
+  _spoilersNames:
+  - No Spoiler
+  - Stock
+  - Mini Spoiler
+  - Wing?
+  - Real Spoiler
+  _spoilersCost: 0000000000000000fa050000b20c000074130000
+  _splittersNames:
+  - Stock
+  - Race Splitter
+  _splittersCost: 0000000098080000

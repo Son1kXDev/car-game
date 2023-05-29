@@ -3827,8 +3827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6e849e1b01dbb4689ed66639ba94dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MainCarConfig: {fileID: 0}
-  VisualCarConfig: {fileID: 0}
+  CurrentCar: {fileID: 0}
   CurrentColor: {r: 0, g: 0, b: 0, a: 0}
   CurrentTire: 0
   CurrentRim: 0
@@ -3847,10 +3846,8 @@ MonoBehaviour:
   CostsDictionary:
     keys: []
     values: 
-  _mainCarsConfigs:
+  _carsConfigs:
   - {fileID: 11400000, guid: c52d6c2378ac17a448c09ccc0838017a, type: 2}
-  _visualCarsConfigs:
-  - {fileID: 11400000, guid: 5a46db05327199f4688149742f739431, type: 2}
 --- !u!114 &3969798728195611003
 MonoBehaviour:
   m_ObjectHideFlags: 0

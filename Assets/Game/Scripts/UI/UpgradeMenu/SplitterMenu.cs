@@ -50,9 +50,9 @@ namespace Assets.Game.Scripts.UI
 
             _car.SelectSplitter(_selectedID);
 
-            _propertyField.Find("Name").Find("Logo").GetComponent<Image>().sprite = _carConfig.VisualCarConfig.SplittersIconsSprites[id];
-            _propertyField.Find("Name").GetComponent<TextMeshProUGUI>().text = _carConfig.VisualCarConfig.SplittersNames[id];
-            _currentCost = _carConfig.VisualCarConfig.SplittersCost[id];
+            _propertyField.Find("Name").Find("Logo").GetComponent<Image>().sprite = _carConfig.CurrentCar.SplittersIconsSprites[id];
+            _propertyField.Find("Name").GetComponent<TextMeshProUGUI>().text = _carConfig.CurrentCar.SplittersNames[id];
+            _currentCost = _carConfig.CurrentCar.SplittersCost[id];
             _propertyField.Find("Cost").GetComponent<TextMeshProUGUI>().text = _currentCost.ToString(CustomStringFormat.CoinFormat(_currentCost)) + " <sprite index=1>";
 
             bool hasSplitter = false;

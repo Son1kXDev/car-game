@@ -51,22 +51,17 @@ namespace Assets.Game.Scripts.Game
                 Console.LogError("Config files were not found. Please check if the files are set correctly or define them manually");
                 return;
             }
-            if (!_config.RightID())
-            {
-                Console.LogError("The configs' ID don't match. Please check the entered data and correct inconsistencies." +
-                    "\n" + _config.MainCarConfig.ID + " != " + _config.VisualCarConfig.ID);
-                return;
-            }
-            _carBase.sprite = _config.VisualCarConfig.BaseSprite;
-            _carBack.sprite = _config.VisualCarConfig.BackSprite;
-            _carElements.sprite = _config.VisualCarConfig.ElementsSprite;
-            _carOptics.sprite = _config.VisualCarConfig.OpticsSprite;
+
+            _carBase.sprite = _config.CurrentCar.BaseSprite;
+            _carBack.sprite = _config.CurrentCar.BackSprite;
+            _carElements.sprite = _config.CurrentCar.ElementsSprite;
+            _carOptics.sprite = _config.CurrentCar.OpticsSprite;
             _carBase.color = _config.CurrentColor;
             _carSticker.sprite = StickerUploader.GetSprite(_config.CurrentStickerPath);
-            _tires.ForEach(tire => tire.sprite = _config.VisualCarConfig.TiresSprites[_config.CurrentTire]);
-            _rims.ForEach(rim => rim.sprite = _config.VisualCarConfig.RimsSprites[_config.CurrentRim]);
-            _spoilers.ForEach(spoiler => spoiler.sprite = _config.VisualCarConfig.SpoilersSprites[_config.CurrentSpoiler]);
-            _splitters.ForEach(splitter => splitter.sprite = _config.VisualCarConfig.SplittersSprites[_config.CurrentSplitter]);
+            _tires.ForEach(tire => tire.sprite = _config.CurrentCar.TiresSprites[_config.CurrentTire]);
+            _rims.ForEach(rim => rim.sprite = _config.CurrentCar.RimsSprites[_config.CurrentRim]);
+            _spoilers.ForEach(spoiler => spoiler.sprite = _config.CurrentCar.SpoilersSprites[_config.CurrentSpoiler]);
+            _splitters.ForEach(splitter => splitter.sprite = _config.CurrentCar.SplittersSprites[_config.CurrentSplitter]);
         }
 
         public void SetLight(float axis, bool brake)

@@ -28,7 +28,7 @@ namespace Assets.Game.Scripts.UI
         {
             if (_isOpened) return;
 
-            if (Game.CoinManager.Instance.DecreaseCoins((int)_config.FindVisualsConfigByID(_id).Cost))
+            if (Game.CoinManager.Instance.DecreaseCoins((int)_config.FindCarConfigByID(_id).Cost))
             {
                 _isOpened = true;
                 Data.DataPersistenceManager.Instance.SaveGame();

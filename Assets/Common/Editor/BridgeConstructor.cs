@@ -16,9 +16,9 @@ namespace Utils
             GameObject CurrentBridge = new GameObject("Bridge");
             BridgeContainer bridgeContainer = CurrentBridge.AddComponent<BridgeContainer>();
             bridgeContainer.SetData(
-                Resources.Load("Bridge/Stake", typeof(GameObject)) as GameObject,
-                Resources.Load("Bridge/Plank", typeof(GameObject)) as GameObject,
-                Resources.Load("Bridge/EndStake", typeof(GameObject)) as GameObject);
+                Resources.Load("InGame/Bridge/Stake", typeof(GameObject)) as GameObject,
+                Resources.Load("InGame/Bridge/Plank", typeof(GameObject)) as GameObject,
+                Resources.Load("InGame/Bridge/EndStake", typeof(GameObject)) as GameObject);
             bridgeContainer.Create();
         }
     }

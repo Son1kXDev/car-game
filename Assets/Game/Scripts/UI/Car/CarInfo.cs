@@ -31,9 +31,9 @@ namespace Assets.Game.Scripts.UI
             }
             _localCost.Arguments = new object[] { _cost.ToString(@"###\.###") };
             _localCost.StringChanged += UpdateCostData;
-            _localWeight.Arguments = new object[] { _carConfig.VisualCarConfig.Weight.ToString() };
+            _localWeight.Arguments = new object[] { _carConfig.CurrentCar.Weight.ToString() };
             _localWeight.StringChanged += UpdateWeightData;
-            _localStrength.Arguments = new object[] { _carConfig.VisualCarConfig.Strength.ToString() };
+            _localStrength.Arguments = new object[] { _carConfig.CurrentCar.Strength.ToString() };
             _localStrength.StringChanged += UpdateStrengthData;
             SceneManager.activeSceneChanged += SceneChanged;
             yield return new WaitForEndOfFrame();
@@ -49,13 +49,13 @@ namespace Assets.Game.Scripts.UI
 
         public void UpdateDisplayData(bool instant = false)
         {
-            _name.text = _carConfig.VisualCarConfig.Name;
-            _localWeight.Arguments[0] = _carConfig.VisualCarConfig.Weight.ToString();
-            _localStrength.Arguments[0] = _carConfig.VisualCarConfig.Strength.ToString();
+            _name.text = _carConfig.CurrentCar.Name;
+            _localWeight.Arguments[0] = _carConfig.CurrentCar.Weight.ToString();
+            _localStrength.Arguments[0] = _carConfig.CurrentCar.Strength.ToString();
             _localWeight.RefreshString();
             _localStrength.RefreshString();
             int cashCost = _cost;
-            _cost = (int)_carConfig.VisualCarConfig.Cost;
+            _cost = (int)_carConfig.CurrentCar.Cost;
             int newCost = _cost;
             if (cashCost != 0) _cost = cashCost;
             _carConfig.Costs.ForEach(c => newCost += c);

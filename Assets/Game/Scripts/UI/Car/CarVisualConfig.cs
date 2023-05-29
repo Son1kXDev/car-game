@@ -4,7 +4,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Car Visual", menuName = "Game/New car visual config")]
 public class CarVisualConfig : ScriptableObject
 {
-    [SerializeField, Tooltip("Copy ID from car main config")] private string _id;
 
     [Header("Sprites")]
     [SerializeField] private Sprite _baseSprite;
@@ -36,7 +35,6 @@ public class CarVisualConfig : ScriptableObject
     [SerializeField] private List<string> _splittersNames;
     [SerializeField] private List<int> _splittersCost;
 
-    public string ID => this._id;
     public Sprite BaseSprite => _baseSprite;
     public Sprite BackSprite => _backSprite;
     public Sprite ElementsSprite => _elementsSprite;
