@@ -26,6 +26,7 @@ public class Car : ScriptableObject
     [SerializeField] private SerializedPropertyType _property;
 
     [CustomEditor(typeof(Car))]
+    [Obsolete]
     public class CarEditor : Editor
     {
         #region SerializedProperties
@@ -142,6 +143,7 @@ public class Car : ScriptableObject
             _splittersCost = serializedObject.FindProperty(nameof(_splittersCost));
         }
 
+
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
@@ -198,8 +200,12 @@ public class Car : ScriptableObject
             EditorGUILayout.PropertyField(_gearsMaxSpeed);
             EditorGUILayout.PropertyField(_maximumMotorForces);
         }
+
         private void DrawData()
         {
+            if (AllDataIsSpecified() == false)
+                EditorGUILayout.HelpBox("Some variables are not specified", MessageType.Warning);
+
             EditorGUILayout.PropertyField(_baseSprite);
             EditorGUILayout.PropertyField(_backSprite);
             EditorGUILayout.PropertyField(_elementsSprite);
@@ -210,13 +216,70 @@ public class Car : ScriptableObject
             DrawSpoilers();
             DrawSplitters();
         }
+
+        private bool AllDataIsSpecified()
+        {
+            bool allDataIsSpecified = _baseSprite.objectReferenceValue != null && _backSprite.objectReferenceValue != null &&
+                        _elementsSprite.objectReferenceValue != null && _opticsSprite.objectReferenceValue != null &&
+                        _tiresNames.arraySize != 0 && _rimsNames.arraySize != 0 &&
+                        _spoilersNames.arraySize != 0 && _splittersNames.arraySize != 0;
+
+            for (int i = 0; i < _tiresNames.arraySize; i++)
+            {
+                SerializedProperty element = _tiresNames.GetArrayElementAtIndex(i);
+                if (element.stringValue == string.Empty) return false;
+                SerializedProperty element3 = _tiresSprites.GetArrayElementAtIndex(i);
+                if (element3.objectReferenceValue == null) return false;
+                SerializedProperty element4 = _tiresIconsSprites.GetArrayElementAtIndex(i);
+                if (element4.objectReferenceValue == null) return false;
+            }
+
+            for (int i = 0; i < _rimsNames.arraySize; i++)
+            {
+                SerializedProperty element = _rimsNames.GetArrayElementAtIndex(i);
+                if (element.stringValue == string.Empty) return false;
+                SerializedProperty element3 = _rimsSprites.GetArrayElementAtIndex(i);
+                if (element3.objectReferenceValue == null) return false;
+                SerializedProperty element4 = _rimsIconsSprites.GetArrayElementAtIndex(i);
+                if (element4.objectReferenceValue == null) return false;
+            }
+
+            for (int i = 0; i < _spoilersNames.arraySize; i++)
+            {
+                SerializedProperty element = _spoilersNames.GetArrayElementAtIndex(i);
+                if (element.stringValue == string.Empty) return false;
+                SerializedProperty element3 = _spoilersSprites.GetArrayElementAtIndex(i);
+                if (element3.objectReferenceValue == null) return false;
+                SerializedProperty element4 = _spoilersIconsSprites.GetArrayElementAtIndex(i);
+                if (element4.objectReferenceValue == null) return false;
+            }
+
+            for (int i = 0; i < _splittersNames.arraySize; i++)
+            {
+                SerializedProperty element = _splittersNames.GetArrayElementAtIndex(i);
+                if (element.stringValue == string.Empty) return false;
+                SerializedProperty element3 = _splittersSprites.GetArrayElementAtIndex(i);
+                if (element3.objectReferenceValue == null) return false;
+                SerializedProperty element4 = _splittersIconsSprites.GetArrayElementAtIndex(i);
+                if (element4.objectReferenceValue == null) return false;
+            }
+
+            return allDataIsSpecified;
+        }
+
         private void DrawInfo()
         {
+            if (_name.stringValue == null ||
+            _cost.floatValue == 0 ||
+            _weight.floatValue == 0 ||
+            _strength.floatValue == 0)
+                EditorGUILayout.HelpBox("Some variables are not specified", MessageType.Warning);
             EditorGUILayout.PropertyField(_name);
             EditorGUILayout.PropertyField(_cost);
             EditorGUILayout.PropertyField(_weight);
             EditorGUILayout.PropertyField(_strength);
         }
+
         private void DrawTires()
         {
             _showTires = EditorGUILayout.BeginFoldoutHeaderGroup(_showTires, "Tires");
@@ -241,14 +304,14 @@ public class Car : ScriptableObject
                 }
                 EditorGUILayout.Space(1);
                 EditorGUILayout.BeginHorizontal();
-                if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
+                if (GUILayout.Button(_tiresNames.arraySize != 0 ? "+" : "Create", GUILayout.MaxWidth(50)))
                 {
                     _tiresNames.arraySize++;
                     _tiresCost.arraySize++;
                     _tiresSprites.arraySize++;
                     _tiresIconsSprites.arraySize++;
                 }
-                if (_tiresNames.arraySize > 0)
+                if (_tiresNames.arraySize > 1)
                     if (GUILayout.Button("-", GUILayout.MaxWidth(50)))
                     {
                         _tiresNames.arraySize--;
@@ -257,9 +320,9 @@ public class Car : ScriptableObject
                         _tiresIconsSprites.arraySize--;
                     }
                 EditorGUILayout.EndHorizontal();
-                EditorGUILayout.Space(10);
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
+            EditorGUILayout.Space(10);
         }
         private void DrawRims()
         {
@@ -285,14 +348,14 @@ public class Car : ScriptableObject
                 }
                 EditorGUILayout.Space(1);
                 EditorGUILayout.BeginHorizontal();
-                if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
+                if (GUILayout.Button(_rimsNames.arraySize != 0 ? "+" : "Create", GUILayout.MaxWidth(50)))
                 {
                     _rimsNames.arraySize++;
                     _rimsCost.arraySize++;
                     _rimsSprites.arraySize++;
                     _rimsIconsSprites.arraySize++;
                 }
-                if (_rimsNames.arraySize > 0)
+                if (_rimsNames.arraySize > 1)
                     if (GUILayout.Button("-", GUILayout.MaxWidth(50)))
                     {
                         _rimsNames.arraySize--;
@@ -301,9 +364,9 @@ public class Car : ScriptableObject
                         _rimsIconsSprites.arraySize--;
                     }
                 EditorGUILayout.EndHorizontal();
-                EditorGUILayout.Space(10);
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
+            EditorGUILayout.Space(10);
         }
         private void DrawSpoilers()
         {
@@ -329,14 +392,14 @@ public class Car : ScriptableObject
                 }
                 EditorGUILayout.Space(1);
                 EditorGUILayout.BeginHorizontal();
-                if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
+                if (GUILayout.Button(_spoilersNames.arraySize != 0 ? "+" : "Create", GUILayout.MaxWidth(50)))
                 {
                     _spoilersNames.arraySize++;
                     _spoilersCost.arraySize++;
                     _spoilersSprites.arraySize++;
                     _spoilersIconsSprites.arraySize++;
                 }
-                if (_spoilersNames.arraySize > 0)
+                if (_spoilersNames.arraySize > 1)
                     if (GUILayout.Button("-", GUILayout.MaxWidth(50)))
                     {
                         _spoilersNames.arraySize--;
@@ -345,9 +408,9 @@ public class Car : ScriptableObject
                         _spoilersIconsSprites.arraySize--;
                     }
                 EditorGUILayout.EndHorizontal();
-                EditorGUILayout.Space(10);
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
+            EditorGUILayout.Space(10);
         }
         private void DrawSplitters()
         {
@@ -373,14 +436,14 @@ public class Car : ScriptableObject
                 }
                 EditorGUILayout.Space(1);
                 EditorGUILayout.BeginHorizontal();
-                if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
+                if (GUILayout.Button(_splittersNames.arraySize != 0 ? "+" : "Create", GUILayout.MaxWidth(50)))
                 {
                     _splittersNames.arraySize++;
                     _splittersCost.arraySize++;
                     _splittersSprites.arraySize++;
                     _splittersIconsSprites.arraySize++;
                 }
-                if (_splittersNames.arraySize > 0)
+                if (_splittersNames.arraySize > 1)
                     if (GUILayout.Button("-", GUILayout.MaxWidth(50)))
                     {
                         _splittersNames.arraySize--;
@@ -389,9 +452,9 @@ public class Car : ScriptableObject
                         _splittersIconsSprites.arraySize--;
                     }
                 EditorGUILayout.EndHorizontal();
-                EditorGUILayout.Space(10);
             }
             EditorGUILayout.EndFoldoutHeaderGroup();
+            EditorGUILayout.Space(10);
         }
     }
 #endif

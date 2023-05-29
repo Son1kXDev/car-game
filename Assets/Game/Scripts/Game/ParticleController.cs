@@ -5,14 +5,17 @@ public class ParticleController : MonoBehaviour, ISettingsDataPersistence
 {
     public static bool Particles { get; private set; }
 
+    [System.Obsolete]
     private void Start()
     {
         GlobalEventManager.Instance.OnParticleToggleChanged += UpdateParticles;
         UpdateParticles();
     }
 
+    [System.Obsolete]
     private void OnDestroy() => GlobalEventManager.Instance.OnParticleToggleChanged -= UpdateParticles;
 
+    [System.Obsolete]
     public void UpdateParticles()
     {
         DataPersistenceManager.Instance.LoadSettings();

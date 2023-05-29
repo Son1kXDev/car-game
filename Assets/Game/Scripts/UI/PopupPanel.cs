@@ -12,6 +12,7 @@ namespace Assets.Game.Scripts.UI
         [SerializeField] private List<ParticleSystem> _particles = new List<ParticleSystem>();
         private CanvasGroup _canvasGroup;
 
+        [System.Obsolete]
         private void OnEnable()
         {
             if (_canvasGroup == null)
