@@ -48,9 +48,9 @@ namespace Assets.Game.Scripts.Game
                 JointMotor2D motor = wheel.motor;
                 motor.maxMotorTorque = _upgrades.EngineMultiplier;
                 JointSuspension2D susp = wheel.suspension;
-                susp.frequency = _carAsset.DefaultSuspensionFrequency * _upgrades.SuspensionFrequencyMultiplier;
+                susp.frequency = _carAsset.SuspensionFrequency * _upgrades.SuspensionFrequencyMultiplier;
                 Vector2 anch = wheel.anchor;
-                anch.y = _carAsset.DefaultSuspensionHeight * (0.9f + _upgrades.SuspensionHeightMultiplier / 10);
+                anch.y = _carAsset.SuspensionHeight * (0.9f + _upgrades.SuspensionHeightMultiplier / 10);
                 wheel.anchor = anch;
                 wheel.suspension = susp;
                 wheel.motor = motor;
@@ -106,22 +106,22 @@ namespace Assets.Game.Scripts.Game
             float displaySpeed = _speedType == Speed.KMH ? speedOnKmh : speedOnMph;
             string displaySpeedString = _speedType == Speed.KMH ? "km/h" : "mph";
 
-            UI.UIManager.Instance.DisplaySpeedometer($"{Mathf.Round(displaySpeed)} {displaySpeedString}");
+            GlobalEventManager.Instance.SpeedometerDataChanged($"{Mathf.Round(displaySpeed)} {displaySpeedString}");
         }
 
         private void Tachometer()
         {
             float idleValue = Random.Range(500, 600);
             if (MoveAxis() != 0 || Mathf.Round(Mathf.Abs(_backWheel.motorSpeed)) > 30)
-                UI.UIManager.Instance.DisplayTachometer($"{Mathf.Abs(Mathf.Round(_backWheel.motorSpeed)) + idleValue} RPM");
-            else UI.UIManager.Instance.DisplayTachometer($"{idleValue} RPM");
+                GlobalEventManager.Instance.TachometerDataChanged($"{Mathf.Abs(Mathf.Round(_backWheel.motorSpeed)) + idleValue} RPM");
+            else GlobalEventManager.Instance.TachometerDataChanged($"{idleValue} RPM");
         }
 
         private void Gearbox()
         {
-            if (_switchGear) UI.UIManager.Instance.DisplayGearbox("N");
-            else if (_moveDirection > 0) UI.UIManager.Instance.DisplayGearbox($"{_currentGear + 1}");
-            else if (_moveDirection < 0) UI.UIManager.Instance.DisplayGearbox("R");
+            if (_switchGear) GlobalEventManager.Instance.GearboxDataChanged("N");
+            else if (_moveDirection > 0) GlobalEventManager.Instance.GearboxDataChanged($"{_currentGear + 1}");
+            else if (_moveDirection < 0) GlobalEventManager.Instance.GearboxDataChanged("R");
         }
 
         private IEnumerator ChangeGear()

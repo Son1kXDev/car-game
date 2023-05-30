@@ -3203,11 +3203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f64111b98b69f488b05d7b0dc81a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedometerData: {fileID: 0}
-  _gearboxData: {fileID: 0}
-  _tachometerData: {fileID: 0}
-  _coinData:
-  - {fileID: 0}
+  _type: 0
   _rewardData: {fileID: 0}
   _rewardPanel: {fileID: 0}
   _settingsPanel: {fileID: 5217814860977525727}

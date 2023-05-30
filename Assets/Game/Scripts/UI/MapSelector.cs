@@ -65,7 +65,7 @@ namespace Assets.Game.Scripts.UI
             int mapID = _maps[id].Config.SceneID;
 
             _playButton.onClick.RemoveAllListeners();
-            _playButton.onClick.AddListener(() => UIManager.Instance.Play(mapID));
+            _playButton.onClick.AddListener(() => UIManager.Instance.ButtonPlay(mapID));
 
         }
     }

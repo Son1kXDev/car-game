@@ -21,5 +21,6 @@ namespace Utils
                 Resources.Load("InGame/Bridge/EndStake", typeof(GameObject)) as GameObject);
             bridgeContainer.Create();
         }
+
     }
 }

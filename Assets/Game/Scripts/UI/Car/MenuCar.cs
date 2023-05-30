@@ -53,9 +53,9 @@ namespace Assets.Game.Scripts.UI
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
                 JointSuspension2D susp = wheel.suspension;
-                susp.frequency = _config.CurrentCar.DefaultSuspensionFrequency * _config.CurrentCarUpgrades.SuspensionFrequencyMultiplier;
+                susp.frequency = _config.CurrentCar.SuspensionFrequency * _config.CurrentCarUpgrades.SuspensionFrequencyMultiplier;
                 Vector2 anch = wheel.anchor;
-                anch.y = _config.CurrentCar.DefaultSuspensionHeight * (0.9f + _config.CurrentCarUpgrades.SuspensionHeightMultiplier / 10);
+                anch.y = _config.CurrentCar.SuspensionHeight * (0.9f + _config.CurrentCarUpgrades.SuspensionHeightMultiplier / 10);
                 wheel.anchor = anch;
                 wheel.suspension = susp;
             }
@@ -66,9 +66,9 @@ namespace Assets.Game.Scripts.UI
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
                 JointSuspension2D susp = wheel.suspension;
-                susp.frequency = _config.CurrentCar.DefaultSuspensionFrequency * frequency;
+                susp.frequency = _config.CurrentCar.SuspensionFrequency * frequency;
                 Vector2 anch = wheel.anchor;
-                anch.y = _config.CurrentCar.DefaultSuspensionHeight * (0.9f + height / 10);
+                anch.y = _config.CurrentCar.SuspensionHeight * (0.9f + height / 10);
                 wheel.anchor = anch;
                 wheel.suspension = susp;
             }
@@ -124,9 +124,9 @@ namespace Assets.Game.Scripts.UI
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
                 JointSuspension2D susp = wheel.suspension;
-                susp.frequency = _config.CurrentCar.DefaultSuspensionFrequency * _config.CurrentCarUpgrades.SuspensionFrequencyMultiplier;
+                susp.frequency = _config.CurrentCar.SuspensionFrequency * _config.CurrentCarUpgrades.SuspensionFrequencyMultiplier;
                 Vector2 anch = wheel.anchor;
-                anch.y = _config.CurrentCar.DefaultSuspensionHeight * (0.9f + _config.CurrentCarUpgrades.SuspensionHeightMultiplier / 10);
+                anch.y = _config.CurrentCar.SuspensionHeight * (0.9f + _config.CurrentCarUpgrades.SuspensionHeightMultiplier / 10);
                 wheel.anchor = anch;
                 wheel.suspension = susp;
             }

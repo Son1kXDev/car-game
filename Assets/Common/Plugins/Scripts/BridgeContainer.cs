@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -62,8 +63,9 @@ namespace Utils
         public void Create()
         {
             if (_bridge != null) _bridge.Clear();
+            else _bridge = new List<GameObject>();
+
             transform.gameObject.name = "Bridge (In Process)";
-            _bridge = new();
             _bridge.Add(Instantiate(_stake, transform));
             _bridge[0].name = "Stake";
             _bridge.Add(Instantiate(_plank, new Vector2(0.325f, -0.3f), Quaternion.identity, transform));
@@ -74,7 +76,8 @@ namespace Utils
 
         public void AddPlank()
         {
-            _bridge.Add(Instantiate(_plank, Vector2.zero, Quaternion.identity, transform));
+            GameObject plank = Instantiate(_plank, Vector2.zero, Quaternion.identity, transform);
+            _bridge.Add(plank);
             _bridge[^1].transform.localPosition = NewPosition();
             _bridge[^1].transform.rotation = ObjectQuaternion();
             SetConnectedRigidBody();
@@ -96,7 +99,8 @@ namespace Utils
         {
             DestroyImmediate(_bridge[^1].transform.Find("VerticalLine").gameObject);
             _bridge[^1].transform.Find("HorizontalLine").GetComponent<LineRenderer>().SetPosition(1, new(0.375f, 0, 0));
-            _bridge.Add(Instantiate(_endStake, Vector2.zero, Quaternion.identity, transform));
+            GameObject stake = Instantiate(_endStake, Vector2.zero, Quaternion.identity, transform);
+            _bridge.Add(stake);
             _bridge[^1].transform.localPosition = NewPosition() + new Vector2(-0.25f, 0.33f);
             _bridge[^1].transform.rotation = ObjectQuaternion();
             SetConnectedRigidBody();

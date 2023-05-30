@@ -27,7 +27,9 @@ public class MapConfig : ScriptableObject
 
     #region EDITOR
 #if UNITY_EDITOR
+#pragma warning disable CS0414
     [SerializeField] private SceneAsset _scene;
+#pragma warning restore CS0414
     [ContextMenu("Reset Scene")]
     private void ResetScene()
     {

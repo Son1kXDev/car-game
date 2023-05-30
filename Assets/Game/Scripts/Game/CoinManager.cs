@@ -35,8 +35,10 @@ namespace Assets.Game.Scripts.Game
         {
             _coins = data.Coins;
             _coinColor = _mainColor;
-            UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor);
+            GlobalEventManager.Instance.CoinDataChanged(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor);
         }
+
+        public void GetCurrentCoinData() => GlobalEventManager.Instance.CoinDataChanged(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor);
 
         public void SaveData(GameData data)
         { data.Coins = _coins; }
@@ -56,7 +58,7 @@ namespace Assets.Game.Scripts.Game
             else
             {
                 UI.UIManager.Instance.ButtonSound(success);
-                UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _noMoneyColor, 2);
+                GlobalEventManager.Instance.CoinDataChanged(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _noMoneyColor, 2);
                 StartCoroutine(ResetColorByDelay(0.2f));
             }
             return success;
@@ -67,12 +69,12 @@ namespace Assets.Game.Scripts.Game
             if (!_changeCoinValue) return;
 
             _coins = (int)Mathf.MoveTowards(_coins, _newCoinsValue, _speed * Time.deltaTime);
-            UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor, _decrease ? 3 : 4);
+            GlobalEventManager.Instance.CoinDataChanged(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor, _decrease ? 3 : 4);
             if (_coins == _newCoinsValue)
             {
                 _changeCoinValue = false;
                 _coinColor = _mainColor;
-                UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor);
+                GlobalEventManager.Instance.CoinDataChanged(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor);
             }
         }
 
@@ -95,7 +97,7 @@ namespace Assets.Game.Scripts.Game
         IEnumerator ResetColorByDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
-            UI.UIManager.Instance.DisplayCoins(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor);
+            GlobalEventManager.Instance.CoinDataChanged(_coins.ToString(CustomStringFormat.CoinFormat(_coins)), _coinColor);
         }
     }
 }

@@ -20,7 +20,7 @@ MonoBehaviour:
   _brakeForce: 1000
   _airBrakeForce: 500
   _gearBrakeForce: 80
-  _wheelSize: 0.03
+  _wheelSize: 0.13
   _defaultSuspensionFrequency: 4
   _defaultSuspensionHeight: -0.219
   _gearType: 2

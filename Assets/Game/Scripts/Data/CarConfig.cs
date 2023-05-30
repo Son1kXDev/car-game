@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Game.Scripts
 {
     public class CarConfig : MonoBehaviour, Data.IDataPersistence
     {
-        public Car CurrentCar;
+        public Car CurrentCar { get; private set; }
         [HideInInspector] public Color CurrentColor;
         [HideInInspector] public int CurrentTire;
         [HideInInspector] public int CurrentRim;
@@ -17,11 +18,10 @@ namespace Assets.Game.Scripts
         [HideInInspector] public List<int> Costs;
         [HideInInspector] public SerializableDictionary<string, int> CostsDictionary;
 
-        [SerializeField] private List<Car> _carsConfigs;
+        private List<Car> _carsConfigs;
 
         public bool HasConfig()
         { return CurrentCar != null; }
-
 
         public void LoadData(GameData data)
         {
@@ -33,6 +33,9 @@ namespace Assets.Game.Scripts
             CurrentSplitter = data.CurrentSplitter;
             CurrentCarUpgrades = data.CarUpgrades[id];
             CurrentStickerPath = data.CurrentStickerPath;
+
+            _carsConfigs = new List<Car>();
+            _carsConfigs = Resources.LoadAll<Car>("InGame/Cars").ToList();
 
             CurrentCar = _carsConfigs.Find(car => car.ID == id);
             CostsDictionary = data.Costs;

@@ -1,25 +1,17 @@
 using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
-using System.Collections.Generic;
 using System.Collections;
 using Assets.Game.Scripts.Data;
 
 public class AudioManager : MonoBehaviour, ISettingsDataPersistence
 {
     public static AudioManager Instance { get; private set; }
-
-    [Header("Volume")]
-    [Range(0, 1)]
-    public float MasterVolume = 1f;
-    [Range(0, 1)]
-    public float MusicVolume = 1f;
-    [Range(0, 1)]
-    public float SFXVolume = 1f;
-    [Range(0, 1)]
-    public float AmbientVolume = 1f;
-    [Range(0, 1)]
-    public float UIVolume = 1f;
+    [HideInInspector] public float MasterVolume = 1f;
+    [HideInInspector] public float MusicVolume = 1f;
+    [HideInInspector] public float SFXVolume = 1f;
+    [HideInInspector] public float AmbientVolume = 1f;
+    [HideInInspector] public float UIVolume = 1f;
 
     private Bus _masterBus, _musicBus, _sfxBus, _ambientBus, _uiBus;
 

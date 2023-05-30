@@ -3290,6 +3290,7 @@ GameObject:
   - component: {fileID: 128447290}
   - component: {fileID: 128447289}
   - component: {fileID: 128447291}
+  - component: {fileID: 128447292}
   m_Layer: 5
   m_Name: BalanceData
   m_TagString: Untagged
@@ -3428,6 +3429,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &128447292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128447287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfdae5d36a1d14418576e5563b2022e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &128882646
 GameObject:
   m_ObjectHideFlags: 0
@@ -5374,6 +5387,7 @@ GameObject:
   - component: {fileID: 182394283}
   - component: {fileID: 182394282}
   - component: {fileID: 182394284}
+  - component: {fileID: 182394285}
   m_Layer: 5
   m_Name: BalanceData
   m_TagString: Untagged
@@ -5512,6 +5526,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &182394285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182394280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfdae5d36a1d14418576e5563b2022e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &203833616
 GameObject:
   m_ObjectHideFlags: 0
@@ -10497,6 +10523,7 @@ GameObject:
   - component: {fileID: 397485739}
   - component: {fileID: 397485738}
   - component: {fileID: 397485740}
+  - component: {fileID: 397485741}
   m_Layer: 5
   m_Name: BalanceData
   m_TagString: Untagged
@@ -10635,6 +10662,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &397485741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397485736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfdae5d36a1d14418576e5563b2022e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &399179233
 GameObject:
   m_ObjectHideFlags: 0
@@ -13629,6 +13668,7 @@ GameObject:
   - component: {fileID: 511247795}
   - component: {fileID: 511247794}
   - component: {fileID: 511247796}
+  - component: {fileID: 511247797}
   m_Layer: 5
   m_Name: BalanceData
   m_TagString: Untagged
@@ -13767,6 +13807,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &511247797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511247792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfdae5d36a1d14418576e5563b2022e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &511524507
 GameObject:
   m_ObjectHideFlags: 0
@@ -31638,6 +31690,7 @@ GameObject:
   - component: {fileID: 1231564605}
   - component: {fileID: 1231564604}
   - component: {fileID: 1231564606}
+  - component: {fileID: 1231564607}
   m_Layer: 5
   m_Name: BalanceData
   m_TagString: Untagged
@@ -31776,6 +31829,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &1231564607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231564602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfdae5d36a1d14418576e5563b2022e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1234626159
 GameObject:
   m_ObjectHideFlags: 0
@@ -42656,6 +42721,7 @@ GameObject:
   - component: {fileID: 1745171278}
   - component: {fileID: 1745171277}
   - component: {fileID: 1745171279}
+  - component: {fileID: 1745171280}
   m_Layer: 5
   m_Name: BalanceData
   m_TagString: Untagged
@@ -42794,6 +42860,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &1745171280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745171275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cfdae5d36a1d14418576e5563b2022e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1745754630
 GameObject:
   m_ObjectHideFlags: 0
@@ -49462,16 +49540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f64111b98b69f488b05d7b0dc81a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedometerData: {fileID: 0}
-  _gearboxData: {fileID: 0}
-  _tachometerData: {fileID: 0}
-  _coinData:
-  - {fileID: 182394282}
-  - {fileID: 1745171277}
-  - {fileID: 128447289}
-  - {fileID: 1231564604}
-  - {fileID: 511247794}
-  - {fileID: 397485738}
+  _type: 2
   _rewardData: {fileID: 0}
   _rewardPanel: {fileID: 0}
   _settingsPanel: {fileID: 0}

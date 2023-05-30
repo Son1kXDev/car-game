@@ -1,23 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 namespace Assets.Game.Scripts.Game
 {
     public class CarPCInput : MonoBehaviour
     {
-        [SerializeField] private bool _isEnabled;
+#if !UNITY_ANDROID
 
         private bool _isPause = false;
 
         private void Awake()
-        {
-            if (_isEnabled == false) Destroy(this);
-
-            _isPause = false;
-        }
+        { _isPause = false; }
 
         private void Update()
         {
@@ -47,6 +39,6 @@ namespace Assets.Game.Scripts.Game
             if (Input.GetKeyUp(KeyCode.L))
                 GlobalEventManager.Instance.LightButton(false);
         }
-
+#endif
     }
 }

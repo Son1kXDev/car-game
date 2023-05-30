@@ -3871,10 +3871,8 @@ MonoBehaviour:
   _rims:
   - {fileID: 1451382237115420664}
   - {fileID: 3489645699220063011}
-  _spoilers:
-  - {fileID: 8754550474286543094}
-  _splitters:
-  - {fileID: 1134995678746866591}
+  _spoiler: {fileID: 8754550474286543094}
+  _splitter: {fileID: 1134995678746866591}
   _lowBeam: {fileID: 851387022959714719}
   _highBeam: {fileID: 2481085716631190488}
   _backCasualLights: {fileID: 2384049364999162828}
@@ -3887,6 +3885,7 @@ MonoBehaviour:
       Data3: -2034515325
       Data4: 295495682
     Path: event:/Effects/Car/LightSwitch
+  _property: 0
 --- !u!114 &3969798729054997546
 MonoBehaviour:
   m_ObjectHideFlags: 0

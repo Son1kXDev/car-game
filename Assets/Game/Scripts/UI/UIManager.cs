@@ -1,26 +1,72 @@
-using System.Net;
+using System;
 using UnityEngine;
 using UnityEngine.Localization.Custom;
 using TMPro;
-using Utils.Debugger;
-using System.Collections.Generic;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Assets.Game.Scripts.UI
 {
+
+    public enum UIType { UI0Menu0Manager = 0, UI0Game0Manager = 1, UI0Manager = 2 }
+
     public class UIManager : MonoBehaviour
     {
         public static UIManager Instance;
 
-        [SerializeField] private TextMeshProUGUI _speedometerData;
-        [SerializeField] private TextMeshProUGUI _gearboxData;
-        [SerializeField] private TextMeshProUGUI _tachometerData;
-        [SerializeField] private List<TextMeshProUGUI> _coinData;
+        [SerializeField] private UIType _type;
         [SerializeField] private TextMeshProUGUI _rewardData;
         [SerializeField] private RewardPanel _rewardPanel;
         [SerializeField] private PopupPanel _settingsPanel, _pausePanel;
-        private PopupBackground _popupBackground;
         private Game.CameraController _cameraController;
         private bool _wasPaused;
+
+        #region EDITOR
+#if UNITY_EDITOR
+        [CustomEditor(typeof(UIManager))]
+        public class UIManagerEditor : Editor
+        {
+            private SerializedProperty _type;
+            private SerializedProperty _rewardData;
+            private SerializedProperty _rewardPanel;
+            private SerializedProperty _settingsPanel;
+            private SerializedProperty _pausePanel;
+
+            private void OnEnable()
+            {
+                _type = serializedObject.FindProperty(nameof(_type));
+                _rewardData = serializedObject.FindProperty(nameof(_rewardData));
+                _rewardPanel = serializedObject.FindProperty(nameof(_rewardPanel));
+                _settingsPanel = serializedObject.FindProperty(nameof(_settingsPanel));
+                _pausePanel = serializedObject.FindProperty(nameof(_pausePanel));
+            }
+
+            public override void OnInspectorGUI()
+            {
+                serializedObject.Update();
+                if (GUILayout.Button(_type.enumNames[_type.enumValueFlag].Replace("0", " ")))
+                {
+                    int value = _type.enumValueIndex + 1;
+                    if (value > 2) value = 0;
+                    _type.enumValueIndex = value;
+                }
+
+                EditorGUILayout.Space(10);
+                if (_type.enumValueIndex == 1)
+                {
+                    EditorGUILayout.PropertyField(_rewardData);
+                    EditorGUILayout.PropertyField(_rewardPanel);
+                    EditorGUILayout.PropertyField(_pausePanel);
+                }
+
+                if (_type.enumValueIndex != 2) EditorGUILayout.PropertyField(_settingsPanel);
+                serializedObject.ApplyModifiedProperties();
+            }
+        }
+#endif
+        #endregion
 
         private void Awake()
         {
@@ -53,7 +99,7 @@ namespace Assets.Game.Scripts.UI
             Data.DataPersistenceManager.Instance.SaveGame();
             SceneLoadManager.Instance.LoadScene("MainMenuScene");
         }
-
+        #region BUTTONS
         public void ButtonExit() => Application.Quit();
 
         public void ButtonNewgame()
@@ -65,13 +111,13 @@ namespace Assets.Game.Scripts.UI
                 "Вы уверены что хотите перезаписать текущее сохранение? Весь прогресс будет потерян.";
 
                 GlobalEventManager.Instance.ActivateConfirmationPopup(displayText,
-                    () => LoadNewGame(),
+                    () => ButtonLoadNewGame(),
                     () => Debug.Log("Cancel overwriting savefile"));
             }
-            else LoadNewGame();
+            else ButtonLoadNewGame();
         }
 
-        public void LoadNewGame()
+        public void ButtonLoadNewGame()
         {
             Data.DataPersistenceManager.Instance.ResetGame();
             Data.DataPersistenceManager.Instance.NewGame();
@@ -86,37 +132,16 @@ namespace Assets.Game.Scripts.UI
             SceneLoadManager.Instance.LoadScene("GameMenuScene");
         }
 
-        public void Play(int ID)
+        public void ButtonPlay(int ID)
         {
             Data.DataPersistenceManager.Instance.SaveGame();
             SceneLoadManager.Instance.LoadScene(ID);
         }
 
-        public void DisplaySpeedometer(string value)
-        {
-            if (_speedometerData != null)
-                _speedometerData.text = value;
-        }
-
-        public void DisplayGearbox(string value)
-        {
-            if (_gearboxData != null)
-                _gearboxData.text = value;
-        }
-
-        public void DisplayTachometer(string value)
-        {
-            if (_tachometerData != null)
-                _tachometerData.text = value;
-        }
-
-        public void DisplayCoins(string value, Color color, int spriteIndex = 0)
-        {
-            string sprite = $"<sprite index={spriteIndex}>";
-            _coinData.ForEach(text => { text.text = $"{value} {sprite}"; });
-            _coinData.ForEach(text => { text.color = color; });
-        }
-
+        public void ButtonSound(bool value = true) =>
+        AudioManager.Instance.PlayOneShot(value ? Audio.Data.ButtonClick : Audio.Data.ButtonNoClick, transform.position);
+        #endregion
+        #region DISPLAY
         public void DisplayReward(int rewardValue, string rewardLable)
         {
             string rewardValueText = rewardValue.ToString(CustomStringFormat.CoinFormat(rewardValue));
@@ -199,9 +224,7 @@ namespace Assets.Game.Scripts.UI
             () => SceneLoadManager.Instance.LoadScene("GameMenuScene"),
             () => _pausePanel.gameObject.SetActive(true));
         }
-
-        public void ButtonSound(bool value = true) =>
-        AudioManager.Instance.PlayOneShot(value ? Audio.Data.ButtonClick : Audio.Data.ButtonNoClick, transform.position);
+        #endregion
 
     }
 }
