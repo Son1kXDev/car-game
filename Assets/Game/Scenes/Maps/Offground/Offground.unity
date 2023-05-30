@@ -12950,6 +12950,10 @@ PrefabInstance:
       propertyPath: m_Cameras.Array.data[1]
       value: 
       objectReference: {fileID: 52994877}
+    - target: {fileID: 8234129504756859090, guid: ceef78222091a9246845db105d6f223b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8234129504799216238, guid: ceef78222091a9246845db105d6f223b, type: 3}
       propertyPath: _followingTarget
       value: 

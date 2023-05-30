@@ -3038,7 +3038,7 @@ GameObject:
   - component: {fileID: 8234129504756859085}
   m_Layer: 11
   m_Name: '[SKY] Camera'
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

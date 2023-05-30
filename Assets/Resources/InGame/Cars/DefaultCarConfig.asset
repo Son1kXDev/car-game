@@ -21,8 +21,8 @@ MonoBehaviour:
   _airBrakeForce: 500
   _gearBrakeForce: 80
   _wheelSize: 0.13
-  _defaultSuspensionFrequency: 4
-  _defaultSuspensionHeight: -0.219
+  _suspensionFrequency: 4
+  _suspensionHeight: -0.219
   _gearType: 2
   _gearsMaxSpeed: 9001000020030000b0040000dc050000d007000098080000
   _maximumMotorForces:
@@ -53,7 +53,7 @@ MonoBehaviour:
   _splittersSprites:
   - {fileID: 21300000, guid: 0424eada9bbfda0449aeca9993f1d346, type: 3}
   - {fileID: 21300000, guid: 3f959017ce64bcd4eb59d09420661672, type: 3}
-  - {fileID: 21300000, guid: 385c62ae0b438ba43ad41d91f67e1563, type: 3}
+  - {fileID: 0}
   _tiresIconsSprites:
   - {fileID: 21300000, guid: 37522309acf2cc041bf91e5d7d663b31, type: 3}
   _rimsIconsSprites:

@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98ee4a6c57a6e784b9f07d48f2790123, type: 3}
   m_Name: Car
   m_EditorClassIdentifier: 
-  _id: 564fcca2-ef9d-4d6d-b17e-5276f6aee2e6
-  _property: 0
+  _id: dbc8fc0c-d8d9-4f24-9d95-cdba9252c8e3
+  _property: 2
   _acceleration: 500
   _maxSpeed: 800
   _maxBackSpeed: 600
@@ -21,8 +21,8 @@ MonoBehaviour:
   _airBrakeForce: 500
   _gearBrakeForce: 80
   _wheelSize: 0.03
-  _defaultSuspensionFrequency: 4
-  _defaultSuspensionHeight: -0.219
+  _suspensionFrequency: 4
+  _suspensionHeight: -0.219
   _gearType: 2
   _gearsMaxSpeed: 9001000020030000b0040000dc050000d007000098080000
   _maximumMotorForces:
@@ -36,23 +36,35 @@ MonoBehaviour:
   _backSprite: {fileID: 0}
   _elementsSprite: {fileID: 0}
   _opticsSprite: {fileID: 0}
-  _tiresSprites: []
-  _rimsSprites: []
-  _spoilersSprites: []
-  _splittersSprites: []
-  _tiresIconsSprites: []
-  _rimsIconsSprites: []
-  _spoilersIconsSprites: []
-  _splittersIconsSprites: []
+  _tiresSprites:
+  - {fileID: 21300000, guid: 410d529032b2c2048b0a0d067ebc0c5c, type: 3}
+  _rimsSprites:
+  - {fileID: 0}
+  _spoilersSprites:
+  - {fileID: 0}
+  _splittersSprites:
+  - {fileID: 0}
+  _tiresIconsSprites:
+  - {fileID: 21300000, guid: dcab78ae0a236204aba66c98aaf17e53, type: 3}
+  _rimsIconsSprites:
+  - {fileID: 0}
+  _spoilersIconsSprites:
+  - {fileID: 0}
+  _splittersIconsSprites:
+  - {fileID: 0}
   _name: 
   _cost: 0
   _weight: 0
   _strength: 0
-  _tiresNames: []
-  _tiresCost: 
-  _rimsNames: []
-  _rimsCost: 
-  _spoilersNames: []
-  _spoilersCost: 
-  _splittersNames: []
-  _splittersCost: 
+  _tiresNames:
+  - 
+  _tiresCost: 00000000
+  _rimsNames:
+  - 
+  _rimsCost: 00000000
+  _spoilersNames:
+  - 
+  _spoilersCost: 00000000
+  _splittersNames:
+  - 
+  _splittersCost: 00000000
