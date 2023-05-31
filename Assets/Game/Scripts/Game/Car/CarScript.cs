@@ -9,7 +9,6 @@ namespace Assets.Game.Scripts.Game
     [RequireComponent(typeof(Rigidbody2D), typeof(WheelJoint2D), typeof(WheelJoint2D)), RequireComponent(typeof(CarVisual))]
     public class CarScript : MonoCache, Data.IDataPersistence, Data.ISettingsDataPersistence
     {
-        [Header("Settings")]
         [SerializeField] private LayerMask _ground;
         [SerializeField] private Transform _wheel;
         [SerializeField] private Car _carAsset;
