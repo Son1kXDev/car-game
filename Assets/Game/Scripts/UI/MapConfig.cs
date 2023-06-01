@@ -78,24 +78,25 @@ public class MapConfig : ScriptableObject
             EditorGUILayout.Space(10);
             _id.intValue = SceneUtility.GetBuildIndexByScenePath(AssetDatabase.GetAssetPath(_scene.objectReferenceValue));
             EditorGUILayout.BeginHorizontal();
+            EditorGUIUtility.labelWidth = 75f;
             EditorGUILayout.BeginVertical();
-            _name.stringValue = EditorGUILayout.TextField(_name.stringValue);
+            _image.objectReferenceValue =
+            EditorGUILayout.ObjectField(_image.objectReferenceValue, typeof(Sprite), GUILayout.Width(168), GUILayout.MinHeight(72));
+            if (_image.objectReferenceValue == null)
+                EditorGUILayout.HelpBox("Sprite preview reference is null", MessageType.Warning);
+            EditorGUILayout.EndVertical();
+            EditorGUILayout.BeginVertical();
+            _name.stringValue = EditorGUILayout.TextField(_name.stringValue, GUILayout.MinWidth(10));
             if (_name.stringValue == string.Empty)
                 EditorGUILayout.HelpBox("Map name is empty", MessageType.Warning);
             EditorGUILayout.PropertyField(_length);
             EditorGUILayout.PropertyField(_flatness);
             EditorGUILayout.EndVertical();
-            EditorGUILayout.BeginVertical();
-            _image.objectReferenceValue =
-            EditorGUILayout.ObjectField(_image.objectReferenceValue, typeof(Sprite), GUILayout.MinWidth(210), GUILayout.MinHeight(96));
-            if (_image.objectReferenceValue == null)
-                EditorGUILayout.HelpBox("Sprite preview reference is null", MessageType.Warning);
-            EditorGUILayout.EndVertical();
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.Space(10);
 
             MapConfig config = (MapConfig)target;
-            config._lang = (DescriptionLang)EditorGUILayout.EnumPopup("Description", config._lang);
+            config._lang = (DescriptionLang)EditorGUILayout.EnumPopup("Description", config._lang, GUILayout.MaxWidth(120));
             if (config._lang == DescriptionLang.EN)
                 config._description.EN =
                 EditorGUILayout.TextArea(config._description.EN, EditorStyles.textArea, GUILayout.MinHeight(40), GUILayout.MaxHeight(100));
