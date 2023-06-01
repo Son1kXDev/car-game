@@ -294,8 +294,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Foggy Bridges
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 75a2108790027bb428d80537463b3f34, type: 2}
-  m_sharedMaterial: {fileID: 2968067575009182976, guid: 75a2108790027bb428d80537463b3f34, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2ad5c4af364db284080c400f23140144, type: 2}
+  m_sharedMaterial: {fileID: 9116381279272165890, guid: 2ad5c4af364db284080c400f23140144, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -13,8 +13,8 @@ namespace Assets.Game.Scripts.UI
 
         private void OnEnable()
         {
-            GlobalEventManager.Instance.OnCoinDataChanged += DisplayCoins;
             StopAllCoroutines();
+            GlobalEventManager.Instance.OnCoinDataChanged += DisplayCoins;
             if (Game.CoinManager.Instance == null) StartCoroutine(GetCurrentCoinData());
             else Game.CoinManager.Instance.GetCurrentCoinData();
         }

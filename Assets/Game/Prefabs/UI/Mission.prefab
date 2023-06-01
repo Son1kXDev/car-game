@@ -192,8 +192,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Reward <sprite index=0>
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 75a2108790027bb428d80537463b3f34, type: 2}
-  m_sharedMaterial: {fileID: 2968067575009182976, guid: 75a2108790027bb428d80537463b3f34, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2ad5c4af364db284080c400f23140144, type: 2}
+  m_sharedMaterial: {fileID: 9116381279272165890, guid: 2ad5c4af364db284080c400f23140144, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28.3
+  m_fontSize: 31.75
   m_fontSizeBase: 57.86
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -327,8 +327,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Lable
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 75a2108790027bb428d80537463b3f34, type: 2}
-  m_sharedMaterial: {fileID: 2968067575009182976, guid: 75a2108790027bb428d80537463b3f34, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2ad5c4af364db284080c400f23140144, type: 2}
+  m_sharedMaterial: {fileID: 9116381279272165890, guid: 2ad5c4af364db284080c400f23140144, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -15,10 +15,8 @@ namespace Assets.Game.Scripts.UI
         public void Start()
         {
             _button = GetComponent<Button>();
-            _line = transform.Find("Line").GetComponent<TextMeshProUGUI>();
             bool SaveFile = Data.DataPersistenceManager.Instance.SaveFileExist();
             _button.interactable = SaveFile;
-            _line.color = SaveFile ? _activeColor : _inactiveColor;
         }
     }
 }
