@@ -15,15 +15,15 @@ public class StatusIconPropertyDrawer : PropertyDrawer
         var attr = attribute as StatusIconAttribute;
         if (attr.str != null)
             property.PropertyField(position, label,
-            property.stringValue != attr.str ? PropertyIconType.Confirm : PropertyIconType.Error, attr.offset);
+            property.stringValue != attr.str ? PropertyIconType.Confirm : PropertyIconType.Error);
         else if (attr.num != null)
             property.PropertyField(position, label,
-            property.intValue != attr.num ? PropertyIconType.Confirm : PropertyIconType.Error, attr.offset);
+            property.intValue != attr.num ? PropertyIconType.Confirm : PropertyIconType.Error);
         else if (attr.flt != null)
             property.PropertyField(position, label,
-            property.floatValue != attr.flt ? PropertyIconType.Confirm : PropertyIconType.Error, attr.offset);
+            property.floatValue != attr.flt ? PropertyIconType.Confirm : PropertyIconType.Error);
         else property.PropertyField(position, label,
-        property.objectReferenceValue != null ? PropertyIconType.Confirm : PropertyIconType.Error, attr.offset);
+        property.objectReferenceValue != null ? PropertyIconType.Confirm : PropertyIconType.Error);
     }
 
 }

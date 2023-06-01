@@ -13,7 +13,7 @@ namespace Assets.Game.Scripts.Game
     public class CheckpointTrigger : MonoBehaviour
     {
         [SerializeField] private LocalizedString _rewardLabel;
-        [SerializeField] private int _rewardValue = 1000;
+        [SerializeField, StatusIcon(0)] private int _rewardValue = 1000;
         private SpriteRenderer _renderer;
         private bool _checkpoint = false;
         private Tween _tween;

@@ -6,7 +6,7 @@ namespace Assets.Game.Scripts.UI
     [RequireComponent(typeof(Camera))]
     public class CameraFollow : MonoCache
     {
-        [SerializeField, StatusIcon(offset: 20)] private Camera _target;
+        [SerializeField, StatusIcon] private Camera _target;
         private Camera _camera;
 
         private void Awake() => _camera = GetComponent<Camera>();

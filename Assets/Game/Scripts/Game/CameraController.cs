@@ -7,7 +7,7 @@ namespace Assets.Game.Scripts.Game
 {
     public class CameraController : MonoCache
     {
-        [SerializeField, StatusIcon(offset: 20)] private Transform _target;
+        [SerializeField, StatusIcon] private Transform _target;
         [SerializeField, Min(0.1f)] private float _zoomStep;
         [SerializeField, Min(0.1f)] private float _smooth = 15f;
         [SerializeField] private Vector2 _camSize;

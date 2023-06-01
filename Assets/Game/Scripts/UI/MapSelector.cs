@@ -10,12 +10,12 @@ namespace Assets.Game.Scripts.UI
 {
     public class MapSelector : MonoBehaviour
     {
-        [SerializeField, StatusIcon(offset: 20)] private Transform _propertyField;
+        [SerializeField, StatusIcon] private Transform _propertyField;
         [SerializeField] private UnityEngine.Localization.LocalizedString _length;
         [SerializeField] private UnityEngine.Localization.LocalizedString _flatness;
-        [SerializeField, StatusIcon(offset: 20)] private ScrollRect _scroll;
+        [SerializeField, StatusIcon] private ScrollRect _scroll;
         [SerializeField] private List<MapData> _maps;
-        [SerializeField, StatusIcon(offset: 20)] private Button _playButton;
+        [SerializeField, StatusIcon] private Button _playButton;
         private int _selectedID;
 
         private void OnEnable()

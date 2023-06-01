@@ -7,7 +7,7 @@ namespace Assets.Game.Scripts.UI
 {
     public class RewardPanel : MonoBehaviour
     {
-        [SerializeField, StatusIcon(offset: 20)] TextMeshProUGUI _rewardLable;
+        [SerializeField, StatusIcon] TextMeshProUGUI _rewardLable;
 
         private CanvasGroup _canvasGroup;
 

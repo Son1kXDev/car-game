@@ -9,13 +9,13 @@ namespace Assets.Game.Scripts.UI
     public class MenuCar : MonoBehaviour
     {
         [Header("Scene Visual")]
-        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _body;
-        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _back;
-        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _elements;
-        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _optics;
-        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _sticker;
-        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _spoiler;
-        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _splitter;
+        [SerializeField, StatusIcon] private SpriteRenderer _body;
+        [SerializeField, StatusIcon] private SpriteRenderer _back;
+        [SerializeField, StatusIcon] private SpriteRenderer _elements;
+        [SerializeField, StatusIcon] private SpriteRenderer _optics;
+        [SerializeField, StatusIcon] private SpriteRenderer _sticker;
+        [SerializeField, StatusIcon] private SpriteRenderer _spoiler;
+        [SerializeField, StatusIcon] private SpriteRenderer _splitter;
         [SerializeField] private List<SpriteRenderer> _tires;
         [SerializeField] private List<SpriteRenderer> _rims;
 

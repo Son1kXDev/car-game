@@ -8,10 +8,9 @@ public class StatusIconAttribute : PropertyAttribute
     public string? str { get; private set; } = null;
     public int? num { get; private set; } = null;
     public float? flt { get; private set; } = null;
-    public float offset { get; private set; } = 12;
-    public StatusIconAttribute(float offset = 12) { this.offset = offset; }
-    public StatusIconAttribute(string value, float offset = 12) { str = value; this.offset = offset; }
-    public StatusIconAttribute(int value, float offset = 12) { num = value; this.offset = offset; }
-    public StatusIconAttribute(float value, float offset = 12) { flt = value; this.offset = offset; }
+    public StatusIconAttribute() { }
+    public StatusIconAttribute(string value) { str = value; }
+    public StatusIconAttribute(int value) { num = value; }
+    public StatusIconAttribute(float value) { flt = value; }
 }
 

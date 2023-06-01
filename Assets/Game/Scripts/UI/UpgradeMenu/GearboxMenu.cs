@@ -12,10 +12,10 @@ namespace Assets.Game.Scripts.UI
     public class GearboxMenu : MonoBehaviour
     {
         [SerializeField] private int _maxUpgrades = 10;
-        [SerializeField, StatusIcon(offset: 20)] private TextMeshProUGUI _upgradeText;
+        [SerializeField, StatusIcon] private TextMeshProUGUI _upgradeText;
         [SerializeField] private LocalizedString _upgradeString;
-        [SerializeField, StatusIcon(offset: 20)] private TextMeshProUGUI _costText;
-        [SerializeField, StatusIcon(offset: 20)] private Button _upgradeButton;
+        [SerializeField, StatusIcon] private TextMeshProUGUI _costText;
+        [SerializeField, StatusIcon] private Button _upgradeButton;
         [SerializeField] private List<int> _costs;
 
         private CarConfig _carConfig;

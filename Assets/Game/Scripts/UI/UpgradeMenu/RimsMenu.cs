@@ -9,10 +9,10 @@ namespace Assets.Game.Scripts.UI
 {
     public class RimsMenu : MonoBehaviour, IDataPersistence
     {
-        [SerializeField, StatusIcon(offset: 20)] private Transform _propertyField;
-        [SerializeField, StatusIcon(offset: 20)] private ScrollRect _scroll;
+        [SerializeField, StatusIcon] private Transform _propertyField;
+        [SerializeField, StatusIcon] private ScrollRect _scroll;
         [SerializeField] private List<GameObject> _rims;
-        [SerializeField, StatusIcon(offset: 20)] private ActionButton _actionButton;
+        [SerializeField, StatusIcon] private ActionButton _actionButton;
         private CarConfig _carConfig;
         private CarInfo _carInfo;
         private MenuCar _car;

@@ -10,7 +10,7 @@ namespace Assets.Game.Scripts.Game
     public class FinishTrigger : MonoBehaviour
     {
         [SerializeField] private LocalizedString _rewardLabel;
-        [SerializeField] private int _rewardValue = 1000;
+        [SerializeField, StatusIcon(0)] private int _rewardValue = 1000;
         private SpriteRenderer _renderer;
         private Light2D _light;
         private Material _material;

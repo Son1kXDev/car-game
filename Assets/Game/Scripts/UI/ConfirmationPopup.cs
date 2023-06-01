@@ -12,9 +12,9 @@ namespace Assets.Game.Scripts.UI
     public class ConfirmationPopup : MonoBehaviour
     {
         [Header("Components")]
-        [SerializeField, StatusIcon(offset: 20)] private TextMeshProUGUI _displayText;
-        [SerializeField, StatusIcon(offset: 20)] private Button _confirmButton;
-        [SerializeField, StatusIcon(offset: 20)] private Button _cancelButton;
+        [SerializeField, StatusIcon] private TextMeshProUGUI _displayText;
+        [SerializeField, StatusIcon] private Button _confirmButton;
+        [SerializeField, StatusIcon] private Button _cancelButton;
 
         private CanvasGroup _mainCanvasGroup;
         private Image _mainImage;

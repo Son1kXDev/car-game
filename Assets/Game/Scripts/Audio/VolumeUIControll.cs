@@ -5,11 +5,11 @@ using Assets.Game.Scripts.Data;
 [Component("Volume UI Controller")]
 public class VolumeUIControll : MonoBehaviour
 {
-    [SerializeField, StatusIcon(offset: 20)] private Slider _masterVolumeSlider;
-    [SerializeField, StatusIcon(offset: 20)] private Slider _musicVolumeSlider;
-    [SerializeField, StatusIcon(offset: 20)] private Slider _sfxVolumeSlider;
-    [SerializeField, StatusIcon(offset: 20)] private Slider _ambientVolumeSlider;
-    [SerializeField, StatusIcon(offset: 20)] private Slider _uiVolumeSlider;
+    [SerializeField, StatusIcon] private Slider _masterVolumeSlider;
+    [SerializeField, StatusIcon] private Slider _musicVolumeSlider;
+    [SerializeField, StatusIcon] private Slider _sfxVolumeSlider;
+    [SerializeField, StatusIcon] private Slider _ambientVolumeSlider;
+    [SerializeField, StatusIcon] private Slider _uiVolumeSlider;
 
 
     private void OnEnable()

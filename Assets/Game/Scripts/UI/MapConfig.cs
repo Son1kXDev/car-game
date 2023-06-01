@@ -11,7 +11,7 @@ using UnityEditor;
 public class MapConfig : ScriptableObject
 {
     [SerializeField] private int _id = 0;
-    [SerializeField] private string _name = "Map Name";
+    [SerializeField] private string _name = "";
     [SerializeField] private Sprite _image;
     [SerializeField] private MapLength _length;
     [SerializeField] private FlatnessType _flatness;

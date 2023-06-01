@@ -46,15 +46,15 @@ public static class EditorExtensions
     }
 
     public static bool PropertyField(this SerializedProperty property, Rect position, GUIContent label,
-    PropertyIconType iconType = PropertyIconType.None, float offset = 20)
+    PropertyIconType iconType = PropertyIconType.None)
     {
         Color color = GUI.backgroundColor;
         if (iconType == PropertyIconType.Error) GUI.backgroundColor = Color.red;
         var oldPosition = position;
-        position.width -= 20;
+        position.size -= new Vector2(EditorGUIUtility.singleLineHeight, 0);
         bool value = EditorGUI.PropertyField(position, property, label);
         position = oldPosition;
-        position.x = Screen.width - offset * 2;
+        position.x = position.size.x;
         GUI.backgroundColor = color;
         if (iconType != PropertyIconType.None)
             EditorGUI.LabelField(position, EditorGUIUtility.IconContent(PropertyIcon(iconType)));
