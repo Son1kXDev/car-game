@@ -3,70 +3,21 @@ using UnityEngine;
 using UnityEngine.Localization.Custom;
 using TMPro;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 namespace Assets.Game.Scripts.UI
 {
-
     public enum UIType { UI0Menu0Manager = 0, UI0Game0Manager = 1, UI0Manager = 2 }
 
+    [Component("User Interface Manager")]
     public class UIManager : MonoBehaviour
     {
         public static UIManager Instance;
 
         [SerializeField] private UIType _type;
-        [SerializeField] private TextMeshProUGUI _rewardData;
-        [SerializeField] private RewardPanel _rewardPanel;
-        [SerializeField] private PopupPanel _settingsPanel, _pausePanel;
+        [SerializeField, StatusIcon] private TextMeshProUGUI _rewardData;
+        [SerializeField, StatusIcon] private RewardPanel _rewardPanel;
+        [SerializeField, StatusIcon] private PopupPanel _settingsPanel, _pausePanel;
         private Game.CameraController _cameraController;
         private bool _wasPaused;
-
-        #region EDITOR
-#if UNITY_EDITOR
-        [CustomEditor(typeof(UIManager))]
-        public class UIManagerEditor : Editor
-        {
-            private SerializedProperty _type;
-            private SerializedProperty _rewardData;
-            private SerializedProperty _rewardPanel;
-            private SerializedProperty _settingsPanel;
-            private SerializedProperty _pausePanel;
-
-            private void OnEnable()
-            {
-                _type = serializedObject.FindProperty(nameof(_type));
-                _rewardData = serializedObject.FindProperty(nameof(_rewardData));
-                _rewardPanel = serializedObject.FindProperty(nameof(_rewardPanel));
-                _settingsPanel = serializedObject.FindProperty(nameof(_settingsPanel));
-                _pausePanel = serializedObject.FindProperty(nameof(_pausePanel));
-            }
-
-            public override void OnInspectorGUI()
-            {
-                serializedObject.Update();
-                if (GUILayout.Button(_type.enumNames[_type.enumValueFlag].Replace("0", " ")))
-                {
-                    int value = _type.enumValueIndex + 1;
-                    if (value > 2) value = 0;
-                    _type.enumValueIndex = value;
-                }
-
-                EditorGUILayout.Space(10);
-                if (_type.enumValueIndex == 1)
-                {
-                    EditorGUILayout.PropertyField(_rewardData);
-                    EditorGUILayout.PropertyField(_rewardPanel);
-                    EditorGUILayout.PropertyField(_pausePanel);
-                }
-
-                if (_type.enumValueIndex != 2) EditorGUILayout.PropertyField(_settingsPanel);
-                serializedObject.ApplyModifiedProperties();
-            }
-        }
-#endif
-        #endregion
 
         private void Awake()
         {

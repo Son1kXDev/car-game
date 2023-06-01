@@ -6,7 +6,7 @@ namespace Assets.Game.Scripts.UI
 {
     public class MapData : MonoBehaviour
     {
-        public MapConfig Config;
+        [StatusIcon(offset: 20)] public MapConfig Config;
 
         private TextMeshProUGUI _name;
         private Image _image;

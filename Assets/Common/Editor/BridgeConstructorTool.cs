@@ -8,13 +8,13 @@ using UnityEditor;
 
 namespace Utils
 {
-    public static class BridgeConstructor
+    public static class BridgeConstructorTool
     {
         [MenuItem("GameObject/2D Object/Physics/Bridge")]
         private static void CreateNewBridge()
         {
             GameObject CurrentBridge = new GameObject("Bridge");
-            BridgeContainer bridgeContainer = CurrentBridge.AddComponent<BridgeContainer>();
+            BridgeConstructor bridgeContainer = CurrentBridge.AddComponent<BridgeConstructor>();
             bridgeContainer.SetData(
                 Resources.Load("InGame/Bridge/Stake", typeof(GameObject)) as GameObject,
                 Resources.Load("InGame/Bridge/Plank", typeof(GameObject)) as GameObject,

@@ -6,7 +6,7 @@ using System.IO;
 
 public class StickerUploader : MonoBehaviour
 {
-    [SerializeField] RawImage _preview;
+    [SerializeField, StatusIcon] RawImage _preview;
 
     private Texture2D _texture;
     private MenuCar _car;

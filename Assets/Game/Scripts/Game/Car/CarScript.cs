@@ -10,8 +10,8 @@ namespace Assets.Game.Scripts.Game
     public class CarScript : MonoCache, Data.IDataPersistence, Data.ISettingsDataPersistence
     {
         [SerializeField] private LayerMask _ground;
-        [SerializeField] private Transform _wheel;
-        [SerializeField] private Car _carAsset;
+        [SerializeField][StatusIcon(offset: 20)] private Transform _wheel;
+        [SerializeField][StatusIcon(offset: 20)] private Car _carAsset;
 
         private readonly float _deceleration = -400f;
         private readonly float _gravity = 9.8f;

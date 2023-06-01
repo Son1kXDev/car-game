@@ -5,6 +5,7 @@ using AnotherFileBrowser.Windows;
 #endif
 using Utils.Debugger;
 
+[Component("File Manager", "Load files from device runtime")]
 public class FileManager : MonoBehaviour
 {
     public static FileManager Instance { get; private set; }

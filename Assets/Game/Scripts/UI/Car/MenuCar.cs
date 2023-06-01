@@ -9,15 +9,15 @@ namespace Assets.Game.Scripts.UI
     public class MenuCar : MonoBehaviour
     {
         [Header("Scene Visual")]
-        [SerializeField] private SpriteRenderer _body;
-        [SerializeField] private SpriteRenderer _back;
-        [SerializeField] private SpriteRenderer _elements;
-        [SerializeField] private SpriteRenderer _optics;
-        [SerializeField] private SpriteRenderer _sticker;
+        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _body;
+        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _back;
+        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _elements;
+        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _optics;
+        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _sticker;
+        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _spoiler;
+        [SerializeField, StatusIcon(offset: 20)] private SpriteRenderer _splitter;
         [SerializeField] private List<SpriteRenderer> _tires;
         [SerializeField] private List<SpriteRenderer> _rims;
-        [SerializeField] private List<SpriteRenderer> _spoilers;
-        [SerializeField] private List<SpriteRenderer> _splitters;
 
         private WheelJoint2D[] _wheelJoints;
 
@@ -47,8 +47,8 @@ namespace Assets.Game.Scripts.UI
             _body.color = _config.CurrentColor;
             _tires.ForEach(tire => tire.sprite = _config.CurrentCar.TiresSprites[_config.CurrentTire]);
             _rims.ForEach(rim => rim.sprite = _config.CurrentCar.RimsSprites[_config.CurrentRim]);
-            _spoilers.ForEach(spoiler => spoiler.sprite = _config.CurrentCar.SpoilersSprites[_config.CurrentSpoiler]);
-            _splitters.ForEach(splitter => splitter.sprite = _config.CurrentCar.SplittersSprites[_config.CurrentSplitter]);
+            _spoiler.sprite = _config.CurrentCar.SpoilersSprites[_config.CurrentSpoiler];
+            _splitter.sprite = _config.CurrentCar.SplittersSprites[_config.CurrentSplitter];
             ChangeCarSticker(StickerUploader.GetSprite(_config.CurrentStickerPath));
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
@@ -118,8 +118,8 @@ namespace Assets.Game.Scripts.UI
             _body.color = _config.CurrentColor;
             _tires.ForEach(tire => tire.sprite = _config.CurrentCar.TiresSprites[_config.CurrentTire]);
             _rims.ForEach(rim => rim.sprite = _config.CurrentCar.RimsSprites[_config.CurrentRim]);
-            _spoilers.ForEach(spoiler => spoiler.sprite = _config.CurrentCar.SpoilersSprites[_config.CurrentSpoiler]);
-            _splitters.ForEach(splitter => splitter.sprite = _config.CurrentCar.SplittersSprites[_config.CurrentSplitter]);
+            _spoiler.sprite = _config.CurrentCar.SpoilersSprites[_config.CurrentSpoiler];
+            _splitter.sprite = _config.CurrentCar.SplittersSprites[_config.CurrentSplitter];
             ChangeCarSticker(StickerUploader.GetSprite(_config.CurrentStickerPath));
             foreach (WheelJoint2D wheel in _wheelJoints)
             {
@@ -136,8 +136,8 @@ namespace Assets.Game.Scripts.UI
 
         public void SelectRim(int value) => _rims.ForEach(rim => rim.sprite = _config.CurrentCar.RimsSprites[value]);
         public void SelectTire(int value) => _tires.ForEach(tire => tire.sprite = _config.CurrentCar.TiresSprites[value]);
-        public void SelectSpoiler(int value) => _spoilers.ForEach(spoiler => spoiler.sprite = _config.CurrentCar.SpoilersSprites[value]);
-        public void SelectSplitter(int value) => _splitters.ForEach(splitter => splitter.sprite = _config.CurrentCar.SplittersSprites[value]);
+        public void SelectSpoiler(int value) => _spoiler.sprite = _config.CurrentCar.SpoilersSprites[value];
+        public void SelectSplitter(int value) => _splitter.sprite = _config.CurrentCar.SplittersSprites[value];
 
         public void SetRim(int value)
         {

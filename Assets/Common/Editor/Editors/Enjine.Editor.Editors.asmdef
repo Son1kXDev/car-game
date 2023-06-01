@@ -1,17 +1,14 @@
 {
-    "name": "Common.Editor",
+    "name": "Enjine.Editor.ComponentEditors",
     "rootNamespace": "",
     "references": [
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:ce94c31b113b36744a8807c055d7edb8",
+        "GUID:f7d3f4bfdbd35a049b89f0c16583a111",
+        "GUID:b1667c0b855ceec4bb420b7d742193d5",
         "GUID:abc30f71a829b6347b5d2bf83aa0235e",
-        "GUID:562fc58ad9c15874bbb465f6f1ead628",
-        "GUID:c579267770062bf448e75eb160330b7f",
-        "GUID:15fc0a57446b3144c949da3e2b9737a9",
-        "GUID:f7d3f4bfdbd35a049b89f0c16583a111"
+        "GUID:562fc58ad9c15874bbb465f6f1ead628"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

@@ -3827,7 +3827,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6e849e1b01dbb4689ed66639ba94dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentCar: {fileID: 0}
   CurrentColor: {r: 0, g: 0, b: 0, a: 0}
   CurrentTire: 0
   CurrentRim: 0
@@ -3846,8 +3845,6 @@ MonoBehaviour:
   CostsDictionary:
     keys: []
     values: 
-  _carsConfigs:
-  - {fileID: 11400000, guid: c52d6c2378ac17a448c09ccc0838017a, type: 2}
 --- !u!114 &3969798728195611003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3885,7 +3882,6 @@ MonoBehaviour:
       Data3: -2034515325
       Data4: 295495682
     Path: event:/Effects/Car/LightSwitch
-  _property: 0
 --- !u!114 &3969798729054997546
 MonoBehaviour:
   m_ObjectHideFlags: 0

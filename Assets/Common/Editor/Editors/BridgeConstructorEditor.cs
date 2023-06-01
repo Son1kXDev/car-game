@@ -5,14 +5,15 @@ using Utils.Debugger;
 
 namespace Editors
 {
-    [CustomEditor(typeof(BridgeContainer))]
-    public class BridgeContainerEditor : Editor
+    [CustomEditor(typeof(BridgeConstructor))]
+    public class BridgeConstructorEditor : BaseEditor
     {
         public override void OnInspectorGUI()
         {
-            EditorGUILayout.LabelField("Bridge Constructor", EditorStyles.centeredGreyMiniLabel);
+            if (!isUnityNamespace)
+                HeaderGUI(componentAttribute);
 
-            BridgeContainer bridgeContainer = (BridgeContainer)target;
+            BridgeConstructor bridgeContainer = (BridgeConstructor)target;
 
             bridgeContainer.IsBreakable = GUILayout.Toggle(bridgeContainer.IsBreakable, "Is Breakable");
             if (bridgeContainer.IsBreakable)

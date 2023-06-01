@@ -8,9 +8,9 @@ namespace Assets.Game.Scripts.UI
 {
     public class GraphicsSettings : MonoBehaviour, ISettingsDataPersistence
     {
-        [SerializeField] private TMP_Dropdown _qualityDropdown;
-        [SerializeField] private TextToggle _vsyncToggle;
-        [SerializeField] private TextToggle _particlesToggle;
+        [SerializeField, StatusIcon(offset: 20)] private TMP_Dropdown _qualityDropdown;
+        [SerializeField, StatusIcon(offset: 20)] private TextToggle _vsyncToggle;
+        [SerializeField, StatusIcon(offset: 20)] private TextToggle _particlesToggle;
 
         private int _quality;
         private bool _vsync;

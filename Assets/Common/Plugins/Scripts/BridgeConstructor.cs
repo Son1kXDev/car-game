@@ -1,4 +1,5 @@
-﻿using System;
+﻿using System.ComponentModel;
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -6,7 +7,7 @@ using UnityEngine;
 namespace Utils
 {
     [System.Serializable]
-    public class BridgeContainer : MonoBehaviour, ICantExistInPlayMode
+    public class BridgeConstructor : MonoBehaviour, ICantExistInPlayMode
     {
         public bool IsBreakable
         {

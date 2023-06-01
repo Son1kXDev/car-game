@@ -8,9 +8,9 @@ namespace Assets.Game.Scripts.UI
 {
     public class InterfaceSettings : MonoBehaviour, ISettingsDataPersistence
     {
-        [SerializeField] private TMP_Dropdown _languageDropdown;
-        [SerializeField] private TMP_Dropdown _speedDropdown;
-        [SerializeField] private TMP_Dropdown _temperatureDropdown;
+        [SerializeField, StatusIcon(offset: 20)] private TMP_Dropdown _languageDropdown;
+        [SerializeField, StatusIcon(offset: 20)] private TMP_Dropdown _speedDropdown;
+        [SerializeField, StatusIcon(offset: 20)] private TMP_Dropdown _temperatureDropdown;
 
         private void Awake()
         {

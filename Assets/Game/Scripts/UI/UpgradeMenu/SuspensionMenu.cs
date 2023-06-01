@@ -10,10 +10,10 @@ namespace Assets.Game.Scripts.UI
 {
     public class SuspensionMenu : MonoBehaviour, IDataPersistence
     {
-        [SerializeField] Slider _stiffnessSlider;
-        [SerializeField] Slider _heightSlider;
+        [SerializeField, StatusIcon] Slider _stiffnessSlider;
+        [SerializeField, StatusIcon] Slider _heightSlider;
 
-        [SerializeField] TextMeshProUGUI _costText;
+        [SerializeField, StatusIcon] TextMeshProUGUI _costText;
         private int _currentCost;
 
         private float _stiffness, _height;

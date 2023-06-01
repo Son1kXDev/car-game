@@ -10,10 +10,10 @@ namespace Assets.Game.Scripts.UI
 {
     public class SpoilerMenu : MonoBehaviour, IDataPersistence
     {
-        [SerializeField] private Transform _propertyField;
-        [SerializeField] private ScrollRect _scroll;
+        [SerializeField, StatusIcon(offset: 20)] private Transform _propertyField;
+        [SerializeField, StatusIcon(offset: 20)] private ScrollRect _scroll;
         [SerializeField] private List<GameObject> _spoilers;
-        [SerializeField] private ActionButton _actionButton;
+        [SerializeField, StatusIcon(offset: 20)] private ActionButton _actionButton;
 
         private CarConfig _carConfig;
         private CarInfo _carInfo;

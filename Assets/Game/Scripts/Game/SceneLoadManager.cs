@@ -8,9 +8,9 @@ public class SceneLoadManager : MonoBehaviour
 {
     public static SceneLoadManager Instance;
 
-    [SerializeField] private GameObject _loaderPanel;
-    [SerializeField] private Animator _loaderAnimator;
-    [SerializeField] private UnityEngine.UI.Image _loadingIndicator;
+    [SerializeField, StatusIcon] private GameObject _loaderPanel;
+    [SerializeField, StatusIcon] private Animator _loaderAnimator;
+    [SerializeField, StatusIcon] private UnityEngine.UI.Image _loadingIndicator;
 
     private void Awake()
     {

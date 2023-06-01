@@ -8,12 +8,13 @@ using UnityEngine.SceneManagement;
 
 namespace Assets.Game.Scripts.UI
 {
+    [Component("Car Info", "Displays current car config visual information")]
     public class CarInfo : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _name;
-        [SerializeField] private TextMeshProUGUI _weight;
-        [SerializeField] private TextMeshProUGUI _strength;
-        [SerializeField] private TextMeshProUGUI _costText;
+        [SerializeField, StatusIcon] private TextMeshProUGUI _name;
+        [SerializeField, StatusIcon] private TextMeshProUGUI _weight;
+        [SerializeField, StatusIcon] private TextMeshProUGUI _strength;
+        [SerializeField, StatusIcon] private TextMeshProUGUI _costText;
         [SerializeField] private LocalizedString _localCost;
         [SerializeField] private LocalizedString _localWeight;
         [SerializeField] private LocalizedString _localStrength;

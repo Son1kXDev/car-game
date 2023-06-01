@@ -8,9 +8,9 @@ namespace Assets.Game.Scripts
     {
         public float CurrentHue, CurrentSaturation, CurrentValue;
 
-        [SerializeField] private RawImage hueImage, saturationImage, valueImage, outputImage;
-        [SerializeField] private Slider hueSlider, saturationSlider, valueSlider;
-        [SerializeField] private TMP_InputField hexInputField;
+        [SerializeField, StatusIcon] private RawImage hueImage, saturationImage, valueImage, outputImage;
+        [SerializeField, StatusIcon] private Slider hueSlider, saturationSlider, valueSlider;
+        [SerializeField, StatusIcon] private TMP_InputField hexInputField;
 
         private Texture2D hueTexture, saturationTexture, valueTexture;
 

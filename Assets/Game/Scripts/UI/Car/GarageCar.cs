@@ -5,7 +5,7 @@ namespace Assets.Game.Scripts.UI
 {
     public class GarageCar : MonoBehaviour, Data.IDataPersistence
     {
-        [SerializeField] private string _id;
+        [SerializeField, StatusIcon("", 20)] private string _id;
         [SerializeField] private bool _isOpened = false;
         private CarConfig _config;
 

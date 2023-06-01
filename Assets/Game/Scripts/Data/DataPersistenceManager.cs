@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.ComponentModel;
+using System.Collections;
 using UnityEngine;
 using Utils.Debugger;
 using System.Linq;
@@ -17,8 +18,8 @@ namespace Assets.Game.Scripts.Data
         [SerializeField] private bool _initializeDataIfNull = false;
 
         [Header("Storage Config")]
-        [SerializeField] private string _settingsFileName;
-        [SerializeField] private string _gameFileName;
+        [SerializeField, StatusIcon("")] private string _settingsFileName;
+        [SerializeField, StatusIcon("")] private string _gameFileName;
         [SerializeField] private bool _useEncryption = false;
 
         private GameData _gameData;

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ParallaxBehaviour : MonoCache
 {
-    [SerializeField] private Transform _followingTarget;
+    [SerializeField, StatusIcon] private Transform _followingTarget;
     [SerializeField, Range(0f, 1f)] private float _parallaxStrengthHorizontal = 0.1f;
     [SerializeField, Range(0f, 1f)] private float _parallaxStrengthVertical = 0.1f;
 

@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace Assets.Game.Scripts.Game
 {
+    [Component("PC Input")]
     public class CarPCInput : MonoBehaviour
     {
 #if !UNITY_ANDROID

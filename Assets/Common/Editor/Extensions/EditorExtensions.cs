@@ -28,6 +28,39 @@ public static class EditorExtensions
         EditorGUILayout.EndHorizontal();
         return value;
     }
+
+    public static bool PropertyField(this SerializedProperty property, GUIContent content, PropertyIconType iconType = PropertyIconType.None,
+    params GUILayoutOption[] options)
+    {
+        EditorGUILayout.BeginHorizontal();
+        Color color = GUI.backgroundColor;
+        if (iconType == PropertyIconType.Error) GUI.backgroundColor = Color.red;
+        EditorGUILayout.LabelField(content, GUILayout.MaxWidth(100), GUILayout.MinWidth(50));
+        GUILayout.FlexibleSpace();
+        bool value = EditorGUILayout.PropertyField(property, GUIContent.none, options);
+        GUI.backgroundColor = color;
+        if (iconType != PropertyIconType.None)
+            EditorGUILayout.LabelField(GUIContent.none, EditorGUIUtility.IconContent(PropertyIcon(iconType)), GUILayout.Width(20));
+        EditorGUILayout.EndHorizontal();
+        return value;
+    }
+
+    public static bool PropertyField(this SerializedProperty property, Rect position, GUIContent label,
+    PropertyIconType iconType = PropertyIconType.None, float offset = 20)
+    {
+        Color color = GUI.backgroundColor;
+        if (iconType == PropertyIconType.Error) GUI.backgroundColor = Color.red;
+        var oldPosition = position;
+        position.width -= 20;
+        bool value = EditorGUI.PropertyField(position, property, label);
+        position = oldPosition;
+        position.x = Screen.width - offset * 2;
+        GUI.backgroundColor = color;
+        if (iconType != PropertyIconType.None)
+            EditorGUI.LabelField(position, EditorGUIUtility.IconContent(PropertyIcon(iconType)));
+        return value;
+    }
+
     public static bool PropertyField(this SerializedProperty property, PropertyIconType iconType,
     bool helpButtonValue, string helpMessage, params GUILayoutOption[] options)
     {

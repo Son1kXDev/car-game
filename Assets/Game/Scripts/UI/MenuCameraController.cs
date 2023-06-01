@@ -8,12 +8,12 @@ public class MenuCameraController : MonoCache
 
     public static MenuCameraController Instance;
 
-    [SerializeField] Camera _camera;
+    [SerializeField, StatusIcon(offset: 20)] Camera _camera;
     [SerializeField] Vector3 _defaultPosition;
 
     [SerializeField] List<Vector3> _cameraDataList;
 
-    [SerializeField] private float _speed = 10f;
+    [SerializeField, StatusIcon(0f, offset: 20)] private float _speed = 10f;
 
     private float _distance;
 

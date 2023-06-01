@@ -104,7 +104,7 @@ public class CarEditor : Editor
 
     private int oldIndex;
     private float maxWidth = 225;
-    private void OnEnable()
+    protected void OnEnable()
     {
         _id = serializedObject.FindProperty(nameof(_id));
         _property = serializedObject.FindProperty(nameof(_property));

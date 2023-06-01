@@ -2,13 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using Assets.Game.Scripts.Data;
 
+[Component("Volume UI Controller")]
 public class VolumeUIControll : MonoBehaviour
 {
-    [SerializeField] private Slider _masterVolumeSlider;
-    [SerializeField] private Slider _musicVolumeSlider;
-    [SerializeField] private Slider _sfxVolumeSlider;
-    [SerializeField] private Slider _ambientVolumeSlider;
-    [SerializeField] private Slider _uiVolumeSlider;
+    [SerializeField, StatusIcon(offset: 20)] private Slider _masterVolumeSlider;
+    [SerializeField, StatusIcon(offset: 20)] private Slider _musicVolumeSlider;
+    [SerializeField, StatusIcon(offset: 20)] private Slider _sfxVolumeSlider;
+    [SerializeField, StatusIcon(offset: 20)] private Slider _ambientVolumeSlider;
+    [SerializeField, StatusIcon(offset: 20)] private Slider _uiVolumeSlider;
 
 
     private void OnEnable()

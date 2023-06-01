@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
 
+[Component("Audio Database", "All FMOD audio references")]
 public class Audio : MonoBehaviour
 {
     public static Audio Data;

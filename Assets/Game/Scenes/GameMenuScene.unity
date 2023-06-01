@@ -42098,7 +42098,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1711831784}
-  - component: {fileID: 1711831785}
   m_Layer: 5
   m_Name: MapInfo
   m_TagString: Untagged
@@ -42129,52 +42128,6 @@ RectTransform:
   m_AnchoredPosition: {x: 75, y: -204.82}
   m_SizeDelta: {x: 540.84, y: 207.84}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1711831785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1711831783}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6187bdc40beee374abd3fd94c5fb9987, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _name: {fileID: 1044741906}
-  _weight: {fileID: 873931520}
-  _strength: {fileID: 1043121978}
-  _costText: {fileID: 0}
-  _localCost:
-    m_TableReference:
-      m_TableCollectionName: 
-    m_TableEntryReference:
-      m_KeyId: 0
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _localWeight:
-    m_TableReference:
-      m_TableCollectionName: 
-    m_TableEntryReference:
-      m_KeyId: 0
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  _localStrength:
-    m_TableReference:
-      m_TableCollectionName: 
-    m_TableEntryReference:
-      m_KeyId: 0
-      m_Key: 
-    m_FallbackState: 0
-    m_WaitForCompletion: 0
-    m_LocalVariables: []
-  references:
-    version: 2
-    RefIds: []
 --- !u!1 &1712841279
 GameObject:
   m_ObjectHideFlags: 0
@@ -52663,16 +52616,14 @@ MonoBehaviour:
   _elements: {fileID: 296538437419316083}
   _optics: {fileID: 296538436605283712}
   _sticker: {fileID: 849973765}
+  _spoiler: {fileID: 1335034138}
+  _splitter: {fileID: 1831747056}
   _tires:
   - {fileID: 296538436436617456}
   - {fileID: 959681945}
   _rims:
   - {fileID: 1488712844}
   - {fileID: 2129474399}
-  _spoilers:
-  - {fileID: 1335034138}
-  _splitters:
-  - {fileID: 1831747056}
 --- !u!114 &296538438002692952
 MonoBehaviour:
   m_ObjectHideFlags: 0
