@@ -18,7 +18,7 @@ MonoBehaviour:
   _maxSpeed: 800
   _maxBackSpeed: 600
   _brakeForce: 1000
-  _airBrakeForce: 500
+  _airBrakeForce: 50
   _gearBrakeForce: 80
   _wheelSize: 0.13
   _suspensionFrequency: 4
