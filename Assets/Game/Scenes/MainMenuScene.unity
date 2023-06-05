@@ -12204,16 +12204,14 @@ MonoBehaviour:
   _elements: {fileID: 2083465589}
   _optics: {fileID: 103708587}
   _sticker: {fileID: 521256592}
+  _spoiler: {fileID: 0}
+  _splitter: {fileID: 0}
   _tires:
   - {fileID: 877062255}
   - {fileID: 1481756929}
   _rims:
   - {fileID: 1606288347}
   - {fileID: 495899560}
-  _spoilers:
-  - {fileID: 1500295399}
-  _splitters:
-  - {fileID: 389500289}
 --- !u!1 &1669739659
 GameObject:
   m_ObjectHideFlags: 0
