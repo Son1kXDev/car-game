@@ -16036,7 +16036,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: e579c12847d0fe948aa0912062977d87, type: 2}
+  m_SpriteShape: {fileID: 11400000, guid: 959898d64d13a024482ee560662a0d7b, type: 2}
   m_FillPixelPerUnit: 256
   m_StretchTiling: 1
   m_SplineDetail: 4
@@ -27008,7 +27008,7 @@ MonoBehaviour:
       spriteIndex: 0
       corner: 1
       m_CornerMode: 1
-  m_SpriteShape: {fileID: 11400000, guid: e579c12847d0fe948aa0912062977d87, type: 2}
+  m_SpriteShape: {fileID: 11400000, guid: 959898d64d13a024482ee560662a0d7b, type: 2}
   m_FillPixelPerUnit: 256
   m_StretchTiling: 1
   m_SplineDetail: 4
