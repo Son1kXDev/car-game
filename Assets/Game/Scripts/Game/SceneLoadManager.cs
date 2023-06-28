@@ -1,8 +1,9 @@
+using System;
 using System.Net.Mime;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Utils.Debugger;
+
 
 public class SceneLoadManager : MonoBehaviour
 {
@@ -22,9 +23,13 @@ public class SceneLoadManager : MonoBehaviour
                 transform.parent = null;
             Application.targetFrameRate = 120; // -1
             //QualitySettings.antiAliasing 0 2 4 8
+            SceneManager.sceneUnloaded += SceneUnloaded;
             DontDestroyOnLoad(gameObject);
         }
     }
+
+    private void SceneUnloaded(Scene arg0) => Debug.Clear();
+    
 
     public async void LoadScene(string sceneName, bool doNotUnloadCurrentScene = false)
     {

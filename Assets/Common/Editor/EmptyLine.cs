@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEditor;
-using Utils.Debugger;
+
 using System.Collections;
 
 namespace Plugins
@@ -11,7 +11,7 @@ namespace Plugins
         private static void EmptyLineVoid()
         {
             GameObject newLine = new GameObject();
-            string name = Editors.TextEntryDialog.Show("PropertyLine", "Введите название разделителя");
+            string name = Editors.TextEntryDialog.Show("PropertyLine", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
             newLine.name = $"===={name}====";
             CheckLayer("Organize");
             newLine.layer = LayerMask.NameToLayer("Organize");
@@ -25,8 +25,8 @@ namespace Plugins
             SerializedProperty layers = tagManager.FindProperty("layers");
             if (layers == null || !layers.isArray)
             {
-                Console.LogWarning("Can't set up the layers. It's possible the format of the layers and tags data has changed in this version of Unity.", DColor.white);
-                Console.LogWarning("Layers is null: " + (layers == null), DColor.red);
+                Debug.LogWarning("Can't set up the layers. It's possible the format of the layers and tags data has changed in this version of Unity.");
+                Debug.LogWarning("Layers is null: " + (layers == null));
                 return;
             }
 

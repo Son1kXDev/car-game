@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEditor;
-using Utils.Debugger;
+
 using System.Linq;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
@@ -31,7 +31,7 @@ namespace Plugins.Editor
                     {
                         if (components == null) components = new();
                         components.Add(component);
-                        Console.LogWarning($"Prefab {path} has missing script ", prefab, DColor.white);
+                        Debug.LogWarning($"Prefab {path} has missing script ", prefab);
                         break;
                     }
                 }
@@ -61,7 +61,7 @@ namespace Plugins.Editor
                     {
                         if (components == null) components = new();
                         components.Add(component);
-                        Console.LogWarning($"GameObject {gameObject.name} has missing script ", gameObject, DColor.white);
+                        Debug.LogWarning($"GameObject {gameObject.name} has missing script ", gameObject);
                     }
                 }
                 i++;
@@ -104,7 +104,7 @@ namespace Plugins.Editor
                             if (components == null) components = new();
                             components.Add(component);
                             Scene _scene = gameObject.scene;
-                            Console.LogWarning($"GameObject {gameObject.name} on scene {_scene.path} has missing script ", gameObject, DColor.white);
+                            Debug.LogWarning($"GameObject {gameObject.name} on scene {_scene.path} has missing script ", gameObject);
                         }
                     }
                 }
@@ -138,7 +138,7 @@ namespace Plugins.Editor
                         if (components == null) components = new();
                         components.Add(component);
                         GameObjectUtility.RemoveMonoBehavioursWithMissingScript(prefab);
-                        Console.LogWarning($"Prefab {path} missing script was deleted.", prefab, DColor.white);
+                        Debug.LogWarning($"Prefab {path} missing script was deleted.", prefab);
                         break;
                     }
                 }
@@ -167,7 +167,7 @@ namespace Plugins.Editor
                         if (components == null) components = new();
                         components.Add(component);
                         GameObjectUtility.RemoveMonoBehavioursWithMissingScript(gameObject);
-                        Console.LogWarning($"GameObject {gameObject.name} missing script was deleted.", gameObject, DColor.white);
+                        Debug.LogWarning($"GameObject {gameObject.name} missing script was deleted.", gameObject);
                     }
                 }
                 i++;

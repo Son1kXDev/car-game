@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEditor;
-using Utils.Debugger;
+
 using Editors;
 using UnityEngine.UI;
 using System.Collections.Generic;
@@ -41,11 +41,11 @@ namespace Plugins
                 component.font = font;
                 if (components == null) components = new();
                 components.Add(component);
-                Console.Log($"Replaced: {component.name}", component, DColor.white);
+                Debug.Log($"Replaced: {component.name}", component);
             }
 
             if (components == null)
-                Console.LogError("Can't find any text components on current scene", DColor.red);
+                Debug.LogError("Can't find any text components on current scene");
 
             Undo.IncrementCurrentGroup();
         }
@@ -73,11 +73,11 @@ namespace Plugins
                 component.font = font;
                 if (components == null) components = new();
                 components.Add(component);
-                Console.Log($"Replaced: {component.name}", component, DColor.white);
+                Debug.Log($"Replaced: {component.name}", component);
             }
 
             if (components == null)
-                Console.LogError("Can't find any TMP components on current scene", DColor.red);
+                Debug.LogError("Can't find any TMP components on current scene");
 
             Undo.IncrementCurrentGroup();
         }
@@ -112,12 +112,12 @@ namespace Plugins
                         if (components == null) components = new();
                         components.Add(component);
                     }
-                    Console.Log($"Replaced: {prefab.name}", prefab, DColor.white);
+                    Debug.Log($"Replaced: {prefab.name}", prefab);
                 }
             }
 
             if (components == null)
-                Console.LogError("Can't find any text components in prefabs", DColor.red);
+                Debug.LogError("Can't find any text components in prefabs");
 
             Undo.IncrementCurrentGroup();
         }
@@ -152,12 +152,12 @@ namespace Plugins
                         if (components == null) components = new();
                         components.Add(component);
                     }
-                    Console.Log($"Replaced: {prefab.name}", prefab, DColor.white);
+                    Debug.Log($"Replaced: {prefab.name}", prefab);
                 }
             }
 
             if (components == null)
-                Console.LogError("Can't find any TMP components in prefabs", DColor.red);
+                Debug.LogError("Can't find any TMP components in prefabs");
 
             Undo.IncrementCurrentGroup();
         }
@@ -182,7 +182,7 @@ namespace Plugins
             {
                 Undo.RecordObject(component, "");
                 component.font = font;
-                Console.Log($"Replaced: {component.gameObject.name}", component, DColor.white);
+                Debug.Log($"Replaced: {component.gameObject.name}", component);
             }
 
             Undo.IncrementCurrentGroup();
@@ -208,7 +208,7 @@ namespace Plugins
             {
                 Undo.RecordObject(component, "");
                 component.font = font;
-                Console.Log($"Replaced: {component.gameObject.name}", component, DColor.white);
+                Debug.Log($"Replaced: {component.gameObject.name}", component);
             }
 
             Undo.IncrementCurrentGroup();
@@ -246,7 +246,7 @@ namespace Plugins
                         if (components == null) components = new();
                         components.Add(component);
                     }
-                    Console.Log($"Replaced: {prefab.name}", prefab, DColor.white);
+                    Debug.Log($"Replaced: {prefab.name}", prefab);
                 }
             }
 
@@ -264,7 +264,7 @@ namespace Plugins
                     component.font = font;
                     if (components == null) components = new();
                     components.Add(component);
-                    Console.Log($"Replaced: {component.name}", component, DColor.white);
+                    Debug.Log($"Replaced: {component.name}", component);
                 }
 
                 EditorSceneManager.SaveOpenScenes();
@@ -273,7 +273,7 @@ namespace Plugins
             EditorSceneManager.OpenScene(currentScene);
 
             if (components == null)
-                Console.LogError("Can't find any text components on all scenes", DColor.red);
+                Debug.LogError("Can't find any text components on all scenes");
             Undo.IncrementCurrentGroup();
         }
 
@@ -308,7 +308,7 @@ namespace Plugins
                         if (components == null) components = new();
                         components.Add(component);
                     }
-                    Console.Log($"Replaced: {prefab.name}", prefab, DColor.white);
+                    Debug.Log($"Replaced: {prefab.name}", prefab);
                 }
             }
 
@@ -326,7 +326,7 @@ namespace Plugins
                     component.font = font;
                     if (components == null) components = new();
                     components.Add(component);
-                    Console.Log($"Replaced: {component.name}", component, DColor.white);
+                    Debug.Log($"Replaced: {component.name}", component);
                 }
 
                 EditorSceneManager.SaveOpenScenes();
@@ -335,7 +335,7 @@ namespace Plugins
             EditorSceneManager.OpenScene(currentScene);
 
             if (components == null)
-                Console.LogError("Can't find any TMP components on all scenes", DColor.red);
+                Debug.LogError("Can't find any TMP components on all scenes");
             Undo.IncrementCurrentGroup();
         }
     }

@@ -40,7 +40,7 @@ public class FileDataHandler
                 loadedData = JsonUtility.FromJson<GameData>(dataToLoad);
             }
             catch (Exception e)
-            { Utils.Debugger.Console.LogError("Error while trying load data from file: " + fullPath + "\n" + e); }
+            { Debug.LogError("Error while trying load data from file: " + fullPath + "\n" + e); }
         }
         return loadedData;
     }
@@ -65,7 +65,7 @@ public class FileDataHandler
             }
         }
         catch (Exception e)
-        { Utils.Debugger.Console.LogError("Error while trying saving data to file: " + fullPath + "\n" + e); }
+        { Debug.LogError("Error while trying saving data to file: " + fullPath + "\n" + e); }
     }
 
     public SettingsData LoadSettings()
@@ -88,7 +88,7 @@ public class FileDataHandler
                 loadedData = JsonUtility.FromJson<SettingsData>(dataToLoad);
             }
             catch (Exception e)
-            { Utils.Debugger.Console.LogError("Error while trying load data from file: " + fullPath + "\n" + e); }
+            { Debug.LogError("Error while trying load data from file: " + fullPath + "\n" + e); }
         }
         return loadedData;
     }
@@ -113,7 +113,7 @@ public class FileDataHandler
             }
         }
         catch (Exception e)
-        { Utils.Debugger.Console.LogError("Error while trying saving data to file: " + fullPath + "\n" + e); }
+        { Debug.LogError("Error while trying saving data to file: " + fullPath + "\n" + e); }
     }
 
     public void Delete()
@@ -124,7 +124,7 @@ public class FileDataHandler
             try
             { File.Delete(fullPath); }
             catch (Exception e)
-            { Utils.Debugger.Console.LogError("Error while trying delete data from file: " + fullPath + "\n" + e); }
+            { Debug.LogError("Error while trying delete data from file: " + fullPath + "\n" + e); }
         }
     }
 

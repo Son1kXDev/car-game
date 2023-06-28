@@ -1,7 +1,7 @@
 using Assets.Game.Scripts.Game;
 using System.Collections.Generic;
 using UnityEngine;
-using Utils.Debugger;
+
 
 namespace Assets.Game.Scripts.UI
 {
@@ -36,7 +36,7 @@ namespace Assets.Game.Scripts.UI
         {
             if (!_config.HasConfig())
             {
-                Console.LogError("Config files were not found. Please check if the files are set correctly or define them manually");
+                Debug.LogError("Config files were not found. Please check if the files are set correctly or define them manually");
                 return;
             }
 

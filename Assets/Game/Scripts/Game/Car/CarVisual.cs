@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
-using Utils.Debugger;
+
 
 namespace Assets.Game.Scripts.Game
 {
@@ -42,7 +42,7 @@ namespace Assets.Game.Scripts.Game
             _config = GetComponent<CarConfig>();
             if (!_config.HasConfig())
             {
-                Utils.Debugger.Console.
+                Debug.
                 LogError("Config files were not found. Please check if the files are set correctly or define them manually");
                 return;
             }

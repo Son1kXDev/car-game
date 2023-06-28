@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Localization;
 using TMPro;
-using Utils.Debugger;
+
 
 namespace Assets.Game.Scripts.UI
 {
@@ -20,8 +20,8 @@ namespace Assets.Game.Scripts.UI
 
         private void Start()
         {
-            Console.Log(version);
             version = Application.version;
+            Debug.Log(version);
             _localString.Arguments[0] = version;
             _localString.RefreshString();
         }
