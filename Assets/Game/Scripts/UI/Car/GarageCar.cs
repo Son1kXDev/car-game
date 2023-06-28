@@ -5,13 +5,14 @@ namespace Assets.Game.Scripts.UI
 {
     public class GarageCar : MonoBehaviour, Data.IDataPersistence
     {
-        [SerializeField] private string _id;
-        [SerializeField] private bool _isOpened = false;
+        [ShowOnly, SerializeField] private string _id;
+        [ShowOnly, SerializeField] private bool _isOpened = false;
         private CarConfig _config;
 
         public void LoadData(GameData data)
         {
             _config = GetComponent<CarConfig>();
+            _id = _config.CurrentCar.ID;
 
             data.CarsOpened.TryGetValue(_id, out _isOpened);
         }
